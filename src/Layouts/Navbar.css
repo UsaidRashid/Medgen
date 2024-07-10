@@ -1,0 +1,30 @@
+.navbar{
+    background-color: #4999f4;
+    height: 70px;
+}
+
+.home{
+    margin-left: 1.5rem;
+}
+
+.locator{
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.container-fluid{
+    margin-left: .8rem;
+}
+
+.search{
+    margin: 0rem 18rem 0rem 15rem;
+}
+
+img{
+    height: 66px;
+    width: 150px;
+}
+
+.home:hover,.locator:hover,.compare:hover{
+    font-weight: bolder;
+}
