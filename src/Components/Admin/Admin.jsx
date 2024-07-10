@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import "./admin.css"
+import "../../CSS/admin.css"
 import Header from "./Header"
 import Sidebar from './Sidebar'
 import Home from './Home'

@@ -1,5 +1,5 @@
 import React from 'react';
-import './GenericSearch.css';
+import '../CSS/GenericSearch.css';
 
 export default function GenericSearch() {
 

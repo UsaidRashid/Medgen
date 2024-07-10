@@ -1,8 +1,7 @@
 import React from 'react';
-import './BrandedSearch.css';
+import '../CSS/BrandedSearch.css';
 
 export default function BrandedSearch(){
-
     return (
         <div>
             <div className='image'>

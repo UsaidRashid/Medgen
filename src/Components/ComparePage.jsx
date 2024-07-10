@@ -1,5 +1,5 @@
 import React from "react";
-import "./ComparePage.css";
+import "../CSS/ComparePage.css";
 
 export default function ComparePage() {
 

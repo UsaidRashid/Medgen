@@ -1,15 +1,16 @@
 import React from 'react';
 import {BrowserRouter , Routes , Route} from 'react-router-dom'
-import Footer from './Layouts/Footer';
-import Navbar from './Layouts/Navbar';
+import Footer from './Components/Layouts/Footer';
+import Navbar from './Components/Layouts/Navbar';
 import Adminresponse from './Components/Adminresponse';
-import Admin from './Components/Admin';
+import Admin from './Components/Admin/Admin';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
 import ComparePage from './Components/ComparePage';
+import RequestForm from './Components/RequestForm';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 
@@ -29,6 +30,7 @@ return (
           <Route path='/admin' element={<Admin/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
+          <Route path='/user-request-form' element={<RequestForm/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer/>

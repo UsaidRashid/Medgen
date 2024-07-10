@@ -1,10 +1,10 @@
 import React from 'react';
-import './StoreRegistrationForm.css';
 
 function StoreRegistrationForm() {
   return (
-    <div>
-        <style dangerouslySetInnerHTML={{__html: "\nbody {\n  font-family: Arial, Helvetica, sans-serif;\n  background-color: #f4f4f4;\n}\n\nh1 {\n  text-align: center;\n  margin-top: 50px;\n}\n\n.container {\n  width: 50%;\n  margin: 0 auto;\n  padding: 20px;\n  background-color: #fff;\n  border-radius: 5px;\n}\n\nlabel {\n  display: block;\n  margin-top: 20px;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-sizing: border-box;\n}\n" }} />
+    <div className= 'bg-primary'>
+       <style dangerouslySetInnerHTML={{__html: "\nbody {\n  font-family: Arial, Helvetica, sans-serif;\n  \n\nh1 {\n  text-align: center;\n  }\n\n.container {\n  width: 50%;\n  margin: 0 auto;\n  padding: 20px;\n  border-radius: 5px;\n}\n\nlabel {\n  display: block;\n  margin-top: 20px;\n}\n\ninput[type=\"text\"] {\n  width: 100%;\n  padding: 10px;\n  border: 1px solid #ccc;\n  border-radius: 3px;\n  box-sizing: border-box;\n}\n" }} />
+       
         <h1>REGISTER YOUR STORE</h1>
         <div className="container">
           <label htmlFor="store-name">Store name</label>
@@ -35,6 +35,5 @@ function StoreRegistrationForm() {
       </div>
     );
   }
-
 
 export default StoreRegistrationForm;

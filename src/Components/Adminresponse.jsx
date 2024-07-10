@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Sidebar from './Sidebar'
-import background from '../images/background.png'
+import Sidebar from './Admin/Sidebar'
+import background from '../Images/background.png'
 
 export default function Adminresponse() {
 const[name,setName]=useState('');

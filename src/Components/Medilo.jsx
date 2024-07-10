@@ -1,5 +1,5 @@
 import React from 'react'
-import background from '../images/medilo-bg.png';
+import background from '../Images/medilo-bg.png';
 
 export default function Medilo() {
     return (

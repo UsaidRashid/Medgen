@@ -1,7 +1,7 @@
 import React from "react";
-import background2 from '../images/background2.png';
-import map from "../images/map.png";
-import medilo from "../images/medilo.png";
+import background2 from '../Images/background2.png';
+import map from "../Images/map.png";
+import medilo from "../Images/medilo.png";
 
 export default function Homepage(){
     return(
