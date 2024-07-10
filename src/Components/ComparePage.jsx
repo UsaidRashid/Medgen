@@ -1,7 +1,7 @@
 import React from "react";
-import "./Compare-page.css";
+import "./ComparePage.css";
 
-export default function Compare() {
+export default function ComparePage() {
 
     return (
         <div className="image">

@@ -9,12 +9,13 @@ import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
+import ComparePage from './Components/ComparePage';
 
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <Medilo/>
+      <ComparePage/>
       <Footer/>
     </div>
   );
