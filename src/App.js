@@ -8,12 +8,13 @@ import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
 import Homepage from './Components/Homepage';
+import Medilo from './Components/Medilo';
 
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <Homepage/>
+      <Medilo/>
       <Footer/>
     </div>
   );
