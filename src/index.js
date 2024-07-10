@@ -6,11 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import Branded from './Components/Branded-search.jsx';
 import Generic from './Components/Generic-search.jsx';
+import Compare from './Components/Compare-page.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Generic/>
+    <Compare/>
   </React.StrictMode>
 );
 
