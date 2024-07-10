@@ -14,6 +14,7 @@ import ComparePage from './Components/ComparePage';
 import RequestForm from './Components/RequestForm';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Storelocator from './Components/Storelocator';
 
 export default function App(){
 return (
@@ -33,6 +34,7 @@ return (
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
+          <Route path='/store-locator' element={<Storelocator/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer/>
