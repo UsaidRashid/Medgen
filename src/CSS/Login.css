@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#change{
+    background-color: rgba(128, 128, 128, 0.452);
+    border-radius: 60px;
+    color: black;
+    border-color:  rgba(128, 128, 128, 0.452);
+    text-align: center;
+    font-size: large;
+    width: 550px;
+    margin-top: 10px;
+    margin-left: 10%;
+
+}
+.line{
+    width:100%;
+    text-align: center;
+    border-bottom: 1px solid black;
+    line-height: 0.1em;
+    margin: 40px 0 20px;
+    padding: 0 10px;
+}
+#button{
+    width:250px;
+    padding-top: 6px;
+    margin-left: 40%;
+    border-radius: 60px;
+    font-size: larger;
+    color: black;
+  }

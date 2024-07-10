@@ -10,12 +10,14 @@ import GenericSearch from './Components/GenericSearch';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
 import ComparePage from './Components/ComparePage';
+import Signup from './Components/Signup';
+import Login from './Components/Login';
 
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <ComparePage/>
+      <Signup/>
       <Footer/>
     </div>
   );
