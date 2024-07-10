@@ -9,16 +9,10 @@ import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
 import Homepage from './Components/Homepage';
 
-
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <Adminresponse/>
-      <StoreRegistrationForm />
-      <Admin/>
-      <BrandedSearch/>
-      <GenericSearch/>
       <Homepage/>
       <Footer/>
     </div>
