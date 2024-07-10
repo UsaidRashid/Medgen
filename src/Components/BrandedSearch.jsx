@@ -1,7 +1,7 @@
 import React from 'react';
-import './Branded-search.css';
+import './BrandedSearch.css';
 
-export default function Branded(){
+export default function BrandedSearch(){
 
     return (
         <div>
