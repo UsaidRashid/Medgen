@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import {BrowserRouter , Routes , Route} from 'react-router-dom'
 import Footer from './Layouts/Footer';
 import Navbar from './Layouts/Navbar';
 import Adminresponse from './Components/Adminresponse';
@@ -17,7 +17,20 @@ export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <Signup/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/medilo' element={<Medilo/>}></Route>
+          <Route path='/' element={<Homepage/>}></Route>
+          <Route path='/branded-search' element={<BrandedSearch/>}></Route>
+          <Route path='/generic-search' element={<GenericSearch/>}></Route>
+          <Route path='/admin-response' element={<Adminresponse/>}></Route>
+          <Route path='/admin' element={<Admin/>}></Route>
+          <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
+          <Route path='/compare-medicines' element={<ComparePage/>}></Route>
+        </Routes>
+      </BrowserRouter>
       <Footer/>
     </div>
   );

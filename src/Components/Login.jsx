@@ -26,7 +26,7 @@ export default function Login() {
             <h4 className="text-center mt-5 ">Don't have an account ?<b> Sign up </b></h4>
           </div>
           <div className="col-md-6">
-            <img src="image/1.png" alt="" className="medicine" />
+            <img style={{borderRadius:'0'}} src="image/1.png" alt="" className="medicine my-5" />
           </div>
         </div>
       </div>
