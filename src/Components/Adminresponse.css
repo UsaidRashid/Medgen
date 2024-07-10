@@ -1,0 +1,190 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f9f9f9;
+  
+ 
+}
+
+/* Sidebar Styles */
+
+.sidebar {
+  width: 250px;
+  background-color: #0ad4f3;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.sidebar a:hover {
+  color: #23527c;
+}
+
+.picture {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.picture img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.profile img{
+  width: 200px;
+  height: 150px;
+
+}
+
+/* Main Content Styles */
+
+main {
+  padding: 20px;
+}
+
+main h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+ .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+  main {
+    padding: 10px;
+  }
+  form {
+    padding: 10px;
+  }
+}
+  
+.sidebar {
+  background-color: #a5f2f2;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  width: 250px; /* fixed width for the sidebar */
+  
+}
+
+.picture {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.picture img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #337ab7;
+}
+
+.sidebar a:hover {
+  color: #23527c;
+}
+
+.sidebar li a {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.sidebar li a:last-child {
+  border-bottom: none;
+}
+
+.sidebar li a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+ .sidebar {
+    width: 100%;
+    padding: 10px;
+  }
+}
