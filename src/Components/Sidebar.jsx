@@ -2,9 +2,7 @@ import React from 'react'
 import './Sidebar.css'
 
 import profile from '../images/profile.png'
-import 
-{BsGrid1X2Fill, BsPeopleFill,BsListCheck, BsMenuButtonWideFill}
- from 'react-icons/bs'
+import {BsGrid1X2Fill, BsPeopleFill,BsListCheck, BsMenuButtonWideFill} from 'react-icons/bs'
 
 export default function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
