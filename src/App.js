@@ -1,11 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
-import Admin from './Components/Admin';
+import Adminstore from './Components/Adminstore';
 
 function App() {
   return (
     <div className="App">
-      <Admin/>
+      <Adminstore/>
+      
     </div>
   );
 }
