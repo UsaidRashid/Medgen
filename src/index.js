@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Storelocator from './Components/Storelocator';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,6 +13,7 @@ root.render(
   <React.StrictMode>
     <Signup/>
     <Login/>
+    <Storelocator/>
   </React.StrictMode>
 );
 
