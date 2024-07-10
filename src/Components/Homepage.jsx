@@ -14,12 +14,11 @@ export default function Homepage(){
             </div>
             <div className="d-flex flex-row justify-content-between">
                 <div className="p-2 left">
-                <img className="store" src={map} alt="" id="left"/>
-                <h6>Find Care Location</h6>
+                <h3><img className="store" src={map} alt="" id="left"/>FIND CARE LOCATION</h3>
                 </div>
                 <div className="p-2  w-100">
-                <img className="med" src={medilo} alt="" id="right"/>
-                <h6>Medilo</h6>
+                <h2><img className="med" src={medilo} alt="" id="right"/>MEDILO</h2>
+                
                 </div>
                 
                
