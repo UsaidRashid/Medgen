@@ -6,6 +6,8 @@ import Admin from './Components/Admin';
 import React from 'react';
 import './App.css';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
+import BrandedSearch from './Components/BrandedSearch';
+import GenericSearch from './Components/GenericSearch';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Adminresponse/>
       <StoreRegistrationForm />
       <Admin/>
+      <BrandedSearch/>
+      <GenericSearch/>
       <Footer/>
     </div>
   );
