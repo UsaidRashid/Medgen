@@ -3,11 +3,10 @@ import './Sidebar.css'
 
 import profile from '../images/profile.png'
 import 
-{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
+{BsGrid1X2Fill, BsPeopleFill,BsListCheck, BsMenuButtonWideFill}
  from 'react-icons/bs'
 
-function Sidebar({openSidebarToggle, OpenSidebar}) {
+export default function Sidebar({openSidebarToggle, OpenSidebar}) {
   return (
     
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
@@ -48,4 +47,3 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
   );
 }
 
-export default Sidebar;
