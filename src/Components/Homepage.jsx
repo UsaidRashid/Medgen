@@ -10,11 +10,11 @@ export default function Homepage(){
               <img className="w-100 h-100" style={{borderRadius:'0'}} src={background2} alt="home"/>
 
             <div className="d-flex flex-row justify-content-between bg-dark">
-                <div className="p-2">
+                <div className="p-2 mx-5">
                 <img className="store" src={map} alt=""/>
                 <h6 className="text-white">Find Care Location</h6>
                 </div>
-                <div className="p-2">
+                <div className="p-2 mx-5">
                 <img className="med" src={medilo} alt=""/>
                 <h6 className="text-white">Medilo</h6>
                 </div>
