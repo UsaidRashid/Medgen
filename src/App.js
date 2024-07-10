@@ -1,16 +1,17 @@
+import React from 'react';
 import './App.css';
 import Footer from './Layouts/Footer';
 import Navbar from './Layouts/Navbar';
 import Adminresponse from './Components/Adminresponse';
 import Admin from './Components/Admin';
-import React from 'react';
-import './App.css';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
+import Homepage from './Components/Homepage';
 
-function App() {
-  return (
+
+export default function App(){
+return (
     <div className="App">
       <Navbar/>
       <Adminresponse/>
@@ -18,9 +19,8 @@ function App() {
       <Admin/>
       <BrandedSearch/>
       <GenericSearch/>
+      <Homepage/>
       <Footer/>
     </div>
   );
 }
-
-export default App;
