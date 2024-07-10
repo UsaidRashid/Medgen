@@ -1,7 +1,7 @@
 import React from 'react';
-import './Generic-search.css';
+import './GenericSearch.css';
 
-export default function Generic() {
+export default function GenericSearch() {
 
     return (
         <div>

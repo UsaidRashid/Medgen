@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Footer from './Layouts/Footer';
+import Navbar from './Layouts/Navbar';
+import Adminresponse from './Components/Adminresponse';
+import Admin from './Components/Admin';
+import StoreRegistrationForm from './Components/StoreRegistrationForm';
+import BrandedSearch from './Components/BrandedSearch';
+import GenericSearch from './Components/GenericSearch';
+import Homepage from './Components/Homepage';
 
-function App() {
-  return (
+export default function App(){
+return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit<code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar/>
+      <Homepage/>
+      <Footer/>
     </div>
   );
 }
-
-export default App;
