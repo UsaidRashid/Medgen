@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Medicine from './Components/Medicine';
 import Storelocator from './Components/Storelocator';
 
 
@@ -14,6 +15,7 @@ root.render(
     <Signup/>
     <Login/>
     <Storelocator/>
+    <Medicine/>
   </React.StrictMode>
 );
 
