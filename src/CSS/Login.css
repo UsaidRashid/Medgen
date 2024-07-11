@@ -4,14 +4,14 @@
 }
 #change{
     background-color: rgba(128, 128, 128, 0.452);
-    border-radius: 60px;
+    border-radius: 50px;
     color: black;
     border-color:  rgba(128, 128, 128, 0.452);
     text-align: center;
     font-size: large;
-    width: 500px;
+    width: 300px;
     margin-top: 10px;
-    margin-left: 5%;
+    margin-left: 30%;
 
 }
 .line{
