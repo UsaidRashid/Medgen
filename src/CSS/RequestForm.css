@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+body {
+    font-family: 'Outfit';
+    background: linear-gradient(#d5d6ff, #f8f7ff);
+}
+.contact-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.contactLeft{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+.contactLeftTitle h2{
+    font-weight: 600;
+    color: #a363aa;    
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+.contactLeftTitle hr{
+    border: none;
+    width: 120px;
+    height: 5px;
+    background-color: #a363aa;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.contactInputs{
+     height:  50px;
+     width: 400px;
+     border: none;
+    outline: none;
+    padding-left: 25px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 50px;
+}
+.contactLeft textarea{
+    height: 140px;
+    padding-top: 15px;
+    border-radius: 20px; 
+}
+.contactInputs:focus{
+    border: 2px solid #ff994f;
+}
+.contactInputs::placeholder{
+    color: #a9a9a9;
+
+}
+.contactLeft button{
+    display: flex;
+    align-items : center;
+    padding: 15px 30px;
+    font-size: 16px;
+    color: #fff;
+    gap: 10px;
+    border: none;
+    border-radius: 50px;    
+    background: linear-gradient(270deg, #ff994f,#fa6d86);
+    cursor: pointer;
+
+}
+.contactLeft button img{
+    height: 15px;
+
+}
+.contactRight img{
+   
+    width: 500px;
+   
+}
+@media (max-width: 800px){
+    .contactInputs{
+        width: 80vw;
+    }
+    .contactRight{
+        display: none;
+        
+    }
+}
