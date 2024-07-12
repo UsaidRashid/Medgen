@@ -8,7 +8,8 @@ import Admin from './Components/Admin/Admin';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
-import GenericCompare from './Components/GenericCompare';
+import GenericCompareList from './Components/GenericCompareList';
+import BrandedCompareList from './Components/BrandedCompareList';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
 import ComparePage from './Components/ComparePage';
@@ -36,6 +37,8 @@ return (
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
           <Route path='/store-locator' element={<Storelocator/>}></Route>
+          <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
+          <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
         </Routes>
       </BrowserRouter>
       <Footer/>
