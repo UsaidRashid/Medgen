@@ -8,6 +8,7 @@ import Admin from './Components/Admin/Admin';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
+import GenericCompare from './Components/GenericCompare';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
 import ComparePage from './Components/ComparePage';
