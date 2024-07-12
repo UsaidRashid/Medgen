@@ -3,19 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import Signup from './Components/Signup';
-import Login from './Components/Login';
-import Medicine from './Components/Medicine';
-import Storelocator from './Components/Storelocator';
-
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Signup/>
-    <Login/>
-    <Storelocator/>
-    <Medicine/>
+    <App/>
   </React.StrictMode>
 );
 

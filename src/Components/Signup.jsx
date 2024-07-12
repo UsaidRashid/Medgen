@@ -6,7 +6,7 @@ export default function Signup() {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
-            <img src="image/1.png" alt="" className="medicine" />
+            <img style={{borderRadius:'0'}} src="image/1.png" alt="" className="medicine my-5" />
           </div>
           <div className="col-md-6">
             <h3 className="text-center mt-3"><b>Signup for a new account</b></h3>
