@@ -7,13 +7,14 @@ import Admin from './Components/Admin';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
+import GenericCompare from './Components/GenericCompare';
 import Homepage from './Components/Homepage';
 
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <Homepage/>
+      <GenericCompare/>
       <Footer/>
     </div>
   );
