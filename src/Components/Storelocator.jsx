@@ -41,7 +41,7 @@ function Storelocator() {
   return (
     <div className="Store">
       <h1>Store Locator</h1>
-      <div className="store-list mt-4">
+      <div className="store-list mt-4"> 
       <div class="md-form mt-2">
   <i class="material-icons mdc-button__icon"></i>
   <input class="form-control" id='larger' type="text" placeholder="&nbsp;&nbsp;&nbsp;Search" aria-label="Search"/>

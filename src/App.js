@@ -9,6 +9,8 @@ import Admin from './Components/Admin/Admin';
 import StoreRegistrationForm from './Components/StoreRegistrationForm';
 import BrandedSearch from './Components/BrandedSearch';
 import GenericSearch from './Components/GenericSearch';
+import GenericCompareList from './Components/GenericCompareList';
+import BrandedCompareList from './Components/BrandedCompareList';
 import Homepage from './Components/Homepage';
 import Medilo from './Components/Medilo';
 import ComparePage from './Components/ComparePage';
@@ -16,6 +18,7 @@ import RequestForm from './Components/RequestForm';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Storelocator from './Components/Storelocator';
+import Medicine from './Components/Medicine';
 
 export default function App(){
 return (
@@ -36,6 +39,9 @@ return (
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
           <Route path='/store-locator' element={<Storelocator/>}></Route>
+          <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
+          <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
+          <Route path='/medicine' element={<Medicine/>}></Route>
         </Routes>
       </Router>
       <Footer/>
