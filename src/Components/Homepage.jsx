@@ -1,35 +1,104 @@
 import React from "react";
-import background2 from '../Images/background2.png';
-import map from "../Images/map.png";
-import medilo from "../Images/medilo.png";
-import { useNavigate } from "react-router-dom";
-
-export default function Homepage(){
-    const navigate = useNavigate();
-
-    const openMedilo = (e) => {
-        e.preventDefault();
-        navigate('/medilo');
-    }
-
-    const openStoreLocator = (e) => {
-        e.preventDefault();
-        navigate('/store-locator');
-    }
-
-    return(
+import mediloNew from "../Images/mediloNew.png";
+import mapNew from "../Images/mapNew.png";
+import support from "../Images/support.png";
+import newbg from "../Images/newbg.png";
+import "../CSS/Homepage.css";
+export default function Homepage() {
+  return (
+    <>
+      <div className="BG">
         <div>
-              <img className="w-100 h-100" style={{borderRadius:'0'}} src={background2} alt="home"/>
-            <div className="d-flex flex-row justify-content-between bg-dark">
-                <div className="p-2 mx-5" onClick={openStoreLocator}>
-                <img className="store" src={map} alt=""/>
-                <h6 className="text-white">Find Care Location </h6>
-                </div>
-                <div className="p-2 mx-5" onClick={openMedilo}>
-                <img className="med" src={medilo} alt=""/>
-                <h6 className="text-white">Medilo</h6>
-                </div>
+          <img class=" container-fluid chochomelon" src={newbg} alt="" />
+          <div
+            className=" position-absolute top-50 start-50 translate-middle w-100 "
+            style={{ marginTop: "190px" }}
+          >
+            <h1 className="text-secondary midtext">
+              YOUR <b class="  text-success text-opacity-75">HEALTH</b> IS
+            </h1>
+            <h1 className="text-secondary midtext ">OUR MISSION</h1>
+
+            <div className="d-flex flex-row justify-content-centre float-end midb ">
+              <button
+                type="button"
+                class="btn  btn-lg rounded-pill  mx-2 midbtn"
+              >
+                <a href="medilo">MEDILO</a>
+              </button>
+              <button type="button" class="btn btn-lg rounded-pill mx-2 midbtn">
+                <a href="Storelocator">FIND STORE</a>
+              </button>
             </div>
-        </div>           
-    );
+          </div>
+        </div>
+
+        <div className="mt">
+          <h4 class=" text-secondary ms-5 lol sizeText "> SERVICES WE </h4>
+          <div className="d-flex">
+            <h4 class="  ms-5 lol sizeText">
+              <b style={{ color: "#4cb269" }}> PROVIDE.</b>
+            </h4>
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-lg-around mtcards">
+          <div
+            className="card w-25"
+            style={{ backgroundColor: "white", paddingTop: "30px" }}
+          >
+            <img
+              src={mediloNew}
+              className="card-img-top object-fit-contain p-2"
+              alt="..."
+            />
+            <div className="card-body">
+              <p className="card-text fs-5">
+                Medilo will help you out with your search to find the generic
+                medicine.
+              </p>
+            </div>
+          </div>
+
+          <div
+            className="card w-25 p"
+            style={{ backgroundColor: "white", paddingTop: "30px" }}
+          >
+            <img
+              src={mapNew}
+              class="card-img-top object-fit-contain"
+              alt="..."
+            />
+            <div class="card-body">
+              <p class="card-text fs-5">
+                Medical map will help you out to locate the nearest medical
+                stores.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="card w-25  "
+            style={{
+              backgroundColor: "white",
+              height: "250px",
+              paddingTop: "30px",
+            }}
+          >
+            <img
+              src={support}
+              class="card-img-top object-fit-contain p-2"
+              alt="..."
+            />
+            <div class="card-body ">
+              <p class="card-text fs-5">
+                You can contact us regarding any feedback or regarding any
+                store.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
