@@ -1,5 +1,8 @@
 import React from 'react';
-import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import Prime from './Studymaterial/Prime';
+import Complex from './Studymaterial/Complex';
+import Complex2 from './Studymaterial/Complex2';
+import {BrowserRouter as Router, Routes , Route} from 'react-router-dom'
 import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
 import Adminresponse from './Components/Admin/Adminresponse';
@@ -18,17 +21,20 @@ import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Storelocator from './Components/Storelocator';
 import Medicine from './Components/Medicine';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 
 export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <BrowserRouter>
+      <Router>
         <Routes>
+          
+          
+          <Route path='/' element={<Homepage/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
-          <Route path='/medilo' element={<Medilo/>}></Route>
-          <Route path='/' element={<Homepage/>}></Route>
+          
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
           <Route path='/generic-search' element={<GenericSearch/>}></Route>
           <Route path='/admin' element={<Admin/>}></Route>
@@ -41,9 +47,12 @@ return (
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
           <Route path='/medicine' element={<Medicine/>}></Route>
-        </Routes>
-      </BrowserRouter>
+          
+          
+         </Routes>
+      </Router>
       <Footer/>
+      {/* <Complex2/> */}
     </div>
   );
 }
