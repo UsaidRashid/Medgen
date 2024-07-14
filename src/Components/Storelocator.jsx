@@ -41,14 +41,14 @@ function Storelocator() {
   return (
     <div className="Store">
       <h1>Store Locator</h1>
-      <div className="store-list mt-4"> 
+      <div className="store-list my-5"> 
       <div class="md-form mt-2">
   <i class="material-icons mdc-button__icon"></i>
   <input class="form-control" id='larger' type="text" placeholder="&nbsp;&nbsp;&nbsp;Search" aria-label="Search"/>
 </div>
         <ul>
           {stores.map(store => (
-            <li key={store.id}>
+            <li key={store.id} className='my-5 mx-5'>
               <h3>{store.name}</h3>
               <p><strong>Store ID:</strong> {store.id}</p>
               <p><strong>Address:</strong> {store.address}</p>

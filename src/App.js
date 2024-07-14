@@ -19,6 +19,9 @@ import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Storelocator from './Components/Storelocator';
 import Medicine from './Components/Medicine';
+import Services from './Components/Services';
+import AboutUs from './Components/AboutUs';
+import ContactUs from './Components/ContactUs';
 
 export default function App(){
 return (
@@ -33,8 +36,8 @@ return (
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/admin' element={<Admin/>}></Route>
-          <Route path='/admin-response' element={<Adminresponse/>}></Route>
-          <Route path='/admin-store' element={<Adminstore/>}></Route>
+          <Route path='/admin/response' element={<Adminresponse/>}></Route>
+          <Route path='/admin/store' element={<Adminstore/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
@@ -42,6 +45,9 @@ return (
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
           <Route path='/medicine' element={<Medicine/>}></Route>
+          <Route path='/services' element={<Services/>}></Route>
+          <Route path='/about-us' element={<AboutUs/>}></Route>
+          <Route path='/contact-us' element={<ContactUs/>}></Route>
         </Routes>
       </Router>
       <Footer/>

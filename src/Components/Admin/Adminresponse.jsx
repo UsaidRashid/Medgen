@@ -26,7 +26,7 @@ export default function Adminresponse() {
 
   return (
     <div >
-       <div  className="grid-container" style={{backgroundImage:`url(${background})` ,backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center"}}>
+       <div  className="grid-container" style={{backgroundColor:'#e6ffff'}} >
         <Sidebar/>
        
           
