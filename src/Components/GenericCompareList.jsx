@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function GenericCompare() {
+    const navigate = useNavigate();
+
+    const openCompare  = (e) => {
+        e.preventDefault();
+        navigate('/compare-medicines');
+    }
 
     return (
         <div className="image">
@@ -19,7 +26,7 @@ export default function GenericCompare() {
                         </div>
                     </div>
                     <div className="compare-btn ">
-                        <button className="btn btn-primary">Compare</button>
+                        <button className="btn btn-primary" onClick={openCompare}>Compare</button>
                     </div>
                 </div>
                 <div className="cards ">
@@ -35,7 +42,7 @@ export default function GenericCompare() {
                         </div>
                     </div>
                     <div className="compare-btn ">
-                        <button className="btn btn-primary">Compare</button>
+                        <button className="btn btn-primary" onClick={openCompare}>Compare</button>
                     </div>
                 </div><div className="cards ">
                     <div className="row w-50">
@@ -50,7 +57,7 @@ export default function GenericCompare() {
                         </div>
                     </div>
                     <div className="compare-btn ">
-                        <button className="btn btn-primary">Compare</button>
+                        <button className="btn btn-primary" onClick={openCompare}>Compare</button>
                     </div>
                 </div><div className="cards ">
                     <div className="row w-50">
@@ -65,7 +72,7 @@ export default function GenericCompare() {
                         </div>
                     </div>
                     <div className="compare-btn ">
-                        <button className="btn btn-primary">Compare</button>
+                        <button className="btn btn-primary" onClick={openCompare}>Compare</button>
                     </div>
                 </div><div className="cards ">
                     <div className="row w-50">
@@ -80,7 +87,7 @@ export default function GenericCompare() {
                         </div>
                     </div>
                     <div className="compare-btn ">
-                        <button className="btn btn-primary">Compare</button>
+                        <button className="btn btn-primary" onClick={openCompare}>Compare</button>
                     </div>
                 </div>
                 
