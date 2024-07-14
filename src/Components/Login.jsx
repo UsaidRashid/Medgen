@@ -26,7 +26,7 @@ export default function Login() {
 
   return (
     <>
-    <form onSubmit={handlelogin}>
+    <form onSubmit={handleSubmit}>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">

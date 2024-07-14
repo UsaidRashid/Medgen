@@ -18,7 +18,7 @@ import RequestForm from './Components/RequestForm';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Storelocator from './Components/Storelocator';
-// import Medicine from './Components/Medicine';
+import Medicine from './Components/Admin/Medicine';
 
 export default function App(){
 return (
@@ -41,7 +41,7 @@ return (
           <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
-          {/* <Route path='/medicine' element={<Medicine/>}></Route> */}
+          <Route path='/medicine' element={<Medicine/>}></Route>
         </Routes>
       </Router>
       {/* <Footer/> */}
