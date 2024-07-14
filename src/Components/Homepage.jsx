@@ -23,7 +23,7 @@ export default function Homepage(){
             <div className="d-flex flex-row justify-content-between bg-dark">
                 <div className="p-2 mx-5" onClick={openStoreLocator}>
                 <img className="store" src={map} alt=""/>
-                <h6 className="text-white">Find Care Location</h6>
+                <h6 className="text-white">Find Care Location </h6>
                 </div>
                 <div className="p-2 mx-5" onClick={openMedilo}>
                 <img className="med" src={medilo} alt=""/>

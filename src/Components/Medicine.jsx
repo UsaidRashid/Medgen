@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import '../CSS/Medicine.css'; // Import external CSS file
+import '../CSS/Medicine.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const Medicine = () => {
+    const navigate = useNavigate();
+
     const [medicineData, setMedicineData] = useState([
         { medicine: 'Paracetamol', brand: 'Panadol' },
         { medicine: 'Ibuprofen', brand: 'Advil' }
@@ -20,7 +23,8 @@ const Medicine = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(medicineData); // Replace with your submission logic
+        console.log(medicineData); 
+        navigate('/admin-response');
     };
 
     return (
@@ -45,7 +49,7 @@ const Medicine = () => {
                             placeholder="Brand Name"
                             className="field"
                         />
-                        <button className="p-2 mt-5 text-bg-primary text-center" type="button" onClick={addMedicine}>
+                        <button className="p-2 mt-5 text-bg-primary text-center" type="button" onClick={handleSubmit}>
                     Response
                 </button>
                     </div>
