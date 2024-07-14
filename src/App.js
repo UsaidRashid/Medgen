@@ -1,5 +1,6 @@
 import React from 'react';
-import {BrowserRouter , Routes , Route} from 'react-router-dom'
+import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
+
 import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
 import Adminresponse from './Components/Admin/Adminresponse';
@@ -23,14 +24,14 @@ export default function App(){
 return (
     <div className="App">
       <Navbar/>
-      <BrowserRouter>
+      <Router>
         <Routes>
-          <Route path='/login' element={<Login/>}></Route>
-          <Route path='/signup' element={<Signup/>}></Route>
-          <Route path='/medilo' element={<Medilo/>}></Route>
           <Route path='/' element={<Homepage/>}></Route>
+          <Route path='/medilo' element={<Medilo/>}> </Route>
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
           <Route path='/generic-search' element={<GenericSearch/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
+          <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/admin' element={<Admin/>}></Route>
           <Route path='/admin-response' element={<Adminresponse/>}></Route>
           <Route path='/admin-store' element={<Adminstore/>}></Route>
@@ -42,7 +43,7 @@ return (
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
           <Route path='/medicine' element={<Medicine/>}></Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
       <Footer/>
     </div>
   );

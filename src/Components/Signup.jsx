@@ -1,6 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import '../CSS/Signup.css';
+
+
 export default function Signup() {
+  const navigate = useNavigate();
+  
+  const [formData,setFormData] = useState({
+    name:'',
+    username:'',
+    email:'',
+    password:'',
+  });
+
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log(formData);
+    navigate('/');
+  }
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+
+
+
+
   return (
     <>
       <div className="container-fluid">
@@ -12,29 +42,26 @@ export default function Signup() {
             <h3 className="text-center mt-3"><b>Signup for a new account</b></h3>
             <form className="mx-5 mb-5">
               <div className="form-group mt-3">
-                <label>First Name</label>
-                <input type="company" className="form-control mb-1"  />
+                <label>Name</label>
+                <input type="company" name="name" value={formData.name} onChange={handleChange} className="form-control mb-1"  />
               </div>
               <div className="form-group">
-                <label>Last Name</label>
-                <input type="company" className="form-control mb-1" />
+                <label>Username</label>
+                <input type="company" name="username"  value={formData.username} onChange={handleChange} className="form-control mb-1" />
               </div>
               <div className="form-group">
                 <label>Email Address</label>
-                <input type="job" className="form-control mb-1" />
+                <input type="job" name="email"  value={formData.email} onChange={handleChange} className="form-control mb-1" />
               </div>
               <div className="form-group">
                 <label>Password</label>
-                <input type="country" className="form-control mb-1" />
-              </div>
-              <div className="form-group">
-                <label className="mb-2">Confirm Password</label>
-                <input type="address" className="form-control mb-1" />
+                <input type="password" name="password"  value={formData.password} onChange={handleChange} className="form-control mb-1" />
               </div>
               <div className="text-center">
                 <button
                   type="submit"
                   className="btn btn-primary buttonsave mt-2 mb-3"
+                  onClick={handleSubmit}
                 ><b>Sign up</b>
                   
                 </button>
@@ -42,14 +69,14 @@ export default function Signup() {
                 <div className="container">
                   <div className="row">
                     <div className="col-md-6">
-                       <button className="p-2" ><img src="image/download.png" className="google"/>Google</button>
+                       <button className="p-2 bg-dark text-white" ><img src="image/download.png" className="google"/>Google</button>
                     </div>
                     <div className="col-md-6">
-                    <button className="p-2" ><img src="image/download.jpeg" className="google"/>Instagram</button>
+                    <button className="p-2 bg-dark text-white" ><img src="image/download.jpeg" className="google"/>Instagram</button>
                     </div>
                   </div>
                 </div>
-                <h4 className="text-center mt-3 ">Already have an account?<b>Sign in</b></h4>
+                <h4 className="text-center mt-3 ">Already have an account? <Link to='/login'>Login</Link>  </h4>
               </div>
             </form>
           </div>

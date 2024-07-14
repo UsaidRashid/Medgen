@@ -1,20 +1,27 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../CSS/Login.css";
+
 export default function Login() {
 
-  const [username,Setusername]=useState('');
-  const [password,Setpassword]=useState('');
+  const navigate=useNavigate();
+  
+  const [formData , setFormData] = useState({
+    username : '',
+    password : '',
+  });
 
-  const handlelogin=(e)=>{
+  const handleChange = (e) =>{
+    setFormData({
+      ...formData,
+        [e.target.name] : e.target.value,
+    })
+  }
+
+  const handleSubmit = (e) =>{
     e.preventDefault();
-    console.log(username);
-    console.log(password);
-  }
-  const handleChange=(e)=>{
-    Setusername(e.target.value);
-  }
-  const handlePassword=(e)=>{
-    Setpassword(e.target.value);
+    console.log(formData);
+    navigate('/')
   }
 
   return (
@@ -34,13 +41,13 @@ export default function Login() {
             <h4 className="line">Or</h4>
 
             <div className="form-group mt-5">
-              <input type="username" className="form-control mb-1" placeholder="Username" onChange={handleChange} />
+              <input name="username" onChange={handleChange} value={formData.username} type="username" className="form-control mb-1" placeholder="Username" />
             </div>
             <div className="form-group mt-5 ">
-              <input type="password" className="form-control mb-2" placeholder="Password" onChange={handlePassword}/>
+              <input name="password" onChange={handleChange} value={formData.password} type="password" className="form-control mb-2" placeholder="Password"/>
             </div>
-            <button type="submit" className="btn btn-primary buttonsave mt-5 mb-3" id="button" ><b>Log in</b></button>
-            <h4 className="text-center mt-5 ">Don't have an account ?<b> Sign up </b></h4>
+            <button type="submit" className="btn btn-primary buttonsave mt-5 mb-3" id="button" onClick={handleSubmit}><b>Log in</b></button>
+            <h4 className="text-center mt-5 ">Don't have an account ?<Link to='/signup'> Sign up </Link></h4>
           </div>
           <div className="col-md-6">
             <img style={{borderRadius:'0'}} src="image/1.png" alt="" className="medicine my-5" />
