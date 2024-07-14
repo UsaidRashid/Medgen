@@ -1,7 +1,6 @@
 .image {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(rgba(254, 254, 254, 0.628), rgba(245, 248, 250, 0.667)), url('../Images/Bg.png');
     background-size: cover;
     background-position: center;
 }
