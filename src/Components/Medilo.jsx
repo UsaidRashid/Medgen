@@ -1,18 +1,39 @@
 import React from 'react'
 import background from '../Images/medilo-bg.png';
+import "../CSS/Medilo.css";
+
+const myStyle = {
+  color: "Black",
+  backgroundPosition: "right",
+  boxShadow: "7px 6px 4px rgba(0, 0, 0, 0.5)",
+  width: "200px",
+};
+
+
+const myStyle2 = {
+  color: "black",
+  marginBottom: "20px",
+};
+
+const myStyle3 = {
+  color: "black",
+  marginBottom: "150px",
+  fontWeight: "500",
+};
+
 
 export default function Medilo() {
-    return (
-            
-            
-    <div className='d-flex flex-row justify-content-center align-items-center ' style={{backgroundImage:`url(${background})` ,backgroundRepeat:"no-repeat",backgroundSize:"contain",backgroundPosition:"center",height:'100vh'}}>
-
-        <div className='hover fs-1 p-2 w-25 h-50 mx-5 d-flex flex-column justify-content-center border border-success rounded border-opacity-50 text-bg-success'>
-            Generic Search
-        </div>
-        <div className='hover fs-1 p-2 w-25 h-50 mx-5 d-flex flex-column justify-content-center border border-success rounded border-opacity-50 text-bg-success'>
-            Brand Search
-        </div>
-    </div>
+  return (
+    <>
+      <div className=' d-flex align-items-center p-5 justify-content-left' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
+        <form>
+          <h1 className='text-center' style={myStyle2}><b>MEDILO</b></h1>
+          <h1 className='text-center' style={{ color: "black" }}>Here you can</h1>
+          <h1 className='text-center' style={myStyle3}>choose an option for search...</h1>
+          <button style={myStyle} className='btn mx-5 fs-4 b123'>Generic Search</button>
+          <button style={myStyle} className='btn mx-5 fs-4 b123'>Brand Search</button>
+        </form>
+      </div>
+    </>
   )
 }
