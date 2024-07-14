@@ -50,8 +50,10 @@ function Storelocator() {
       
         <ul>
           {stores.map(store => (
-            <li className="my-3 hover fs-3 p-2 w-100 h-50  d-flex justify-content-center " key={store.id}>
-              <div class="card d-flex shadow-lg border-2 border-black bg-white" style={{width:"35rem"}}>
+            
+            
+            <li className="my-3 hover fs-3 p-2 h-50  d-flex  flex-row  justify-content-center " key={store.id}>
+              <div class="card shadow-lg border-2 border-black bg-white" style={{width:"35rem"}}>
   
    <div class="card-body d-flex flex-column"style={{backgroundColor:"white"}}>
     <h2 class="card-title text-center fw-bold font-monospace ">{store.name}</h2>
@@ -62,6 +64,7 @@ function Storelocator() {
     <p class="card-text"><strong>Pincode:</strong> {store.pincode}</p>
   </div>
 </div>
+
             
             </li>
           ))}
