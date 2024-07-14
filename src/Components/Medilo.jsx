@@ -25,15 +25,17 @@ const myStyle3 = {
 export default function Medilo() {
   const navigate = useNavigate();
 
-  const openBrandedSearch = (e) =>{
-    e.preventDefault();
-    navigate('/branded-search');
-  }
+    const openBSearch = (e) =>{
+        e.preventDefault();
+        navigate('/branded-search');
+    }
 
-  const openGenericSearch = (e) => {
-    e.preventDefault();
-    navigate('/generic-search');
-  }
+  const navigate1 = useNavigate();
+
+    const openGSearch = (e) =>{
+        e.preventDefault();
+        navigate1('/generic-search');
+    }
 
   return (
     <>
@@ -42,8 +44,8 @@ export default function Medilo() {
           <h1 className='text-center' style={myStyle2}><b>MEDILO</b></h1>
           <h1 className='text-center' style={{ color: "black" }}>Here you can</h1>
           <h1 className='text-center' style={myStyle3}>choose an option for search...</h1>
-          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openGenericSearch}>Generic Search</button>
-          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openBrandedSearch}>Brand Search</button>
+          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openGSearch}>Generic Search</button>
+          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openBSearch}>Brand Search</button>
         </form>
       </div>
     </>

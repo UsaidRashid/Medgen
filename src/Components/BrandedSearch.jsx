@@ -1,62 +1,58 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
-const myStyle1 = {
-    width: "100vw",
-    height: "100vh",
-    background: "linear - gradient(rgba(254, 251, 248, 0.628), rgba(254, 251, 248, 0.667)), url('../Images/Bg.png')",
-    backgroundSize: "cover",
-    backgroundPosition: "center"
-};
+import background from '../Images/Bg21.png';
 
 const myStyle2 = {
-    display: "flex",
-    justifyContent: "center",
+    marginLeft: "1rem",
     alignItems: "center",
     height: "100vh"
 };
 
 const myStyle3 = {
-    width: "50%",
+    marginTop: "19rem",
+    marginLeft: "6rem",
+    marginBottom: "5rem",
+    width: "42%",
     padding: "10px",
     fontSize: "18px",
-    border: "none",
-    borderRadius: "5px",
-    boxShadow: "7px 7px 7px rgba(0, 0, 0, 0.5)"
+    border: "2px solid black",
+    borderRadius: "9rem",
+    boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)"
 };
 
 const myStyle4 = {
-    height: "45px",
-    width: "90px",
+    height: "50px",
+    width: "150px",
     backgroundColor: "#007bff",
     color: "#fff",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "5rem",
     cursor: "pointer",
+    marginTop: "50px",
     marginLeft: "50px",
-    boxShadow: "7px 7px 7px rgba(0, 0, 0, 0.5)",
+    boxShadow: "6px 6px 4px rgba(0, 0, 0, 0.5)",
+    fontSize: "21px",
 };
 
 
-export default function BrandedSearch(){
-    const navigate = useNavigate();
-
-    const openCompareList = (e) =>{
-        e.preventDefault();
-        navigate('/generic-compare-list');
-    }
-
+export default function BrandedSearch() {
     return (
         <div>
-            <div className='image' style={myStyle1}>
-                <div className="search-bar-container" style={myStyle2}>
-                    <input type="text" placeholder="Search Branded Medicine Here..." className="search-input" style={myStyle3}/>
-                    <button className="search-button" style={myStyle4} onClick={openCompareList}>
-                        <b>Search</b>
-                        <i className="fa fa-search" />
-                    </button>
+            <div className='image' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
+                <div>
+                    <form action="/generic-compare-list" style={myStyle2}>
+                        <input type="text" placeholder="Search Branded Medicine Here..." className="search-input" style={myStyle3} />
+                        <button className="search-button" style={myStyle4}>
+                            <b>Search</b>
+                            <i className="fa fa-search" />
+                        </button>
+                        {/* <h1 style={{ marginLeft: "90px", color: "black" }}>Please enter the name of Branded Medicine</h1> */}
+                    </form>
                 </div>
             </div>
+
+
         </div>
+
+
     );
 };
