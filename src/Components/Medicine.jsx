@@ -24,8 +24,8 @@ const Medicine = () => {
     };
 
     return (
-        <div className="container-fluid mt-5">
-            <h1 className="text-center mt-3">Enter Medicine Details</h1>
+        <div className="container-fluid bg#e6ffff">
+            <h1 className="text-center text-dark">Enter Medicine Details</h1>
             <form className="form-group m-lg-4" onSubmit={handleSubmit}>
                 {medicineData.map((item, index) => (
                     <div key={index} className="form-group">
@@ -36,6 +36,7 @@ const Medicine = () => {
                             onChange={(e) => handleChange(index, e)}
                             placeholder="Medicine Name"
                             className="field"
+                            readOnly
                         />
                         <input 
                             type="text"
@@ -44,8 +45,9 @@ const Medicine = () => {
                             onChange={(e) => handleChange(index, e)}
                             placeholder="Brand Name"
                             className="field"
+                            readOnly
                         />
-                        <button className="p-2 mt-5 text-bg-primary text-center" type="button" onClick={addMedicine}>
+                        <button className="p-2 mt-5 m-lg-3 shadow rounded-3 text-center btn btn-outline-dark flex-grow-1" type="button" onClick={addMedicine}>
                     Response
                 </button>
                     </div>
