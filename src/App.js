@@ -30,6 +30,7 @@ return (
       <Navbar/>
       <Router>
         <Routes>
+          
           <Route path='/' element={<Homepage/>}></Route>
           <Route path='/medilo' element={<Medilo/>}> </Route>
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
@@ -50,7 +51,8 @@ return (
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
           <Route path='/faq' element={<FAQ/>}></Route>
-        </Routes>
+          
+         </Routes>
       </Router>
       <Footer/>
     </div>
