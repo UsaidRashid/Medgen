@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../CSS/Medicine.css'; 
+import '../../CSS/Requests.css'; 
 import { useNavigate } from 'react-router-dom';
 
 const Medicine = () => {

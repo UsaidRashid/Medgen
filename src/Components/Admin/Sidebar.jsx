@@ -21,24 +21,24 @@ export default function Sidebar({openSidebarToggle, OpenSidebar}) {
         <img src={profile} alt=""/>
         <ul className='sidebar-list'>
             <li className='sidebar-list-item'>
-                <a href="/admin">
+                <Link to="/admin">
                     <BsGrid1X2Fill className='icon'/> Dashboard
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="/medicine">
-                    <BsMenuButtonWideFill className='icon'/> Request
-                </a>
+                <Link to="/admin/requests">
+                    <BsMenuButtonWideFill className='icon'/> Requests
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="/admin-response">
+                <Link to="/admin/response">
                     <BsListCheck className='icon'/> Response
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="/admin-store">
+                <Link to="/admin/store">
                     <BsPeopleFill className='icon'/> Vendor
-                </a>
+                </Link>
             </li>
             
         </ul>

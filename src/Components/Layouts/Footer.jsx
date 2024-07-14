@@ -39,6 +39,11 @@ export default function Footer() {
                   Contact
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="/admin" class="nav-link p-0">
+                  Admin
+                </a>
+              </li>
             </ul>
           </div>
           <div class="col-md-4 mb-3">

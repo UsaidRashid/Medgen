@@ -18,10 +18,11 @@ import RequestForm from './Components/RequestForm';
 import Signup from './Components/Signup';
 import Login from './Components/Login';
 import Storelocator from './Components/Storelocator';
-import Medicine from './Components/Medicine';
+import Requests from './Components/Admin/Requests';
 import Services from './Components/Services';
 import AboutUs from './Components/AboutUs';
 import ContactUs from './Components/ContactUs';
+import FAQ from './Components/FAQ';
 
 export default function App(){
 return (
@@ -38,16 +39,17 @@ return (
           <Route path='/admin' element={<Admin/>}></Route>
           <Route path='/admin/response' element={<Adminresponse/>}></Route>
           <Route path='/admin/store' element={<Adminstore/>}></Route>
+          <Route path='/admin/requests' element={<Requests/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
           <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
-          <Route path='/medicine' element={<Medicine/>}></Route>
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
+          <Route path='/faq' element={<FAQ/>}></Route>
         </Routes>
       </Router>
       <Footer/>
