@@ -1,6 +1,7 @@
 import React from 'react'
 import background from '../Images/medilo-bg.png';
 import "../CSS/Medilo.css";
+import { useNavigate } from 'react-router-dom';
 
 const myStyle = {
   color: "Black",
@@ -8,7 +9,6 @@ const myStyle = {
   boxShadow: "7px 6px 4px rgba(0, 0, 0, 0.5)",
   width: "200px",
 };
-
 
 const myStyle2 = {
   color: "black",
@@ -23,6 +23,18 @@ const myStyle3 = {
 
 
 export default function Medilo() {
+  const navigate = useNavigate();
+
+  const openBrandedSearch = (e) =>{
+    e.preventDefault();
+    navigate('/branded-search');
+  }
+
+  const openGenericSearch = (e) => {
+    e.preventDefault();
+    navigate('/generic-search');
+  }
+
   return (
     <>
       <div className=' d-flex align-items-center p-5 justify-content-left' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
@@ -30,8 +42,8 @@ export default function Medilo() {
           <h1 className='text-center' style={myStyle2}><b>MEDILO</b></h1>
           <h1 className='text-center' style={{ color: "black" }}>Here you can</h1>
           <h1 className='text-center' style={myStyle3}>choose an option for search...</h1>
-          <button style={myStyle} className='btn mx-5 fs-4 b123'>Generic Search</button>
-          <button style={myStyle} className='btn mx-5 fs-4 b123'>Brand Search</button>
+          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openGenericSearch}>Generic Search</button>
+          <button style={myStyle} className='btn mx-5 fs-4 b123' onClick={openBrandedSearch}>Brand Search</button>
         </form>
       </div>
     </>
