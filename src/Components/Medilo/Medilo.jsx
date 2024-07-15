@@ -1,6 +1,6 @@
 import React from 'react'
-import background from '../Images/medilo-bg.png';
-import "../CSS/Medilo.css";
+import background from '../../Images/medilo-bg.png';
+import "../../CSS/Medilo.css";
 import { useNavigate } from 'react-router-dom';
 import { useTypewriter } from 'react-simple-typewriter';
 
