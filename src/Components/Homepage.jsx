@@ -5,8 +5,16 @@ import support from "../Images/support.png";
 import newbg from "../Images/newbg.png";
 import "../CSS/Homepage.css";
 import { Link } from "react-router-dom";
+import { useTypewriter } from "react-simple-typewriter";
 
 export default function Homepage() {
+
+const [text2] = useTypewriter({
+  words: ['OUR MISSION'],
+  loop: {},
+  delaySpeed: 850,
+});
+
   return (
     <>
       <div className="BG">
@@ -16,10 +24,15 @@ export default function Homepage() {
             className=" position-absolute top-50 start-50 translate-middle w-100 "
             style={{ marginTop: "190px" }}
           >
-            <h1 className="text-secondary midtext">
-              YOUR <b class="  text-success text-opacity-75">HEALTH</b> IS
+            
+            <h1 className="text-secondary text-dark midtext" style={{marginLeft: "39rem"}}>
+              YOUR <b className=" text-success">HEALTH</b> IS
             </h1>
-            <h1 className="text-secondary midtext ">OUR MISSION</h1>
+           
+            <h1 className="text-secondary text-dark midtext" style={{marginLeft: "39rem"} }>
+              #{text2}
+            </h1>
+           
 
             <div className="d-flex flex-row justify-content-centre float-end midb ">
             <Link to="/medilo">
