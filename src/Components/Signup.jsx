@@ -50,15 +50,15 @@ export default function Signup() {
               </div>
               <div className="form-group">
                 <label className="text-dark">Email Address</label>
-                <input type="job" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
+                <input type="email" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
               </div>
               <div className="form-group">
                 <label className="text-dark">Password</label>
-                <input type="country" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
+                <input type="password" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
               </div>
               <div className="form-group">
                 <label className="mb-2 text-dark">Confirm Password</label>
-                <input type="address" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
+                <input type="password" className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3" />
               </div>
               <div className="text-center">
                 <button
