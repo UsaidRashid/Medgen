@@ -2,11 +2,7 @@ import React from "react";
 
 export default function Services() {
   return (
-<<<<<<< HEAD
-    <div className="container my-5">
-=======
     <div className="container my-5 d-flex flex-column">
->>>>>>> main
       <h1 className="mb-4 text-center">Our Services</h1>
       <p>
         Welcome to MedGen, your trusted partner in finding affordable healthcare
