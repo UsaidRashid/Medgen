@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../CSS/Signup.css';
 
-
 export default function Signup() {
   const navigate = useNavigate();
   
@@ -79,7 +78,7 @@ export default function Signup() {
                     </div>
                   </div>
                 </div>
-                <h4 className="text-center mt-3 text-black">Already have an account?<b><a href="Login">Sign in</a></b></h4>
+                <h4 className="text-center mt-3 text-black">Already have an account?<b><Link to='/login'>Login</Link></b></h4>
               </div>
             </form>
           </div>

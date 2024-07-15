@@ -7,16 +7,16 @@ export default function Navbar() {
 
     return (
         <>
-            <nav class="navbar navbar-expand-lg" style={{backgroundColor:'#0a2351'}}>
+            <nav class="navbar navbar-expand-lg shadow-lg mt-3 mx-5" style={{borderRadius:'100px', backgroundColor:'rgba(133, 254, 240, 0)'}}>
   <div class="container-fluid">
-    <img src={logo} style={{borderRadius:'0',height:'100px',width:'80px'}} alt="" />
+    <img src={logo} style={{borderRadius:'0',height:'50px',width:'80px'}} alt="" />
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link active text-white" href="/">Home</a>
+        <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="/about-us">About us</a>

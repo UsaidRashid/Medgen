@@ -1,5 +1,6 @@
 import React from "react";
 import "../CSS/Login.css";
+import  {Link} from 'react-router-dom';
 
 export default function Login() {
   return (
@@ -75,7 +76,7 @@ export default function Login() {
               </div>
               <div className="col-md-1"></div>
             </div>
-            <h4>Already have an account ? <a href="Signup">Signup</a></h4>
+            <h4>Already have an account ? <Link to="/Signup">Signup</Link></h4>
           </div>
         </div>
         <div className="col-md-6">
