@@ -4,6 +4,8 @@ import mapNew from "../Images/mapNew.png";
 import support from "../Images/support.png";
 import newbg from "../Images/newbg.png";
 import "../CSS/Homepage.css";
+
+
 export default function Homepage() {
   return (
     <>
