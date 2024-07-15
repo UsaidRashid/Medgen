@@ -3,11 +3,11 @@ import logo from "../../Images/logo-navbar.png";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-    const [isLoggedin,setIsLoggedIn] = useState(true);
+    const [isLoggedin,setIsLoggedIn] = useState(false);
 
     return (
         <>
-            <nav class="navbar navbar-expand-lg shadow-lg mt-3 mx-5" style={{borderRadius:'100px', backgroundColor:'rgba(133, 254, 240, 0)'}}>
+            <nav class="navbar navbar-expand-lg " style={{ backgroundColor:'black'}}>
   <div class="container-fluid">
     <img src={logo} style={{borderRadius:'0',height:'50px',width:'80px'}} alt="" />
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,23 +16,27 @@ export default function Navbar() {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-        <a class="nav-link active" href="/">Home</a>
+        <Link class="nav-link text-white" to="/">Home</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="/about-us">About us</a>
+          <Link class="nav-link text-white" to="/about-us">About us</Link>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" role="button"  id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
             Our Services
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/medilo">Medilo</a></li>
-            <li><a class="dropdown-item" href="/store-locator">Store Locator</a></li>
+          <ul class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+            <li ><Link className="dropdown-item" to="/medilo">Medilo</Link></li>
+            <li ><Link className="dropdown-item" to="/store-locator">Store Locator</Link></li>
           </ul>
         </li>
+        <li class="nav-item">
+          <Link class="nav-link text-white" to="/store-registration-form">Register Your Store!</Link>
+        </li>
       </ul>
+      
       <div className="d-flex flex-row w-25 justify-content-around">
-        {isLoggedin? <button type="button" class="btn btn-outline-success">Login</button> : <button type="button" class="btn btn-outline-danger">Logout</button>}
+        {isLoggedin? <button style={{borderRadius:'100px',width:'200px'}} type="button" class="btn btn-success">Login</button> : <button style={{borderRadius:'100px',width:'200px'}} type="button" class="btn btn-danger">Logout</button>}
       </div>
      
     </div>

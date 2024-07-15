@@ -27,9 +27,9 @@ import FAQ from './Components/FAQ';
 export default function App(){
 return (
     <div className="App">
-      <Navbar/>
      
       <Router>
+      <Navbar/>
         <Routes>
           
           <Route path='/' element={<Homepage/>}></Route>
@@ -55,8 +55,8 @@ return (
           <Route path='/faq' element={<FAQ/>}></Route>
           
          </Routes>
-      </Router>
       <Footer/>
+      </Router>
     </div>
   );
 }

@@ -3,11 +3,11 @@ import React from "react";
 export default function Footer() {
   return (
     <footer class="footer  mt-auto py-3 bg-light">
-      <div class="container">
+      <div class="container  d-flex flex-column">
         <div class="row">
           <div class="col-md-4 mb-3">
-            <h2 class="h4">About Us</h2>
-            <p>
+            <h2 class="h4 text-center">About Us</h2>
+            <p className="p-3">
               Welcome to MedGen, your trusted partner in finding affordable
               healthcare options. At MedCare Solutions, we are dedicated to
               helping you access high-quality, cost-effective medications. Our

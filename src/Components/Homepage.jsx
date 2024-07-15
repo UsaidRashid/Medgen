@@ -4,6 +4,8 @@ import mapNew from "../Images/mapNew.png";
 import support from "../Images/support.png";
 import newbg from "../Images/newbg.png";
 import "../CSS/Homepage.css";
+import { Link } from "react-router-dom";
+
 export default function Homepage() {
   return (
     <>
@@ -20,15 +22,19 @@ export default function Homepage() {
             <h1 className="text-secondary midtext ">OUR MISSION</h1>
 
             <div className="d-flex flex-row justify-content-centre float-end midb ">
+            <Link to="/medilo">
               <button
                 type="button"
                 class="btn  btn-lg rounded-pill  mx-2 midbtn"
               >
-                <a href="medilo">MEDILO</a>
+                MEDILO
               </button>
+              </Link>
+              <Link to="/store-locator">
               <button type="button" class="btn btn-lg rounded-pill mx-2 midbtn">
-                <a href="Storelocator">FIND STORE</a>
+                FIND STORE
               </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -81,7 +87,7 @@ export default function Homepage() {
             class="card w-25  "
             style={{
               backgroundColor: "white",
-              height: "250px",
+              height: "500px",
               paddingTop: "30px",
             }}
           >
