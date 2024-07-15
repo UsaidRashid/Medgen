@@ -27,7 +27,7 @@ export default function Adminresponse() {
   return (
     <div > 
    
-       <div className='d-flex' style={{backgroundColor:'white', backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '100vh'}} >
+       <div className='d-flex' style={{backgroundColor:'white', backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '95vh'}} >
         
            <Sidebar/> 
           <div style={{border: "2px solid black", width: "85vh", height: "84.6vh" ,margin: "2.7rem 0rem 2rem 7rem", backgroundColor: "white", borderRadius: "2rem", boxShadow: "6px 5px 13px rgba(0, 0, 0, 0.61)"}}>
