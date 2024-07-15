@@ -7,7 +7,7 @@ import Navbar from './Components/Layouts/Navbar';
 import Admin from './Components/Admin/Dashboard';
 import Adminstore from './Components/Admin/Storedetails';
 import Requests from './Components/Admin/Requests';
-import Adminresponse from './Components/Admin/Adminresponse';
+import AddMedicine from './Components/Admin/AddMedicine';
 
 import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
 import Storelocator from './Components/Vendors/Storelocator';
@@ -53,7 +53,7 @@ return (
           <Route path='/signup' element={<Signup/>}></Route>
 
           <Route path='/admin' element={<Admin/>}></Route>
-          <Route path='/admin/response' element={<Adminresponse/>}></Route>
+          <Route path='/admin/response' element={<AddMedicine/>}></Route>
           <Route path='/admin/store' element={<Adminstore/>}></Route>
           <Route path='/admin/requests' element={<Requests/>}></Route>
 

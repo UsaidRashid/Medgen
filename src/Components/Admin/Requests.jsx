@@ -23,8 +23,8 @@ const Medicine = () => {
         setMedicineData(newData);
     };
 
-    const addMedicine = () => {
-        setMedicineData([...medicineData, { medicine: '', brand: '' }]);
+    const respond = () => {
+        navigate('/admin/response');
     };
 
     const handleSubmit = (event) => {
@@ -65,7 +65,7 @@ const Medicine = () => {
                                             readOnly
                                             style={{ border: "2px solid black", boxShadow: "3px 3px 2px rgba(0, 0, 0, .31)", height: "56px", fontSize: "27px"}}
                                         />
-                                        <button className="m-3 text-center" type="button" style={{ height: "50px", width: "150px", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "3rem", cursor: "pointer", marginBottom: "50px",boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "21px"}} onClick={addMedicine}>
+                                        <button className="m-3 text-center" type="button" style={{ height: "50px", width: "150px", backgroundColor: "#007bff", color: "#fff", border: "none", borderRadius: "3rem", cursor: "pointer", marginBottom: "50px",boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "21px"}} onClick={respond}>
                                             Response
                                         </button>
                                     </div>

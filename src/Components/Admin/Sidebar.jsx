@@ -24,19 +24,19 @@ const Sidebar = ({children}) => {
         },
         {
             path:"/admin/requests",
-            name:"Request",
+            name:"Requests",
             icon:<FaUserAlt/>
         },
         {
             path:"/admin/response",
-            name:"Response",
+            name:"Add Medicine",
             icon:<FaRegChartBar/>
         },
         
         
         {
             path:"/admin/store",
-            name:"Store details",
+            name:"Registered Stores",
             icon:<FaThList/>
         }
     ]
