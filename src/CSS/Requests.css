@@ -1,0 +1,17 @@
+ /* .container { 
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+} */
+
+ .field {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 70px;
+    font-size: 30px;
+} 
+
