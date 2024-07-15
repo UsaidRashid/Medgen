@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from "react";
 import DataTable from 'react-data-table-component';
+import Sidebar from './Sidebar';
 
 function Storedetails(){
     const columns=[
@@ -125,7 +126,13 @@ function Storedetails(){
         setRecords(newData)
     }
     return(
-        <div className="container mt-5">
+        <div className='d-flex flex-row'>
+        <div>
+                            <Sidebar/>
+        </div>
+        
+        <div>
+        <div className="container fluid">
         <div className="text-end"><input type="text" oncahnge={handleFilter}/></div>
         <DataTable
         columns={columns}
@@ -134,6 +141,8 @@ function Storedetails(){
         fixedHeader
         pagination
         ></DataTable>
+        </div>
+        </div>
         </div>
     );
 }

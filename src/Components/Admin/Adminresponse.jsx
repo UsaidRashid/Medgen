@@ -3,22 +3,30 @@ import Sidebar from './Sidebar'
 import background from '../../Images/background.png'
 
 export default function Adminresponse() {
-const[name,setName]=useState('');
-const[code,setCode]=useState('');
-const[salt,setSalt]=useState('');
-const[batch,setBatch]=useState('');
-const[price,setPrice]=useState('');
-function handleSubmit(e){
-    e.preventDefault();
-    console.log(name);
-    console.log(code);
-    console.log(salt);
-    console.log(batch);
-    console.log(price);
-}
+  const [formData,setFormData] = useState({
+    name:'',
+    code:'',
+    salt:'',
+    batch:'',
+    price:'',
+  });
+
+
+  function handleSubmit(e){
+      e.preventDefault();
+      console.log(formData);
+  }
+
+  const handleChange = (e) =>{
+    setFormData({
+      ...formData,
+      [e.target.name] : e.target.value,
+    })
+  };
+
   return (
     <div >
-       <div  className="grid-container" style={{backgroundImage:`url(${background})` ,backgroundRepeat:"no-repeat",backgroundSize:"cover",backgroundPosition:"center"}}>
+       <div  className="grid-container" style={{backgroundColor:'#e6ffff'}} >
         <Sidebar/>
        
           
@@ -28,23 +36,23 @@ function handleSubmit(e){
               <h1>+ ADD MEDICINE</h1>
               <div class="mb-3">
                 <label for="medicine-name" class="form-label">MEDICINE NAME</label>
-                <input type="text" class="form-control" id="medicine-name" name="medicine-name" value={name} onChange={(e)=>setName(e.target.value)} required/>
+                <input type="text" class="form-control" id="medicine-name" name="name" value={formData.name} onChange={handleChange} required/>
               </div>
               <div class="mb-3">
                 <label for="drug-code" class="form-label">DRUG CODE</label>
-                <input type="text" class="form-control" id="drug-code" name="drug-code" value={code} onChange={(e)=>setCode(e.target.value)} required/>
+                <input type="text" class="form-control" id="drug-code" name="code" value={formData.code} onChange={handleChange} required/>
               </div>
               <div class="mb-3">
                 <label for="Salt" class="form-label">SALT</label>
-                <input type="text" class="form-control" id="Salt" name="Salt" value={salt}onChange={(e)=>setSalt(e.target.value)} required/>
+                <input type="text" class="form-control" id="Salt" name="salt" value={formData.salt}onChange={handleChange} required/>
               </div>
               <div class="mb-3">
                 <label for="Batch-No" class="form-label">BATCH NUMBER</label>
-                <input type="text" class="form-control" id="Batch-No" name="Batch-No" value={batch} onChange={(e)=>setBatch(e.target.value)} required/>
+                <input type="text" class="form-control" id="Batch-No" name="batch" value={formData.batch} onChange={handleChange} required/>
               </div>
               <div class="mb-3">
                 <label for="Mrp" class="form-label">MRP</label>
-                <input type="text" class="form-control" id="Mrp" name="Mrp" value={price} onChange={(e)=>setPrice(e.target.value)} required/>
+                <input type="text" class="form-control" id="Mrp" name="price" value={formData.price} onChange={handleChange} required/>
               </div>
               <button type="submit" class="btn btn-primary">SUBMIT</button>
             </form>
