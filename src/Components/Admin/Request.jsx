@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import '../../CSS/Medicine.css'; 
+
 import { useNavigate } from 'react-router-dom';
+
+import Sidebar from './Sidebar';
 
 const Medicine = () => {
     const navigate = useNavigate();
@@ -28,8 +30,15 @@ const Medicine = () => {
     };
 
     return (
-        <div className="container-fluid mt-5">
-            <h1 className="text-center mt-3">Enter Medicine Details</h1>
+        <div className='d-flex flex-row'>
+            <div>
+                                <Sidebar/>
+            </div>
+            
+            <div>
+            <div className="container-fluid mt-5 bg-white">
+           <div  className="grid-container " > 
+           <h1 className="text-center mt-3">Enter Medicine Details</h1>
             <form className="form-group m-lg-4" onSubmit={handleSubmit}>
                 {medicineData.map((item, index) => (
                     <div key={index} className="form-group">
@@ -56,6 +65,20 @@ const Medicine = () => {
                 ))}
             </form>
         </div>
+        </div>
+
+
+            </div>
+
+
+          
+        </div>
+
+        
+        
+        
+       
+            
     );
 };
 

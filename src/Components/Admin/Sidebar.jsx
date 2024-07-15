@@ -1,48 +1,69 @@
-import React from 'react'
-import '../../CSS/Sidebar.css'
+import React, { useState } from 'react';
+import {
+    FaTh,
+    FaBars,
+    FaUserAlt,
+    FaRegChartBar,
+    FaCommentAlt,
+    FaShoppingBag,
+    FaThList
+}from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
+import '../../CSS/admin.css';
+ 
 
-import profile from '../../Images/profile.png'
-import {BsGrid1X2Fill, BsPeopleFill,BsListCheck, BsMenuButtonWideFill} from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
-export default function Sidebar({openSidebarToggle, OpenSidebar}) {
-  return (
-    
-    <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
+const Sidebar = ({children}) => {
+    const[isOpen ,setIsOpen] = useState(false);
+    const toggle = () => setIsOpen (!isOpen);
+    const menuItem=[
+        {
+            path:"/Dashboard",
+            name:"Dashboard",
+            icon:<FaTh/>
+        },
+        {
+            path:"/Request",
+            name:"Request",
+            icon:<FaUserAlt/>
+        },
+        {
+            path:"/Response",
+            name:"Response",
+            icon:<FaRegChartBar/>
+        },
         
-        <div className='sidebar-title'>
+        
+        {
+            path:"/Storedetails",
+            name:"Store details",
+            icon:<FaThList/>
+        }
+    ]
+    return (
+        <div className="">
+       
+        
+           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar">
+               <div className="top_section">
+                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Logo</h1>
+                   <div style={{marginLeft: isOpen ? "60px" : "0px"}} className="bars">
+                       <FaBars onClick={toggle}/>
+                   </div>
+               </div>
+               {
+                   menuItem.map((item, index)=>(
+                       <NavLink to={item.path} key={index} className="link" activeclassName="active">
+                           <div className="icon">{item.icon}</div>
+                           <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
+                       </NavLink>
+                   ))
+               }
+           </div>
           
-            <div className='sidebar-brand w-100'>
-                <BsPeopleFill  className='icon_header'/> Hello Admin
-            </div>
-           
-            <span className='icon close_icon' onClick={OpenSidebar}>X</span>
+           <main>{children}</main>
         </div>
-        <img src={profile} alt=""/>
-        <ul className='sidebar-list'>
-            <li className='sidebar-list-item'>
-                <a href="/admin">
-                    <BsGrid1X2Fill className='icon'/> Dashboard
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="/medicine">
-                    <BsMenuButtonWideFill className='icon'/> Request
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="/admin-response">
-                    <BsListCheck className='icon'/> Response
-                </a>
-            </li>
-            <li className='sidebar-list-item'>
-                <a href="/admin-store">
-                    <BsPeopleFill className='icon'/> Vendor
-                </a>
-            </li>
-            
-        </ul>
-    </aside>
-  );
-}
+    );
+};
 
+export default Sidebar;
