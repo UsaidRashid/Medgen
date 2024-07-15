@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import '../../CSS/Requests.css'; 
 
 
@@ -80,13 +79,13 @@ const Medicine = () => {
 
 
             </div>
-</div>
+
 
           
         </div>
 
         
-        
+        </div>
         
        
             
