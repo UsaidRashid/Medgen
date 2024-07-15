@@ -72,12 +72,8 @@ export default function Dashboard() {
       <main className="main-container">
       <div className="main-cards">
         <div
-<<<<<<< HEAD
-          class="btn btn-outline-info shadow-lg p-3 mb-5  rounded card"
-=======
           className="card"
           class="btn btn-outline-info shadow-lg p-3 mb-5  rounded"
->>>>>>> main
         >
           <div className="card-inner">
             <h3 className="text-black">generic medicines</h3>
