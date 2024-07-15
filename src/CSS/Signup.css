@@ -1,9 +1,7 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-.form-control{
-  border-radius: 70px;
+
+.img1{
+  width:25px;
+  height:25px;
 }
 .google{
   width:25px;
@@ -11,14 +9,13 @@
   float: left;
   
 }
-button{
+.function{
   width:150px;
   padding-top: 6px;
   font-size: larger;
   border-color: aliceblue;
 }
-.medicine{
-  margin-top: 6px;
-  height:650px;
-  width:100%;
+a{
+  text-decoration: none;
+  color: black;
 }

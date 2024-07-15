@@ -2,7 +2,7 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex flex-column">
       <h1 className="mb-4">Contact Us</h1>
       <p>If you have any questions or need further assistance, feel free to reach out to us. We are here to help you.</p>
       <div className="row">

@@ -2,7 +2,7 @@ import React from 'react';
 
 const FAQ = () => {
   return (
-    <div className="container mt-5">
+    <div className="container mt-5 d-flex flex-column">
       <h1 className="mb-4">Frequently Asked Questions (FAQs)</h1>
       <div className="accordion" id="faqAccordion">
         <div className="accordion-item">
