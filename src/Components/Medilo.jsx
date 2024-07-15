@@ -11,7 +11,6 @@ const myStyle = {
   width: "200px",
 };
 
-
 const myStyle2 = {
   color: "black",
   marginBottom: "20px",

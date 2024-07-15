@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import logo from "../../Images/logo.png";
+import logo from "../../Images/logo-navbar.png";
 import { Link } from "react-router-dom";
-
-
 
 export default function Navbar() {
     const [isLoggedin,setIsLoggedIn] = useState(true);
@@ -11,7 +9,7 @@ export default function Navbar() {
         <>
             <nav class="navbar navbar-expand-lg" style={{backgroundColor:'#0a2351'}}>
   <div class="container-fluid">
-    <img src={logo} style={{borderRadius:'0',height:'50px'}} alt="" />
+    <img src={logo} style={{borderRadius:'0',height:'100px',width:'80px'}} alt="" />
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

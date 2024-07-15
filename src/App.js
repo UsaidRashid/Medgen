@@ -30,6 +30,7 @@ return (
       <Navbar/>
       <Router>
         <Routes>
+          
           <Route path='/' element={<Homepage/>}></Route>
           <Route path='/medilo' element={<Medilo/>}> </Route>
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
@@ -40,17 +41,18 @@ return (
           <Route path='/admin/response' element={<Adminresponse/>}></Route>
           <Route path='/admin/store' element={<Adminstore/>}></Route>
           <Route path='/admin/requests' element={<Requests/>}></Route>
+          <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           <Route path='/compare-medicines' element={<ComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
-          <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
           <Route path='/faq' element={<FAQ/>}></Route>
-        </Routes>
+          
+         </Routes>
       </Router>
       <Footer/>
     </div>

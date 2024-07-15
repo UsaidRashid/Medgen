@@ -36,7 +36,7 @@ export default function Footer() {
               </li>
               <li class="nav-item">
                 <a href="/contact-us" class="nav-link p-0">
-                  Contact
+                  Contact us
                 </a>
               </li>
               <li class="nav-item">
