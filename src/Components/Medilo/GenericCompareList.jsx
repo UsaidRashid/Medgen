@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import background2 from "../Images/compare1-bg.png";
+import background2 from "../../Images/compare1-bg.png";
 import { useTypewriter } from "react-simple-typewriter";
 
 const myStyle = {

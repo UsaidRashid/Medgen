@@ -8,12 +8,11 @@
 }
 main{
   width: 100%;
-  padding: 20px;
 }
 .sidebar{
-  background: #224049;
+  background: #000000;
   color: #fff;
-  height: 100vh;
+  height: 95vh;
   width: 200px;
   transition: all 0.5s;
 }
@@ -87,26 +86,26 @@ main{
   margin: 15px 0;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding: 8px 15px;
-  border-radius: 5px;
-  
-}
+/* .card { */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-around; */
+  /* padding: 8px 15px; */
+  /* border-radius: 5px; */
+/*    */
+/* } */
 .card:hover{
-  background:lightskyblue;
+  background:rgba(135, 206, 250, 0.571);
   color: #000;
   transition: all 0.5s;
 }
 
 
-.card-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+/* .card-inner { */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: space-between; */
+/* } */
 
 .card-inner > .card_icon {
   font-size: 25px;
@@ -121,3 +120,16 @@ main{
 }
 
 /* End Main  */
+
+.card:hover{
+  box-shadow: rgba(47, 28, 255, 0.199) -10px 10px,
+    rgba(39, 28, 255, 0.19) -20px 20px;
+  cursor: pointer;
+}
+.card{
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  transition: all 0.6s ease;
+}

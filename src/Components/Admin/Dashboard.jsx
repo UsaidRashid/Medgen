@@ -70,42 +70,38 @@ export default function Dashboard() {
       </div>
       <div>
       <main className="main-container">
-      <div className="main-cards">
+      <div className="main-cards ">
         <div
-          className="card"
-          class="btn btn-outline-info shadow-lg p-3 mb-5  rounded"
+          class="btn btn-outline-info  p-3 mb-5 rounded card "
         >
-          <div className="card-inner">
+          <div className="card-body card-body d-flex flex row">
             <h3 className="text-black">generic medicines</h3>
             <BsFillArchiveFill className="card_icon text-black" />
-          </div>
+            </div>
           <h1 className="text-black">300</h1>
         </div>
         <div
-          className="card"
-          class="btn btn-outline-info shadow-lg p-3 mb-5  rounded"
+          class="btn btn-outline-info  p-3 mb-5  rounded card"
         >
-          <div className="card-inner">
+          <div className="card-body card-body d-flex flex row">
             <h3 className="text-black">Branded medicines</h3>
             <BsFillArchiveFill className="card_icon text-black" />
           </div>
           <h1 className="text-black ">12</h1>
         </div>
         <div
-          className="card"
-          class="btn btn-outline-info shadow-lg p-3 mb-5  rounded"
+          class="btn btn-outline-info  p-3 mb-5  rounded card"
         >
-          <div className="card-inner">
+          <div className="card-body d-flex flex row">
             <h3 className="text-black">Requests</h3>
             <BsPeopleFill className="card_icon text-black"  />
           </div>
           <h1 className="text-black">33</h1>
         </div>
         <div
-          className="card"
-          class="btn btn-outline-info shadow-lg p-3 mb-5  rounded"
+          class="btn btn-outline-info  p-3 mb-5  rounded card"
         >
-          <div className="card-inner">
+          <div className="card-body card-body d-flex flex row">
             <h3 className="text-black">Stores</h3>
             <BsFillBellFill className="card_icon text-black" />
           </div>
@@ -113,7 +109,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="charts">
+      <div className="charts ">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             width={500}

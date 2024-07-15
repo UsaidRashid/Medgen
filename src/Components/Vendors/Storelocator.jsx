@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import '../CSS/Storelocator.css';//
 
 function Storelocator() {
   const [stores, setStores] = useState([

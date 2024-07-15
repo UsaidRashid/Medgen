@@ -1,5 +1,5 @@
 import React from 'react';
-import background from '../Images/Bg21.png';
+import background from '../../Images/Bg21.png';
 import { useTypewriter } from 'react-simple-typewriter';
 
 const myStyle2 = {
@@ -34,28 +34,28 @@ const myStyle4 = {
 };
 
 
-export default function BrandedSearch() {
+export default function GenericSearch() {
     const [text] = useTypewriter({
-        words: ['Branded Medicine Name', 'Find Best Medicines'],
+        words: ['Generic Medicine Name', 'Find Best Medicines'],
         loop: {},
-        delaySpeed: 550,
+        delaySpeed: 500,
     });
 
     return (
         <div>
             <div className='image' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
                 <div>
-                    <h1 style={{ color: "White"}}>.</h1>
-                    <h1 style={{ color: "Black", margin: "150px 0px 0px 310px"}}>Please Enter...</h1>
-                    <h1 style={{ color: "#2380ea", margin: "0px 0px 0px 230px"}}>/{text}/</h1>
-                    </div>
-                    <form action="/generic-compare-list" style={myStyle2}>
-                        <input type="text" placeholder="Enter Branded Medicine Here..." className="search-input" style={myStyle3} />
-                        <button className="search-button" style={myStyle4}>
-                            <b>Search</b>
-                            <i className="fa fa-search" />
-                        </button>
-                    </form>
+                    <h1 style={{ color: "White" }}>.</h1>
+                    <h1 style={{ color: "Black", margin: "150px 0px 0px 310px" }}>Please Enter...</h1>
+                    <h1 style={{ color: "#2380ea", margin: "0px 0px 0px 230px" }}>/{text}/</h1>
+                </div>
+                <form action="/branded-compare-list" style={myStyle2}>
+                    <input type="text" placeholder="Enter Generic Medicine Here..." className="search-input" style={myStyle3} />
+                    <button className="search-button" style={myStyle4}>
+                        <b>Search</b>
+                        <i className="fa fa-search" />
+                    </button>
+                </form>
             </div>
 
 

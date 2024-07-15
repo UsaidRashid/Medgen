@@ -3,26 +3,32 @@ import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
 
 import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
+
 import Admin from './Components/Admin/Dashboard';
 import Adminstore from './Components/Admin/Storedetails';
 import Requests from './Components/Admin/Requests';
 import Adminresponse from './Components/Admin/Adminresponse';
-import StoreRegistrationForm from './Components/StoreRegistrationForm';
-import BrandedSearch from './Components/BrandedSearch';
-import GenericSearch from './Components/GenericSearch';
-import GenericCompareList from './Components/GenericCompareList';
-import BrandedCompareList from './Components/BrandedCompareList';
+
+import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
+import Storelocator from './Components/Vendors/Storelocator';
+
+import BrandedSearch from './Components/Medilo/BrandedSearch';
+import GenericSearch from './Components/Medilo/GenericSearch';
+import GenericCompareList from './Components/Medilo/GenericCompareList';
+import BrandedCompareList from './Components/Medilo/BrandedCompareList';
+import Medilo from './Components/Medilo/Medilo';
+import ComparePage from './Components/Medilo/ComparePage';
+import RequestForm from './Components/Medilo/RequestForm';
+
 import Homepage from './Components/Homepage';
-import Medilo from './Components/Medilo';
-import ComparePage from './Components/ComparePage';
-import RequestForm from './Components/RequestForm';
+
 import Signup from './Components/Signup';
 import Login from './Components/Login';
-import Storelocator from './Components/Storelocator';
-import Services from './Components/Services';
-import AboutUs from './Components/AboutUs';
-import ContactUs from './Components/ContactUs';
-import FAQ from './Components/FAQ';
+
+import Services from './Components/ExtraPages/Services';
+import AboutUs from './Components/ExtraPages/AboutUs';
+import ContactUs from './Components/ExtraPages/ContactUs';
+import FAQ from './Components/ExtraPages/FAQ';
 
 export default function App(){
 return (
