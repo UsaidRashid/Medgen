@@ -1,14 +1,12 @@
 
 import waveInvert from '../../Images/wave-invert.png';
-import upperImage from '../../Images/upper-image.png';
+import upperImage from '../../Images/upper-1.png';
 import wave from '../../Images/wave.png';
-import lowerImage from '../../Images/lower.svg';
+import lowerImage from '../../Images/lower-1.png';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 
 import Button from 'react-bootstrap/Button';
-
-//import {useNavigate} from 'react-router-dom';
 
 const RegistrationForm = () => {
 
@@ -57,7 +55,7 @@ const RegistrationForm = () => {
         </div>
     </div>
     <div className='' style={{background:`url(${wave})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover',height:'900px',width:'1600px',marginTop:'0px'}}>
-      <img src={upperImage} className='position-absolute' style={{marginTop:'400px' ,marginLeft:"150px" , width:"500px",height:"500px"}} height='500px' alt="" />
+      <img src={lowerImage} className='position-absolute' style={{marginTop:'400px' ,marginLeft:"150px" , width:"500px",height:"500px"}} height='500px' alt="" />
       <h1 className='text-white position-absolute ' style={{marginTop:'250px',marginLeft:'400px',fontFamily:"initial",fontSize:"50px"}}>YOUR HEALTH IS OUR MISSION</h1>
         <div className='position-absolute' style={{marginTop:'700px',marginLeft:'500px'}}>
         <div className='d-flex flex-row'>
