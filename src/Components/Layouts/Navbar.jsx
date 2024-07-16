@@ -33,6 +33,9 @@ export default function Navbar() {
         <li class="nav-item">
           <Link class="nav-link text-white" to="/store-registration-form">Register Your Store!</Link>
         </li>
+        <li class="nav-item">
+          <Link class="nav-link text-white" to="/user-request-form">Request for a medicine!</Link>
+        </li>
       </ul>
       
       <div className="d-flex flex-row w-25 justify-content-around">
