@@ -28,6 +28,13 @@ const userRouter  = require('./routes/users');
 
 app.use('/users',userRouter);
 
+app.get('/',(req,res)=>{
+    res.send('Hello from the backend');
+});
+
+const brandRouter  = require('./routes/brand');
+
+app.use('/brand',brandRouter);
 
 
 
