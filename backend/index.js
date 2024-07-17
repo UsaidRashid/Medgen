@@ -16,12 +16,46 @@ async function main(){
     await mongoose.connect(mongoUrl);
 }
 
+const User = require('./models/users');
+
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 
-app.get('/',(req,res)=>{
-    res.send('Hello from the backend');
+const passport = require('passport');
+const session = require('express-session');
+const localStrategy = require('passport-local').Strategy;
+
+
+const sessionOptions = {
+    secret : 'my-session-secret',
+    resave : false,
+    saveUninitialized : true,
+    cookie : {
+        expires : Date.now() + 7*24*60*60*1000,
+        maxAge : 7*24*60*60*1000,
+        httpOnly : true,
+        secure : true,
+    }
+};
+
+
+app.use(session(sessionOptions));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+app.use((err,req,res,next)=>{
+    console.error(err);
+
+    if(err.status) res.status(err.status).json({message:err.message});
+    else res.status(500).json({message:'Internal Server Error'});
 });
 
 const userRouter  = require('./routes/users');
@@ -29,6 +63,10 @@ const userRouter  = require('./routes/users');
 app.use('/users',userRouter);
 
 
+
+app.get('/',(req,res)=>{
+    res.send('Hello from the backend');
+});
 
 
 app.listen(port,(req,res)=>{

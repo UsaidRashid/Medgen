@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/users');
+const passport = require('passport');
 
 router
     .route('/signup')
@@ -8,7 +9,7 @@ router
 
 router
     .route('/login')
-        .post(userController.login);
+        .post(passport.authenticate('local'),userController.login);
 
 router
     .route('/logout')
