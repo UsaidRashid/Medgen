@@ -67,10 +67,11 @@ app.get('/',(req,res)=>{
 
 const brandRouter  = require('./routes/brand');
 const userRouter  = require('./routes/users');
+const storeRouter  = require('./routes/store');
 
 app.use('/users',userRouter);
 app.use('/brand',brandRouter);
-
+app.use('/store',storeRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);
