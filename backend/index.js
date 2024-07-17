@@ -25,11 +25,10 @@ app.get('/',(req,res)=>{
 });
 
 const userRouter  = require('./routes/users');
-
 app.use('/users',userRouter);
 
-
-
+const storeRouter  = require('./routes/store');
+app.use('/store',storeRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);
