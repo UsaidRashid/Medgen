@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+<<<<<<< HEAD
 
 const brandSchema = new mongoose.Schema(
     {
@@ -9,10 +10,21 @@ const brandSchema = new mongoose.Schema(
         },
         drug_code : {
             type : Number,
+=======
+const brandSchema = new mongoose.Schema(
+    {
+        name : {
+            type : String,
+            required : true,
+        },
+        code : {
+            type : String,
+>>>>>>> diya
             required : true,
         },
         salt : {
             type : String,
+<<<<<<< HEAD
             required : true,
         },
         batch_no : {
@@ -20,6 +32,14 @@ const brandSchema = new mongoose.Schema(
             required : true,
         },
         mrp : {
+=======
+        },
+        batch : {
+            type : Number,
+            required : true,
+        },
+        price : {
+>>>>>>> diya
             type :Number ,
             required: true,
         }

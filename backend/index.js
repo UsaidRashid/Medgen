@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = 6969;
 
+
 const mongoose = require('mongoose');
 
 const mongoUrl="mongodb://127.0.0.1:27017/Medgen";
@@ -58,22 +59,17 @@ app.use((err,req,res,next)=>{
     else res.status(500).json({message:'Internal Server Error'});
 });
 
-const userRouter  = require('./routes/users');
 
-app.use('/users',userRouter);
 
 app.get('/',(req,res)=>{
     res.send('Hello from the backend');
 });
 
 const brandRouter  = require('./routes/brand');
+const userRouter  = require('./routes/users');
 
+app.use('/users',userRouter);
 app.use('/brand',brandRouter);
-
-
-app.get('/',(req,res)=>{
-    res.send('Hello from the backend');
-});
 
 
 app.listen(port,(req,res)=>{
