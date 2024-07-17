@@ -18,9 +18,11 @@ module.exports.addMedicine=async(req,res)=>{
 
 
 }
-//module.exports.fetchMedicine = async (req,res)=>{
- //   const response = await brand.find({});
+
+
+module.exports.fetchMedicine = async (req,res)=>{
+   const response = await brand.find({});
   
- //   console.log(response);
- //   res.send(response);
- // }
+   console.log(response);
+   res.send(response);
+ }
