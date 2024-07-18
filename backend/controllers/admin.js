@@ -1,4 +1,4 @@
-const brand=require('../models/brand');
+const brand=require('../models/brands');
 
 
 

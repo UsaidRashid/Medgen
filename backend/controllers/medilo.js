@@ -1,5 +1,5 @@
-const Brand = require('../models/brand');
-const Generic=require('../models/generic');
+const Brand = require('../models/brands');
+const Generic=require('../models/generics');
 
 module.exports.take = async (req, res) => {
     
