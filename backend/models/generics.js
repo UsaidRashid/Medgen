@@ -12,6 +12,7 @@ const genericSchema = new mongoose.Schema(
         },
         salt : {
             type : String,
+            required : true,
         },
         batch : {
             type : Number,
@@ -24,5 +25,5 @@ const genericSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('generic',genericSchema);
+module.exports = mongoose.model('Generic',genericSchema);
 

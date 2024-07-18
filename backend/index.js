@@ -65,13 +65,15 @@ app.get('/',(req,res)=>{
     res.send('Hello from the backend');
 });
 
-const brandRouter  = require('./routes/brand');
 const userRouter  = require('./routes/users');
 const storeRouter  = require('./routes/store');
+const mediloRouter = require('./routes/medilo');
+const adminRouter = require('./routes/admin');
 
 app.use('/users',userRouter);
-app.use('/brand',brandRouter);
+app.use('/medilo',mediloRouter);
 app.use('/store',storeRouter);
+app.use('/admin',adminRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);

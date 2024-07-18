@@ -40,8 +40,14 @@ module.exports.login = async (req,res) =>{
 
 
 module.exports.logout = async (req,res) =>{
-    req.logout( (err) =>{
-        if(err) return res.status(500).json({message:'Error while logging out ',err});
-        else return res.status(200).json({message:"Logged out successfully"});
-    });
+    try {
+        req.logout( (err) =>{
+            if(err) return res.status(500).json({message:'Error while logging out ',err});
+            else return res.status(200).json({message:"Logged out successfully"});
+        });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message:'Internal Server Error',error});
+    }
+    
 }
