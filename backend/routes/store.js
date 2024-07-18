@@ -1,19 +1,16 @@
-const express = require('express'); 
-const router = express.Router(); 
-const storeController = require('../controllers/store'); 
- 
-router 
-    .route('/storelocator') 
-        .post(storeController.storelocator); 
+const express = require('express');
+const router = express.Router();
+const storeController = require('../controllers/store');
 
-        
-    router.route('/getname') 
+router
+    .route('/storelocator')
+    .post(storeController.storelocator);
+
+
+router.route('/getname')
     .get(storeController.getAllStores);
 
-    router.route('/registerstore') 
+router.route('/registerstore')
     .post(storeController.registerStore);
- 
- 
-module.exports= router;
- 
- 
+
+module.exports = router;
