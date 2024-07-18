@@ -73,7 +73,7 @@ const adminRouter = require('./routes/admin');
 app.use('/users',userRouter);
 app.use('/medilo',mediloRouter);
 app.use('/store',storeRouter);
-app.use('/admin',adminRouter);
+// app.use('/admin',adminRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/admin');
-const brandController = require('../controllers/brand');
+const brandController = require('../controllers/medilo');
 
 router
     .route('/addMedicine')
