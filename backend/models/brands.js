@@ -12,7 +12,6 @@ const brandSchema = new mongoose.Schema(
         },
         salt : {
             type : String,
-            required : true,
         },
         batch : {
             type : Number,
