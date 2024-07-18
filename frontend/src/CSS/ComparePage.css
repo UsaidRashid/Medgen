@@ -1,0 +1,79 @@
+.image {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(162, 194, 243, 0.353), rgba(169, 221, 255, 0.31)), url('../Images/BG.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.text {
+    margin: 2rem 0 0 4rem;
+    font-size: 22px;
+}
+
+.cards {
+    margin: 2rem 0 0 1rem;
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-comparison {
+    background-color: white;
+    margin: 2rem 0 0 1rem;
+    height: 15.58rem;
+    width: 20rem;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+
+.price-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.medgen-price-box,
+.current-price-box {
+    height: 80px;
+    width: 120px;
+    text-align: center;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 5px, rgba(17, 17, 26, 0.1) 0px 6px 15px, rgba(17, 17, 26, 0.1) 0px 6px 15px;
+    border-radius: 5%;
+    background-color: white;
+}
+
+.total-savings {
+    margin: 3rem 0 1rem 0;
+    height: 80px;
+    width: 278px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 5px, rgba(17, 17, 26, 0.1) 0px 6px 15px, rgba(17, 17, 26, 0.1) 0px 6px 15px;
+    border-radius: 5%;
+    text-align: center;
+    background-color: white;
+}
+
+.comparison-boxes {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cards-outer {
+    width: 1000px;
+}
+
+.card-1,
+.card-2 {
+    background-color: white;
+    height: 27rem;
+    border-radius: 8px;
+    border: 1px solid #000;
+}
+
+.card-list {
+    font-size: larger;
+    margin-top: 1rem;
+}
