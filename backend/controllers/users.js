@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const jwt = require('jsonwebtoken');
 
 module.exports.signup = async (req,res) =>{
     try {
@@ -25,7 +26,9 @@ module.exports.signup = async (req,res) =>{
                 console.log(err);
                 return res.status(500).json({message:'Error saving the user',err});
             }
-            return res.status(200).json({message:'User Registered Successfully!',registeredUser});
+            const token = jwt.sign(  {_id:registeredUser._id} ,'secretkey', { algorithm: 'HS256' });
+
+            return res.status(200).json({message:'User Registered Successfully!',registeredUser,token});
         });
     } catch (error) {
         console.error(error);
@@ -35,7 +38,9 @@ module.exports.signup = async (req,res) =>{
 }
 
 module.exports.login = async (req,res) =>{
-    return res.status(200).json({message:'User Logged in successfully'});
+    const user = await User.findOne({ username : req.body.username});
+    const token = jwt.sign(  {_id:user._id} ,'secretkey', { algorithm: 'HS256' });
+    return res.status(200).json({message:'User Logged in successfully',token});
 }
 
 
