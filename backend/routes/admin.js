@@ -5,29 +5,26 @@ const adminController = require('../controllers/admin');
 router
     .route('/add-brand')
         .post(adminController.addBrand);
-
+    
 router
     .route('/add-generic')
         .post(adminController.addGeneric);
 
-
 router
     .route('/fetch-requests')
-        .post(adminController.fetchRequest);
+        .post(adminController.fetchRequests);
 
 router
     .route('/fetch-stores')
-        .post(adminController.fetchStore);
-    
+        .post(adminController.fetchStores);
+
 router
     .route('/fetch-dashboard')
         .post(adminController.fetchDashboard);
 
 router
     .route('/delete-store')
-            .post(adminController.deleteStore);        
+        .post(adminController.deleteStore);
+    
         
-
-       module.exports=router;
-
-       
+module.exports=router;

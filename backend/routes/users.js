@@ -15,5 +15,16 @@ router
     .route('/logout')
         .post(userController.logout);
 
+router
+    .route('/profile')
+        .post(userController.fetchProfile);
+
+router
+    .route('/update')
+        .post(userController.updateDetails);
+
+router
+    .route('/signup-google')
+        .post(userController.signupGoogle);
 
 module.exports= router;
