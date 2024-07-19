@@ -16,30 +16,8 @@ import '../../CSS/admin.css';
 const Sidebar = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
-    const menuItem=[
-        {
-            path:"/admin",
-            name:"Dashboard",
-            icon:<FaTh/>
-        },
-        {
-            path:"/admin/requests",
-            name:"Requests",
-            icon:<FaUserAlt/>
-        },
-        {
-            path:"/admin/response",
-            name:"Add Medicine",
-            icon:<FaRegChartBar/>
-        },
-        
-        
-        {
-            path:"/admin/store",
-            name:"Registered Stores",
-            icon:<FaThList/>
-        }
-    ]
+
+    
     return (
         <div className="">
        
@@ -58,14 +36,22 @@ const Sidebar = ({children}) => {
                    </div>
                </div>
               
-               {
-                   menuItem.map((item, index)=>(
-                       <NavLink to={item.path} key={index} className="link" activeclassName="active">
-                           {/* <div className="icon">{item.icon}</div> */}
-                           <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
-                       </NavLink>
-                   ))
-               }
+               <NavLink to="/admin" className="link" activeclassName="active">
+                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Dashboard</div>
+                </NavLink>
+
+                <NavLink to="/admin/requests" className="link" activeclassName="active">
+                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Requests</div>
+                </NavLink>
+
+                <NavLink to="/admin/response" className="link" activeclassName="active">
+                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Add Medicine</div>
+                </NavLink>
+
+                <NavLink to="/admin/store" className="link" activeclassName="active" >
+                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Registered Stores</div>
+                </NavLink>
+
            </div>
           
            <main>{children}</main>

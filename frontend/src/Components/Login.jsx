@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Login.css";
 import  {Link} from 'react-router-dom';
 
 export default function Login() {
+    const [formData , setFormData ] = useState({
+      username : '',
+      password : '',
+    });
+
+    
+
   return (
     <div className="container-fluid bg-white">
       <div className="row">
@@ -31,9 +38,12 @@ export default function Login() {
                 <form>
                   <div class="form-group mt-4 mb-5 ">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control border border-3 border-black p-4 border rounded-5 p-4 h3"
                       placeholder="Username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
@@ -41,13 +51,16 @@ export default function Login() {
                       type="password"
                       className="form-control  border border-3 border-black border rounded-5 p-4 h3"
                       placeholder="Password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div className="container">
                     <div className="row">
                       <div className="col-md-4">
                         <label className="form-check-label text-dark h5">
-                          {" "}
+                          
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -55,7 +68,7 @@ export default function Login() {
                             checked
                           />
                           <b>Remember me</b>
-                        </label>{" "}
+                        </label>
                       </div>
                       <div className="col-md-4"></div>
                       <div className="col-md-4">

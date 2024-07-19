@@ -35,11 +35,19 @@ export default function Signup() {
           navigate("/");
       }else{
           alert('There was a problem in signing up the user....',response.message);
+          navigate('/signup')
       }      
 
     } catch (error) {
-        console.error(error);
-        alert('Server Error : ', error);
+        console.error("Error in Registering:", error);
+        alert( `${error.name} -> ${error.message}`);
+        if (error.response) {
+          alert("Error from server: " + error.response.data.message);
+        } else if (error.request) {
+          alert("No response from the server");
+        } else {
+          alert("Error setting up the request: " + error.message);
+        }
     }
   };
 
@@ -67,6 +75,7 @@ export default function Signup() {
                   name = 'name'
                   value={formData.name}
                   onChange={handleChange}
+                  required
                   className="form-control border border-3 border-black p-2 border rounded-3 h3"
                 />
               </div>
@@ -77,6 +86,7 @@ export default function Signup() {
                   name = 'username'
                   value={formData.username}
                   onChange={handleChange}
+                  required
                   className="form-control border border-3 border-black p-2 border rounded-3 h3"
                 />
               </div>
@@ -87,6 +97,7 @@ export default function Signup() {
                   name = 'email'
                   value={formData.email}
                   onChange={handleChange}
+                  required
                   className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3"
                 />
               </div>
@@ -107,6 +118,7 @@ export default function Signup() {
                   name = 'password'
                   value={formData.password}
                   onChange={handleChange}
+                  required
                   className="form-control mb-1 border border-3 border-black p-2 border rounded-3 h3"
                 />
               </div>
