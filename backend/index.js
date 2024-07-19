@@ -22,7 +22,7 @@ const User = require('./models/users');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(cors());
 
 const passport = require('passport');
 const session = require('express-session');

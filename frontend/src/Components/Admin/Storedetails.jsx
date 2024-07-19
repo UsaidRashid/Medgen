@@ -3,6 +3,7 @@ import DataTable from 'react-data-table-component';
 import Sidebar from './Sidebar';
 
 function Storedetails(){
+
     const columns=[
         {
             name:<h6><b>Owner name</b></h6>,
