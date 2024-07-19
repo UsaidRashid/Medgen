@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const storeSchema = new mongoose.Schema(
     {    
+        gst_No : {
+            type : String,
+            required : true,
+            // unique : true,
+        },
         name:{
             type : String,
             required: true,

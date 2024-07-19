@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 6969;
 
-
 const mongoose = require('mongoose');
 
 const mongoUrl="mongodb://127.0.0.1:27017/Medgen";
@@ -18,6 +17,8 @@ async function main(){
 }
 
 const User = require('./models/users');
+
+// require('./auth');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
@@ -73,7 +74,7 @@ const adminRouter = require('./routes/admin');
 app.use('/users',userRouter);
 app.use('/medilo',mediloRouter);
 app.use('/store',storeRouter);
-app.use('/admin',adminRouter);
+// app.use('/admin',adminRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);
