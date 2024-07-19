@@ -28,6 +28,7 @@ export default function Signup() {
       console.log(formData);
 
       const response = await axios.post('http://localhost:6969/users/signup',formData);
+      
 
       if( response.status===200){
           alert('Signed Up Successfully!');
