@@ -1,6 +1,7 @@
-import React from 'react';
 import background from '../../Images/Bg21.png';
 import { useTypewriter } from 'react-simple-typewriter';
+import  React,{useState} from 'react';
+import axios from 'axios';
 
 const myStyle2 = {
     marginLeft: "1rem",
@@ -40,6 +41,29 @@ export default function BrandedSearch() {
         loop: {},
         delaySpeed: 550,
     });
+    // const  searchMedicine=()=>{
+        const[name,setName]=useState('');
+        
+    
+     const handleSubmit=async(e)=>{
+        e.preventDefault();
+        try{
+            const response = await axios.post('http://localhost:6969/medilo/brand-search',{name});
+            if( response.status===200){
+                alert('medicine searched successfully');
+                console.log(response);
+
+            }else{
+                alert('There was a problem in searching a medicine');
+            }      
+        }catch(error){
+            console.error(error);
+            alert('Server Error : ', error);
+        }
+     }
+     const handleChange=(e)=>{
+        setName(e.target.value);
+    }
 
     return (
         <div>
@@ -49,8 +73,8 @@ export default function BrandedSearch() {
                     <h1 style={{ color: "Black", margin: "150px 0px 0px 310px"}}>Please Enter...</h1>
                     <h1 style={{ color: "#2380ea", margin: "0px 0px 0px 230px"}}>/{text}/</h1>
                     </div>
-                    <form action="/generic-compare-list" style={myStyle2}>
-                        <input type="text" placeholder="Enter Branded Medicine Here..." className="search-input" style={myStyle3} />
+                    <form  onSubmit={handleSubmit} action="/generic-compare-list" style={myStyle2}>
+                        <input type="text" value={name} onChange={handleChange} className="search-input" placeholder="Enter Branded Medicine Here..." style={myStyle3} />
                         <button className="search-button" style={myStyle4}>
                             <b>Search</b>
                             <i className="fa fa-search" />
