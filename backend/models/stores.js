@@ -5,7 +5,7 @@ const storeSchema = new mongoose.Schema(
         gst_No : {
             type : String,
             required : true,
-            // unique : true,
+            unique : true,
         },
         name:{
             type : String,

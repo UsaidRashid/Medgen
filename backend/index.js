@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 6969;
+const cors = require('cors');
 
 const mongoose = require('mongoose');
 
@@ -22,6 +23,7 @@ const User = require('./models/users');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cors());
 
 
 const passport = require('passport');
@@ -59,8 +61,6 @@ app.use((err,req,res,next)=>{
     if(err.status) res.status(err.status).json({message:err.message});
     else res.status(500).json({message:'Internal Server Error'});
 });
-
-
 
 app.get('/',(req,res)=>{
     res.send('Hello from the backend');
