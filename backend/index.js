@@ -60,8 +60,6 @@ app.use((err,req,res,next)=>{
     else res.status(500).json({message:'Internal Server Error'});
 });
 
-
-
 app.get('/',(req,res)=>{
     res.send('Hello from the backend');
 });

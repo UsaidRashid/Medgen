@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 import '../../CSS/admin.css';
  import profile from '../../Images/profile.png';
  import axios from 'axios';
+ import { Link } from 'react-router-dom';
 
 const Sidebar = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
@@ -19,8 +20,6 @@ const Sidebar = ({children}) => {
 
 const fetchStores = async (e) => {
     try {
-        e.preventDefault();
-       
         const response = await axios.post('http://localhost:6969/admin/fetch-stores');
         if( response.status===200){
              alert('Store founded');
@@ -44,7 +43,6 @@ const fetchStores = async (e) => {
 
       const fetchRequests = async (e) => {
         try {
-            e.preventDefault();
             const response = await axios.post('http://localhost:6969/admin/fetch-requests');
             if( response.status===200){
                  alert('Requests founded');
@@ -67,7 +65,6 @@ const fetchStores = async (e) => {
 
           const fetchDashboard = async (e) => {
             try {
-                e.preventDefault();
                 const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
                 if( response.status===200){
                      alert('Dashboard founded');
@@ -109,21 +106,21 @@ const fetchStores = async (e) => {
                    </div>
                </div>
               
-               <NavLink to="/admin" className="link" activeclassName="active" onClick={fetchDashboard}>
+               <Link to="/admin" className="link" activeclassName="active" onClick={fetchDashboard}>
                     <div style={{display: isOpen ? "block" : "none"}} className="link_text">Dashboard</div>
-                </NavLink>
+                </Link>
 
-                <NavLink to="/admin/requests" className="link" activeclassName="active" onClick={fetchRequests}>
+                <Link to="/admin/requests" className="link" activeclassName="active" onClick={fetchRequests}>
                     <div style={{display: isOpen ? "block" : "none"}} className="link_text">Requests</div>
-                </NavLink>
+                </Link>
 
-                <NavLink to="/admin/response" className="link" activeclassName="active">
+                <Link to="/admin/response" className="link" activeclassName="active">
                     <div style={{display: isOpen ? "block" : "none"}} className="link_text">Add Medicine</div>
-                </NavLink>
+                </Link>
 
-                <NavLink to="/admin/store" className="link" activeclassName="active" onClick={fetchStores}>
+                <Link to="/admin/store" className="link" activeclassName="active" onClick={fetchStores}>
                     <div style={{display: isOpen ? "block" : "none"}} className="link_text">Registered Stores</div>
-                </NavLink>
+                </Link>
                    
                        
                
