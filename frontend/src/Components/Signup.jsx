@@ -31,10 +31,10 @@ export default function Signup() {
       
 
       if( response.status===200){
-          alert('Signed Up Successfully!');
+          alert(response.data.message);
           navigate("/");
       }else{
-          alert('There was a problem in signing up the user....',response.message);
+          alert('There was a problem in signing up the user....',response.data.message);
           navigate('/signup')
       }      
 
