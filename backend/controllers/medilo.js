@@ -56,7 +56,7 @@ module.exports.genericMedicine=async(req,res)=>{
          }   
      }
 
-     module.exports.requestMedicine=ascync(req,res)=>{
+     module.exports.requestMedicine=async(req,res)=>{
         try{
                const{
                 name,
@@ -71,4 +71,4 @@ module.exports.genericMedicine=async(req,res)=>{
            console.error(error);
          return res.status(500).json({message:'internal server error',error});
          }  
-        }
+        } 
