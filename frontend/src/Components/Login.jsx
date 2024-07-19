@@ -77,7 +77,7 @@ export default function Login() {
                       placeholder="Username"
                       name="username"
                       value={formData.username}
-                      onChange={handleChange}
+              
                       required
                     />
                   </div>
@@ -88,7 +88,7 @@ export default function Login() {
                       className="form-control  border border-3 border-black border rounded-5 p-4 h3"
                       placeholder="Password"
                       value={formData.password}
-                      onChange={handleChange}
+                
                       required
                     />
                   </div>

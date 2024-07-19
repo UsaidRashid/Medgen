@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const port = 6969;
 const cors = require('cors');
-
 const mongoose = require('mongoose');
 
 const mongoUrl="mongodb://127.0.0.1:27017/Medgen";
@@ -24,7 +23,6 @@ const User = require('./models/users');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
-
 
 const passport = require('passport');
 const session = require('express-session');
