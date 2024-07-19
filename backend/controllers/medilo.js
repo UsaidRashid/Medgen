@@ -1,22 +1,74 @@
-const Brand = require('../models/brand');
-const Generic=require('../models/generic');
+const brand=require('../models/brands');
+const generic=require('../models/generics');
+const request=require('../models/requests');
+module.exports.brandMedicine=async(req,res)=>{
+    try{
+           const{
+            name,
+           }=req.body;
+           const medicine=await brand.findOne({name});
+        return res.status(200).json({message:'Brand Medicine fetched successfully',medicine});
+    }catch(error){
+           console.error(error);
+           return res.status(500).json({message:'internal server error',error});}
+    }
 
-module.exports.take = async (req, res) => {
-    
-   const {name}=req.body;
+module.exports.genericMedicine=async(req,res)=>{
+        try{
+               const{
+                name,
+               }=req.body;
+               const newGeneric=new generic({name});
+               const medicine2=await brand.findOne({name});
+               return res.status(200).json({message:'successfully inserted',medicine2});
+        }catch(error){
+               console.error(error);
+               return res.status(500).json({message:'internal server error',error});}         
+   }
 
-    const response=await Brand.find({name});
-    console.log(response);
-     res.send(response);
-}
 
-module.exports.fetch = async (req, res) => {
-    
-   const {genname,brandname}=req.body;
-    
-    const response2=await Generic.find({name:genname});
-    const response3=await Brand.find({name:brandname});
-    console.log(response2,response3);
 
-     res.send(response2);
-}
+   module.exports.compareGeneric=async(req,res)=>{
+        
+       try{
+        const {genname,brandname}=req.body;
+        const brands=await brand.findOne({name:brandname});
+        const generics=await generic.findOne({name:genname});
+        return res.status(200).json({message:'compare details fetch successfully',generics,brands});    
+       }
+       catch(error){
+        console.error(error);
+        return res.status(500).json({message:'internal server error',error});
+        }   
+    }
+
+    module.exports.compareBrand=async(req,res)=>{
+        
+        try{
+         const {genname,brandname}=req.body;
+         const brands=await brand.findOne({name:brandname});
+         const generics=await generic.findOne({name:genname});
+         return res.status(200).json({message:'compare details fetch successfully',generics,brands});    
+        }
+        catch(error){
+         console.error(error);
+         return res.status(500).json({message:'internal server error',error});
+         }   
+     }
+
+     module.exports.requestMedicine=ascync(req,res)=>{
+        try{
+               const{
+                name,
+                email,
+                medName,
+                message
+               }=req.body;
+               const newReq=new request(req.body);
+               await newReq.save();
+               return res.status(200).json({message:'request generated successfully',newReq})
+        }catch(error){
+           console.error(error);
+         return res.status(500).json({message:'internal server error',error});
+         }  
+        }
