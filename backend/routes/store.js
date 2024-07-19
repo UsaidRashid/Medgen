@@ -2,24 +2,19 @@ const express = require('express');
 const router = express.Router();
 const storeController = require('../controllers/store');
 
-router
-    .route('/storelocator')
-    .post(storeController.storelocator);
-
-
 router.route('/fetch-stores')
-    .get(storeController.fetchStores);
+    .post(storeController.fetchStores);
+
+router.route('/fetch-store')
+    .post(storeController.fetchStore);
 
 router.route('/register-store')
     .post(storeController.registerStore);
 
-router.route('/delete-store/:id')
-     .delete(storeController.deleteStore);
+router.route('/update-store')
+    .post(storeController.updateStore);
 
-router.route('/update-store/:id')
-     .put(storeController.updateStore);
-
-router.route('/fetch-store/:id')
-     .get(storeController.fetchStore);
+router.route('/delete-store')
+    .post(storeController.deleteStore);
 
 module.exports = router;

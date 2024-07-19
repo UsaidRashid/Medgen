@@ -51,3 +51,61 @@ module.exports.logout = async (req,res) =>{
     }
     
 }
+
+
+module.exports.fetchProfile = async (req,res) => {
+    try {
+        const username = req.body.username;
+
+        if(!username) res.status(400).json({message:'Seems like you are not logged in!'});
+
+        const response = await User.findOne({username});
+
+        if(!response) res.status(400).json({message:'Error in fetching your profile from database! Please log-in again...'});
+
+        res.status(200).json({message:'Profile Details fetched successfully!',response});
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message:'Internal Server Error',error});
+    }
+}
+
+
+module.exports.updateDetails = async (req,res) => {
+    try {
+        const { name, email , contact , username } = req.body;
+
+        if(!name || !email) return res.status(400).json({message:"Required Fields shouldn't be ignored!"});
+
+        if(!username) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
+
+        const updatedProfile = {
+            name ,
+            email,
+            contact,
+        };
+
+        const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
+
+        if(!updatedUser) return res.status(400).json({message:"Couldn't find user profile ! Please try logging in again"});
+
+        return res.status(200).json({message:'User Updated successfully',updatedProfile});
+        
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message:'Internal Server Error',error});
+    }
+    
+}
+
+
+
+module.exports.signupGoogle = async (req,res) => {
+    try {
+        
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({message:'Internal Server Error',error});   
+    }
+
+}

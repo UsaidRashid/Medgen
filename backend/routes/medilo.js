@@ -1,17 +1,24 @@
 const express = require('express');
 const router = express.Router();
-const adminController = require('../controllers/admin');
+const mediloController=require('../controllers/medilo');
 
 router
-    .route('/addMedicine')
-        .post(adminController.addMedicine);
+  .route('/brand-search')
+  .post(mediloController.brandMedicine);
 
-// router
-//     .route('/take')
-//         .post(brandController.take);
+ router
+  .route('/generic-search')
+  .post(mediloController.genericMedicine);
+  
+  router
+  .route('/generic-compare')
+  .post(mediloController.compareGeneric); 
 
-// router
-//     .route('/fetch')
-//         .post(brandController.fetch);
-
+  router
+  .route('/brand-compare')
+  .post(mediloController.compareBrand);
+  
+  router
+  .route('/request-medicine')
+  .post(mediloController.requestMedicine);
 module.exports= router;
