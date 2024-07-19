@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import {  useNavigate } from "react-router-dom";
 import Sidebar from './Sidebar'
 import background from '../../Images/response-bg.jpg'
+import axios from 'axios';
 
-export default function Adminresponse() {
+export default function AddMedicine() {
+  const navigate = useNavigate();
+
+
   const [formData,setFormData] = useState({
     name:'',
     code:'',
@@ -12,11 +17,26 @@ export default function Adminresponse() {
   });
 
 
-  function handleSubmit(e){
+  const handleSubmit = async (e) => {
+    try{
       e.preventDefault();
       console.log(formData);
-  }
 
+      const response = await axios.post('http://localhost:6969/admin/add-brand',formData);
+
+      if( response.status===200){
+          alert('registered medicine Successfully!');
+          navigate("/");
+      }else{
+          alert('There was a problem in signing up the user....',response.message);
+      }     
+    }
+    catch (error) {
+      console.error(error);
+      alert('Server Error : ', error);
+      
+  }
+  };
   const handleChange = (e) =>{
     setFormData({
       ...formData,
@@ -36,23 +56,23 @@ export default function Adminresponse() {
             
               <div class="mb-3 px-3">
                 <label for="medicine-name" class="form-label text-dark">MEDICINE NAME</label>
-                <input type="text" style={{border: ".8px solid black"}} class="form-control" id="medicine-name" name="name" value={formData.name} onChange={handleChange} required/>
+                <input type="name" style={{border: ".8px solid black"}} class="form-control" id="medicine-name"  name="name" value={formData.name} onChange={handleChange} required/>
               </div>
               <div class="mb-3 px-3">
                 <label for="drug-code" class="form-label text-dark">DRUG CODE</label>
-                <input type="text" style={{border: ".8px solid black"}} class="form-control" id="drug-code" name="code" value={formData.code} onChange={handleChange} required/>
+                <input type="code" style={{border: ".8px solid black"}} class="form-control" id="drug-code" name="code" value={formData.code} onChange={handleChange} required/>
               </div>
               <div class="mb-3 px-3">
                 <label for="Salt" class="form-label text-dark">SALT</label>
-                <input type="text" style={{border: ".8px solid black"}} class="form-control" id="Salt" name="salt" value={formData.salt}onChange={handleChange} required/>
+                <input type="salt" style={{border: ".8px solid black"}} class="form-control" id="Salt" name="salt" value={formData.salt}onChange={handleChange} required/>
               </div>
               <div class="mb-3 px-3">
                 <label for="Batch-No" class="form-label text-dark">BATCH NUMBER</label>
-                <input type="text" style={{border: ".8px solid black"}} class="form-control" id="Batch-No" name="batch" value={formData.batch} onChange={handleChange} required/>
+                <input type="batch" style={{border: ".8px solid black"}} class="form-control" id="Batch-No" name="batch" value={formData.batch} onChange={handleChange} required/>
               </div>
               <div class="mb-3 px-3">
                 <label for="Mrp" class="form-label text-dark">MRP</label>
-                <input type="text" style={{border: ".8px solid black"}} class="form-control" id="Mrp" name="price" value={formData.price} onChange={handleChange} required/>
+                <input type="price" style={{border: ".8px solid black"}} class="form-control" id="Mrp" name="price" value={formData.price} onChange={handleChange} required/>
               </div>
               <button type="submit" class="fs-6 btn btn-primary" style={{margin:".6rem 0 0 28.4rem", borderRadius: ".7rem", width:"120px",  boxShadow: "2px 3px 7px rgba(0, 0, 0, 0.4)"}}>SUBMIT</button>
             </form>
