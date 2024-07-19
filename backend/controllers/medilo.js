@@ -3,10 +3,12 @@ const generic=require('../models/generics');
 const request=require('../models/requests');
 module.exports.brandMedicine=async(req,res)=>{
     try{
+           
            const{
             name,
            }=req.body;
            const medicine=await brand.findOne({name});
+           
         return res.status(200).json({message:'Brand Medicine fetched successfully',medicine});
     }catch(error){
            console.error(error);
