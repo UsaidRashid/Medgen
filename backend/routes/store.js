@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const storeController = require('../controllers/store')
 
 router.route('/fetch-stores')
     .post(storeController.fetchStores);
