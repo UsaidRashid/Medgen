@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 6969;
+const cors= require('cors');
 
 const mongoose = require('mongoose');
 
@@ -22,7 +23,7 @@ const User = require('./models/users');
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-
+app.use(cors());
 
 const passport = require('passport');
 const session = require('express-session');
@@ -74,7 +75,7 @@ const adminRouter = require('./routes/admin');
 app.use('/users',userRouter);
 app.use('/medilo',mediloRouter);
 app.use('/store',storeRouter);
-// app.use('/admin',adminRouter);
+app.use('/admin',adminRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);
