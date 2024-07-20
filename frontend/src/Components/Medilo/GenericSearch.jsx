@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import background from '../../Images/Bg21.png';
 import { useTypewriter } from 'react-simple-typewriter';
+import axios from 'axios';
 
 const myStyle2 = {
     marginLeft: "1rem",
@@ -41,6 +42,29 @@ export default function GenericSearch() {
         delaySpeed: 500,
     });
 
+    const [name, setName] = useState('');
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:6969/medilo/generic-search', { name });
+            if (response.status === 200) {
+                alert(' Generic medicine searched successfully');
+                console.log(response);
+
+            } else {
+                alert('There was a problem in searching a medicine');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Server Error : ', error);
+        }
+    }
+    const handleChange = (e) => {
+        setName(e.target.value);
+    }
+
     return (
         <div>
             <div className='image' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
@@ -49,8 +73,8 @@ export default function GenericSearch() {
                     <h1 style={{ color: "Black", margin: "150px 0px 0px 310px" }}>Please Enter...</h1>
                     <h1 style={{ color: "#2380ea", margin: "0px 0px 0px 230px" }}>/{text}/</h1>
                 </div>
-                <form action="/branded-compare-list" style={myStyle2}>
-                    <input type="text" placeholder="Enter Generic Medicine Here..." className="search-input" style={myStyle3} />
+                <form onSubmit={handleSubmit} action="/branded-compare-list" style={myStyle2}>
+                    <input type="text" placeholder="Enter Generic Medicine Here..." onChange={handleChange} className="search-input" style={myStyle3} />
                     <button className="search-button" style={myStyle4}>
                         <b>Search</b>
                         <i className="fa fa-search" />
