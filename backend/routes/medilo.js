@@ -4,21 +4,22 @@ const mediloController=require('../controllers/medilo');
 
 router
   .route('/brand-search')
-  .post(mediloController.brandMedicine);
+    .post(mediloController.brandMedicine);
 
- router
+router
   .route('/generic-search')
-  .post(mediloController.genericMedicine);
+    .post(mediloController.genericMedicine);
   
-  router
+router
   .route('/generic-compare')
-  .post(mediloController.compareGeneric); 
+    .post(mediloController.compareGeneric); 
 
-  router
+router
   .route('/brand-compare')
-  .post(mediloController.compareBrand);
+    .post(mediloController.compareBrand);
   
-  router
+router
   .route('/request-medicine')
-  .post(mediloController.requestMedicine);
+    .post(mediloController.requestMedicine);
+
 module.exports= router;

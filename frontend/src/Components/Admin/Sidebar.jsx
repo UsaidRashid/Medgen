@@ -8,11 +8,10 @@ import {
     FaShoppingBag,
     FaThList
 }from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
 import '../../CSS/admin.css';
- import profile from '../../Images/profile.png';
- import axios from 'axios';
- import { Link } from 'react-router-dom';
+import profile from '../../Images/profile.png';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
@@ -22,10 +21,10 @@ const fetchStores = async (e) => {
     try {
         const response = await axios.post('http://localhost:6969/admin/fetch-stores');
         if( response.status===200){
-             alert('Store founded');
+             alert('Stores founded');
              console.log(response);
         }else{
-              alert('There was a problem in founding stores....',response.message);
+              alert('There was a problem in founding stores....',response.data.message);
         }      
     } catch (error) {
         console.error("Error in Founding Stores:", error);
@@ -48,7 +47,7 @@ const fetchStores = async (e) => {
                  alert('Requests founded');
                  console.log(response);
             }else{
-                  alert('There was a problem in founding requests....',response.message);
+                  alert('There was a problem in founding requests....',response.data.message);
             }      
         } catch (error) {
             console.error("Error in Founding Requests:", error);
@@ -70,7 +69,7 @@ const fetchStores = async (e) => {
                      alert('Dashboard founded');
                      console.log(response);
                 }else{
-                      alert('There was a problem in founding requests....',response.message);
+                      alert('There was a problem in founding requests....',response.data.message);
                 }      
             } catch (error) {
                 console.error("Error in Founding Dashboard:", error);

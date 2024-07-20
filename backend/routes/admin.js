@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/admin');
+const storeController = require('../controllers/store');
 
 router
     .route('/add-brand')
@@ -15,16 +16,17 @@ router
         .post(adminController.fetchRequests);
 
 router
-    .route('/fetch-stores')
-        .post(adminController.fetchStores);
-
-router
     .route('/fetch-dashboard')
         .post(adminController.fetchDashboard);
 
 router
+    .route('/fetch-stores')
+        .post(storeController.fetchStores);
+
+
+router
     .route('/delete-store')
-        .post(adminController.deleteStore);
+        .post(storeController.deleteStore);
     
         
 module.exports=router;
