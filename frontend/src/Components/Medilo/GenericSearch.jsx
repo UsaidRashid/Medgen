@@ -54,6 +54,9 @@ export default function GenericSearch() {
             if (response.status === 200) {
                 alert(response.data.message);
                 navigate('/branded-compare-list');
+            }else if(response.status===201){
+                alert(response.data.message);
+                navigate('/medicine-not-found');
             } else {
                 alert(response.data.message);
             }

@@ -19,6 +19,7 @@ import BrandedCompareList from './Components/Medilo/BrandedCompareList';
 import Medilo from './Components/Medilo/Medilo';
 import ComparePage from './Components/Medilo/ComparePage';
 import RequestForm from './Components/Medilo/RequestForm';
+import MedicineNotFound from './Components/Medilo/MedicineNotFound';
 
 import Homepage from './Components/Homepage';
 
@@ -48,6 +49,7 @@ return (
           <Route path='/user-request-form' element={<ProtectedRoute><RequestForm/></ProtectedRoute>}></Route>
           <Route path='/branded-compare-list' element={<ProtectedRoute><BrandedCompareList/></ProtectedRoute>}></Route>
           <Route path='/generic-compare-list' element={<ProtectedRoute><GenericCompareList/></ProtectedRoute>}></Route>
+          <Route path='medicine-not-found' element={<ProtectedRoute><MedicineNotFound/></ProtectedRoute>}></Route>
 
 
           <Route path='/login' element={<Login/>}></Route>

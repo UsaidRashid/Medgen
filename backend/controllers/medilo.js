@@ -8,7 +8,7 @@ module.exports.brandMedicine=async(req,res)=>{
               if(!name) return res.status(400).json({message:'Please Fill in something in the search bar!'});
 
               const medicine=await brand.findOne({name});
-              if(!medicine) return res.status(400).json({message:`Seems like our database doesnt have any medicine named ${name}... \nYou can request for it to admin! OR Check if you entered a correct name`});
+              if(!medicine) return res.status(201).json({message:`Seems like our database doesnt have any medicine named ${name}... \nYou can request for it to admin! OR Check if you entered a correct name`});
 
               return res.status(200).json({message:'Brand Medicine Fetched Successfully...',medicine});
        }catch(error){
@@ -23,7 +23,7 @@ module.exports.genericMedicine=async(req,res)=>{
               if(!name) return res.status(400).json({message:'Please Fill in something in the search bar!'});
 
               const medicine=await brand.findOne({name});
-              if(!medicine) return res.status(400).json({message:`Seems like our database doesnt have any medicine named ${name}... \nYou can request for it to admin! OR Check if you entered a correct name`});
+              if(!medicine) return res.status(201).json({message:`Seems like our database doesnt have any medicine named ${name}... \nYou can request for it to admin! OR Check if you entered a correct name`});
 
               return res.status(200).json({message:'Generic Medicine Fetched Successfully...',medicine});
        }catch(error){
