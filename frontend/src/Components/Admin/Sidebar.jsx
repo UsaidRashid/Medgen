@@ -129,7 +129,7 @@ const Sidebar = ({ children }) => {
         </div>
 
         <Link
-          to="/admin"
+          to="/admin/dashboard"
           className="link"
           activeclassName="active"
           onClick={fetchDashboard}
@@ -156,7 +156,7 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-        <Link to="/admin/response" className="link" activeclassName="active">
+        <Link to="/admin/add-medicine" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"
