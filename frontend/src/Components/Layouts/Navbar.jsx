@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../../Images/logo-navbar.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import profile from '../../Images/profile.png';
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -77,7 +78,12 @@ export default function Navbar() {
       </ul>
       
       <div className="d-flex flex-row w-25 justify-content-around">
-        {!isLoggedin? <button style={{borderRadius:'100px',width:'200px'}} type="button" onClick={handleLogin} class="btn btn-success">Login</button> : <button style={{borderRadius:'100px',width:'200px'}} onClick={handleLogout} type="button" class="btn btn-danger">Logout</button>}
+        {!isLoggedin? <button style={{borderRadius:'100px',width:'200px'}} type="button" onClick={handleLogin} class="btn btn-success">Login</button> : <button style={{borderRadius:'100px',width:'200px'}} type="button" onClick={handleLogout} class="btn btn-danger">Logout</button>}
+        <div className='container-fluid'>
+        <Link class="nav-link text-white" to="/user-profile">  <img className=" bottom-0 start-0" src={profile}  style={{height:"50px",width:"50px",borderRadius:"50"}}/></Link>
+
+          </div>
+
       </div>
      
     </div>
