@@ -29,7 +29,7 @@ import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
 import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
-
+import UpdateDetails from './Components/Medilo/UserProfileUpdate';
 export default function App(){
 return (
     <div className="App">
@@ -47,7 +47,7 @@ return (
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
-
+         
 
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
@@ -56,7 +56,9 @@ return (
           <Route path='/admin/response' element={<AddMedicine/>}></Route>
           <Route path='/admin/store' element={<Adminstore/>}></Route>
           <Route path='/admin/requests' element={<Requests/>}></Route>
-
+          
+          <Route path='/Updatedetails' element={<UpdateDetails/>}></Route>
+          
           <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
           

@@ -1,0 +1,22 @@
+
+.img1{
+    width:25px;
+    height:25px;
+  }
+  .google{
+    width:25px;
+    height:25px;
+    float: left;
+    
+  }
+  .function{
+    width:150px;
+    padding-top: 6px;
+    font-size: larger;
+    border-color: aliceblue;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
