@@ -25,6 +25,7 @@ import Homepage from './Components/Homepage';
 
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import AdminAuthentication from './Components/AdminAuthentication';
 
 import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
@@ -54,6 +55,7 @@ return (
 
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
+          <Route path='/adminauthentication' element={<AdminAuthentication/>}></Route>
 
           <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}></Route>
           <Route path='/admin/response' element={<ProtectedRoute><AddMedicine/></ProtectedRoute>}></Route>

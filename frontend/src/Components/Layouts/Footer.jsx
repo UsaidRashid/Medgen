@@ -40,7 +40,7 @@ export default function Footer() {
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/admin" class="nav-link p-0">
+                <a href="/adminauthentication" class="nav-link p-0">
                   Admin
                 </a>
               </li>
