@@ -10,6 +10,7 @@ import Adminstore from './Components/Admin/Storedetails';
 import Requests from './Components/Admin/Requests';
 import AddMedicine from './Components/Admin/AddMedicine';
 import AddBrandedMedicine from './Components/Admin/AddBrandedMedicine';
+import AddGenericMedicine from './Components/Admin/AddGenericMedicine';
 
 import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
 import Storelocator from './Components/Vendors/Storelocator';
@@ -63,6 +64,7 @@ return (
           <Route path='/admin/dashboard' element={<SuperProtectedRoute><AdminDashboard/></SuperProtectedRoute>}></Route>
           <Route path='/admin/add-medicine' element={<SuperProtectedRoute><AddMedicine/></SuperProtectedRoute>}></Route>
           <Route path='/admin/add-branded-medicine' element={<SuperProtectedRoute><AddBrandedMedicine/></SuperProtectedRoute>}></Route>
+          <Route path='/admin/add-generic-medicine' element={<SuperProtectedRoute><AddGenericMedicine/></SuperProtectedRoute>}></Route>
           <Route path='/admin/store' element={<SuperProtectedRoute><Adminstore/></SuperProtectedRoute>}></Route>
           <Route path='/admin/requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
 

@@ -44,16 +44,26 @@ module.exports.addGeneric=async(req,res)=>{
             code,
             salt,
             batch,
-            price
-        
+            price,
+            alternativeFor
         }=req.body;
 
         if(!name || !code || !salt || !batch || !price) return res.status(400).json({message:'Some important information about medicine is missing...'});
 
-        const newGeneric=new generic(medicine);
+        const newGeneric=new Generic({ name, code, salt, batch, price, alternativeFor: [] });
         await newGeneric.save();
 
-        return res.status(200).json({messsage:'Generic Medicine Added Successfully!',newGeneric});
+        const alternativeIds = [];
+        for (const alternative of alternativeFor) {
+            const newAlt = new Brand({ ...alternative, alternatives: [newGeneric._id] });
+            await newAlt.save();
+            alternativeIds.push(newAlt._id);
+        }
+
+        newGeneric.alternativeFor = alternativeIds;
+        await newGeneric.save();
+
+        return res.status(200).json({message:'Generic Medicine Added Successfully!',newGeneric});
     }
     catch(error){
         console.error(error);
@@ -65,7 +75,7 @@ module.exports.fetchRequests = async (req,res)=>{
     try{
         const response = await request.find({});
         
-        return res.status(200).json({messsage:'Requests fetched successfully!',response});
+        return res.status(200).json({message:'Requests fetched successfully!',response});
     }
     catch(error){
         console.error(error);

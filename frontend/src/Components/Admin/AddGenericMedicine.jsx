@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 import background from '../../Images/response-bg.jpg'
 import axios from 'axios';
 
-export default function AddBrandedMedicine() {
+export default function AddGenericMedicine() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ export default function AddBrandedMedicine() {
     salt: '',
     batch: '',
     price: '',
-    alternatives: [{ name: '', code: '', salt: '', batch: '', price: '' }]
+    alternativeFor: [{ name: '', code: '', salt: '', batch: '', price: '' }]
   });
 
   const handleChange = (event) => {
@@ -26,33 +26,33 @@ export default function AddBrandedMedicine() {
 
   const handleAlternativeChange = (index, event) => {
     const { name, value } = event.target;
-    const updatedAlternatives = formData.alternatives.map((alternative, i) =>
+    const updatedAlternatives = formData.alternativeFor.map((alternative, i) =>
       i === index ? { ...alternative, [name]: value } : alternative
     );
-    setFormData({ ...formData, alternatives: updatedAlternatives });
+    setFormData({ ...formData, alternativeFor: updatedAlternatives });
   };
 
   const addAlternativeField = () => {
     setFormData({
       ...formData,
-      alternatives: [
-        ...formData.alternatives,
+      alternativeFor: [
+        ...formData.alternativeFor,
         { name: '', code: '', salt: '', batch: '', price: '' }
       ]
     });
   };
 
   const deleteAlternativeField = (index) => {
-    const updatedAlternatives = formData.alternatives.filter((_, i) => i !== index);
-    setFormData({ ...formData, alternatives: updatedAlternatives });
+    const updatedAlternatives = formData.alternativeFor.filter((_, i) => i !== index);
+    setFormData({ ...formData, alternativeFor: updatedAlternatives });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await axios.post('http://localhost:6969/admin/add-brand', formData);
-
+      const response = await axios.post('http://localhost:6969/admin/add-generic', formData);
+        console.log(response);
       if (response.status === 200) {
         alert(response.data.message);
         navigate("/admin/add-medicine");
@@ -81,7 +81,7 @@ export default function AddBrandedMedicine() {
           <h1 className='font-weight-bold' style={{margin:"1.3rem 0 0 4.5rem", color:"black"}}>ADD</h1>
           <div className="overflow-auto" style={{maxHeight: "70vh"}}>
             <form className="form-group p-2 my-4" onSubmit={handleSubmit}>
-              <h5>Brand Medicine Information...</h5>
+              <h5>Generic Medicine Information...</h5>
               <div className="mb-3 px-3">
                 <label htmlFor="medicine-name" className="form-label text-dark">MEDICINE NAME</label>
                 <input  type="text" style={{border: ".8px solid black"}} className="form-control" id="medicine-name" name="name" value={formData.name} onChange={handleChange} required/>
@@ -104,10 +104,10 @@ export default function AddBrandedMedicine() {
               </div>
               <hr />
               <div className="mb-3">
-                <h5>Alternatives Information...</h5>
-              {formData.alternatives.map((alternative, index) => (
+                <h5>Branded Medicines Information...</h5>
+              {formData.alternativeFor.map((alternative, index) => (
                 <div key={index} className="mb-3">
-                  <h6>Alternative {index + 1}</h6>
+                  <h6>Branded Medicine {index + 1}</h6>
                   <div className="mb-3 px-3">
                     <label htmlFor={`alt-medicine-name-${index}`} className="form-label text-dark">MEDICINE NAME</label>
                     <input required type="text" className="form-control" id={`alt-medicine-name-${index}`} name="name" value={alternative.name} onChange={(event) => handleAlternativeChange(index, event)} />
