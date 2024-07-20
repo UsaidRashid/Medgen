@@ -5,6 +5,7 @@ import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
 
 import Admin from './Components/Admin/Dashboard';
+import AddMedicineButton from './Components/Admin/AddMedicineButton';
 import Adminstore from './Components/Admin/Storedetails';
 import Requests from './Components/Admin/Requests';
 import AddMedicine from './Components/Admin/AddMedicine';
@@ -37,9 +38,7 @@ return (
       <Router>
       <Navbar/>
         <Routes>
-          
           <Route path='/' element={<Homepage/>}></Route>
-          
           <Route path='/medilo' element={<Medilo/>}> </Route>
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
           <Route path='/generic-search' element={<GenericSearch/>}></Route>
@@ -56,6 +55,7 @@ return (
           <Route path='/admin/response' element={<AddMedicine/>}></Route>
           <Route path='/admin/store' element={<Adminstore/>}></Route>
           <Route path='/admin/requests' element={<Requests/>}></Route>
+          <Route path='/add-medicine-button' element={<AddMedicineButton/>}></Route>
 
           <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
