@@ -1,127 +1,190 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
-    FaTh,
-    FaBars,
-    FaUserAlt,
-    FaRegChartBar,
-    FaCommentAlt,
-    FaShoppingBag,
-    FaThList
-}from "react-icons/fa";
-import '../../CSS/admin.css';
-import profile from '../../Images/profile.png';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+  FaTh,
+  FaBars,
+  FaUserAlt,
+  FaRegChartBar,
+  FaCommentAlt,
+  FaShoppingBag,
+  FaThList,
+} from "react-icons/fa";
+import "../../CSS/admin.css";
+import profile from "../../Images/profile.png";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
-const Sidebar = ({children}) => {
-    const[isOpen ,setIsOpen] = useState(false);
-    const toggle = () => setIsOpen (!isOpen);
+const Sidebar = ({ children }) => {
+    const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(true);
+  const toggle = () => setIsOpen(!isOpen);
 
-    const fetchStores = async (e) => {
-        try {
-            const response = await axios.post('http://localhost:6969/admin/fetch-stores');
-            if( response.status===200){
-                alert(response.data.message);
-            }else{
-                alert('There was a problem in founding stores....',response.data.message);
-            }      
-        } catch (error) {
-            console.error("Error in Fetching Stores:", error);
-            alert( `${error.name} -> ${error.message}`);
-            if (error.response) {
-                alert("Error from server: " + error.response.data.message);
-            } else if (error.request) {
-                alert("No response from the server");
-            } else {
-                alert("Error setting up the request: " + error.message);
-            }
-        }
-    };
+    const handleLogout = async (e) => {
+            alert('Logged out successfully');
+            navigate('/');
+            localStorage.removeItem('admin');
+    }
 
+  const fetchStores = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:6969/admin/fetch-stores"
+      );
+      if (response.status === 200) {
+        alert(response.data.message);
+      } else {
+        alert(
+          "There was a problem in founding stores....",
+          response.data.message
+        );
+      }
+    } catch (error) {
+      console.error("Error in Fetching Stores:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
 
-    const fetchRequests = async (e) => {
-        try {
-            const response = await axios.post('http://localhost:6969/admin/fetch-requests');
-            if( response.status===200){
-                alert(response.data.message);    
-            }else{
-                alert('There was a problem in founding requests....',response.data.message);
-            }      
-        } catch (error) {
-            console.error("Error in Fetching Requests:", error);
-            alert( `${error.name} -> ${error.message}`);
-            if (error.response) {
-                alert("Error from server: " + error.response.data.message);
-            } else if (error.request) {
-                alert("No response from the server");
-            } else {
-                alert("Error setting up the request: " + error.message);
-            }
-        }
-    };
+  const fetchRequests = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:6969/admin/fetch-requests"
+      );
+      if (response.status === 200) {
+        alert(response.data.message);
+      } else {
+        alert(
+          "There was a problem in founding requests....",
+          response.data.message
+        );
+      }
+    } catch (error) {
+      console.error("Error in Fetching Requests:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
 
-    const fetchDashboard = async (e) => {
-        try {
-            const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
-            if( response.status===200){
-                alert(response.data.message);
-            }else{
-                alert('There was a problem in founding requests....',response.data.message);
-            }      
-        } catch (error) {
-            console.error("Error in Fetching Dashboard Entities:", error);
-                alert( `${error.name} -> ${error.message}`);
-            if (error.response) {
-                alert("Error from server: " + error.response.data.message);
-            } else if (error.request) {
-                alert("No response from the server");
-            } else {
-                alert("Error setting up the request: " + error.message);
-            }
-        }
-    };
-    
-    return (
-        <div className="">
-       
-        
-           <div style={{width: isOpen ? "200px" : "60px"}} className="sidebar ">
-               <div className="top_section">
-                   <h1 style={{display: isOpen ? "block" : "none"}} className="logo">MEDGEN</h1>
-                   <div style={{marginLeft: isOpen ? "20px" : "0px",marginBottom:"10px"}} className="bars">
-                       <FaBars onClick={toggle}/>
-                       <div className='container-fluid'>
-                        <img className="position-absolute bottom-0 start-0" src={profile} alt="" style={{height:"50px",width:"50px",borderRadius:"50"}}/>
-                        </div>
-                        </div>
-                   <div>
-                    
-                   </div>
-               </div>
-              
-               <Link to="/admin" className="link" activeclassName="active" onClick={fetchDashboard}>
-                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Dashboard</div>
-                </Link>
+  const fetchDashboard = async (e) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:6969/admin/fetch-dashboard"
+      );
+      if (response.status === 200) {
+        alert(response.data.message);
+      } else {
+        alert(
+          "There was a problem in founding requests....",
+          response.data.message
+        );
+      }
+    } catch (error) {
+      console.error("Error in Fetching Dashboard Entities:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
 
-                <Link to="/admin/requests" className="link" activeclassName="active" onClick={fetchRequests}>
-                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Requests</div>
-                </Link>
-
-                <Link to="/admin/response" className="link" activeclassName="active">
-                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Add Medicine</div>
-                </Link>
-
-                <Link to="/admin/store" className="link" activeclassName="active" onClick={fetchStores}>
-                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">Registered Stores</div>
-                </Link>
-                   
-                       
-               
-           </div>
-          
-           <main>{children}</main>
+  return (
+    <div className="">
+      <div style={{ width: isOpen ? "200px" : "60px" }} className="sidebar ">
+        <div className="top_section">
+          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+            MEDGEN
+          </h1>
+          <div
+            style={{
+              marginLeft: isOpen ? "20px" : "0px",
+              marginBottom: "10px",
+            }}
+            className="bars"
+          >
+            <FaBars onClick={toggle} />
+            <div className="container-fluid">
+              <img
+                className="position-absolute bottom-0 start-0"
+                src={profile}
+                alt=""
+                style={{ height: "50px", width: "50px", borderRadius: "50" }}
+              />
+            </div>
+          </div>
         </div>
-    );
+
+        <Link
+          to="/admin"
+          className="link"
+          activeclassName="active"
+          onClick={fetchDashboard}
+        >
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Dashboard
+          </div>
+        </Link>
+
+        <Link
+          to="/admin/requests"
+          className="link"
+          activeclassName="active"
+          onClick={fetchRequests}
+        >
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Requests
+          </div>
+        </Link>
+
+        <Link to="/admin/response" className="link" activeclassName="active">
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Add Medicine
+          </div>
+        </Link>
+
+        <Link
+          to="/admin/store"
+          className="link"
+          activeclassName="active"
+          onClick={fetchStores}
+        >
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Registered Stores
+          </div>
+        </Link>
+
+        <button className='btn btn-danger' onClick={handleLogout}>Logout as Admin</button>
+      </div>
+
+      <main>{children}</main>
+    </div>
+  );
 };
 
 export default Sidebar;
