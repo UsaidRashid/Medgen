@@ -1,10 +1,16 @@
 const Store = require('../models/stores');
-
+const User = require('../models/users');
+const jwt = require('jsonwebtoken');
 
 module.exports.registerStore = async (req, res) => {
     try {
-        
-        const { gst_No, name, latitude, longitude, pincode, address, contact, ownerName, residentialAddress } = req.body;
+        console.log(req.body);
+        const { gst_No, name, latitude, longitude, pincode, address} = req.body.formData;
+        const token = req.body.token;
+
+        if(!token) return res.status(400).json({message:'Seems Like you are not logged in... Please Login for registering your store!'});
+
+        const decodedToken = jwt.verify(token,'secretkey');
         
         if(!gst_No || !name || !pincode || !address || !contact || !ownerName || !residentialAddress) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
 
@@ -15,12 +21,15 @@ module.exports.registerStore = async (req, res) => {
             longitude,
             pincode,
             address,
-            contact,
-            ownerName,
-            residentialAddress,
+            owner : decodedToken._id
         });
 
         const newStore = await store.save();
+
+        newStore.populate('owner');
+        
+        const user = await User.findOneAndUpdate({_id:decodedToken._id}, { store: newStore._id }, { new: true , populate:'store'});
+        
         res.status(200).json({ message: "Your Store Successfully Added...", newStore });
     } catch (error) {
         console.error(error);

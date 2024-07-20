@@ -25,17 +25,9 @@ const storeSchema = new mongoose.Schema(
             type : String,
             required : true,
         },
-        contact: {
-            type : Number,
-            required : true,
-        },
-        ownerName : {
-            type : String,
-            required : true,
-        },
-        residentialAddress:{
-            type : String ,
-            required : true,
+        owner : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'User'
         }
     }
 );

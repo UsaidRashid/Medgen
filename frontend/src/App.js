@@ -29,6 +29,7 @@ import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
 import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
+import ProtectedRoute from './Components/Layouts/ProtectedRoute';
 
 export default function App(){
 return (
@@ -40,25 +41,25 @@ return (
           
           <Route path='/' element={<Homepage/>}></Route>
           
-          <Route path='/medilo' element={<Medilo/>}> </Route>
-          <Route path='/branded-search' element={<BrandedSearch/>}></Route>
-          <Route path='/generic-search' element={<GenericSearch/>}></Route>
-          <Route path='/compare-medicines' element={<ComparePage/>}></Route>
-          <Route path='/user-request-form' element={<RequestForm/>}></Route>
-          <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
-          <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
+          <Route path='/medilo' element={<ProtectedRoute><Medilo/></ProtectedRoute>}> </Route>
+          <Route path='/branded-search' element={<ProtectedRoute><BrandedSearch/></ProtectedRoute>}></Route>
+          <Route path='/generic-search' element={<ProtectedRoute><GenericSearch/></ProtectedRoute>}></Route>
+          <Route path='/compare-medicines' element={<ProtectedRoute><ComparePage/></ProtectedRoute>}></Route>
+          <Route path='/user-request-form' element={<ProtectedRoute><RequestForm/></ProtectedRoute>}></Route>
+          <Route path='/branded-compare-list' element={<ProtectedRoute><BrandedCompareList/></ProtectedRoute>}></Route>
+          <Route path='/generic-compare-list' element={<ProtectedRoute><GenericCompareList/></ProtectedRoute>}></Route>
 
 
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
 
-          <Route path='/admin' element={<Admin/>}></Route>
-          <Route path='/admin/response' element={<AddMedicine/>}></Route>
-          <Route path='/admin/store' element={<Adminstore/>}></Route>
-          <Route path='/admin/requests' element={<Requests/>}></Route>
+          <Route path='/admin' element={<ProtectedRoute><Admin/></ProtectedRoute>}></Route>
+          <Route path='/admin/response' element={<ProtectedRoute><AddMedicine/></ProtectedRoute>}></Route>
+          <Route path='/admin/store' element={<ProtectedRoute><Adminstore/></ProtectedRoute>}></Route>
+          <Route path='/admin/requests' element={<ProtectedRoute><Requests/></ProtectedRoute>}></Route>
 
-          <Route path='/store-locator' element={<Storelocator/>}></Route>
-          <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
+          <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
+          <Route path='/store-registration-form' element={<ProtectedRoute><StoreRegistrationForm/></ProtectedRoute>}></Route>
           
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>

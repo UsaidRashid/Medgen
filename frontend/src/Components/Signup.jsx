@@ -32,6 +32,8 @@ export default function Signup() {
 
       if( response.status===200){
           alert(response.data.message);
+          const token = response.data.token;
+          localStorage.setItem('token',token);
           navigate("/");
       }else{
           alert('There was a problem in signing up the user....',response.data.message);

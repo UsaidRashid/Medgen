@@ -25,6 +25,9 @@ export default function Login() {
 
             if(response.status===200){
                 alert(response.data.message);
+                const token = response.data.token;
+                localStorage.setItem('token',token);
+                console.log(token);
                 navigate('/');
             }else{
                 alert('Some Error occured :', response.data.message);
@@ -77,7 +80,7 @@ export default function Login() {
                       placeholder="Username"
                       name="username"
                       value={formData.username}
-              
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -88,7 +91,7 @@ export default function Login() {
                       className="form-control  border border-3 border-black border rounded-5 p-4 h3"
                       placeholder="Password"
                       value={formData.password}
-                
+                      onChange={handleChange}
                       required
                     />
                   </div>

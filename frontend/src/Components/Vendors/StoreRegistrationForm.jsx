@@ -20,9 +20,6 @@ const RegistrationForm = () => {
     pincode: "",
     address: "",
     gst_No: "",
-    ownerName: "",
-    contact: "",
-    residentialAddress: ""
   });
 
   const handleChange = (e) => {
@@ -35,7 +32,8 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post('http://localhost:6969/store/register-store', formData);
+      const token = localStorage.getItem('token');
+      const response = await axios.post('http://localhost:6969/store/register-store', {token,formData});
 
       if (response.status === 200) {
         alert(response.data.message);
@@ -102,21 +100,6 @@ const RegistrationForm = () => {
             <Form.Group as={Col} controlId="gst_No">
               <Form.Label>GST No.</Form.Label>
               <Form.Control type="text" name="gst_No" placeholder="Enter GST No." value={formData.gst_No} required onChange={handleChange}/>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="StoreOwnerName">
-              <Form.Label>Store Owner Name</Form.Label>
-              <Form.Control type="text" name="ownerName" placeholder="Owner Name" value={formData.ownerName} required onChange={handleChange}/>
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="Contactno.">
-              <Form.Label>Owner Contact No.</Form.Label>
-              <Form.Control type="text" name="contact" placeholder="Enter Owner Contact No." value={formData.contact} required onChange={handleChange} />
-            </Form.Group>
-
-            <Form.Group as={Col} controlId="Residentialaddess">
-              <Form.Label>Residential Address</Form.Label>
-              <Form.Control type="text" name="residentialAddress" placeholder="Owner Residential Address" value={formData.residentialAddress} required onChange={handleChange}/>
             </Form.Group>
 
             <div className='d-grid gap-2 col-6 mx-auto my-5 mb-3  py-5 w-25'>
