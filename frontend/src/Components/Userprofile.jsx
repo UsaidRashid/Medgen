@@ -1,5 +1,5 @@
 import React from 'react';
-import "../CSS/userprofile.css"; 
+// import "../CSS/UserProfile.css"; 
 
 const Userprofile = () => {
     return (
@@ -24,7 +24,7 @@ const Userprofile = () => {
                     
                     
                 
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></div>
             </div>
         </div>
         

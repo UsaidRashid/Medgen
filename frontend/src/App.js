@@ -28,15 +28,16 @@ import Homepage from './Components/Homepage';
 
 import Signup from './Components/Signup';
 import Login from './Components/Login';
+import Userprofile from './Components/Userprofile';
+import UpdateDetails from './Components/UserProfileUpdate';
+
 import ProtectedRoute from './Components/Layouts/ProtectedRoute';
 import SuperProtectedRoute from './Components/Layouts/SuperProtectedRoute';
-
 
 import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
 import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
-import Userprofile from './Components/Userprofile';
 
 export default function App(){
 return (
@@ -60,6 +61,7 @@ return (
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/user-profile' element={<Userprofile/>}></Route>
+          <Route path='/user-profile-update' element={<UpdateDetails/>}></Route>
 
           <Route path='/admin' element={<AdminAuthentication/>}></Route>
           <Route path='/admin/dashboard' element={<SuperProtectedRoute><AdminDashboard/></SuperProtectedRoute>}></Route>
