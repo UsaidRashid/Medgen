@@ -20,9 +20,11 @@ import GenericSearch from './Components/Medilo/GenericSearch';
 import GenericCompareList from './Components/Medilo/GenericCompareList';
 import BrandedCompareList from './Components/Medilo/BrandedCompareList';
 import Medilo from './Components/Medilo/Medilo';
-import ComparePage from './Components/Medilo/ComparePage';
 import RequestForm from './Components/Medilo/RequestForm';
 import MedicineNotFound from './Components/Medilo/MedicineNotFound';
+import G2BComparePage from './Components/Medilo/G2BComparePage';
+import B2GComparePage from './Components/Medilo/B2GComparePage';
+
 
 import Homepage from './Components/Homepage';
 
@@ -51,7 +53,8 @@ return (
           <Route path='/medilo' element={<ProtectedRoute><Medilo/></ProtectedRoute>}> </Route>
           <Route path='/branded-search' element={<ProtectedRoute><BrandedSearch/></ProtectedRoute>}></Route>
           <Route path='/generic-search' element={<ProtectedRoute><GenericSearch/></ProtectedRoute>}></Route>
-          <Route path='/compare-medicines' element={<ProtectedRoute><ComparePage/></ProtectedRoute>}></Route>
+          <Route path='/compare-generic-medicine' element={<ProtectedRoute><G2BComparePage/></ProtectedRoute>}></Route>
+          <Route path='/compare-brand-medicine' element={<ProtectedRoute><B2GComparePage/></ProtectedRoute>}></Route>
           <Route path='/user-request-form' element={<ProtectedRoute><RequestForm/></ProtectedRoute>}></Route>
           <Route path='/branded-compare-list' element={<ProtectedRoute><BrandedCompareList/></ProtectedRoute>}></Route>
           <Route path='/generic-compare-list' element={<ProtectedRoute><GenericCompareList/></ProtectedRoute>}></Route>

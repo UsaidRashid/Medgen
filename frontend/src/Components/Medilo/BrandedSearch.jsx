@@ -52,7 +52,7 @@ export default function BrandedSearch() {
             const response = await axios.post('http://localhost:6969/medilo/brand-search',{name});
             if( response.status===200){
                 alert(response.data.message);
-                navigate('/generic-compare-list')
+                navigate('/branded-compare-list')
             }else if(response.status===201){
                 alert(response.data.message);
                 navigate('/medicine-not-found');

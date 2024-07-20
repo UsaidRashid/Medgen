@@ -53,7 +53,7 @@ export default function GenericSearch() {
             const response = await axios.post('http://localhost:6969/medilo/generic-search', { name });
             if (response.status === 200) {
                 alert(response.data.message);
-                navigate('/branded-compare-list');
+                navigate('/generic-compare-list');
             }else if(response.status===201){
                 alert(response.data.message);
                 navigate('/medicine-not-found');
