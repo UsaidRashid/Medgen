@@ -21,7 +21,13 @@ const genericSchema = new mongoose.Schema(
         price : {
             type :Number ,
             required: true,
-        }
+        },
+        alternativeFor : [
+            {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Brand'
+            }
+        ]
     }
 );
 

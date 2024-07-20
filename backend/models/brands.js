@@ -21,7 +21,13 @@ const brandSchema = new mongoose.Schema(
         price : {
             type :Number ,
             required: true,
-        }
+        },
+        alternatives : [
+            {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Generic'
+            }
+        ]
     }
 );
 

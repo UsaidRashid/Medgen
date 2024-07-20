@@ -1,7 +1,7 @@
-const brand=require('../models/brands');
-const generic=require('../models/generics');
-const store=require('../models/stores');
-const request=require('../models/requests');
+const Brand=require('../models/brands');
+const Generic=require('../models/generics');
+const Store=require('../models/stores');
+const Request=require('../models/requests');
 
 module.exports.addBrand=async(req,res)=>{
     try{
@@ -10,13 +10,23 @@ module.exports.addBrand=async(req,res)=>{
             code,
             salt,
             batch,
-            price
-        
+            price,
+            alternatives
         }=req.body;
-
+        
         if(!name || !code || !batch || !price || !salt) return res.status(400).json({message:'Some important information about medicine is missing...'});
 
-        const newBrand=new brand(medicine);
+        const newBrand = new Brand({ name, code, salt, batch, price, alternatives: [] });
+        await newBrand.save();
+
+        const alternativeIds = [];
+        for (const alternative of alternatives) {
+            const newAlt = new Generic({ ...alternative, alternativeFor: [newBrand._id] });
+            await newAlt.save();
+            alternativeIds.push(newAlt._id);
+        }
+
+        newBrand.alternatives = alternativeIds;
         await newBrand.save();
         
         return res.status(200).json({messsage:'Brand Medicine added successfully' ,newBrand});
