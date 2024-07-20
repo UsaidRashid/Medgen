@@ -17,40 +17,59 @@ const Sidebar = ({children}) => {
     const[isOpen ,setIsOpen] = useState(false);
     const toggle = () => setIsOpen (!isOpen);
 
-const fetchStores = async (e) => {
-    try {
-        const response = await axios.post('http://localhost:6969/admin/fetch-stores');
-        if( response.status===200){
-             alert('Stores founded');
-             console.log(response);
-        }else{
-              alert('There was a problem in founding stores....',response.data.message);
-        }      
-    } catch (error) {
-        console.error("Error in Founding Stores:", error);
+    const fetchStores = async (e) => {
+        try {
+            const response = await axios.post('http://localhost:6969/admin/fetch-stores');
+            if( response.status===200){
+                alert(response.data.message);
+            }else{
+                alert('There was a problem in founding stores....',response.data.message);
+            }      
+        } catch (error) {
+            console.error("Error in Fetching Stores:", error);
             alert( `${error.name} -> ${error.message}`);
-        if (error.response) {
-            alert("Error from server: " + error.response.data.message);
-        } else if (error.request) {
-            alert("No response from the server");
-        } else {
-            alert("Error setting up the request: " + error.message);
+            if (error.response) {
+                alert("Error from server: " + error.response.data.message);
+            } else if (error.request) {
+                alert("No response from the server");
+            } else {
+                alert("Error setting up the request: " + error.message);
             }
         }
-      };
+    };
 
 
-      const fetchRequests = async (e) => {
+    const fetchRequests = async (e) => {
         try {
             const response = await axios.post('http://localhost:6969/admin/fetch-requests');
             if( response.status===200){
-                 alert('Requests founded');
-                 console.log(response);
+                alert(response.data.message);    
             }else{
-                  alert('There was a problem in founding requests....',response.data.message);
+                alert('There was a problem in founding requests....',response.data.message);
             }      
         } catch (error) {
-            console.error("Error in Founding Requests:", error);
+            console.error("Error in Fetching Requests:", error);
+            alert( `${error.name} -> ${error.message}`);
+            if (error.response) {
+                alert("Error from server: " + error.response.data.message);
+            } else if (error.request) {
+                alert("No response from the server");
+            } else {
+                alert("Error setting up the request: " + error.message);
+            }
+        }
+    };
+
+    const fetchDashboard = async (e) => {
+        try {
+            const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
+            if( response.status===200){
+                alert(response.data.message);
+            }else{
+                alert('There was a problem in founding requests....',response.data.message);
+            }      
+        } catch (error) {
+            console.error("Error in Fetching Dashboard Entities:", error);
                 alert( `${error.name} -> ${error.message}`);
             if (error.response) {
                 alert("Error from server: " + error.response.data.message);
@@ -58,35 +77,10 @@ const fetchStores = async (e) => {
                 alert("No response from the server");
             } else {
                 alert("Error setting up the request: " + error.message);
-                }
             }
-          };
-
-          const fetchDashboard = async (e) => {
-            try {
-                const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
-                if( response.status===200){
-                     alert('Dashboard founded');
-                     console.log(response);
-                }else{
-                      alert('There was a problem in founding requests....',response.data.message);
-                }      
-            } catch (error) {
-                console.error("Error in Founding Dashboard:", error);
-                    alert( `${error.name} -> ${error.message}`);
-                if (error.response) {
-                    alert("Error from server: " + error.response.data.message);
-                } else if (error.request) {
-                    alert("No response from the server");
-                } else {
-                    alert("Error setting up the request: " + error.message);
-                    }
-                }
-              };
+        }
+    };
     
-    
-    
-
     return (
         <div className="">
        

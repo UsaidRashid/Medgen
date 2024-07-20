@@ -35,20 +35,25 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      console.log(formData);
-
       const response = await axios.post('http://localhost:6969/store/register-store', formData);
 
       if (response.status === 200) {
-        alert('Your Store Register Successfully!');
+        alert(response.data.message);
         navigate("/");
       } else {
-        alert('There was a problem in registring the store....', response.message);
+        alert('There was a problem in registring the store....', response.data.message);
       }
 
     } catch (error) {
-      console.error(error);
-      alert('Server Error : ', error);
+        console.error("Error in Registering:", error);
+        alert( `${error.name} -> ${error.message}`);
+        if (error.response) {
+          alert("Error from server: " + error.response.data.message);
+        } else if (error.request) {
+          alert("No response from the server");
+        } else {
+          alert("Error setting up the request: " + error.message);
+        }
     }
   };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import background from '../../Images/Bg21.png';
 import { useTypewriter } from 'react-simple-typewriter';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const myStyle2 = {
     marginLeft: "1rem",
@@ -43,6 +44,7 @@ export default function GenericSearch() {
     });
 
     const [name, setName] = useState('');
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -50,17 +52,24 @@ export default function GenericSearch() {
         try {
             const response = await axios.post('http://localhost:6969/medilo/generic-search', { name });
             if (response.status === 200) {
-                alert(' Generic medicine searched successfully');
-                console.log(response);
-
+                alert(response.data.message);
+                navigate('/branded-compare-list');
             } else {
-                alert('There was a problem in searching a medicine');
+                alert(response.data.message);
             }
         } catch (error) {
-            console.error(error);
-            alert('Server Error : ', error);
+            console.error("Error in Searching:", error);
+            alert( `${error.name} -> ${error.message}`);
+            if (error.response) {
+              alert("Error from server: " + error.response.data.message);
+            } else if (error.request) {
+              alert("No response from the server");
+            } else {
+              alert("Error setting up the request: " + error.message);
+            }
         }
     }
+
     const handleChange = (e) => {
         setName(e.target.value);
     }
