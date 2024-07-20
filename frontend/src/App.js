@@ -17,8 +17,10 @@ import GenericSearch from './Components/Medilo/GenericSearch';
 import GenericCompareList from './Components/Medilo/GenericCompareList';
 import BrandedCompareList from './Components/Medilo/BrandedCompareList';
 import Medilo from './Components/Medilo/Medilo';
-import ComparePage from './Components/Medilo/ComparePage';
+import B2GComparePage from './Components/Medilo/B2GComparePage';
 import RequestForm from './Components/Medilo/RequestForm';
+import G2BComparePage from './Components/Medilo/G2BComparePage';
+
 
 import Homepage from './Components/Homepage';
 
@@ -43,10 +45,13 @@ return (
           <Route path='/medilo' element={<Medilo/>}> </Route>
           <Route path='/branded-search' element={<BrandedSearch/>}></Route>
           <Route path='/generic-search' element={<GenericSearch/>}></Route>
-          <Route path='/compare-medicines' element={<ComparePage/>}></Route>
+          <Route path='/b2g-compare-medicines' element={<B2GComparePage/>}></Route>
+          <Route path='/g2b-compare-medicines' element={<G2BComparePage/>}></Route>
           <Route path='/user-request-form' element={<RequestForm/>}></Route>
           <Route path='/branded-compare-list' element={<BrandedCompareList/>}></Route>
           <Route path='/generic-compare-list' element={<GenericCompareList/>}></Route>
+          
+          
 
 
           <Route path='/login' element={<Login/>}></Route>
