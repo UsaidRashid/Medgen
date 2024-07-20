@@ -29,6 +29,7 @@ import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
 import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
+import Userprofile from './Components/Userprofile';
 
 export default function App(){
 return (
@@ -59,7 +60,8 @@ return (
 
           <Route path='/store-locator' element={<Storelocator/>}></Route>
           <Route path='/store-registration-form' element={<StoreRegistrationForm/>}></Route>
-          
+          <Route path='/user-profile' element={<Userprofile/>}></Route>
+
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
