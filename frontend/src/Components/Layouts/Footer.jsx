@@ -26,7 +26,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link tp="/services" class="nav-link p-0">
+                <Link to="/services" class="nav-link p-0">
                   Services
                 </Link>
               </li>
