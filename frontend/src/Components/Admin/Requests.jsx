@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import background from '../../Images/adminRequestBg.jpeg';
 import '../../CSS/Requests.css';
-
-
-
 import { useNavigate } from 'react-router-dom';
 
 import Sidebar from './Sidebar';

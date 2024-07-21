@@ -1,5 +1,5 @@
 
-import '../../CSS/Update.css';
+import '../CSS/Update.css';
 export default function UpdateDetails() {
 
   const handleSubmit = (e) => {

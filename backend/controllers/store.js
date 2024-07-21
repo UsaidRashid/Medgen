@@ -1,30 +1,35 @@
 const Store = require('../models/stores');
-
-
-module.exports.fetchStores = async (req, res) => {
-    try {
-        const stores = await Store.find({});
-        res.status(200).json({ message: "Here we can see the data of all Stores...", stores });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Internal Server Error', error });
-    }
-};
+const User = require('../models/users');
+const jwt = require('jsonwebtoken');
 
 module.exports.registerStore = async (req, res) => {
     try {
+        console.log(req.body);
+        const { gst_No, name, latitude, longitude, pincode, address} = req.body.formData;
+        const token = req.body.token;
+
+        if(!token) return res.status(400).json({message:'Seems Like you are not logged in... Please Login for registering your store!'});
+
+        const decodedToken = jwt.verify(token,'secretkey');
+        
+        if(!gst_No || !name || !pincode || !address || !contact || !ownerName || !residentialAddress) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
+
         const store = new Store({
-            gst_No: req.body.gst_No,
-            name: req.body.name,
-            latitude: req.body.latitude,
-            longitude: req.body.longitude,
-            pincode: req.body.pincode,
-            address: req.body.address,
-            contact: req.body.contact,
-            ownerName: req.body.ownerName,
-            residentialAddress: req.body.residentialAddress
+            gst_No,
+            name,
+            latitude,
+            longitude,
+            pincode,
+            address,
+            owner : decodedToken._id
         });
+
         const newStore = await store.save();
+
+        newStore.populate('owner');
+        
+        const user = await User.findOneAndUpdate({_id:decodedToken._id}, { store: newStore._id }, { new: true , populate:'store'});
+        
         res.status(200).json({ message: "Your Store Successfully Added...", newStore });
     } catch (error) {
         console.error(error);
@@ -34,11 +39,13 @@ module.exports.registerStore = async (req, res) => {
 
 module.exports.updateStore = async (req, res) => {
     try {
+        
         const { gst_No, name, latitude, longitude, pincode, address, contact, ownerName, residentialAddress } = req.body;
+        if(!gst_No || !name || !pincode || !address || !contact || !ownerName || !residentialAddress) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
+
         const store = await Store.findOneAndUpdate({ gst_No }, req.body, { new: true , runValidators: true });
-        if (!store) {
-            return res.status(400).json({ message: 'Store not found' });
-        }
+
+        if (!store)  return res.status(400).json({ message: 'Store not found' });
         res.status(200).json({ message: "Store Details Updated Successfully...", store });
     } catch (error) {
         console.error(error);
@@ -50,9 +57,7 @@ module.exports.deleteStore = async (req, res) => {
     try {
         const { gst_No } = req.body;
         const store = await Store.findOneAndDelete({ gst_No });
-        if (!store) {
-            return res.json({ message: 'Store not found' });
-        }
+        if (!store)    return res.status(400).json({ message: 'Store not found' });
         res.status(200).json({ message: 'Store deleted successfully...' });
     } catch (error) {
         console.error(error);
@@ -60,11 +65,17 @@ module.exports.deleteStore = async (req, res) => {
     }
 };
 
-module.exports.fetchStore = async (req, res) => {
+module.exports.fetchStores = async (req, res) => {
     try {
         const { gst_No } = req.body;
-        const store = await Store.findOne({ gst_No });
-        res.status(200).json({ message: "Your Requested Store Details...", store });
+        if(gst_No===undefined){
+            const stores = await Store.find({});
+            res.status(200).json({ message: "Here we can see the data of all Stores...", stores });
+        }else{
+            const store = await Store.findOne({ gst_No });
+            if(!store) return res.json({ message: 'Store not found' });
+            res.status(200).json({ message: "Your Requested Store Details...", store });
+        }
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Internal Server Error', error });

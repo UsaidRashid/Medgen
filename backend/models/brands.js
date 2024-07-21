@@ -12,6 +12,7 @@ const brandSchema = new mongoose.Schema(
         },
         salt : {
             type : String,
+            required: true,
         },
         batch : {
             type : Number,
@@ -20,7 +21,13 @@ const brandSchema = new mongoose.Schema(
         price : {
             type :Number ,
             required: true,
-        }
+        },
+        alternatives : [
+            {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Generic'
+            }
+        ]
     }
 );
 
