@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 6969;
-const cors=require('cors');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 const mongoUrl="mongodb://127.0.0.1:27017/Medgen";
@@ -23,7 +23,6 @@ const User = require('./models/users');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
-
 
 const passport = require('passport');
 const session = require('express-session');
@@ -61,8 +60,6 @@ app.use((err,req,res,next)=>{
     else res.status(500).json({message:'Internal Server Error'});
 });
 
-
-
 app.get('/',(req,res)=>{
     res.send('Hello from the backend');
 });
@@ -75,7 +72,7 @@ const adminRouter = require('./routes/admin');
 app.use('/users',userRouter);
 app.use('/medilo',mediloRouter);
 app.use('/store',storeRouter);
-// app.use('/admin',adminRouter);
+app.use('/admin',adminRouter);
 
 app.listen(port,(req,res)=>{
     console.log(`Server listening to port ${port}`);

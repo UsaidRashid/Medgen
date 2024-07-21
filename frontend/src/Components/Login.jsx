@@ -1,8 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/Login.css";
-import  {Link} from 'react-router-dom';
+import  {Link, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
+    const navigate = useNavigate();
+
+    const [formData , setFormData ] = useState({
+      username : '',
+      password : '',
+    });
+    
+    const handleChange = (e) => {
+        setFormData({
+          ...formData,
+          [e.target.name]:e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) =>{
+        e.preventDefault();
+        try{
+            const response = await axios.post('http://localhost:6969/users/login',formData);
+
+            if(response.status===200){
+                alert(response.data.message);
+                const token = response.data.token;
+                localStorage.setItem('token',token);
+                console.log(token);
+                navigate('/');
+            }else{
+                alert('Some Error occured :', response.data.message);
+            }
+        } catch (error) {
+            console.error("Error in Logging in:", error);
+            alert( `${error.name} -> ${error.message}`);
+            if (error.response) {
+              alert("Error from server: " + error.response.data.message);
+            } else if (error.request) {
+              alert("No response from the server");
+            } else {
+              alert("Error setting up the request: " + error.message);
+            }
+        }
+    }
+
+
+
   return (
     <div className="container-fluid bg-white">
       <div className="row">
@@ -28,26 +72,34 @@ export default function Login() {
             <div className="row">
               <div className="col-md-1"></div>
               <div className="col-md-10">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div class="form-group mt-4 mb-5 ">
                     <input
-                      type="email"
+                      type="text"
                       className="form-control border border-3 border-black p-4 border rounded-5 p-4 h3"
                       placeholder="Username"
+                      name="username"
+                      value={formData.username}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div class="form-group mt-4 mb-3">
                     <input
                       type="password"
+                      name="password"
                       className="form-control  border border-3 border-black border rounded-5 p-4 h3"
                       placeholder="Password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   <div className="container">
                     <div className="row">
                       <div className="col-md-4">
                         <label className="form-check-label text-dark h5">
-                          {" "}
+                          
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -55,7 +107,7 @@ export default function Login() {
                             checked
                           />
                           <b>Remember me</b>
-                        </label>{" "}
+                        </label>
                       </div>
                       <div className="col-md-4"></div>
                       <div className="col-md-4">

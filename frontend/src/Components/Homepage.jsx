@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import mediloNew from "../Images/mediloNew.png";
 import mapNew from "../Images/mapNew.png";
 import support from "../Images/support.png";
@@ -6,8 +6,10 @@ import newbg from "../Images/newbg.png";
 import "../CSS/Homepage.css";
 import { Link } from "react-router-dom";
 import { useTypewriter } from "react-simple-typewriter";
+import { useEffect } from "react";
 
 export default function Homepage() {
+
 
 const [text2] = useTypewriter({
   words: ['OUR MISSION'],

@@ -5,10 +5,47 @@ import wave from '../../Images/wave.png';
 import lowerImage from '../../Images/lower-1.png';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
+import React, { useState } from 'react';
 
+ 
 const RegistrationForm = () => {
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    medName: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(formData);
+
+      const response = await axios.post('http://localhost:6969/medilo/request-medicine',formData);
+
+      if( response.status===200){
+          alert('Successfully Submited!');
+      }else{
+          alert('Check your connection and try again!....',response.message);
+      }      
+
+    } catch (error) {
+        console.error(error);
+        alert('Server Error : ', error);
+    }
+  };
+
+
 
   return (
     <div>
@@ -24,23 +61,23 @@ const RegistrationForm = () => {
 
         <h1 className='text-center mb-5 text-dark'style={{fontSize:"50px"}}>Join our <b style={{color:'#004080'}}>MEDGEN </b>Family !</h1>
         <div className="formSection mx-5 border border-dark p-5" style={{boxShadow:'0 -5px 10px #232424' , borderRadius:'50px', backgroundColor:"white"}}>
-              <Form className='mx-5' >
+              <Form className='mx-5' onSubmit={handleSubmit} >
                
-                  <Form.Group as={Col} controlId="name">
-                    <Form.Control type="text" name="name" placeholder="Enter Your Name" className='border border-3 rounded-5'/>
+                  <Form.Group as={Col} controlId="name" >
+                    <Form.Control type="text"  name="name" placeholder="Enter Your Name" onChange={handleChange}  value={formData.name} className='border border-3 rounded-5' />
                   </Form.Group>
                   <div className=' my-5'>
                   </div>
                   <Form.Group as={Col} controlId="Storelng">
-                    <Form.Control type="text" name="name" placeholder="Enter your email" className='border border-3 rounded-5'/>
+                    <Form.Control type="text"   name="email" placeholder="Enter your email" onChange={handleChange} value={formData.email} className='border border-3 rounded-5'/>
                   </Form.Group>
                   <div className=' my-5'>
                   </div>
                   <Form.Group as={Col} controlId="medicine">
-                    <Form.Control type="tel" name="name" placeholder="Enter your medicine" className='border border-3 rounded-5' />
+                    <Form.Control type="tel"    name="medName" placeholder="Enter your medicine" onChange={handleChange} value={formData.medName} className='border border-3 rounded-5' />
                   </Form.Group>
                   <div class="my-5">
-    <textarea className="form-control 'border border-3 rounded-3'" id="exampleFormControlTextarea1" rows="3" placeholder='Enter your message(optional)' ></textarea>
+    <textarea className="form-control 'border border-3 rounded-3'" id="exampleFormControlTextarea1" rows="3" placeholder='Enter your message(optional)' name="message" value={formData.message} onChange={handleChange}></textarea>
   </div>
 
 

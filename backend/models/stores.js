@@ -5,7 +5,7 @@ const storeSchema = new mongoose.Schema(
         gst_No : {
             type : String,
             required : true,
-            // unique : true,
+            unique : true,
         },
         name:{
             type : String,
@@ -25,17 +25,9 @@ const storeSchema = new mongoose.Schema(
             type : String,
             required : true,
         },
-        contact: {
-            type : Number,
-            required : true,
-        },
-        ownerName : {
-            type : String,
-            required : true,
-        },
-        residentialAddress:{
-            type : String ,
-            required : true,
+        owner : {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'User'
         }
     }
 );
