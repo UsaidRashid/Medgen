@@ -60,11 +60,14 @@ module.exports.logout = async (req,res) =>{
 
 module.exports.fetchProfile = async (req,res) => {
     try {
-        const username = req.body.username;
+        const token = req.body.token;
 
-        if(!username) res.status(400).json({message:'Seems like you are not logged in!'});
+        if(!token) res.status(400).json({message:'Seems like you are not logged in!'});
+        
+        const decodedToken = jwt.verify('secretkey');
+        const _id = decodedToken._id;
 
-        const response = await User.findOne({username});
+        const response = await User.findOne({_id});
 
         if(!response) res.status(400).json({message:'Error in fetching your profile from database! Please log-in again...'});
 
@@ -78,11 +81,15 @@ module.exports.fetchProfile = async (req,res) => {
 
 module.exports.updateDetails = async (req,res) => {
     try {
-        const { name, email , contact , username } = req.body;
+        const { name, email , contact , token } = req.body;
 
         if(!name || !email) return res.status(400).json({message:"Required Fields shouldn't be ignored!"});
 
-        if(!username) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
+        if(!token) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
+
+        const decodedToken = jwt.verify('secretkey');
+        const _id = decodedToken._id;
+
 
         const updatedProfile = {
             name ,
@@ -90,7 +97,7 @@ module.exports.updateDetails = async (req,res) => {
             contact,
         };
 
-        const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
+        const updatedUser = await User.findOneAndUpdate({_id} , updatedProfile, { new : true, runValidators:true});
 
         if(!updatedUser) return res.status(400).json({message:"Couldn't find user profile ! Please try logging in again"});
 
