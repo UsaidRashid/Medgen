@@ -1,41 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Storelocator() {
-  const [stores, setStores] = useState([
-    {
-      id: 1,
-      name: 'Store A',
-      address: '123 Main St, Delhi, India',
-      latitude: 40.7128,
-      longitude: -74.006,
-      pincode: '12345'
-    },
-    {
-      id: 2,
-      name: 'Store B',
-      address: '456 , Agra, India',
-      latitude: 34.0522,
-      longitude: -118.2437,
-      pincode: '282004'
-    },
-    {
-        id: 2,
-        name: 'Store C',
-        address: '456 , Agra, India',
-        latitude: 34.0522,
-        longitude: -118.2437,
-        pincode: '282004'
-      },
-      {
-        id: 2,
-        name: 'Store D',
-        address: '456 , Agra, India',
-        latitude: 34.0522,
-        longitude: -118.2437,
-        pincode: '282004'
-      },
-    // Add more stores as needed
-  ]);
+  const [stores, setStores] = useState([]);
 
   return (
 

@@ -63,8 +63,8 @@ return (
 
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
-          <Route path='/user-profile' element={<Userprofile/>}></Route>
-          <Route path='/user-profile-update' element={<UpdateDetails/>}></Route>
+          <Route path='/user-profile' element={<ProtectedRoute><Userprofile/></ProtectedRoute>}></Route>
+          <Route path='/user-profile-update' element={<ProtectedRoute><UpdateDetails/></ProtectedRoute>}></Route>
 
           <Route path='/admin' element={<AdminAuthentication/>}></Route>
           <Route path='/admin/dashboard' element={<SuperProtectedRoute><AdminDashboard/></SuperProtectedRoute>}></Route>

@@ -159,6 +159,8 @@ function Storedetails(){
         }
     ]
     const [records,setRecords]=useState(data);
+
+    
     
     function handleFilter(event){
         const newData=data.filter(row=>{
