@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../CSS/Login.css";
 import  {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import{ jwtDecode }from 'jwt-decode';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -26,6 +27,8 @@ export default function Login() {
             if(response.status===200){
                 alert(response.data.message);
                 const token = response.data.token;
+                const decodedToken = jwtDecode(token);
+                console.log(decodedToken);
                 localStorage.setItem('token',token);
                 console.log(token);
                 navigate('/');

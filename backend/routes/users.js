@@ -16,10 +16,6 @@ router
         .post(userController.logout);
 
 router
-    .route('/profile')
-        .post(userController.fetchProfile);
-
-router
     .route('/update')
         .post(userController.updateDetails);
 

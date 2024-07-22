@@ -30,6 +30,8 @@ const Medicine = () => {
         navigate('/admin-response');
     };
 
+    
+
     return (
         <div className='d-flex flex-row' style={{ backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "right", height: '95vh', backgroundColor: "white" }}>
             <Sidebar />
