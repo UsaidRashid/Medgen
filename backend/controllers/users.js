@@ -26,7 +26,7 @@ module.exports.signup = async (req,res) =>{
                 console.log(err);
                 return res.status(500).json({message:'Error saving the user',err});
             }
-            const token = jwt.sign(  {_id:registeredUser._id} ,'secretkey', { algorithm: 'HS256' });
+            const token = jwt.sign(  {username:username,name:name,contact:contact,email:email} ,'secretkey', { algorithm: 'HS256' });
 
             return res.status(200).json({message:'User Registered Successfully!',registeredUser,token});
         });
@@ -39,7 +39,7 @@ module.exports.signup = async (req,res) =>{
 
 module.exports.login = async (req,res) =>{
     const user = await User.findOne({ username : req.body.username});
-    const token = jwt.sign(  {_id:user._id} ,'secretkey', { algorithm: 'HS256' });
+    const token = jwt.sign( {user}   /*{username:user.username,name:user.name,contact:user.contact,email:user.email}*/ ,'secretkey', { algorithm: 'HS256' });
     return res.status(200).json({message:'User Logged in successfully',token});
 }
 
@@ -58,38 +58,17 @@ module.exports.logout = async (req,res) =>{
 }
 
 
-module.exports.fetchProfile = async (req,res) => {
-    try {
-        const token = req.body.token;
-
-        if(!token) res.status(400).json({message:'Seems like you are not logged in!'});
-        
-        const decodedToken = jwt.verify('secretkey');
-        const _id = decodedToken._id;
-
-        const response = await User.findOne({_id});
-
-        if(!response) res.status(400).json({message:'Error in fetching your profile from database! Please log-in again...'});
-
-        res.status(200).json({message:'Profile Details fetched successfully!',response});
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({message:'Internal Server Error',error});
-    }
-}
-
-
 module.exports.updateDetails = async (req,res) => {
     try {
-        const { name, email , contact , token } = req.body;
+        const { name, email , contact } = req.body.formData;
+        const token = req.body.token;
 
         if(!name || !email) return res.status(400).json({message:"Required Fields shouldn't be ignored!"});
 
         if(!token) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
 
-        const decodedToken = jwt.verify('secretkey');
-        const _id = decodedToken._id;
-
+        const decodedToken = jwt.verify(token,'secretkey');
+        const username = decodedToken.username;
 
         const updatedProfile = {
             name ,
@@ -97,11 +76,14 @@ module.exports.updateDetails = async (req,res) => {
             contact,
         };
 
-        const updatedUser = await User.findOneAndUpdate({_id} , updatedProfile, { new : true, runValidators:true});
+        const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
+        console.log(updatedUser);
+
+        const newToken = jwt.sign({username:updatedUser.username,name:updatedUser.name,contact:updatedUser.contact,email:updatedUser.email} ,'secretkey', { algorithm: 'HS256' });
 
         if(!updatedUser) return res.status(400).json({message:"Couldn't find user profile ! Please try logging in again"});
 
-        return res.status(200).json({message:'User Updated successfully',updatedProfile});
+        return res.status(200).json({message:'User Updated successfully',token:newToken});
         
     } catch (error) {
         console.error(error);

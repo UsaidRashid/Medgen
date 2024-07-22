@@ -1,8 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {jwtDecode} from 'jwt-decode';
 
 const Userprofile = () => {
     const navigate = useNavigate();
+
+    const token = localStorage.getItem('token');
+
+    let decodedToken=null;
+
+    if(token){
+        decodedToken = jwtDecode(token);
+    }else{
+        alert('Seems like you are not logged in...');
+        navigate('/login');
+    }
+    
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -27,23 +40,23 @@ const Userprofile = () => {
               <h4 class="text-right">Profile Settings</h4>
             </div>
             <div class="row mt-2">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label class="labels"> Name</label>
-                <p>Usaid Rashid</p>
+                { decodedToken!==null &&   <p>{decodedToken.name}</p>}
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <label class="labels">User name</label>
-                <p>usaid786</p>
+                { decodedToken!==null &&   <p>{decodedToken.username}</p>}
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels">Email ID</label>
-                <p>rashidusaid2@gmail.com</p>
+                { decodedToken!==null &&   <p>{decodedToken.email}</p>}
               </div>
               <div class="col-md-12">
                 <label class="labels">Mobile Number</label>
-                <p>9315000139</p>
+                { decodedToken!==null &&   <p>{decodedToken.contact}</p>}
               </div>
 
               <div class="mt-5 text-center">

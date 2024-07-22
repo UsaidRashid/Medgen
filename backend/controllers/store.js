@@ -67,9 +67,11 @@ module.exports.deleteStore = async (req, res) => {
 
 module.exports.fetchStores = async (req, res) => {
     try {
+        console.log('stores ke andar');
         const { gst_No } = req.body;
         if(gst_No===undefined){
-            const stores = await Store.find({});
+            const stores = await Store.find({}).populate('owner');
+            console.log(stores);
             res.status(200).json({ message: "Here we can see the data of all Stores...", stores });
         }else{
             const store = await Store.findOne({ gst_No });

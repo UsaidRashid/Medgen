@@ -132,7 +132,7 @@ const Sidebar = ({ children }) => {
           to="/admin/dashboard"
           className="link"
           activeclassName="active"
-          onClick={fetchDashboard}
+          // onClick={fetchDashboard}
         >
           <div
             style={{ display: isOpen ? "block" : "none" }}

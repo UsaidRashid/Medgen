@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BsFillArchiveFill,
   BsPeopleFill,
@@ -62,6 +62,8 @@ export default function Dashboard() {
       amt: 2100,
     },
   ];
+     
+
 
   return (
     <div className="d-flex flex-row">
@@ -105,7 +107,7 @@ export default function Dashboard() {
             <h3 className="text-black">Stores</h3>
             <BsFillBellFill className="card_icon text-black" />
           </div>
-          <h1 className="text-black">42</h1>
+          <h1 className="text-black"></h1>
         </div>
       </div>
 
