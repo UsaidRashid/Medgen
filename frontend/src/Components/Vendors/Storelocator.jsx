@@ -1,7 +1,23 @@
 import React, { useEffect, useState } from 'react';
-
+import axios from 'axios';
 function Storelocator() {
   const [stores, setStores] = useState([]);
+
+  useEffect(()=>{
+    const fetchData = async () => {
+      try{
+        console.log("store");
+         const response = await axios.post('http://localhost:6969/store/fetch-stores');
+         const{stores} =response.data;
+         setStores(stores);
+        }catch (error) {
+          console.error("Error fetching data", error);
+        }
+      
+      };
+      fetchData();
+      },);
+
 
   return (
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect ,useState } from "react";
 import {
   BsFillArchiveFill,
   BsPeopleFill,
@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import Sidebar from "./Sidebar";
 import '../../CSS/admin.css';
+import axios from 'axios';
 
 export default function Dashboard() {
   const data = [
@@ -61,9 +62,30 @@ export default function Dashboard() {
       month2: 4300,
       amt: 2100,
     },
-  ];
-     
+  ]; 
 
+const[gencnt,setGencnt]=useState(0);
+const[brandcnt,setBrandcnt]=useState(0);
+const[reqcnt,setReqcnt]=useState(0);
+const[storecnt,setStorecnt]=useState(0);
+
+useEffect(()=>{
+  const fetchData = async () => {
+  try{
+  console.log("Dashboard");
+   const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
+   const { genCnt, brandCnt, reqCnt, storeCnt } = response.data;
+   setGencnt(genCnt);
+   setBrandcnt(brandCnt);
+   setReqcnt(reqCnt);
+   setStorecnt(storeCnt);
+  }catch (error) {
+    console.error("Error fetching data", error);
+  }
+
+};
+fetchData();
+},[]);
 
   return (
     <div className="d-flex flex-row">
@@ -80,7 +102,7 @@ export default function Dashboard() {
             <h3 className="text-black">generic medicines</h3>
             <BsFillArchiveFill className="card_icon text-black" />
             </div>
-          <h1 className="text-black">300</h1>
+          <h1 className="text-black">{gencnt}</h1>
         </div>
         <div
           class="btn btn-outline-info  p-3 mb-5  rounded card"
@@ -89,7 +111,7 @@ export default function Dashboard() {
             <h3 className="text-black">Branded medicines</h3>
             <BsFillArchiveFill className="card_icon text-black" />
           </div>
-          <h1 className="text-black ">12</h1>
+          <h1 className="text-black ">{brandcnt}</h1>
         </div>
         <div
           class="btn btn-outline-info  p-3 mb-5  rounded card"
@@ -98,7 +120,7 @@ export default function Dashboard() {
             <h3 className="text-black">Requests</h3>
             <BsPeopleFill className="card_icon text-black"  />
           </div>
-          <h1 className="text-black">33</h1>
+          <h1 className="text-black">{reqcnt}</h1>
         </div>
         <div
           class="btn btn-outline-info  p-3 mb-5  rounded card"
@@ -107,7 +129,7 @@ export default function Dashboard() {
             <h3 className="text-black">Stores</h3>
             <BsFillBellFill className="card_icon text-black" />
           </div>
-          <h1 className="text-black"></h1>
+          <h1 className="text-black">{storecnt}</h1>
         </div>
       </div>
 
