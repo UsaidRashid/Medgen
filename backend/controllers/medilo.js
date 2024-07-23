@@ -72,36 +72,4 @@ module.exports.genericMedicine=async(req,res)=>{
          return res.status(500).json({message:'internal server error',error});
          }  
         } 
-        const brand=require('../models/brands');
-const generic=require('../models/generics');
-const request=require('../models/requests');
-module.exports.brandMedicine=async(req,res)=>{
-    try{
-           
-           const{
-            name,
-           }=req.body;
-           const medicine=await brand.findOne({name});
-           
-        return res.status(200).json({message:'Brand Medicine fetched successfully',medicine});
-    }catch(error){
-           console.error(error);
-           return res.status(500).json({message:'internal server error',error});}
-    }
-
-module.exports.genericMedicine=async(req,res)=>{
-        try{
-               const{
-                name,
-               }=req.body;
-               const newGeneric=new generic({name});
-               const medicine2=await brand.findOne({name});
-               return res.status(200).json({message:'successfully inserted',medicine2});
-        }catch(error){
-               console.error(error);
-               return res.status(500).json({message:'internal server error',error});}         
-   }
-
-
-
-   
+       

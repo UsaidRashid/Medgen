@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mediloController=require('../controllers/medilo');
 
+
 router
   .route('/brand-search')
     .post(mediloController.brandMedicine);

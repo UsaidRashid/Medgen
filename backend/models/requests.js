@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const requestSchema = new mongoose.Schema(
     {
-        name : {
+        medicineName : {
+            type : String,
+            required : true,
+        },
+        userName : {
             type : String,
             required : true,
         },
@@ -10,11 +14,7 @@ const requestSchema = new mongoose.Schema(
             type : String,
             required : true,
         },
-        medName : {
-            type : String,
-            required : true,
-        },
-        message:{
+        contact:{
             type : String,
         }
     }
