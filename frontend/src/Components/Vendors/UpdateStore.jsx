@@ -59,12 +59,13 @@ export default function UpdateStore() {
                 <img
               src="image/store.png" style={{width:"50px" ,height:"500px"}}
               alt=""
-              className="img-fluid w-100 h-500"
+              className="img-fluid w-100 h-500 mt-5"
               id="img1"
             ></img>
                 </div>
                 <div className="col-md-6">
-                <Form className='mx-5 mt-5' onSubmit={handleSubmit}>
+                  <h3 className='text-center w-100 mt-5'>Update your Store Details</h3>
+                <Form className='mx-5 mt-2' onSubmit={handleSubmit}>
 
 <Form.Group as={Col} controlId="Storename">
   <Form.Label>Store Name</Form.Label>

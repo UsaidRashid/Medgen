@@ -77,7 +77,7 @@ return (
 
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
           <Route path='/store-registration-form' element={<ProtectedRoute><StoreRegistrationForm/></ProtectedRoute>}></Route>
-          <Route path='/UpdateStore' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
+          <Route path='/update-store' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
           
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>
