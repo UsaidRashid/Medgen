@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import {
   BsFillArchiveFill,
   BsPeopleFill,
@@ -16,9 +16,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import Sidebar from "./Sidebar";
-import '../../CSS/admin.css';
+import "../../CSS/admin.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const data = [
     {
       name: "med A",
@@ -63,101 +65,107 @@ export default function Dashboard() {
       amt: 2100,
     },
   ];
-     
-  const[gencnt,setGencnt]=useState(0);
-  const[brandcnt,setBrandcnt]=useState(0);
-  const[reqcnt,setReqcnt]=useState(0);
-  const[storecnt,setStorecnt]=useState(0);
-  
-  useEffect(()=>{
+
+  const [gencnt, setGencnt] = useState(0);
+  const [brandcnt, setBrandcnt] = useState(0);
+  const [reqcnt, setReqcnt] = useState(0);
+  const [storecnt, setStorecnt] = useState(0);
+
+  useEffect(() => {
     const fetchData = async () => {
-    try{
-     const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
-     const { genCnt,brandCnt , reqCnt, storeCnt } = response.data;
-     setGencnt(genCnt);
-     setBrandcnt(brandCnt);
-     setReqcnt(reqCnt);
-     setStorecnt(storeCnt);
-    }catch (error) {
-      console.error("Error fetching data", error);
-    }
-  
+      try {
+        const response = await axios.post(
+          "http://localhost:6969/admin/fetch-dashboard"
+        );
+        const { genCnt, brandCnt, reqCnt, storeCnt } = response.data;
+        setGencnt(genCnt);
+        setBrandcnt(brandCnt);
+        setReqcnt(reqCnt);
+        setStorecnt(storeCnt);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchData();
+  });
+
+  const openRequests = (e) => {
+    navigate("/admin/requests");
   };
-  fetchData();
-  },);
-     
+
+  const openStores = (e) => {
+    navigate("/admin/stores");
+  };
+
   return (
     <div className="d-flex flex-row">
       <div>
-                      <Sidebar/>
+        <Sidebar />
       </div>
       <div>
-      <main className="main-container">
-      <div className="main-cards ">
-        <div
-          class="btn btn-outline-info  p-3 mb-5 rounded card "
-        >
-          <div className="card-body card-body d-flex flex row">
-            <h3 className="text-black">generic medicines</h3>
-            <BsFillArchiveFill className="card_icon text-black" />
+        <main className="main-container">
+          <div className="main-cards ">
+            <div class="btn btn-outline-info  p-3 mb-5 rounded card ">
+              <div className="card-body card-body d-flex flex row">
+                <h3 className="text-black">Generic Medicines</h3>
+                <BsFillArchiveFill className="card_icon text-black" />
+              </div>
+              <h1 className="text-black">{gencnt}</h1>
             </div>
-          <h1 className="text-black">{gencnt}</h1>
-        </div>
-        <div
-          class="btn btn-outline-info  p-3 mb-5  rounded card"
-        >
-          <div className="card-body card-body d-flex flex row">
-            <h3 className="text-black">Branded medicines</h3>
-            <BsFillArchiveFill className="card_icon text-black" />
+            <div class="btn btn-outline-info  p-3 mb-5  rounded card">
+              <div className="card-body card-body d-flex flex row">
+                <h3 className="text-black">Brand Medicines</h3>
+                <BsFillArchiveFill className="card_icon text-black" />
+              </div>
+              <h1 className="text-black ">{brandcnt}</h1>
+            </div>
+            <div
+              class="btn btn-outline-info  p-3 mb-5  rounded card"
+              onClick={openRequests}
+            >
+              <div className="card-body d-flex flex row">
+                <h3 className="text-black">Requests</h3>
+                <BsPeopleFill className="card_icon text-black" />
+              </div>
+              <h1 className="text-black">{reqcnt}</h1>
+            </div>
+            <div
+              class="btn btn-outline-info  p-3 mb-5  rounded card"
+              onClick={openStores}
+            >
+              <div className="card-body card-body d-flex flex row">
+                <h3 className="text-black">Stores</h3>
+                <BsFillBellFill className="card_icon text-black" />
+              </div>
+              <h1 className="text-black">{storecnt}</h1>
+            </div>
           </div>
-          <h1 className="text-black ">{brandcnt}</h1>
-        </div>
-        <div
-          class="btn btn-outline-info  p-3 mb-5  rounded card"
-        >
-          <div className="card-body d-flex flex row">
-            <h3 className="text-black">Requests</h3>
-            <BsPeopleFill className="card_icon text-black"  />
-          </div>
-          <h1 className="text-black">{reqcnt}</h1>
-        </div>
-        <div
-          class="btn btn-outline-info  p-3 mb-5  rounded card"
-        >
-          <div className="card-body card-body d-flex flex row">
-            <h3 className="text-black">Stores</h3>
-            <BsFillBellFill className="card_icon text-black" />
-          </div>
-          <h1 className="text-black">{storecnt}</h1>
-        </div>
-      </div>
 
-      <div className="charts ">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            width={500}
-            height={300}
-            data={data}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="month1" fill="#8884d8" />
-            <Bar dataKey="month2" fill="#82ca9d" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </main>
+          <div className="charts" style={{ marginLeft: "10rem" }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                width={500}
+                height={300}
+                data={data}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="month1" fill="#8884d8" />
+                <Bar dataKey="month2" fill="#82ca9d" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </main>
       </div>
     </div>
-    
   );
 }

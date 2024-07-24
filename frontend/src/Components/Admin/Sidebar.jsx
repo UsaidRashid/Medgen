@@ -24,84 +24,6 @@ const Sidebar = ({ children }) => {
             localStorage.removeItem('admin');
     }
 
-  const fetchStores = async (e) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:6969/admin/fetch-stores"
-      );
-      if (response.status === 200) {
-        alert(response.data.message);
-      } else {
-        alert(
-          "There was a problem in founding stores....",
-          response.data.message
-        );
-      }
-    } catch (error) {
-      console.error("Error in Fetching Stores:", error);
-      alert(`${error.name} -> ${error.message}`);
-      if (error.response) {
-        alert("Error from server: " + error.response.data.message);
-      } else if (error.request) {
-        alert("No response from the server");
-      } else {
-        alert("Error setting up the request: " + error.message);
-      }
-    }
-  };
-
-  const fetchRequests = async (e) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:6969/admin/fetch-requests"
-      );
-      if (response.status === 200) {
-        alert(response.data.message);
-      } else {
-        alert(
-          "There was a problem in founding requests....",
-          response.data.message
-        );
-      }
-    } catch (error) {
-      console.error("Error in Fetching Requests:", error);
-      alert(`${error.name} -> ${error.message}`);
-      if (error.response) {
-        alert("Error from server: " + error.response.data.message);
-      } else if (error.request) {
-        alert("No response from the server");
-      } else {
-        alert("Error setting up the request: " + error.message);
-      }
-    }
-  };
-
-  const fetchDashboard = async (e) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:6969/admin/fetch-dashboard"
-      );
-      if (response.status === 200) {
-        alert(response.data.message);
-      } else {
-        alert(
-          "There was a problem in founding requests....",
-          response.data.message
-        );
-      }
-    } catch (error) {
-      console.error("Error in Fetching Dashboard Entities:", error);
-      alert(`${error.name} -> ${error.message}`);
-      if (error.response) {
-        alert("Error from server: " + error.response.data.message);
-      } else if (error.request) {
-        alert("No response from the server");
-      } else {
-        alert("Error setting up the request: " + error.message);
-      }
-    }
-  };
-
   return (
     <div className="">
       <div style={{ width: isOpen ? "200px" : "60px" }} className="sidebar ">
@@ -117,14 +39,15 @@ const Sidebar = ({ children }) => {
             className="bars"
           >
             <FaBars onClick={toggle} />
+            {isOpen &&
             <div className="container-fluid">
               <img
                 className="position-absolute bottom-0 start-0"
                 src={profile}
                 alt=""
-                style={{ height: "50px", width: "50px", borderRadius: "50" }}
+                style={{ height: "50px", width: "50px", borderRadius: "50" , marginBottom:'50px' , marginLeft:'70px'}}
               />
-            </div>
+            </div>}
           </div>
         </div>
 
@@ -132,7 +55,6 @@ const Sidebar = ({ children }) => {
           to="/admin/dashboard"
           className="link"
           activeclassName="active"
-          // onClick={fetchDashboard}
         >
           <div
             style={{ display: isOpen ? "block" : "none" }}
@@ -146,7 +68,7 @@ const Sidebar = ({ children }) => {
           to="/admin/requests"
           className="link"
           activeclassName="active"
-          onClick={fetchRequests}
+          
         >
           <div
             style={{ display: isOpen ? "block" : "none" }}
@@ -166,10 +88,9 @@ const Sidebar = ({ children }) => {
         </Link>
 
         <Link
-          to="/admin/store"
+          to="/admin/stores"
           className="link"
           activeclassName="active"
-          onClick={fetchStores}
         >
           <div
             style={{ display: isOpen ? "block" : "none" }}
@@ -178,8 +99,8 @@ const Sidebar = ({ children }) => {
             Registered Stores
           </div>
         </Link>
-
-        <button className='btn btn-danger' onClick={handleLogout}>Logout as Admin</button>
+          {isOpen &&
+        <button className='btn btn-danger position-absolute bottom-0 mx-4' onClick={handleLogout}>Logout as Admin</button>}
       </div>
 
       <main>{children}</main>

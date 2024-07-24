@@ -71,7 +71,7 @@ return (
           <Route path='/admin/add-medicine' element={<SuperProtectedRoute><AddMedicine/></SuperProtectedRoute>}></Route>
           <Route path='/admin/add-branded-medicine' element={<SuperProtectedRoute><AddBrandedMedicine/></SuperProtectedRoute>}></Route>
           <Route path='/admin/add-generic-medicine' element={<SuperProtectedRoute><AddGenericMedicine/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/store' element={<SuperProtectedRoute><Adminstore/></SuperProtectedRoute>}></Route>
+          <Route path='/admin/stores' element={<SuperProtectedRoute><Adminstore/></SuperProtectedRoute>}></Route>
           <Route path='/admin/requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
 
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
