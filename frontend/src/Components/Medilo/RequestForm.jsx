@@ -40,8 +40,15 @@ const RegistrationForm = () => {
       }      
 
     } catch (error) {
-        console.error(error);
-        alert('Server Error : ', error);
+      console.error("Error in Registering:", error);
+      alert( `${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
     }
   };
 

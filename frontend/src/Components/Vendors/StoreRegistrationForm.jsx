@@ -37,6 +37,9 @@ const RegistrationForm = () => {
 
       if (response.status === 200) {
         alert(response.data.message);
+        localStorage.removeItem('token');
+        const token = response.data.token;
+        localStorage.setItem('token',token);
         navigate("/");
       } else {
         alert('There was a problem in registring the store....', response.data.message);

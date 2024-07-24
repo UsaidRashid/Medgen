@@ -42,21 +42,21 @@ const Userprofile = () => {
             <div class="row mt-2">
               <div class="col-md-12">
                 <label class="labels"> Name</label>
-                { decodedToken!==null &&   <p>{decodedToken.name}</p>}
+                { decodedToken!==null &&   <p>{decodedToken.user.name}</p>}
               </div>
               <div class="col-md-12">
                 <label class="labels">User name</label>
-                { decodedToken!==null &&   <p>{decodedToken.username}</p>}
+                { decodedToken!==null &&   <p>{decodedToken.user.username}</p>}
               </div>
             </div>
             <div class="row mt-3">
               <div class="col-md-12">
                 <label class="labels">Email ID</label>
-                { decodedToken!==null &&   <p>{decodedToken.email}</p>}
+                { decodedToken!==null &&   <p>{decodedToken.user.email}</p>}
               </div>
               <div class="col-md-12">
                 <label class="labels">Mobile Number</label>
-                { decodedToken!==null &&   <p>{decodedToken.contact}</p>}
+                { decodedToken!==null &&   <p>{decodedToken.user.contact}</p>}
               </div>
 
               <div class="mt-5 text-center">

@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from 'react';
-
+import axios from 'axios';
 function Storelocator() {
   const [stores, setStores] = useState([]);
+  
 
+  useEffect(()=>{
+    const fetchData = async () => {
+    try{
+     const response = await axios.post('http://localhost:6969/store/fetch-stores');
+     const { stores } = response.data;
+     setStores(stores);
+     
+  
+    }catch (error) {
+      console.error("Error fetching data", error);
+    }
+  
+  };
+  fetchData();
+  },);
+  
   return (
 
     <div className="Store text-dark  " style={{backgroundColor:"#e6ffff"}}>
@@ -22,7 +39,6 @@ function Storelocator() {
   
    <div class="card-body d-flex flex-column"style={{backgroundColor:"white"}}>
     <h2 class="card-title text-center fw-bold font-monospace ">{store.name}</h2>
-    <p class="card-text"><strong>Store ID:</strong> {store.id}</p>
     <p class="card-text"><strong>Address:</strong> {store.address}</p>
     <p class="card-text"><strong>Latitude:</strong> {store.latitude}</p>
     <p class="card-text"><strong>Longitude:</strong> {store.longitude}</p>

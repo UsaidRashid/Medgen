@@ -26,9 +26,9 @@ module.exports.signup = async (req,res) =>{
                 console.log(err);
                 return res.status(500).json({message:'Error saving the user',err});
             }
-            const token = jwt.sign(  {username:username,name:name,contact:contact,email:email} ,'secretkey', { algorithm: 'HS256' });
+            const token = jwt.sign(  {user:registeredUser} ,'secretkey', { algorithm: 'HS256' });
 
-            return res.status(200).json({message:'User Registered Successfully!',registeredUser,token});
+            return res.status(200).json({message:'User Registered Successfully!',token});
         });
     } catch (error) {
         console.error(error);
@@ -38,8 +38,8 @@ module.exports.signup = async (req,res) =>{
 }
 
 module.exports.login = async (req,res) =>{
-    const user = await User.findOne({ username : req.body.username});
-    const token = jwt.sign( {user}   /*{username:user.username,name:user.name,contact:user.contact,email:user.email}*/ ,'secretkey', { algorithm: 'HS256' });
+    const user = await User.findOne({ username : req.body.username}).populate('store');
+    const token = jwt.sign( {user}  ,'secretkey', { algorithm: 'HS256' });
     return res.status(200).json({message:'User Logged in successfully',token});
 }
 
@@ -68,7 +68,8 @@ module.exports.updateDetails = async (req,res) => {
         if(!token) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
 
         const decodedToken = jwt.verify(token,'secretkey');
-        const username = decodedToken.username;
+        
+        const username = decodedToken.user.username;
 
         const updatedProfile = {
             name ,
@@ -77,9 +78,8 @@ module.exports.updateDetails = async (req,res) => {
         };
 
         const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
-        console.log(updatedUser);
 
-        const newToken = jwt.sign({username:updatedUser.username,name:updatedUser.name,contact:updatedUser.contact,email:updatedUser.email} ,'secretkey', { algorithm: 'HS256' });
+        const newToken = jwt.sign({user:updatedUser} ,'secretkey', { algorithm: 'HS256' });
 
         if(!updatedUser) return res.status(400).json({message:"Couldn't find user profile ! Please try logging in again"});
 
