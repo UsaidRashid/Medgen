@@ -19,7 +19,7 @@ export default function Navbar() {
     useEffect(()=>{
         if(token!==null) setIsLoggedIn(true);
         else setIsLoggedIn(false);
-    })
+    }, [token])
 
     const handleLogin = (e) =>{
       navigate('/login');
