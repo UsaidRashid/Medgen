@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports.registerStore = async (req, res) => {
     try {
-        console.log(req.body);
+        
         const { gst_No, name, latitude, longitude, pincode, address} = req.body.formData;
         const token = req.body.token;
 
@@ -12,7 +12,8 @@ module.exports.registerStore = async (req, res) => {
 
         const decodedToken = jwt.verify(token,'secretkey');
         
-        if(!gst_No || !name || !pincode || !address || !contact || !ownerName || !residentialAddress) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
+        
+        if(!gst_No || !name || !pincode || !address) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
 
         const store = new Store({
             gst_No,
@@ -21,16 +22,19 @@ module.exports.registerStore = async (req, res) => {
             longitude,
             pincode,
             address,
-            owner : decodedToken._id
+            owner : decodedToken.user._id
         });
 
         const newStore = await store.save();
 
+        
         newStore.populate('owner');
+
         
-        const user = await User.findOneAndUpdate({_id:decodedToken._id}, { store: newStore._id }, { new: true , populate:'store'});
+        const user = await User.findOneAndUpdate({_id:decodedToken.user._id}, { store: newStore._id }, { new: true , populate:'store'});
         
-        res.status(200).json({ message: "Your Store Successfully Added...", newStore });
+        const newToken = jwt.sign({user},'secretkey', { algorithm: 'HS256' });
+        res.status(200).json({ message: "Your Store Successfully Added...",token:newToken });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ message: 'Internal Server Error', error });
@@ -40,8 +44,8 @@ module.exports.registerStore = async (req, res) => {
 module.exports.updateStore = async (req, res) => {
     try {
         
-        const { gst_No, name, latitude, longitude, pincode, address, contact, ownerName, residentialAddress } = req.body;
-        if(!gst_No || !name || !pincode || !address || !contact || !ownerName || !residentialAddress) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
+        const { gst_No, name, pincode, address } = req.body;
+        if(!gst_No || !name || !pincode || !address) return res.status(400).json({message:'Some required information is missing... Please fill in all the fields!'});
 
         const store = await Store.findOneAndUpdate({ gst_No }, req.body, { new: true , runValidators: true });
 
@@ -69,7 +73,7 @@ module.exports.fetchStores = async (req, res) => {
     try {
         const { gst_No } = req.body;
         if(gst_No===undefined){
-            const stores = await Store.find({});
+            const stores = await Store.find({}).populate('owner');
             res.status(200).json({ message: "Here we can see the data of all Stores...", stores });
         }else{
             const store = await Store.findOne({ gst_No });

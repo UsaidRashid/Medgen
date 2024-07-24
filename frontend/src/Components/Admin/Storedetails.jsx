@@ -3,15 +3,17 @@ import DataTable from 'react-data-table-component';
 import Sidebar from './Sidebar';
 import axios from 'axios';
 
-function Storedetails(){
+export default function Storedetails(){
 
 
-    const [stores, setStores] = useState([]);
+    const [stores, setStores] = useState(
+      [
+      ]
+    );
 
     useEffect(()=>{
       const fetchData = async () => {
         try{
-          console.log("store");
            const response = await axios.post('http://localhost:6969/admin/fetch-stores');
            const{stores} =response.data;
            setStores(stores);
@@ -21,7 +23,7 @@ function Storedetails(){
         
         };
         fetchData();
-        },);
+      },);
 
     
     
@@ -35,39 +37,44 @@ function Storedetails(){
         <div>
 
 
-<table>
-    <thead>
+<table className="table table-striped table-hover "style={{width:'100%',border:'2px solid black'}} >
+    <thead className="mt-5 mb-5">
         <tr>
-            <th>gst_No</th>
+            <th scope="col">gst_No</th>
             
-            <th>name</th>
-            <th>latitude</th>
-            <th>longitude</th>
-            <th>pincode</th>
-            <th>address</th>
-            <th>owner</th>
+            <th scope="col">name</th>
+            <th scope="col">latitude</th>
+            <th scope="col">longitude</th>
+            <th scope="col">pincode</th>
+            <th scope="col">address</th>
+            <th scope="col">owner name</th>
+            <th scope="col">owner contact</th>
+            <th scope="col">owner email</th>
             
         </tr>
     </thead>
     <tbody>
         {stores.map(store=>(
+          
 
         <tr key={store.gst_No}>
+            <td>{store.gst_No}</td>
             <td>{store.name}</td>
             <td>{store.latitude}</td>
             <td>{store.longitude}</td>   
             <td>{store.pincode}</td> 
             <td>{store.address}</td> 
-            <td>{store.owner}</td> 
+            <td>{store.owner? store.owner.name:''}</td> 
+            <td>{store.owner? store.owner.contact:''}</td> 
+            <td>{store.owner? store.owner.email:''}</td> 
+            
         </tr>
         ))
         }
     </tbody>
 </table>
 </div>
-
-            </div>          
-        </> 
+  </div>
+ </> 
 )}
 
-export default Storedetails;

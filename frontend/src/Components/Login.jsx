@@ -25,9 +25,8 @@ export default function Login() {
 
             if(response.status===200){
                 alert(response.data.message);
-                const token = response.data.token;
+                const token = response.data.token;          
                 localStorage.setItem('token',token);
-                console.log(token);
                 navigate('/');
             }else{
                 alert('Some Error occured :', response.data.message);

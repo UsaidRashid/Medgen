@@ -73,7 +73,7 @@ module.exports.addGeneric=async(req,res)=>{
 
 module.exports.fetchRequests = async (req,res)=>{
     try{
-        const response = await request.find({});
+        const response = await Request.find({});
         
         return res.status(200).json({message:'Requests fetched successfully!',response});
     }
@@ -86,13 +86,13 @@ module.exports.fetchRequests = async (req,res)=>{
 
 module.exports.fetchDashboard=async(req,res)=>{
     try{
-        const generics = await generic.find({}); 
+        const generics = await Generic.find({}); 
         
-        const brands = await brand.find({});
+        const brands = await Brand.find({});
 
-        const requests = await request.find({});
+        const requests = await Request.find({});
         
-        const stores = await store.find({});
+        const stores = await Store.find({});
         
         return res.status(200).json({messsage:'Dashboard Updated Successfully!',genCnt:generics.length,brandCnt:brands.length,reqCnt:requests.length,storeCnt:stores.length}); 
     }
