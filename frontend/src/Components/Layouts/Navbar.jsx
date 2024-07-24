@@ -3,12 +3,18 @@ import logo from "../../Images/logo-navbar.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import profile from '../../Images/profile.png';
+import {jwtDecode}from 'jwt-decode';
 
 export default function Navbar() {
     const navigate = useNavigate();
     const [isLoggedin,setIsLoggedIn] = useState(false);
 
     const token = localStorage.getItem('token');
+    let storeOwner=false;
+    if(token){
+      const decodedToken= jwtDecode(token);
+      if(decodedToken.user.store!==undefined) storeOwner = true;
+    }
 
     useEffect(()=>{
         if(token!==null) setIsLoggedIn(true);
@@ -70,7 +76,10 @@ export default function Navbar() {
           </ul>
         </li>
         <li class="nav-item">
-          <Link class="nav-link text-white" to="/store-registration-form">Register Your Store!</Link>
+          {storeOwner?
+          <Link class="nav-link text-white" to="/">View Your Store!</Link> :
+          <Link class="nav-link text-white" to="/store-registration-form">Register Your Store!</Link> 
+          }
         </li>
         <li class="nav-item">
           <Link class="nav-link text-white" to="/user-request-form">Request for a medicine!</Link>

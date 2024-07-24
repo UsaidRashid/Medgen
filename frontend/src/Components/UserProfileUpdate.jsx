@@ -19,9 +19,9 @@ export default function UpdateDetails() {
   const navigate=useNavigate();
 
   const [formData,setFormData] = useState({
-    name : decodedToken.name? decodedToken.name: '',
-    email : decodedToken.email? decodedToken.email: '',
-    contact : decodedToken.contact? decodedToken.contact: '',
+    name : decodedToken.user.name? decodedToken.user.name: '',
+    email : decodedToken.user.email? decodedToken.user.email: '',
+    contact : decodedToken.user.contact? decodedToken.user.contact: '',
   });
 
   const handleChange = (e) => {

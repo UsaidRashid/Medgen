@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import React, { useEffect ,useState } from "react";
+=======
+import React, { useEffect, useState } from "react";
+import axios from 'axios';
+>>>>>>> main
 import {
   BsFillArchiveFill,
   BsPeopleFill,
@@ -62,31 +67,30 @@ export default function Dashboard() {
       month2: 4300,
       amt: 2100,
     },
-  ]; 
-
-const[gencnt,setGencnt]=useState(0);
-const[brandcnt,setBrandcnt]=useState(0);
-const[reqcnt,setReqcnt]=useState(0);
-const[storecnt,setStorecnt]=useState(0);
-
-useEffect(()=>{
-  const fetchData = async () => {
-  try{
-  console.log("Dashboard");
-   const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
-   const { genCnt, brandCnt, reqCnt, storeCnt } = response.data;
-   setGencnt(genCnt);
-   setBrandcnt(brandCnt);
-   setReqcnt(reqCnt);
-   setStorecnt(storeCnt);
-  }catch (error) {
-    console.error("Error fetching data", error);
-  }
-
-};
-fetchData();
-},[]);
-
+  ];
+     
+  const[gencnt,setGencnt]=useState(0);
+  const[brandcnt,setBrandcnt]=useState(0);
+  const[reqcnt,setReqcnt]=useState(0);
+  const[storecnt,setStorecnt]=useState(0);
+  
+  useEffect(()=>{
+    const fetchData = async () => {
+    try{
+     const response = await axios.post('http://localhost:6969/admin/fetch-dashboard');
+     const { genCnt,brandCnt , reqCnt, storeCnt } = response.data;
+     setGencnt(genCnt);
+     setBrandcnt(brandCnt);
+     setReqcnt(reqCnt);
+     setStorecnt(storeCnt);
+    }catch (error) {
+      console.error("Error fetching data", error);
+    }
+  
+  };
+  fetchData();
+  },);
+     
   return (
     <div className="d-flex flex-row">
       <div>
