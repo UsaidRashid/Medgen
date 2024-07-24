@@ -68,7 +68,8 @@ module.exports.updateDetails = async (req,res) => {
         if(!token) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
 
         const decodedToken = jwt.verify(token,'secretkey');
-        const username = decodedToken.username;
+        
+        const username = decodedToken.user.username;
 
         const updatedProfile = {
             name ,
@@ -77,7 +78,6 @@ module.exports.updateDetails = async (req,res) => {
         };
 
         const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
-        console.log(updatedUser);
 
         const newToken = jwt.sign({user:updatedUser} ,'secretkey', { algorithm: 'HS256' });
 

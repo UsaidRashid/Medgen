@@ -6,12 +6,14 @@ import axios from 'axios';
 export default function Storedetails(){
 
 
-    const [stores, setStores] = useState([]);
+    const [stores, setStores] = useState(
+      [
+      ]
+    );
 
     useEffect(()=>{
       const fetchData = async () => {
         try{
-          console.log("store");
            const response = await axios.post('http://localhost:6969/admin/fetch-stores');
            const{stores} =response.data;
            setStores(stores);
@@ -21,7 +23,7 @@ export default function Storedetails(){
         
         };
         fetchData();
-        },);
+      },);
 
     
     
@@ -45,20 +47,27 @@ export default function Storedetails(){
             <th scope="col">longitude</th>
             <th scope="col">pincode</th>
             <th scope="col">address</th>
-            <th scope="col">owner</th>
+            <th scope="col">owner name</th>
+            <th scope="col">owner contact</th>
+            <th scope="col">owner email</th>
             
         </tr>
     </thead>
     <tbody>
         {stores.map(store=>(
+          
 
         <tr key={store.gst_No}>
+            <td>{store.gst_No}</td>
             <td>{store.name}</td>
             <td>{store.latitude}</td>
             <td>{store.longitude}</td>   
             <td>{store.pincode}</td> 
             <td>{store.address}</td> 
-            <td>{store.owner}</td> 
+            <td>{store.owner? store.owner.name:''}</td> 
+            <td>{store.owner? store.owner.contact:''}</td> 
+            <td>{store.owner? store.owner.email:''}</td> 
+            
         </tr>
         ))
         }

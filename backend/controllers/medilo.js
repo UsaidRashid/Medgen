@@ -68,8 +68,8 @@ module.exports.genericMedicine=async(req,res)=>{
                await newReq.save();
                return res.status(200).json({message:'request generated successfully',newReq})
         }catch(error){
-           console.error(error);
-         return res.status(500).json({message:'internal server error',error});
+              console.error(error);
+              return res.status(500).json({message:'internal server error',error});
          }  
         } 
        

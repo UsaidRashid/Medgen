@@ -41,7 +41,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li class="nav-item">
-                <Link to="/admin" class="nav-link p-0">
+                <Link to="/admin/dashboard" class="nav-link p-0">
                   Admin
                 </Link>
               </li>
