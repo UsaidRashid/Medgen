@@ -123,8 +123,7 @@ export default function UpdateDetails() {
               
             </div>
           </div>
-        
-     
+      
     </>
   );
 }
