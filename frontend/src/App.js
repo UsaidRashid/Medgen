@@ -15,6 +15,7 @@ import AddGenericMedicine from './Components/Admin/AddGenericMedicine';
 import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
 import Storelocator from './Components/Vendors/Storelocator';
 import UpdateStore from './Components/Vendors/UpdateStore';
+import ViewStoreProfile from './Components/Vendors/ViewStoreProfile';
 
 import BrandedSearch from './Components/Medilo/BrandedSearch';
 import GenericSearch from './Components/Medilo/GenericSearch';
@@ -84,7 +85,7 @@ return (
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
           <Route path='/store-registration-form' element={<ProtectedRoute><StoreRegistrationForm/></ProtectedRoute>}></Route>
           <Route path='/update-store' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
-
+          <Route path='/view-store-profile' element={<ProtectedRoute><ViewStoreProfile/></ProtectedRoute>}></Route>
           
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>

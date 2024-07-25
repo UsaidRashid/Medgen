@@ -105,7 +105,7 @@ export default function Navbar() {
               </li>
               <li class="nav-item">
                 {storeOwner ? (
-                  <Link class="nav-link text-white" to="/">
+                  <Link class="nav-link text-white" to="/view-store-profile">
                     View Your Store!
                   </Link>
                 ) : (
