@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import background from "../../Images/storeLocator.png";
+import "../../CSS/Storeinfo.css"
+
 function Storelocator() {
   const [stores, setStores] = useState([]);
 
@@ -21,7 +24,7 @@ function Storelocator() {
   return (
     <div className="Store text-dark  " style={{ backgroundColor: "white" }}>
       <h1 className="text-center fw-bold">Store Locator</h1>
-      <div class="md-form mt-2 w-50  shadow-lg" style={{ marginLeft: "380px" }}>
+      <div class="md-form mt-2 w-50" style={{ marginLeft: "380px",  boxShadow: "8px 8px 12px rgb(0,0,0,.2)", borderRadius:"1rem" }}>
         <input
           class="form-control"
           id="larger"
@@ -30,22 +33,27 @@ function Storelocator() {
           aria-label="Search"
         />
       </div>
-      <div className=" ">
-        <ul className="d-flex flex-row flex-wrap justify-content-evenly">
+      <div>
+        <ul
+        className="d-flex flex-column flex-wrap justify-content-evenly" style={{color:"white"}}
+        >
           {stores.map((store) => (
             <li
-              className="my-3 hover fs-3 p-2 h-50  d-flex  flex-row  justify-content-center "
+              className="my-3 h-50 d-flex flex-row justify-content-center " 
               key={store.id}
             >
               <div
-                class="card shadow-lg border-2  border border-2 border-dark shadow-lg"
-                style={{ width: "35rem" }}
+                class="card border-2 border border-2 border-dark store-123" 
+                style={{ width: "60rem", fontSize:"18px"}}
               >
                 <div
-                  class="card-body d-flex flex-column "
-                  style={{ backgroundColor: "white" }}
+                  class="card-body d-flex flex-column"
+                  style={{ backgroundColor: "#E6E6FA", backgroundImage: `url(${background})`, backgroundRepeat: "no-repeat", backgroundSize: "14rem", backgroundPosition: "right"}}
                 >
-                  <h2 class="card-title text-center fw-bold font-monospace">
+                  <h2 
+                  class="card-title fw-bold font-monospace fs-2"
+                  style={{marginTop:"1px"}}
+                  >
                     {store.name}
                   </h2>
                   <p class="card-text ">
