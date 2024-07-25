@@ -49,7 +49,7 @@ export default function Login() {
   return (
     <div className="container-fluid bg-white">
       <div className="row">
-        <div className="col-md-6 text-center">
+        <div className="col-md-6 fs-5 text-center">
           <h1 className="text-center mt-3 text-dark">
             <b>Welcome</b>
           </h1>
@@ -63,7 +63,7 @@ export default function Login() {
           >
             <b>
               <a href="https://www.google.com/">Login with Google
-              <img src="image/removebg.png" className="img2" /></a>
+              <img src="image/removebg.png" className="img2" style={{height:"30px", width:"30px" , marginLeft:"1rem"}}/></a>
             </b>
           </button>
 
@@ -75,8 +75,8 @@ export default function Login() {
                   <div class="form-group mt-4 mb-5 ">
                     <input
                       type="text"
-                      className="form-control border border-3 border-black p-4 border rounded-5 p-4 h3"
-                      placeholder="Username"
+                      className="form-control border border-3 border-black p-4 border rounded-5 "
+                      placeholder="Username" 
                       name="username"
                       value={formData.username}
                       onChange={handleChange}
