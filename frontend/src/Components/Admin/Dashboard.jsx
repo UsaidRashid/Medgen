@@ -19,6 +19,7 @@ import Sidebar from "./Sidebar";
 import "../../CSS/admin.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Dashboard() {
   const navigate = useNavigate();
   const data = [
