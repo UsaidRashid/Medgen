@@ -18,5 +18,6 @@ router
     .route('/delete-store')
         .post(storeController.deleteStore);
 
-        
+   
+   
 module.exports = router;
