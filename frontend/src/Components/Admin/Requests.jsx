@@ -54,10 +54,6 @@ const Requests = () => {
                 <Sidebar/>
                 </div>
                 <div>
-
-            
-            
-
             <h1 className="fs-2 mx-4">Medicine Request List</h1>
             <table className="table table-striped table-hover  " style={{ width: '85vw', border: '0.2px' }}>
                 <thead>
