@@ -52,12 +52,11 @@ export default function Login() {
           <h1 className="text-center mt-3 text-dark">
             <b>Welcome</b>
           </h1>
-          <h5 className="text-center mt-3 text-dark">
-            Login into your account
+          <h5 className="text-center mt-3 text-info">
+           <i> Login into your account</i>
           </h5>
           <button
-            className="mt-5 mb-4 bg-light text-dark p-3 fs-5"
-            style={{ width: "70%", borderRadius: "1rem" }}
+            className="mt-4 mb-3  bg-light text-dark p-3 border rounded-3"
             type="button"
             id="text1"
           >
@@ -69,15 +68,15 @@ export default function Login() {
 
           <div className="container">
             <div className="row">
-              <div>
-              <h4 className="ms-4">Already have an account ? <Link to="/Signup">Signup</Link></h4>
-              </div>
-              <div >
-                <form onSubmit={handleSubmit} className="mt-4">
-                  <div class="form-group mt-3 mb-3 ">
+              <div className="col-md-1"></div>
+              <div className="col-md-10">
+                <form onSubmit={handleSubmit}>
+                  <div class="form-group mt-3 mb-5 ">
+                  <h5 ClassName="mb-3 text-info"><b>Register your account</b><br/>
+                  <Link to="/Signup"><i>Signup</i></Link></h5>
                     <input
                       type="text"
-                      className="form-control border border-3 border-black border rounded-5"
+                      className="form-control mt-4 border border-2 border-black p-3 border rounded-5 p-3 h3"
                       placeholder="Username"
                       name="username"
                       style={{ width: "70%", height: "3rem" }}
@@ -86,11 +85,12 @@ export default function Login() {
                       required
                     />
                   </div>
-                  <div class="form-group mt-3 mb-3">
+                  <div class="form-group  mb-3">
+                  
                     <input
                       type="password"
                       name="password"
-                      className="form-control  border border-3 border-black border rounded-5"
+                      className="form-control  border border-2 border-black border rounded-5 p-3 h3"
                       placeholder="Password"
                       style={{ width: "70%", height: "3rem" }}
                       value={formData.password}
@@ -98,23 +98,24 @@ export default function Login() {
                       required
                     />
                   </div>
-                  <div>
-                    <div className="row ">
-                      <div >
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-md-5">
                         <label className="form-check-label text-dark h5">
                           <input
                             class="form-check-input"
-                            type="checkbox"
+                            
                             id="flexSwitchCheckChecked"
+                            type="checkbox"
                             checked
                           />
-                          <b>Remember me</b>
+                          Remember me
                         </label>
                       </div>
-                      <div className="col-md-4"></div>
-                      <div className="col-md-4">
+                      <div className="col-md-3"></div>
+                      <div className="col-md-3">
                         <label className="text-dark h5">
-                          <b>Recover Password</b>
+                          Recover Password
                         </label>
                       </div>
                     </div>
@@ -122,7 +123,7 @@ export default function Login() {
 
                   <button
                     type="Login"
-                    className="mt-2 bg-light p-3 border rounded-5 w-50 float-centre h4 shadow-lg shadow-white bg-dark text-white"
+                    className="mt-4 bg-light p-3 border rounded-5 w-50 float-centre h4 shadow-lg shadow-white bg-dark text-white"
                   >
                     Login
                   </button>
@@ -130,9 +131,10 @@ export default function Login() {
               </div>
               <div className="col-md-1"></div>
             </div>
+            
           </div>
         </div>
-        <div className="col-md-6">
+        <div className="col-md-6"style={{marginTop:"14rem"}}>
           <img
             src="image/ss.png"
             alt=""
