@@ -1,48 +1,47 @@
 import React, { useState } from "react";
-import "../CSS/Login.css";
-import  {Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 export default function Login() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const [formData , setFormData ] = useState({
-      username : '',
-      password : '',
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
     });
-    
-    const handleChange = (e) => {
-        setFormData({
-          ...formData,
-          [e.target.name]:e.target.value,
-        });
-    };
+  };
 
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-        try{
-            const response = await axios.post('http://localhost:6969/users/login',formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:6969/users/login', formData);
 
-            if(response.status===200){
-                alert(response.data.message);
-                const token = response.data.token;          
-                localStorage.setItem('token',token);
-                navigate('/');
-            }else{
-                alert('Some Error occured :', response.data.message);
-            }
-        } catch (error) {
-            console.error("Error in Logging in:", error);
-            alert( `${error.name} -> ${error.message}`);
-            if (error.response) {
-              alert("Error from server: " + error.response.data.message);
-            } else if (error.request) {
-              alert("No response from the server");
-            } else {
-              alert("Error setting up the request: " + error.message);
-            }
-        }
+      if (response.status === 200) {
+        alert(response.data.message);
+        const token = response.data.token;
+        localStorage.setItem('token', token);
+        navigate('/');
+      } else {
+        alert('Some Error occured :', response.data.message);
+      }
+    } catch (error) {
+      console.error("Error in Logging in:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
     }
+  }
 
 
 
@@ -57,48 +56,52 @@ export default function Login() {
             Login into your account
           </h5>
           <button
-            className="mt-5 bg-light text-dark p-3 border rounded"
+            className="mt-5 mb-4 bg-light text-dark p-3 fs-5"
+            style={{ width: "70%", borderRadius: "1rem" }}
             type="button"
             id="text1"
           >
             <b>
               <a href="https://www.google.com/">Login with Google
-              <img src="image/removebg.png" className="img2" style={{height:"30px", width:"30px" , marginLeft:"1rem"}}/></a>
+                <img src="image/removebg.png" className="img2" style={{ height: "27px", width: "27px", marginLeft: "10px" }} /></a>
             </b>
           </button>
 
           <div className="container">
             <div className="row">
-              <div className="col-md-1"></div>
-              <div className="col-md-10">
-                <form onSubmit={handleSubmit}>
-                  <div class="form-group mt-4 mb-5 ">
+              <div>
+              <h4 className="ms-4">Already have an account ? <Link to="/Signup">Signup</Link></h4>
+              </div>
+              <div >
+                <form onSubmit={handleSubmit} className="mt-4">
+                  <div class="form-group mt-3 mb-3 ">
                     <input
                       type="text"
-                      className="form-control border border-3 border-black p-4 border rounded-5 "
-                      placeholder="Username" 
+                      className="form-control border border-3 border-black border rounded-5"
+                      placeholder="Username"
                       name="username"
+                      style={{ width: "70%", height: "3rem" }}
                       value={formData.username}
                       onChange={handleChange}
                       required
                     />
                   </div>
-                  <div class="form-group mt-4 mb-3">
+                  <div class="form-group mt-3 mb-3">
                     <input
                       type="password"
                       name="password"
-                      className="form-control  border border-3 border-black border rounded-5 p-4 h3"
+                      className="form-control  border border-3 border-black border rounded-5"
                       placeholder="Password"
+                      style={{ width: "70%", height: "3rem" }}
                       value={formData.password}
                       onChange={handleChange}
                       required
                     />
                   </div>
-                  <div className="container">
-                    <div className="row">
-                      <div className="col-md-4">
+                  <div>
+                    <div className="row ">
+                      <div >
                         <label className="form-check-label text-dark h5">
-                          
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -127,7 +130,6 @@ export default function Login() {
               </div>
               <div className="col-md-1"></div>
             </div>
-            <h4>Already have an account ? <Link to="/Signup">Signup</Link></h4>
           </div>
         </div>
         <div className="col-md-6">
