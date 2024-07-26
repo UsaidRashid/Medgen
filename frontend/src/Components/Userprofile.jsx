@@ -15,52 +15,51 @@ const Userprofile = () => {
         alert('Seems like you are not logged in...');
         navigate('/login');
     }
-    
 
     const handleEdit = (e) => {
         e.preventDefault();
         navigate('/user-profile-update');
     }
+
   return (
-    <div class="container rounded bg-white mt-5 mb-5">
+    <div class="container rounded bg-white mt-3 mb-4" style={{boxShadow: "9px 9px 14px rgb(0 ,0, 0, .371)", border: "1px solid black"}}>
       <div class="row">
         <div class="col-md-7 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <div class="d-flex flex-column align-items-center text-center p-5 py-5">
             <img
               class="rounded-circle mt-5"
               width="150px"
               src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
-            />
-           
+            />       
           </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-5 border-right" >
           <div class="p-3 py-5">
             <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-right">Profile Settings</h4>
+              <h4 class="text-right fw-bold fs-4">Your Profile</h4>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-1">
               <div class="col-md-12">
-                <label class="labels"> Name</label>
-                { decodedToken!==null &&   <p>{decodedToken.user.name}</p>}
+                <label class="labels fw-bold fs-5"> Name</label>
+                { decodedToken!==null &&   <p class="fs-5">{decodedToken.user.name}</p>}
               </div>
               <div class="col-md-12">
-                <label class="labels">User name</label>
-                { decodedToken!==null &&   <p>{decodedToken.user.username}</p>}
+                <label class="labels fw-bold fs-5">User name</label>
+                { decodedToken!==null &&   <p class="fs-5">{decodedToken.user.username}</p>}
               </div>
             </div>
-            <div class="row mt-3">
+            <div class="row mt-1">
               <div class="col-md-12">
-                <label class="labels">Email ID</label>
-                { decodedToken!==null &&   <p>{decodedToken.user.email}</p>}
+                <label class="labels fw-bold fs-5">Email ID</label>
+                { decodedToken!==null &&   <p class="fs-5">{decodedToken.user.email}</p>}
               </div>
               <div class="col-md-12">
-                <label class="labels">Mobile Number</label>
-                { decodedToken!==null &&   <p>{decodedToken.user.contact}</p>}
+                <label class="labels fw-bold fs-5">Mobile Number</label>
+                { decodedToken!==null &&   <p class="fs-5">{decodedToken.user.contact}</p>}
               </div>
 
-              <div class="mt-5 text-center">
-                <button onClick={handleEdit} class="btn btn-primary profile-button" type="button">
+              <div class="mt-1">
+                <button onClick={handleEdit} class="btn btn-primary profile-button" type="button"  style={{boxShadow: "3px 3px 10px rgb(0 ,0, 0, .61)"}}>
                   Edit Profile
                 </button>
               </div>
