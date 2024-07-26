@@ -153,6 +153,18 @@ module.exports.fetchGenerics = async (req, res) => {
   }
 };
 
+module.exports.deleteRequests = async (req, res) => {
+  try {
+    const { _id } = req.body;
+    await Request.deleteOne({ _id });
+    return res.status(200).json({ message: "Deleted Medicine Successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
+
+
 module.exports.deleteBrand = async (req, res) => {
   try {
     const { _id } = req.body;
@@ -163,6 +175,7 @@ module.exports.deleteBrand = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error", error });
   }
 };
+
 
 module.exports.deleteGeneric = async (req, res) => {
   try {
