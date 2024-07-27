@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import loginBg from "../Images/Login.png";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -46,9 +47,9 @@ export default function Login() {
 
 
   return (
-    <div className="container-fluid bg-white">
-      <div className="row">
-        <div className="col-md-6 text-center">
+    <div className="container-fluid"style={{ backgroundImage: `url(${loginBg})`, backgroundRepeat: "no-repeat", backgroundSize: "80vh", backgroundPosition: "left", backgroundColor: "white", margin:"0rem 0 5rem 0" }}>
+      <div className="row" style={{marginLeft:"49rem"}}>
+        <div className="col-11 text-center">
           <h1 className="text-center mt-3 text-dark">
             <b>Welcome</b>
           </h1>
@@ -57,7 +58,7 @@ export default function Login() {
           </h5>
           <button
             className="mt-5 mb-4 bg-light text-dark p-3 fs-5"
-            style={{ width: "70%", borderRadius: "1rem" }}
+            style={{ width: "45%", borderRadius: "1rem", boxShadow: "5px 5px 4px rgba(0, 0, 0, 0.3)"  }}
             type="button"
             id="text1"
           >
@@ -67,20 +68,20 @@ export default function Login() {
             </b>
           </button>
 
-          <div className="container">
+          <div className="container" style={{ boxShadow: "7px 6px 4px rgba(0, 0, 0, 0.3)"}}>
             <div className="row">
               <div>
-              <h4 className="ms-4">Already have an account ? <Link to="/Signup">Signup</Link></h4>
+              <h4 className="ms-4">Register your account ? <Link to="/Signup">Signup</Link></h4>
               </div>
               <div >
                 <form onSubmit={handleSubmit} className="mt-4">
                   <div class="form-group mt-3 mb-3 ">
                     <input
                       type="text"
-                      className="form-control border border-3 border-black border rounded-5"
+                      className="form-control border border-2 border-black border rounded-4"
                       placeholder="Username"
                       name="username"
-                      style={{ width: "70%", height: "3rem" }}
+                      style={{ width: "70%", height: "3rem", marginLeft: "6.3rem" }}
                       value={formData.username}
                       onChange={handleChange}
                       required
@@ -90,18 +91,18 @@ export default function Login() {
                     <input
                       type="password"
                       name="password"
-                      className="form-control  border border-3 border-black border rounded-5"
+                      className="form-control  border border-2 border-black border rounded-4"
                       placeholder="Password"
-                      style={{ width: "70%", height: "3rem" }}
+                      style={{ width: "70%", height: "3rem",  marginLeft: "6.3rem"  }}
                       value={formData.password}
                       onChange={handleChange}
                       required
                     />
                   </div>
-                  <div>
-                    <div className="row ">
-                      <div >
-                        <label className="form-check-label text-dark h5">
+                  
+                    <div className="row">
+                      <div style={{margin:"0 7rem 0 0 "}}>
+                        <label className="form-check-label text-primary h6" >
                           <input
                             class="form-check-input"
                             type="checkbox"
@@ -113,13 +114,11 @@ export default function Login() {
                       </div>
                       <div className="col-md-4"></div>
                       <div className="col-md-4">
-                        <label className="text-dark h5">
+                        <label className="h6">
                           <b>Recover Password</b>
                         </label>
                       </div>
                     </div>
-                  </div>
-
                   <button
                     type="Login"
                     className="mt-2 bg-light p-3 border rounded-5 w-50 float-centre h4 shadow-lg shadow-white bg-dark text-white"
@@ -131,13 +130,6 @@ export default function Login() {
               <div className="col-md-1"></div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <img
-            src="image/ss.png"
-            alt=""
-            className="img-fluid w-100 h-600"
-          ></img>
         </div>
       </div>
     </div>

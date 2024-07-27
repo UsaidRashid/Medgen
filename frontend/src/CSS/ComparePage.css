@@ -1,12 +1,3 @@
-.image {
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(rgba(162, 194, 243, 0.353), rgba(169, 221, 255, 0.31)), url('../Images/BG.png');
-    background-size: cover;
-    background-position: center;
-}
-
-
 .text {
     margin: 2rem 0 0 4rem;
     font-size: 22px;
@@ -23,17 +14,21 @@
 
 .price-comparison {
     background-color: white;
-    margin: 2rem 0 0 1rem;
+    margin: 2.8rem 0 0 5rem;
     height: 15.58rem;
     width: 20rem;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 8px;
 }
-
+ 
 .price-box {
     display: flex;
     justify-content: space-between;
+}
+
+.price-comparison-1:hover{
+    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px;
 }
 
 .medgen-price-box,
@@ -55,23 +50,33 @@
     text-align: center;
     background-color: white;
 }
-
+/* 
 .comparison-boxes {
     display: flex;
     justify-content: space-around;
-}
+} */
 
 .cards-outer {
     width: 1000px;
 }
 
-.card-1,
-.card-2 {
+.card-price{
+    margin-top: .3rem;
+    margin-right: 2rem;
+}
+
+.card-1-1,
+.card-2-2 {
     background-color: white;
-    height: 27rem;
+    height: 13.8rem;
+    width: 50rem;
     border-radius: 8px;
     border: 1px solid #000;
 }
+/* .card-1-1:hover,
+.card-2-2:hover{
+    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px;
+} */
 
 .card-list {
     font-size: larger;
