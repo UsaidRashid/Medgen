@@ -24,7 +24,7 @@ function Login() {
         e.preventDefault();
         console.log(formData);
   
-        const response = await axios.post('http://localhost:6969/users/signup',formData);
+        const response = await axios.post('http://localhost:6969/users/login',formData);
         
   
         if( response.status===200){

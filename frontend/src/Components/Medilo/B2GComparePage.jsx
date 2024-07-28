@@ -1,8 +1,8 @@
-import React from "react"; 
+import React, { useEffect } from "react"; 
 import "../../CSS/ComparePage.css"; 
  
 export default function B2GComparePage() { 
- 
+
     return ( 
         <div className="image"style={{height:"1200px"}}> 
             <div> 

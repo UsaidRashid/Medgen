@@ -8,9 +8,11 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
  
 const RegistrationForm = () => {
+  const navigate = useNavigate();
   
   const [formData, setFormData] = useState({
     name: "",
@@ -35,13 +37,14 @@ const RegistrationForm = () => {
 
       if( response.status===200){
           alert('Successfully Submited!');
+          navigate('/');
       }else{
           alert('Check your connection and try again!....',response.message);
       }      
 
     } catch (error) {
       console.error("Error in Registering:", error);
-      alert( `${error.name} -> ${error.message}`);
+      console.log( `${error.name} -> ${error.message}`);
       if (error.response) {
         alert("Error from server: " + error.response.data.message);
       } else if (error.request) {
