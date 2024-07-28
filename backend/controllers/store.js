@@ -58,7 +58,17 @@ module.exports.registerStore = async (req, res) => {
 
 module.exports.updateStore = async (req, res) => {
   try {
-    const { gst_No, name, pincode, address } = req.body;
+    console.log(req.body);
+    const { gst_No, name, pincode, address } = req.body.formData;
+    const token = req.body.token;
+
+    if (!token)
+      return res
+        .status(400)
+        .json({ message: "Something went wrong! Are you logged in?" });
+
+
+
     if (!gst_No || !name || !pincode || !address)
       return res
         .status(400)
@@ -67,15 +77,23 @@ module.exports.updateStore = async (req, res) => {
             "Some required information is missing... Please fill in all the fields!",
         });
 
-    const store = await Store.findOneAndUpdate({ gst_No }, req.body, {
+    const store = await Store.findOneAndUpdate({ gst_No }, req.body.formData, {
       new: true,
       runValidators: true,
+    });
+
+    const decodedToken = jwt.verify(token, "secretkey");
+
+    const updatedUser =await User.findOne({username : decodedToken.user.username}).populate('store');
+
+    const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
+      algorithm: "HS256",
     });
 
     if (!store) return res.status(400).json({ message: "Store not found" });
     res
       .status(200)
-      .json({ message: "Store Details Updated Successfully...", store });
+      .json({ message: "Store Details Updated Successfully...", token:newToken });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
