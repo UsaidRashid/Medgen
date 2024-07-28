@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import "../../CSS/ComparePage.css"; 
  
 export default function B2GComparePage() { 
-    
+   
+
     return ( 
         <div className="image"style={{height:"1200px"}}> 
             <div> 
@@ -19,7 +20,7 @@ export default function B2GComparePage() {
                                             <h5 class="card-title fs-3 fw-bold">Branded Medicine Name</h5> 
                                             <p className="card-list fw-bold ">Medicine info:-</p> 
                                             <ul> 
-                                                <li className="card-list">medicine info</li> 
+                                                <li className="card-list"></li> 
                                                 <li className="card-list">medicine info</li> 
                                                 <li className="card-list">medicine info</li> 
                                                 <li className="card-list">medicine info</li> 
