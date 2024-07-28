@@ -33,6 +33,28 @@ const Requests = () => {
     fetchRequests();
   }, [navigate]);
 
+  const handleDelete = async (_id) => {
+    try {
+      const response = await axios.post('http://localhost:6969/admin/delete-request', { _id });
+
+      if (response.status === 200) {
+        alert('Request Deleted Successfully');
+        window.location.reload();
+      }
+      else alert(response.data.message ? response.data.message : 'Error in deleting...');
+    } catch (error) {
+      console.error("Error in Deleting Request:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
+
   const handleClick = (e) => {
     navigate('/admin/add-branded-medicine');
   };
@@ -57,6 +79,21 @@ const Requests = () => {
       name: <h6><b>Message</b></h6>,
       selector: row => row.message,
       sortable: true,
+    },
+    {
+      cell: row => (
+        <button
+          className="text-center"
+          type="button"
+          style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
+          onClick={() => handleDelete(row._id)}
+        >
+          Delete
+        </button>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
     },
     {
       cell: row => (
