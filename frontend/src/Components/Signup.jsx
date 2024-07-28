@@ -79,7 +79,7 @@ function Signup() {
   
   <div className="form-group">
     <label >Contact No.</label>
-    <input type="text" className="form-control mb-1"  name='Mobile' value={formData.contact} onChange={handleChange}/>
+    <input type="number" className="form-control mb-1"  name='Mobile' value={formData.contact} onChange={handleChange}/>
   </div>
 
   <div className="form-group">
