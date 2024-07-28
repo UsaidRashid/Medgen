@@ -1,85 +1,87 @@
-import React, { useEffect } from "react"; 
-import "../../CSS/ComparePage.css"; 
+import React from "react";
+import "../../CSS/ComparePage.css";
+import { useTypewriter } from "react-simple-typewriter";
+import Bg from "../../Images/compareBg.png";
  
-export default function B2GComparePage() { 
+export default function G2BComparePage() {
 
-    return ( 
-        <div className="image"style={{height:"1200px"}}> 
-            <div> 
-                <h1 className="text-dark fs-1 fw-bold text-decoration-underline font-monospace mx-2"><b>Compare Your Medicines With MedGen Alternatives & Estimate Savings</b></h1> 
+    const [text] = useTypewriter({
+        words: ["Your Generic Medicines prices", "Your Branded Medicines prices"],
+        loop: {},
+        delaySpeed: 500,
+    });
+
+    return (
+        <div style={{ backgroundImage: `url(${Bg})`, backgroundRepeat: "no-repeat", backgroundSize: "100vh", backgroundPosition: "right", backgroundColor: "white"}}>
+            <div>
+                <h1 className="text-center font-monospace ft-bold fs-2 mx-2" style={{color: "#2380ea"}}><b>#Compare {text}</b></h1>
             </div> 
-            <div className="comparison-boxes"> 
-                <div className="cards-outer"> 
-                    <div className="cards"> 
-                        <div class="row "> 
-                            <div class="col-sm-6 mb-4 mb-sm-0  "> 
-                                <div class="card border-4 border-dark shadow-lg"style={{backgroundColor:"#e6ffff"}}> 
-                                    <div class="card-body card-1 border-4 border-dark shadow-lg"style={{backgroundColor:"#e6ffff"}}> 
-                                        <div className="card-write"> 
-                                            <h5 class="card-title fs-3 fw-bold">Branded Medicine Name</h5> 
-                                            <p className="card-list fw-bold ">Medicine info:-</p> 
-                                            <ul> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                            </ul> 
-                                        </div> 
-                                        <div className="card-price font-monospace"> 
-                                            <div>&#8377;price</div> 
-                                            <div>&#8377;price/tab</div> 
-                                        </div> 
-                                    </div> 
-                                </div> 
-                            </div> 
-                            <div class="col-sm-6 mb-4 mb-sm-0 ml-5"> 
-                                <div class="card border-4 border-dark shadow-lg"style={{backgroundColor:"#e6ffff"}}> 
-                                    <div class="card-body card-2 border-4 border-dark shadow-lg"style={{backgroundColor:"#e6ffff"}}> 
-                                        <div className="card-write"> 
-                                            <h5 class="card-title fs-3 fw-bold">Generic Medicine Name</h5> 
-                                            <p className="card-list fw-bold">Medicine info:-</p> 
-                                            <ul> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                                <li className="card-list">medicine info</li> 
-                                            </ul> 
-                                        </div> 
-                                        <div className="card-price font-monospace"> 
-                                            <div>&#8377;price</div> 
-                                            <div>&#8377;price/tab</div> 
-                                        </div> 
-                                    </div> 
-                                </div> 
-                            </div> 
-                        </div> 
-                    </div> 
+            <div className="d-flex">
+            <div className="comparison-boxes" style={{marginBottom:"2rem"}}>
+                <div>
+                    <div className="cards">
+                        <div class="column">
+                            <div class="col-sm-12 mb-3 mb-sm-0" style={{marginTop:"2.7rem"}} >
+                                <div class="card border-1 border-dark mb-3 shadow" >
+                                    <div class="card-body card-1-1 border-2 border-dark">
+                                        <div className="card-write">
+                                            <h5 class="card-title fs-3 fw-bold">Branded Medicine Name</h5>
+                                            <ul>
+                                                <li className="card-list">medicine info</li>
+                                                <li className="card-list">medicine info</li>
+                                                <li className="card-list">medicine info</li>
+                                                
+                                            </ul>
+                                        </div>
+                                        <div className="card-price font-monospace fs-5">
+                                            <div>&#8377;price</div>
+                                            <div>&#8377;price/tab</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 mb-3 mb-sm-0 ml-5">
+                                <div class="card border-1 border-dark shadow">
+                                    <div class="card-body card-2-2 border-2 border-dark" >
+                                        <div className="card-write">
+                                            <h5 class="card-title fs-3 fw-bold">Generic Medicine Name</h5>
+                                            <ul>
+                                                <li className="card-list">medicine info</li>
+                                                <li className="card-list">medicine info</li>
+                                                <li className="card-list">medicine info</li>
+                                            </ul>
+                                        </div>
+                                        <div className="card-price font-monospace fs-5">
+                                            <div>&#8377;price</div>
+                                            
+                                            <div>&#8377;price/tab</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div> 
-            <div> 
-            <div className="width-50 text-dark"style={{marginLeft:"575px", marginTop:"100px"}}> 
-                    <div class="price-comparison border-3 border-dark shadow-lg font-monospace"style={{backgroundColor:"#e6ffff"}}> 
-                        <div className="price-box "> 
-                            <div class="current-price-box "> 
-                                <p>Current Price</p> 
-                                <p>₹00.00</p> 
-                            </div> 
-                            <div class="medgen-price-box"> 
-                                <p>MEDGEN Price</p> 
-                                <p>₹00.00</p> 
-                            </div> 
-                        </div> 
-                        <div class="total-savings"> 
-                            <p> Total Savings</p> 
-                            <p>₹00.00</p> 
-                        </div> 
-                    </div> 
-                </div> 
-                </div> 
-        </div> 
-    ); 
+            </div>
+                <div className="width-50 text-dark hover" style={{margin:"0 0 10px 0" }}>
+                    <div class="price-comparison border-2 border-dark shadow mb-3">
+                        <div className="price-box ">
+                            <div class="current-price-box ">
+                                <p>Current Price</p>
+                                <p>₹00.00</p>
+                            </div>
+                            <div class="medgen-price-box">
+                                <p>MEDGEN Price</p>
+                                <p>₹00.00</p>
+                            </div>
+                        </div>
+                        <div class="total-savings">
+                            <p> Total Savings</p>
+                            <p>₹00.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }
