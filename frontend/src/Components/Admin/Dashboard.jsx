@@ -19,6 +19,7 @@ import Sidebar from "./Sidebar";
 import "../../CSS/admin.css";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Dashboard() {
   const navigate = useNavigate();
   const data = [
@@ -97,6 +98,14 @@ export default function Dashboard() {
     navigate("/admin/stores");
   };
 
+  const openBrandMedicines = (e) => {
+    navigate('/admin/brand-medicines');
+  }
+
+  const openGenericMedicines = (e) => {
+    navigate('/admin/generic-medicines');
+  }
+  
   return (
     <div className="d-flex flex-row">
       <div>
@@ -105,14 +114,14 @@ export default function Dashboard() {
       <div>
         <main className="main-container">
           <div className="main-cards ">
-            <div class="btn btn-outline-info  p-3 mb-5 rounded card ">
+            <div class="btn btn-outline-info  p-3 mb-5 rounded card " onClick={openGenericMedicines}>
               <div className="card-body card-body d-flex flex row">
                 <h3 className="text-black">Generic Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />
               </div>
               <h1 className="text-black">{gencnt}</h1>
             </div>
-            <div class="btn btn-outline-info  p-3 mb-5  rounded card">
+            <div class="btn btn-outline-info  p-3 mb-5  rounded card" onClick={openBrandMedicines}>
               <div className="card-body card-body d-flex flex row">
                 <h3 className="text-black">Brand Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />

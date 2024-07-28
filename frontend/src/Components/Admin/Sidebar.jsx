@@ -1,16 +1,7 @@
 import React, { useState } from "react";
-import {
-  FaTh,
-  FaBars,
-  FaUserAlt,
-  FaRegChartBar,
-  FaCommentAlt,
-  FaShoppingBag,
-  FaThList,
-} from "react-icons/fa";
+import {FaBars,} from "react-icons/fa";
 import "../../CSS/admin.css";
 import profile from "../../Images/profile.png";
-import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
@@ -64,6 +55,17 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
+       
+
+        <Link to="/admin/add-medicine" className="link" activeclassName="active">
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Add Medicine
+          </div>
+        </Link>
+
         <Link
           to="/admin/requests"
           className="link"
@@ -78,15 +80,6 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-        <Link to="/admin/add-medicine" className="link" activeclassName="active">
-          <div
-            style={{ display: isOpen ? "block" : "none" }}
-            className="link_text"
-          >
-            Add Medicine
-          </div>
-        </Link>
-
         <Link
           to="/admin/stores"
           className="link"
@@ -97,6 +90,32 @@ const Sidebar = ({ children }) => {
             className="link_text"
           >
             Registered Stores
+          </div>
+        </Link>
+
+        <Link
+          to="/admin/brand-medicines"
+          className="link"
+          activeclassName="active"
+        >
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Brand Medicines
+          </div>
+        </Link>
+
+        <Link
+          to="/admin/generic-medicines"
+          className="link"
+          activeclassName="active"
+        >
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Generic Medicines
           </div>
         </Link>
           {isOpen &&
