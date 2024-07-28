@@ -15,7 +15,7 @@ export default function G2BComparePage() {
         <div style={{ backgroundImage: `url(${Bg})`, backgroundRepeat: "no-repeat", backgroundSize: "100vh", backgroundPosition: "right", backgroundColor: "white"}}>
             <div>
                 <h1 className="text-center fs-2 fw-bold font-monospace mx-2" style={{color: "#2380ea"}}><b>#Compare {text}</b></h1>
-            </div> 
+            </div>
             <div className="d-flex">
             <div className="comparison-boxes" style={{marginBottom:"2rem"}}>
                 <div>
@@ -30,7 +30,6 @@ export default function G2BComparePage() {
                                                 <li className="card-list">medicine info</li>
                                                 <li className="card-list">medicine info</li>
                                                 <li className="card-list">medicine info</li>
-                                                
                                             </ul>
                                         </div>
                                         <div className="card-price font-monospace fs-5">
@@ -52,8 +51,7 @@ export default function G2BComparePage() {
                                             </ul>
                                         </div>
                                         <div className="card-price font-monospace fs-5">
-                                            <div>&#8377;price</div>
-                                            
+                                            <div>&#8377;price</div>    
                                             <div>&#8377;price/tab</div>
                                         </div>
                                     </div>

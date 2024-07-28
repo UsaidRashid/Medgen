@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import background2 from "../../Images/compare1-bg.png";
 import { useTypewriter } from "react-simple-typewriter";
+import axios from 'axios';
 
 const myStyle = {
     display: "flex",
@@ -22,6 +23,34 @@ export default function BrandedCompare() {
         delaySpeed: 550,
     });
 
+    const [brandedMed, setBrandedMed] = useState([]);
+
+    useEffect(() => {
+        const fetchBrandedMed = async () => {
+            try {
+                const response = await axios.post('http://localhost:6969/medilo/brand-search');
+                if (response.status === 200) {
+                    console.log(response.data);
+                    setBrandedMed(response.data);
+                } else {
+                    alert('There was a problem in signing up the user....', response.data.message);
+                }
+            } catch (error) {
+                console.error("Error in Registering:", error);
+                alert(`${error.name} -> ${error.message}`);
+                if (error.response) {
+                    alert("Error from server: " + error.response.data.message);
+                } else if (error.request) {
+                    alert("No response from the server");
+                } else {
+                    alert("Error setting up the request: " + error.message);
+                }
+            }
+        }
+        fetchBrandedMed();
+    }, []);
+
+
     return (
         <>
             <div className='justify-content-left' style={{ backgroundImage: `url(${background2})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
@@ -33,11 +62,11 @@ export default function BrandedCompare() {
                 <div className="cards-outer mx-5">
                     <div className="cards" style={myStyle}>
                         <div className="row">
-                            <div class="col-sm-6 mb-4 mb-sm-0 w-50">
-                                <div class="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
+                            <div className="col-sm-6 mb-4 mb-sm-0 w-50">
+                                <div className="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
                                     <div>
                                         <div className="card-write">
-                                            <h5 class="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
+                                            <h5 className="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -93,3 +122,4 @@ export default function BrandedCompare() {
         </>
     );
 }
+
