@@ -42,7 +42,7 @@ function Signup() {
   
       } catch (error) {
           console.error("Error in Registering:", error);
-          alert( `${error.name} -> ${error.message}`);
+          console.log( `${error.name} -> ${error.message}`);
           if (error.response) {
             alert("Error from server: " + error.response.data.message);
           } else if (error.request) {
@@ -79,7 +79,7 @@ function Signup() {
   
   <div className="form-group">
     <label >Contact No.</label>
-    <input type="number" className="form-control mb-1"  name='Mobile' value={formData.contact} onChange={handleChange}/>
+    <input type="number" className="form-control mb-1"  name='contact' value={formData.contact} onChange={handleChange}/>
   </div>
 
   <div className="form-group">
