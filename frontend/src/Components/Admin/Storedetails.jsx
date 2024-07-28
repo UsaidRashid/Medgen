@@ -24,6 +24,28 @@ export default function Storedetails() {
     };
     fetchData();
   }, []);
+
+  const handleDeleteStore = async (gst_No) => {
+    try {
+          const response = await axios.post('http://localhost:6969/admin/delete-store',{gst_No});
+          if(response.status===200){
+              alert('Store Deleted Successfully');
+              window.location.reload();
+          }else{
+            alert(response.data.message?response.data.message:'Error deleting the store...');
+          }
+    } catch (error) {
+          console.error("Error in Deleting:", error);
+          console.log( `${error.name} -> ${error.message}`);
+          if (error.response) {
+            alert("Error from server: " + error.response.data.message);
+          } else if (error.request) {
+            alert("No response from the server");
+          } else {
+            alert("Error setting up the request: " + error.message);
+          }
+    }
+  }
   
 
   const columns = [
@@ -77,6 +99,7 @@ export default function Storedetails() {
         <button
           className="text-center"
           type="button"
+          onClick={()=>handleDeleteStore(row.gst_No)}
           style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
         >
           Delete

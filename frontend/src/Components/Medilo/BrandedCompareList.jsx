@@ -46,7 +46,7 @@ export default function GenericCompare() {
 
     const openCompare = (e) => {
         e.preventDefault();
-        navigate('/compare-brand-medicine');
+        navigate('/compare-brand-medicine',{medicine:"paracetamol"});
     }
 
     const [text] = useTypewriter({
