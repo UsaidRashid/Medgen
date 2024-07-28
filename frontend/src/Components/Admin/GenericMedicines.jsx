@@ -40,6 +40,7 @@ export default function GenericMedicines() {
     main();
   },[]);
 
+  
   const handleDelete = async (_id) => {
     try {
         const response = await axios.post('http://localhost:6969/admin/delete-generic',{_id});
