@@ -114,18 +114,23 @@ module.exports.deleteStore = async (req, res) => {
 
 module.exports.fetchStores = async (req, res) => {
   try {
-    const { gst_No } = req.body;
-    if (gst_No === undefined) {
+    const { gst_No , pincode } = req.body;
+    if (gst_No === undefined && pincode === undefined) {
       const stores = await Store.find({}).populate("owner");
       res
         .status(200)
         .json({ message: "Here we can see the data of all Stores...", stores });
-    } else {
-      const store = await Store.findOne({ gst_No });
+    } else if(gst_No !== undefined) {
+      const store = await Store.findOne({ gst_No }).populate("owner");
       if (!store) return res.json({ message: "Store not found" });
       res
         .status(200)
         .json({ message: "Your Requested Store Details...", store });
+    }else{
+      const stores = await Store.find({pincode}).populate("owner");
+      res
+        .status(200)
+        .json({ message: "Here are all the stores at the requested pincode...", stores }); 
     }
   } catch (error) {
     console.error(error);
