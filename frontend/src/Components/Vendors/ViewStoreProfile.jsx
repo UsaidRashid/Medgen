@@ -14,10 +14,12 @@ const ViewStoreProfile = () => {
 
   if(token){
       decodedToken = jwtDecode(token);
+      console.log(decodedToken);
   }else{
       alert('Seems like you are not logged in...');
       navigate('/login');
   }
+
 
   const store={
       gst_No : decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",

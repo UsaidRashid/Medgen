@@ -100,7 +100,7 @@ module.exports.updateDetails = async (req, res) => {
       { username },
       updatedProfile,
       { new: true, runValidators: true }
-    );
+    ).populate('store');
 
     const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
       algorithm: "HS256",
