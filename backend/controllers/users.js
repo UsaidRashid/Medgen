@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 
 module.exports.signup = async (req, res) => {
   try {
-    console.log(req.file);
-    console.log(req.body);
     let { username, name, email, contact, password } = req.body;
 
     const profilePic = req.file ? req.file.filename : null;
@@ -82,9 +80,8 @@ module.exports.logout = async (req, res) => {
 
 module.exports.updateDetails = async (req, res) => {
   try {
-    console.log(req.body);
-    const { name, email, contact } = req.body.formData;
-    const token = req.body.token;
+    const { name, email, contact, token } = req.body;
+    const profilePic = req.file ? req.file.filename : null;
 
     if (!name || !email)
       return res
@@ -104,6 +101,7 @@ module.exports.updateDetails = async (req, res) => {
       name,
       email,
       contact,
+      profilePic,
     };
 
     const updatedUser = await User.findOneAndUpdate(
