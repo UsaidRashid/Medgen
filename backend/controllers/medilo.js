@@ -5,7 +5,7 @@ const Request = require("../models/requests");
 module.exports.brandMedicine = async (req, res) => {
   try {
     const { name } = req.body;
-    const medicine = await Brand.findOne({ name });
+    const medicine = await Brand.findOne({ name }).populate('alternatives');
     return res
       .status(200)
       .json({ message: "Brand Medicine fetched successfully", medicine });
