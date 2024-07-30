@@ -73,6 +73,7 @@ module.exports.logout = async (req, res) => {
 
 module.exports.updateDetails = async (req, res) => {
   try {
+    console.log(req.body);
     const { name, email, contact } = req.body.formData;
     const token = req.body.token;
 

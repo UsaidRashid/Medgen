@@ -38,6 +38,7 @@ export default function UpdateDetails() {
           const response = await axios.post('http://localhost:6969/users/update',{formData,token});
           
           if(response.status===200){
+            console.log(response.data);
             alert(response.data.message);
             const token = response.data.token;
             localStorage.removeItem('token');
