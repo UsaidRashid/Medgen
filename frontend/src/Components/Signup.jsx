@@ -11,7 +11,7 @@ function Signup() {
     email: "",
     password: "",
     contact: "",
-    profilePic: "",
+    profilePic: null,
   });
 
   const handleChange = (e) => {
