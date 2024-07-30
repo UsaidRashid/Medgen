@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import viewStore from "../../Images/viewStoreProfile.png";
 import { jwtDecode } from "jwt-decode";
 
+
 const ViewStoreProfile = () => {
   const navigate = useNavigate();
   const  openUpdateStore = (e) =>{
@@ -20,7 +21,9 @@ const ViewStoreProfile = () => {
       navigate('/login');
   }
 
-  const storePicUrl = decodedToken?.store?.storePic ? `http://localhost:6969/uploads/${decodedToken.store.storePic}` : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
+  const storePic = decodedToken?.store?.storePic ;
+
+    const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
     console.log(storePicUrl);
   const store={
       gst_No : decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
@@ -39,7 +42,7 @@ const ViewStoreProfile = () => {
         <div class="col-md-7 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
-            src={storePicUrl}
+            src={storePic?storePicUrl: viewStore}
               class="rounded-circle mt-5"
               width="500px"
               height="500px"

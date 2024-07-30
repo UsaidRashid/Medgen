@@ -24,14 +24,15 @@ const storeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  storePic: {
+    type: String, 
+  },
   
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  storePic: {
-    type: String, 
-  }
+  
 });
 
 module.exports = mongoose.model("Store", storeSchema);
