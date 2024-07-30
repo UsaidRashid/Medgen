@@ -11,8 +11,7 @@ function Signup() {
     email: "",
     password: "",
     contact: "",
-    profilePic: "",
-  
+    profilePic: null,
   });
 
   const handleChange = (e) => {
@@ -137,7 +136,6 @@ function Signup() {
                     type="file"
                     className="form-control mb-1"
                     name="profilePic"
-                    value={formData.profilePic}
                     onChange={handleChange}
                   />
                 </div>
