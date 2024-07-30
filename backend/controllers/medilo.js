@@ -6,6 +6,7 @@ module.exports.brandMedicine = async (req, res) => {
   try {
     const { name } = req.body;
     const medicine = await Brand.findOne({ name }).populate('alternatives');
+    if(!medicine) return res.status(201).json({message:'The requested Medicine is not present in our database'});
     return res
       .status(200)
       .json({ message: "Brand Medicine fetched successfully", medicine });
@@ -18,35 +19,20 @@ module.exports.brandMedicine = async (req, res) => {
 module.exports.genericMedicine = async (req, res) => {
   try {
     const { name } = req.body;
-    const medicine = await Generic.findOne({ name }) .populate('alternativeFor');
-    return res.status(200).json({ message: "successfully inserted", medicine });
+    const medicine = await Generic.findOne({ name }).populate('alternativeFor');
+    if(!medicine) return res.status(201).json({message:'The requested Medicine is not present in our database'});
+    return res.status(200).json({ message: "Generic Medicine Fetched Successfully", medicine });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "internal server error", error });
   }
 };
 
-module.exports.compareGeneric = async (req, res) => {
+module.exports.compareMeds = async (req, res) => {
   try {
-    const { genname, brandname } = req.body;
-    const brands = await Brand.findOne({ name: brandname }) ;
-    const generics = await Generic.findOne({ name: genname }) .populate('alternativeFor');
-    return res.status(200).json({
-      message: "compare details fetch successfully",
-      generics,
-      brands,
-    });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "internal server error", error });
-  }
-};
-
-module.exports.compareBrand = async (req, res) => {
-  try {
-    const { genname, brandname } = req.body;
-    const brands = await Brand.findOne({ name: brandname }) .populate('alternatives');
-    const generics = await Generic.findOne({ name: genname });
+    const { genName, brandName } = req.body;
+    const brands = await Brand.findOne({ name: brandName });
+    const generics = await Generic.findOne({ name: genName });
     return res.status(200).json({
       message: "compare details fetch successfully",
       generics,
