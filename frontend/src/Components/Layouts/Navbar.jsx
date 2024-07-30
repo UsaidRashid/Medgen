@@ -154,11 +154,11 @@ export default function Navbar() {
                   {" "}
                   <img
                     className=" bottom-0 start-0"
-                    src={profilePicUrl}
+                    src={profilePic?profilePicUrl:profile}
                     style={{
                       height: "50px",
                       width: "50px",
-                      borderRadius: "50",
+                      borderRadius: "50px",
                     }}
                   />
                 </Link>
