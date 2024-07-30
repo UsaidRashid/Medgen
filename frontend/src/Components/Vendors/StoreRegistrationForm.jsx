@@ -41,6 +41,8 @@ const RegistrationForm = () => {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
+      const token = localStorage.getItem('token');
+      formData.token = token;
       const response = await axios.post('http://localhost:6969/store/register-store',formData,
         {
           headers: {
