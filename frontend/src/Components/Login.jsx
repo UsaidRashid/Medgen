@@ -24,7 +24,7 @@ function Login() {
         e.preventDefault();
         console.log(formData);
   
-        const response = await axios.post('http://localhost:6969/users/signup',formData);
+        const response = await axios.post('http://localhost:6969/users/login',formData);
         
   
         if( response.status===200){
@@ -39,7 +39,7 @@ function Login() {
   
       } catch (error) {
           console.error("Error in Registering:", error);
-          alert( `${error.name} -> ${error.message}`);
+          console.log( `${error.name} -> ${error.message}`);
           if (error.response) {
             alert("Error from server: " + error.response.data.message);
           } else if (error.request) {

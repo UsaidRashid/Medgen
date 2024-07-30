@@ -2,54 +2,25 @@ const express = require("express");
 const app = express();
 const port = 6969;
 const cors = require("cors");
-const mongoose = require("mongoose");
+const path = require('path');
 
-const mongoUrl = "mongodb://127.0.0.1:27017/Medgen";
-
-main()
-  .then(() => {
-    console.log("Medgen Database connected successfully");
-  })
-  .catch((error) => {
-    console.log("Error connecting to database ", error);
-  });
-
-async function main() {
-  await mongoose.connect(mongoUrl);
-}
-
-const User = require("./models/users");
-
+require('./configs/dbConfig');
 // require('./auth');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const passport = require("passport");
-const session = require("express-session");
-const localStrategy = require("passport-local").Strategy;
+require('./configs/multerConfig');
 
-const sessionOptions = {
-  secret: "my-session-secret",
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    maxAge: 7 * 24 * 60 * 60 * 1000,
-    httpOnly: true,
-    secure: true,
-  },
-};
+app.use('/uploads', express.static(path.join(__dirname, './configs/uploads')));
 
-app.use(session(sessionOptions));
+const sessionConfig = require("./configs/sessionConfig");
+const passport = require("./configs/passportConfig");
 
+app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()));
-
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 app.use((err, req, res, next) => {
   console.error(err);

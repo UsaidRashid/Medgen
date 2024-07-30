@@ -11,6 +11,7 @@ router.route("/fetch-stores").post(storeController.fetchStores);
 router.route("/delete-store").post(storeController.deleteStore);
 router.route("/fetch-brands").post(adminController.fetchBrands);
 router.route("/fetch-generics").post(adminController.fetchGenerics);
+router.route("/delete-request").post(adminController.deleteRequests);
 router.route("/delete-brand").post(adminController.deleteBrand);
 router.route("/delete-generic").post(adminController.deleteGeneric);
 
