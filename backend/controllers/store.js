@@ -8,6 +8,9 @@ module.exports.registerStore = async (req, res) => {
       req.body.formData;
     const token = req.body.token;
 
+    const storePic = req.file ? req.file.filename : null;
+
+
     if (!token)
       return res
         .status(400)
@@ -34,6 +37,7 @@ module.exports.registerStore = async (req, res) => {
       pincode,
       address,
       owner: decodedToken.user._id,
+      storePic
     });
 
     const newStore = await store.save();

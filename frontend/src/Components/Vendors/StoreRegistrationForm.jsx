@@ -20,20 +20,33 @@ const RegistrationForm = () => {
     pincode: "",
     address: "",
     gst_No: "",
+    storePic:""
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    if (e.target.name === "storePic") {
+      setFormData({
+        ...formData,
+        storePic: e.target.files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:6969/store/register-store', {token,formData});
+      const response = await axios.post('http://localhost:6969/store/register-store',formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
 
       if (response.status === 200) {
         alert(response.data.message);

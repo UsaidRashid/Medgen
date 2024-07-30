@@ -10,7 +10,7 @@ const myStyle = {
   flex: "30%",
 };
 
-}
+
 export default function BrandedCompare() {
   const [medicine, setMedicine] = useState({ name: "", alternativeFor: [] });
 
