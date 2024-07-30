@@ -11,10 +11,15 @@ export default function Navbar() {
 
   const token = localStorage.getItem("token");
   let storeOwner = false;
+  let decodedToken = null;
   if (token) {
-    const decodedToken = jwtDecode(token);
+    decodedToken = jwtDecode(token);
     if (decodedToken.user.store !== undefined) storeOwner = true;
   }
+  
+  const profilePic = decodedToken?.user?.profilePic ;
+  const profilePicUrl = `http://localhost:6969/uploads/${profilePic}`;
+  
 
   useEffect(() => {
     if (token !== null) setIsLoggedIn(true);
@@ -149,7 +154,7 @@ export default function Navbar() {
                   {" "}
                   <img
                     className=" bottom-0 start-0"
-                    src={profile}
+                    src={profilePicUrl}
                     style={{
                       height: "50px",
                       width: "50px",
