@@ -23,103 +23,64 @@ export default function BrandedCompare() {
         delaySpeed: 550,
     });
 
-    const [brandedMed, setBrandedMed] = useState([]);
-
-    useEffect(() => {
-        const fetchBrandedMed = async () => {
-            try {
-                const response = await axios.post('http://localhost:6969/medilo/brand-search');
+        const [brands, setbrands] = useState([]);
+       
+        useEffect(() => {
+            const main = async () => {
+              try {
+                const response = await axios.post('http://localhost:6969/admin/fetch-brands');
+                
                 if (response.status === 200) {
-                    console.log(response.data);
-                    setBrandedMed(response.data);
+                  setbrands(response.data.brands);
                 } else {
-                    alert('There was a problem in signing up the user....', response.data.message);
+                  alert(response.data.message ? response.data.message : 'Error Fetching the medicines from database');
                 }
-            } catch (error) {
-                console.error("Error in Registering:", error);
+              } catch (error) {
+                console.error("Error in Fetching Medicines:", error);
                 alert(`${error.name} -> ${error.message}`);
                 if (error.response) {
-                    alert("Error from server: " + error.response.data.message);
+                  alert("Error from server: " + error.response.data.message);
                 } else if (error.request) {
-                    alert("No response from the server");
+                  alert("No response from the server");
                 } else {
-                    alert("Error setting up the request: " + error.message);
+                  alert("Error setting up the request: " + error.message);
                 }
-            }
-        }
-        fetchBrandedMed();
-    }, []);
+              }
+            };
+            main();
+          }, []);
 
 
     return (
-        <>
-            <div className='justify-content-left' style={{ backgroundImage: `url(${background2})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
-            
-                <h1 className="text" style={{ marginLeft: "4.3rem", color: "white", marginTop: "0px" }}>.</h1>
-                <h1 className="text" style={{ marginLeft: "18.3rem", color: "black", marginTop: "2.3rem", fontSize: "35px" }}>Here Are The ...</h1>
-                <h1 className="text" style={{ marginLeft: "10rem", color: "#2380ea", marginTop: "1rem", fontSize: "37px" }}>/{text}/</h1>
-              
-                <div className="cards-outer mx-5">
-                    <div className="cards" style={myStyle}>
-                        <div className="row">
-                            <div className="col-sm-6 mb-4 mb-sm-0 w-50">
-                                <div className="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
-                                    <div>
-                                        <div className="card-write">
-                                            <h5 className="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="btn btn-primary fs-5" onClick={openCompare} style={{ marginLeft: "3rem", height: "50px", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}><b>Compare</b> </button>
+      <>
+                  <div className='justify-content-left' style={{ backgroundImage: `url(${background2})`, backgroundRepeat: "no-repeat", backgroundSize: "contain", backgroundPosition: "right", height: '100vh', backgroundColor: "white" }}>
+                       <h1 className="text" style={{ marginLeft: "4.3rem", color: "white", marginTop: "0px" }}>.</h1>
+                       <h1 className="text" style={{ marginLeft: "18.3rem", color: "black", marginTop: "2.3rem", fontSize: "35px" }}>Here Are The ...</h1>
+                    <h1 className="text" style={{ marginLeft: "10rem", color: "#2380ea", marginTop: "1rem", fontSize: "37px" }}>/{text}/</h1>
+             {brands.map((brand) => {
+                  return(
+                      <div className="cards-outer mx-5">
+                          <div className="cards" style={myStyle}>
+                              <div className="row">
+                                  <div class="col-sm-6 mb-4 mb-sm-0 w-50">
+                                      <div class="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
+                                          <div>
+                                              <div className="card-write">
+                                                  <h5 class="card-title" style={{ marginTop: "4px" }}>{brand.name}</h5>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <button className="btn btn-primary fs-5" onClick={openCompare} style={{ marginLeft: "3rem", height: "50px", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}><b>Compare</b> </button>
+                          </div>
+                          
+                      </div>
+                 
+                 )})};
                     </div>
-                    <div className="cards" style={myStyle}>
-                        <div className="row">
-                            <div class="col-sm-6 mb-4 mb-sm-0 w-50">
-                                <div class="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
-                                    <div>
-                                        <div className="card-write">
-                                            <h5 class="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="btn btn-primary fs-5" onClick={openCompare} style={{ marginLeft: "3rem", height: "50px", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}><b>Compare</b> </button>
-                    </div>
-                    <div className="cards" style={myStyle}>
-                        <div className="row">
-                            <div class="col-sm-6 mb-4 mb-sm-0 w-50">
-                                <div class="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
-                                    <div>
-                                        <div className="card-write">
-                                            <h5 class="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="btn btn-primary fs-5" onClick={openCompare} style={{ marginLeft: "3rem", height: "50px", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}><b>Compare</b> </button>
-                    </div>
-                    <div className="cards" style={myStyle}>
-                        <div className="row">
-                            <div class="col-sm-6 mb-4 mb-sm-0 w-50">
-                                <div class="card" style={{ backgroundColor: "white", width: "600px", textAlign: "center", height: "50px", border: "1.61px solid", borderColor: "black", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}>
-                                    <div>
-                                        <div className="card-write">
-                                            <h5 class="card-title" style={{ marginTop: "4px" }}>Branded Medicine Name....</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button className="btn btn-primary fs-5" onClick={openCompare} style={{ marginLeft: "3rem", height: "50px", borderRadius: "24px", boxShadow: "6px 5px 5px rgba(0, 0, 0, 0.5)" }}><b>Compare</b></button>
-                    </div>
-
-                </div>
-            </div>
-        </>
+              </>
     );
 }
+
 
