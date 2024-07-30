@@ -20,7 +20,8 @@ const ViewStoreProfile = () => {
       navigate('/login');
   }
 
-
+  const storePicUrl = decodedToken?.store?.storePic ? `http://localhost:6969/uploads/${decodedToken.store.storePic}` : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
+    console.log(storePicUrl);
   const store={
       gst_No : decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
       name : decodedToken.user.store.name?decodedToken.user.store.name:"",
@@ -38,7 +39,7 @@ const ViewStoreProfile = () => {
         <div class="col-md-7 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
-            src={viewStore}
+            src={storePicUrl}
               class="rounded-circle mt-5"
               width="500px"
               height="500px"

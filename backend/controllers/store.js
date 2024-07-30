@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports.registerStore = async (req, res) => {
   try {
-    const { gst_No, name, latitude, longitude, pincode, address } =
-      req.body.formData;
-    const token = req.body.token;
+    const { gst_No, name, latitude, longitude, pincode, address,token } =
+      req.body;
+    
 
     if (!token)
       return res
@@ -15,7 +15,7 @@ module.exports.registerStore = async (req, res) => {
           message:
             "Seems Like you are not logged in... Please Login for registering your store!",
         });
-
+    const storePic = req.file ? req.file.filename : null;
     const decodedToken = jwt.verify(token, "secretkey");
 
     if (!gst_No || !name || !pincode || !address)
@@ -34,6 +34,7 @@ module.exports.registerStore = async (req, res) => {
       pincode,
       address,
       owner: decodedToken.user._id,
+      storePic,
     });
 
     const newStore = await store.save();
