@@ -1,80 +1,146 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from 'react-data-table-component';
+
 import Sidebar from './Sidebar';
 import axios from 'axios';
 
-export default function Storedetails(){
+export default function Storedetails() {
+  
+  const [stores, setStores] = useState([]);
+  const[search,SetSearch]=useState([]);
+  const[filter,SetFilter]=useState([]);
 
-
-    const [stores, setStores] = useState(
-      [
-      ]
-    );
-
-    useEffect(()=>{
-      const fetchData = async () => {
-        try{
-           const response = await axios.post('http://localhost:6969/admin/fetch-stores');
-           const{stores} =response.data;
-           setStores(stores);
-          }catch (error) {
-            console.error("Error fetching data", error);
-          }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('http://localhost:6969/admin/fetch-stores');
+        const { stores } = response.data;
         
-        };
-        fetchData();
-      },);
+        setStores(stores);
+        SetFilter(stores);
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
+    fetchData();
+  }, []);
 
-    
-    
-    return( 
-        <>
-        <div className='d-flex flex-row bg-white'>
+  const handleDeleteStore = async (gst_No) => {
+    try {
+          const response = await axios.post('http://localhost:6969/admin/delete-store',{gst_No});
+          if(response.status===200){
+              alert('Store Deleted Successfully');
+              window.location.reload();
+          }else{
+            alert(response.data.message?response.data.message:'Error deleting the store...');
+          }
+    } catch (error) {
+          console.error("Error in Deleting:", error);
+          console.log( `${error.name} -> ${error.message}`);
+          if (error.response) {
+            alert("Error from server: " + error.response.data.message);
+          } else if (error.request) {
+            alert("No response from the server");
+          } else {
+            alert("Error setting up the request: " + error.message);
+          }
+    }
+  }
+  
+
+  const columns = [
+    {
+      name: <b>GST No</b>,
+      selector: row => row.gst_No,
+      sortable: true,
+    },
+    {
+      name: <b>Name</b>,
+      selector: row => row.name,
+      sortable: true,
+    },
+    {
+      name: <b>Latitude</b>,
+      selector: row => row.latitude,
+      sortable: true,
+    },
+    {
+      name: <b>Longitude</b>,
+      selector: row => row.longitude,
+      sortable: true,
+    },
+    {
+      name: <b>Pincode</b>,
+      selector: row => row.pincode,
+      sortable: true,
+    },
+    {
+      name: <b>Address</b>,
+      selector: row => row.address,
+      sortable: true,
+    },
+    {
+      name: <b>Owner Name</b>,
+      selector: row => row.owner ? row.owner.name : '',
+      sortable: true,
+    },
+    {
+      name: <b>Owner Contact</b>,
+      selector: row => row.owner ? row.owner.contact : '',
+      sortable: true,
+    },
+    {
+      name: <b>Owner Email</b>,
+      selector: row => row.owner ? row.owner.email : '',
+      sortable: true,
+    },
+    {
+      cell: row => (
+        <button
+          className="text-center"
+          type="button"
+          onClick={()=>handleDeleteStore(row.gst_No)}
+          style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
+        >
+          Delete
+        </button>
+      ),
+      ignoreRowClick: true,
+      allowOverflow: true,
+      button: true,
+    },
+  ];
+
+  return (
+    <React.Fragment>
+      <div className='d-flex flex-row bg-white'>
         <div>
-                            <Sidebar/>
+          <Sidebar />
         </div>
-
-        <div>
-
-
-<table className="table table-striped table-hover "style={{width:'100%',border:'2px solid black'}} >
-    <thead className="mt-5 mb-5">
-        <tr>
-            <th scope="col">gst_No</th>
-            
-            <th scope="col">name</th>
-            <th scope="col">latitude</th>
-            <th scope="col">longitude</th>
-            <th scope="col">pincode</th>
-            <th scope="col">address</th>
-            <th scope="col">owner name</th>
-            <th scope="col">owner contact</th>
-            <th scope="col">owner email</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-        {stores.map(store=>(
-          
-
-        <tr key={store.gst_No}>
-            <td>{store.gst_No}</td>
-            <td>{store.name}</td>
-            <td>{store.latitude}</td>
-            <td>{store.longitude}</td>   
-            <td>{store.pincode}</td> 
-            <td>{store.address}</td> 
-            <td>{store.owner? store.owner.name:''}</td> 
-            <td>{store.owner? store.owner.contact:''}</td> 
-            <td>{store.owner? store.owner.email:''}</td> 
-            
-        </tr>
-        ))
-        }
-    </tbody>
-</table>
-</div>
-  </div>
- </> 
-)}
-
+        <div style={{ width: '85vw' }}>
+          <DataTable
+            columns={columns}
+            data={filter}
+            pagination
+            selectableRows
+            fixedHeader
+            selectableRowsHighlight
+            paginationPerPage={10}
+            paginationRowsPerPageOptions={[10, 20, 30]}
+            striped
+            highlightOnHover
+            subHeader
+             subHeaderComponent={
+             <input type="text"
+             className="w-25 form-control"
+              placeholder="Search..."
+              onChange={(e) => SetSearch(e.target.value)}
+              value={search}
+             />
+              }
+          />
+        </div>
+      </div>
+    </React.Fragment>
+  );
+}

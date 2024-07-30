@@ -1,105 +1,137 @@
-const User = require('../models/users');
-const jwt = require('jsonwebtoken');
+const User = require("../models/users");
+const jwt = require("jsonwebtoken");
 
-module.exports.signup = async (req,res) =>{
-    try {
-        console.log(req.body);
-        let {username , name , email , contact , password} = req.body;
+module.exports.signup = async (req, res) => {
+  try {
+    let { username, name, email, contact, password } = req.body;
 
-        if(!username || !name || !email || !contact || !password) return res.status(400).json({message:'All the fields are required for registration!'});
-        
-        const existingEmail = await User.findOne({email});
+    const profilePic = req.file ? req.file.filename : null;
 
-        if(existingEmail) return res.status(400).json({message:'The given email is already registered!'});
+    if (!username || !name || !email || !contact || !password)
+      return res
+        .status(400)
+        .json({ message: "All the fields are required for registration!" });
 
-        const newUser = new User({
-            name,
-            email,
-            username,
-            contact,
-        });
+    const existingEmail = await User.findOne({ email });
 
-        const registeredUser = await User.register(newUser,req.body.password);
+    if (existingEmail)
+      return res
+        .status(400)
+        .json({ message: "The given email is already registered!" });
 
-        req.login(registeredUser,(err) => {
-            if(err){
-                console.log(err);
-                return res.status(500).json({message:'Error saving the user',err});
-            }
-            const token = jwt.sign(  {user:registeredUser} ,'secretkey', { algorithm: 'HS256' });
+    const newUser = new User({
+      name,
+      email,
+      username,
+      contact,
+      profilePic,
+    });
 
-            return res.status(200).json({message:'User Registered Successfully!',token});
-        });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({message:'Internal Server Error',error});
-    }
-    
-}
+    const registeredUser = await User.register(newUser, req.body.password);
 
-module.exports.login = async (req,res) =>{
-    const user = await User.findOne({ username : req.body.username}).populate('store');
-    const token = jwt.sign( {user}  ,'secretkey', { algorithm: 'HS256' });
-    return res.status(200).json({message:'User Logged in successfully',token});
-}
+    req.login(registeredUser, (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Error saving the user", err });
+      }
+      const token = jwt.sign({ user: registeredUser }, "secretkey", {
+        algorithm: "HS256",
+      });
 
+      return res
+        .status(200)
+        .json({ message: "User Registered Successfully!", token });
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
 
-module.exports.logout = async (req,res) =>{
-    try {
-        req.logout( (err) =>{
-            if(err) return res.status(500).json({message:'Error while logging out ',err});
-            else return res.status(200).json({message:"Logged out successfully"});
-        });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({message:'Internal Server Error',error});
-    }
-    
-}
+module.exports.login = async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username }).populate(
+      "store"
+    );
+    const token = jwt.sign({ user }, "secretkey", { algorithm: "HS256" });
+    return res
+      .status(200)
+      .json({ message: "User Logged in successfully", token });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
 
+module.exports.logout = async (req, res) => {
+  try {
+    req.logout((err) => {
+      if (err)
+        return res
+          .status(500)
+          .json({ message: "Error while logging out ", err });
+      else return res.status(200).json({ message: "Logged out successfully" });
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
 
-module.exports.updateDetails = async (req,res) => {
-    try {
-        const { name, email , contact } = req.body.formData;
-        const token = req.body.token;
+module.exports.updateDetails = async (req, res) => {
+  try {
+    const { name, email, contact, token } = req.body;
+    const profilePic = req.file ? req.file.filename : null;
 
-        if(!name || !email) return res.status(400).json({message:"Required Fields shouldn't be ignored!"});
+    if (!name || !email)
+      return res
+        .status(400)
+        .json({ message: "Required Fields shouldn't be ignored!" });
 
-        if(!token) return res.status(400).json({message:'Something went wrong! Are you logged in?'});
+    if (!token)
+      return res
+        .status(400)
+        .json({ message: "Something went wrong! Are you logged in?" });
 
-        const decodedToken = jwt.verify(token,'secretkey');
-        
-        const username = decodedToken.user.username;
+    const decodedToken = jwt.verify(token, "secretkey");
 
-        const updatedProfile = {
-            name ,
-            email,
-            contact,
-        };
+    const username = decodedToken.user.username;
 
-        const updatedUser = await User.findOneAndUpdate({username} , updatedProfile, { new : true, runValidators:true});
+    const updatedProfile = {
+      name,
+      email,
+      contact,
+      profilePic,
+    };
 
-        const newToken = jwt.sign({user:updatedUser} ,'secretkey', { algorithm: 'HS256' });
+    const updatedUser = await User.findOneAndUpdate(
+      { username },
+      updatedProfile,
+      { new: true, runValidators: true }
+    ).populate("store");
 
-        if(!updatedUser) return res.status(400).json({message:"Couldn't find user profile ! Please try logging in again"});
+    const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
+      algorithm: "HS256",
+    });
 
-        return res.status(200).json({message:'User Updated successfully',token:newToken});
-        
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({message:'Internal Server Error',error});
-    }
-    
-}
+    if (!updatedUser)
+      return res.status(400).json({
+        message: "Couldn't find user profile ! Please try logging in again",
+      });
 
+    return res
+      .status(200)
+      .json({ message: "User Updated successfully", token: newToken });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
 
-
-module.exports.signupGoogle = async (req,res) => {
-    try {
-        
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({message:'Internal Server Error',error});   
-    }
-
-}
+module.exports.signupGoogle = async (req, res) => {
+  try {
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};

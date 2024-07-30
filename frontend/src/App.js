@@ -15,6 +15,7 @@ import AddGenericMedicine from './Components/Admin/AddGenericMedicine';
 import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
 import Storelocator from './Components/Vendors/Storelocator';
 import UpdateStore from './Components/Vendors/UpdateStore';
+import ViewStoreProfile from './Components/Vendors/ViewStoreProfile';
 
 import BrandedSearch from './Components/Medilo/BrandedSearch';
 import GenericSearch from './Components/Medilo/GenericSearch';
@@ -41,6 +42,8 @@ import Services from './Components/ExtraPages/Services';
 import AboutUs from './Components/ExtraPages/AboutUs';
 import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
+import BrandMed from './Components/Admin/BrandMedicines';
+import GenericMed from './Components/Admin/GenericMedicines';
 
 export default function App(){
 return (
@@ -67,17 +70,22 @@ return (
           <Route path='/user-profile' element={<ProtectedRoute><Userprofile/></ProtectedRoute>}></Route>
           <Route path='/user-profile-update' element={<ProtectedRoute><UpdateDetails/></ProtectedRoute>}></Route>
 
-          <Route path='/admin' element={<AdminAuthentication/>}></Route>
-          <Route path='/admin/dashboard' element={<SuperProtectedRoute><AdminDashboard/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/add-medicine' element={<SuperProtectedRoute><AddMedicine/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/add-branded-medicine' element={<SuperProtectedRoute><AddBrandedMedicine/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/add-generic-medicine' element={<SuperProtectedRoute><AddGenericMedicine/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/store' element={<SuperProtectedRoute><Adminstore/></SuperProtectedRoute>}></Route>
-          <Route path='/admin/requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
-
+          <Route path='/admin' >
+                  <Route path='' element={<AdminAuthentication/>} ></Route>
+                  <Route path='dashboard' element={<SuperProtectedRoute><AdminDashboard/></SuperProtectedRoute>}></Route>
+                  <Route path='add-medicine' element={<SuperProtectedRoute><AddMedicine/></SuperProtectedRoute>}></Route>
+                  <Route path='add-branded-medicine' element={<SuperProtectedRoute><AddBrandedMedicine/></SuperProtectedRoute>}></Route>
+                  <Route path='add-generic-medicine' element={<SuperProtectedRoute><AddGenericMedicine/></SuperProtectedRoute>}></Route>
+                  <Route path='stores' element={<SuperProtectedRoute><Adminstore/></SuperProtectedRoute>}></Route>
+                  <Route path='requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
+                  <Route path='brand-medicines' element={<SuperProtectedRoute><BrandMed/></SuperProtectedRoute>}></Route>
+                  <Route path='generic-medicines' element={<SuperProtectedRoute><GenericMed/></SuperProtectedRoute>}></Route>
+          </Route>
+          
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
           <Route path='/store-registration-form' element={<ProtectedRoute><StoreRegistrationForm/></ProtectedRoute>}></Route>
-          <Route path='/UpdateStore' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
+          <Route path='/update-store' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
+          <Route path='/view-store-profile' element={<ProtectedRoute><ViewStoreProfile/></ProtectedRoute>}></Route>
           
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>

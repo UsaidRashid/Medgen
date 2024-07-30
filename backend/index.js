@@ -1,79 +1,48 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 6969;
-const cors = require('cors');
-const mongoose = require('mongoose');
+const cors = require("cors");
+const path = require('path');
 
-const mongoUrl="mongodb://127.0.0.1:27017/Medgen";
-
-main().then(()=>{
-    console.log('Medgen Database connected successfully');
-}).catch((error)=>{
-    console.log('Error connecting to database ',error);
-});
-
-async function main(){
-    await mongoose.connect(mongoUrl);
-}
-
-const User = require('./models/users');
-
+require('./configs/dbConfig');
 // require('./auth');
 
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const passport = require('passport');
-const session = require('express-session');
-const localStrategy = require('passport-local').Strategy;
+require('./configs/multerConfig');
 
+app.use('/uploads', express.static(path.join(__dirname, './configs/uploads')));
 
-const sessionOptions = {
-    secret : 'my-session-secret',
-    resave : false,
-    saveUninitialized : true,
-    cookie : {
-        expires : Date.now() + 7*24*60*60*1000,
-        maxAge : 7*24*60*60*1000,
-        httpOnly : true,
-        secure : true,
-    }
-};
+const sessionConfig = require("./configs/sessionConfig");
+const passport = require("./configs/passportConfig");
 
-
-app.use(session(sessionOptions));
-
+app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()));
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+app.use((err, req, res, next) => {
+  console.error(err);
 
-
-
-app.use((err,req,res,next)=>{
-    console.error(err);
-
-    if(err.status) res.status(err.status).json({message:err.message});
-    else res.status(500).json({message:'Internal Server Error'});
+  if (err.status) res.status(err.status).json({ message: err.message });
+  else res.status(500).json({ message: "Internal Server Error" });
 });
 
-app.get('/',(req,res)=>{
-    res.send('Hello from the backend');
+app.get("/", (req, res) => {
+  res.send("Hello from the backend");
 });
 
-const userRouter  = require('./routes/users');
-const storeRouter  = require('./routes/store');
-const mediloRouter = require('./routes/medilo');
-const adminRouter = require('./routes/admin');
+const userRouter = require("./routes/users");
+const storeRouter = require("./routes/store");
+const mediloRouter = require("./routes/medilo");
+const adminRouter = require("./routes/admin");
 
-app.use('/users',userRouter);
-app.use('/medilo',mediloRouter);
-app.use('/store',storeRouter);
-app.use('/admin',adminRouter);
+app.use("/users", userRouter);
+app.use("/medilo", mediloRouter);
+app.use("/store", storeRouter);
+app.use("/admin", adminRouter);
 
-app.listen(port,(req,res)=>{
-    console.log(`Server listening to port ${port}`);
+app.listen(port, (req, res) => {
+  console.log(`Server listening to port ${port}`);
 });
