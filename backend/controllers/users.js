@@ -3,8 +3,11 @@ const jwt = require("jsonwebtoken");
 
 module.exports.signup = async (req, res) => {
   try {
+    console.log(req.file);
     console.log(req.body);
     let { username, name, email, contact, password } = req.body;
+
+    const profilePic = req.file ? req.file.filename : null;
 
     if (!username || !name || !email || !contact || !password)
       return res
@@ -23,6 +26,7 @@ module.exports.signup = async (req, res) => {
       email,
       username,
       contact,
+      profilePic,
     });
 
     const registeredUser = await User.register(newUser, req.body.password);
