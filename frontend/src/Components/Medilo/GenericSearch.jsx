@@ -49,28 +49,7 @@ export default function GenericSearch() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post('http://localhost:6969/medilo/generic-search', { name });
-            if (response.status === 200) {
-                alert(response.data.message);
-                navigate('/generic-compare-list');
-            }else if(response.status===201){
-                alert(response.data.message);
-                navigate('/medicine-not-found');
-            } else {
-                alert(response.data.message);
-            }
-        } catch (error) {
-            console.error("Error in Searching:", error);
-            alert( `${error.name} -> ${error.message}`);
-            if (error.response) {
-              alert("Error from server: " + error.response.data.message);
-            } else if (error.request) {
-              alert("No response from the server");
-            } else {
-              alert("Error setting up the request: " + error.message);
-            }
-        }
+        navigate(`/generic-compare-list?key=${name}`);
     }
 
     const handleChange = (e) => {

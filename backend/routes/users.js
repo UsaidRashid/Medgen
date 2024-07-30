@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/users");
 const passport = require("passport");
+const upload = require("../configs/multerConfig");
 
-router.route("/signup").post(userController.signup);
+router.route("/signup").post(upload.single('profilePic'),userController.signup);
 
 router
   .route("/login")

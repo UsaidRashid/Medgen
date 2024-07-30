@@ -16,6 +16,9 @@ const Userprofile = () => {
         navigate('/login');
     }
 
+    const profilePicUrl = decodedToken?.user?.profilePic ? `http://localhost:6969/uploads/${decodedToken.user.profilePic}` : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
+    console.log(profilePicUrl);
+
     const handleEdit = (e) => {
         e.preventDefault();
         navigate('/user-profile-update');
@@ -29,7 +32,8 @@ const Userprofile = () => {
             <img
               class="rounded-circle mt-5"
               width="150px"
-              src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+              height="150px"
+              src={profilePicUrl}
             />       
           </div>
         </div>

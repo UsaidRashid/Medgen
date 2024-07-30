@@ -3,8 +3,11 @@ const jwt = require("jsonwebtoken");
 
 module.exports.signup = async (req, res) => {
   try {
+    console.log(req.file);
     console.log(req.body);
     let { username, name, email, contact, password } = req.body;
+
+    const profilePic = req.file ? req.file.filename : null;
 
     if (!username || !name || !email || !contact || !password)
       return res
@@ -23,6 +26,7 @@ module.exports.signup = async (req, res) => {
       email,
       username,
       contact,
+      profilePic,
     });
 
     const registeredUser = await User.register(newUser, req.body.password);
@@ -47,13 +51,18 @@ module.exports.signup = async (req, res) => {
 };
 
 module.exports.login = async (req, res) => {
-  const user = await User.findOne({ username: req.body.username }).populate(
-    "store"
-  );
-  const token = jwt.sign({ user }, "secretkey", { algorithm: "HS256" });
-  return res
-    .status(200)
-    .json({ message: "User Logged in successfully", token });
+  try {
+    const user = await User.findOne({ username: req.body.username }).populate(
+      "store"
+    );
+    const token = jwt.sign({ user }, "secretkey", { algorithm: "HS256" });
+    return res
+      .status(200)
+      .json({ message: "User Logged in successfully", token });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
 };
 
 module.exports.logout = async (req, res) => {
@@ -100,18 +109,16 @@ module.exports.updateDetails = async (req, res) => {
       { username },
       updatedProfile,
       { new: true, runValidators: true }
-    ).populate('store');
+    ).populate("store");
 
     const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
       algorithm: "HS256",
     });
 
     if (!updatedUser)
-      return res
-        .status(400)
-        .json({
-          message: "Couldn't find user profile ! Please try logging in again",
-        });
+      return res.status(400).json({
+        message: "Couldn't find user profile ! Please try logging in again",
+      });
 
     return res
       .status(200)
