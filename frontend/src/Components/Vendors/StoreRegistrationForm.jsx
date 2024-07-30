@@ -20,20 +20,34 @@ const RegistrationForm = () => {
     pincode: "",
     address: "",
     gst_No: "",
+    storePic: "",
+    token: ""
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    if (e.target.name === "profilePic") {
+      setFormData({
+        ...formData,
+        profilePic: e.target.files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:6969/store/register-store', {token,formData});
+      const response = await axios.post('http://localhost:6969/store/register-store',formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (response.status === 200) {
         alert(response.data.message);
@@ -104,6 +118,16 @@ const RegistrationForm = () => {
               <Form.Label>GST No.</Form.Label>
               <Form.Control type="text" name="gst_No" placeholder="Enter GST No." value={formData.gst_No} required onChange={handleChange}/>
             </Form.Group>
+
+            <div className="form-group">
+                  <label>Store Picture</label>
+                  <input
+                    type="file"
+                    className="form-control mb-1"
+                    name="storePic"
+                    onChange={handleChange}
+                  />
+                </div>
 
             <div className='d-grid gap-2 col-6 mx-auto my-5 mb-3  py-5 w-25'>
               <Button variant="primary" type="submit" className='btn' style={{ backgroundColor: '#00bbf0' }}>
