@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import background from '../../Images/store.png';
 
 export default function UpdateStore() {
     const navigate = useNavigate();
@@ -89,7 +90,7 @@ export default function UpdateStore() {
             <div className="row">
                 <div className="col-md-6">
                 <img
-              src="image/store.png" style={{width:"50px" ,height:"500px"}}
+              src={background} style={{width:"50px" ,height:"500px"}}
               alt=""
               className="img-fluid w-100 h-500 mt-5"
               id="img1"

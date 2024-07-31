@@ -9,13 +9,11 @@ import { useTypewriter } from "react-simple-typewriter";
 import { useEffect } from "react";
 
 export default function Homepage() {
-
-
-const [text2] = useTypewriter({
-  words: ['OUR MISSION'],
-  loop: {},
-  delaySpeed: 850,
-});
+  const [text2] = useTypewriter({
+    words: ["OUR MISSION"],
+    loop: {},
+    delaySpeed: 850,
+  });
 
   return (
     <>
@@ -26,29 +24,36 @@ const [text2] = useTypewriter({
             className=" position-absolute top-50 start-50 translate-middle w-100 "
             style={{ marginTop: "190px" }}
           >
-            
-            <h1 className="text-secondary text-dark midtext" style={{marginLeft: "39rem"}}>
+            <h1
+              className="text-secondary text-dark midtext"
+              style={{ marginLeft: "39rem" }}
+            >
               YOUR <b className=" text-success">HEALTH</b> IS
             </h1>
-           
-            <h1 className="text-secondary text-dark midtext" style={{marginLeft: "39rem"} }>
+
+            <h1
+              className="text-secondary text-dark midtext"
+              style={{ marginLeft: "39rem" }}
+            >
               #{text2}
             </h1>
-           
 
             <div className="d-flex flex-row justify-content-centre float-end midb ">
-            <Link to="/medilo">
-              <button
-                type="button"
-                class="btn  btn-lg rounded-pill  mx-2 midbtn"
-              >
-                MEDILO
-              </button>
+              <Link to="/medilo">
+                <button
+                  type="button"
+                  class="btn  btn-lg rounded-pill  mx-2 midbtn"
+                >
+                  MEDILO
+                </button>
               </Link>
               <Link to="/store-locator">
-              <button type="button" class="btn btn-lg rounded-pill mx-2 midbtn">
-                FIND STORE
-              </button>
+                <button
+                  type="button"
+                  class="btn btn-lg rounded-pill mx-2 midbtn"
+                >
+                  FIND STORE
+                </button>
               </Link>
             </div>
           </div>
