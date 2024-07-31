@@ -28,20 +28,39 @@ export default function UpdateStore() {
     address: decodedToken.user.store.address?decodedToken.user.store.address:"",
     gst_No: decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
     pincode : decodedToken.user.store.pincode?decodedToken.user.store.pincode:"",
+    storePic: "",
+    token : "",
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    if (e.target.name === "storePic") {
+      setFormData({
+        ...formData,
+        storePic: e.target.files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post('http://localhost:6969/store/update-store', {formData,token});
+      const token = localStorage.getItem("token");
 
+      formData.token=token;
+      console.log(formData);
+      const response = await axios.post('http://localhost:6969/store/update-store', 
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+     
       if (response.status === 200) {
         alert(response.data.message);
         localStorage.removeItem('token');
@@ -114,6 +133,21 @@ export default function UpdateStore() {
   <Form.Label>Pincode</Form.Label>
   <Form.Control type="text" name="gst_No" placeholder="Enter GST No." value={formData.pincode} required onChange={handleChange}/>
 </Form.Group>
+
+<div className="form-group">
+                <label
+                  className="text-dark"
+                  style={{ marginTop: "12px" }}
+                >
+                  Store Picture
+                </label>
+                <input
+                  type="file"
+                  className="form-control mb-1"
+                  name="storePic"
+                  onChange={handleChange}
+                />
+              </div>
 
 <div className='d-grid gap-2 col-6 mx-auto my-4 mb-3  py-4 w-25'>
   <Button variant="primary" type="submit" className='btn' style={{ backgroundColor: '#00bbf0' }}>

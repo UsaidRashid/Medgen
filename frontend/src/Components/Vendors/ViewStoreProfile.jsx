@@ -21,7 +21,7 @@ const ViewStoreProfile = () => {
       navigate('/login');
   }
 
-  const storePic = decodedToken?.store?.storePic ;
+  const storePic = decodedToken?.user?.store?.storePic ;
 
     const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
     console.log(storePicUrl);

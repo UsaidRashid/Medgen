@@ -20,7 +20,7 @@ const RegistrationForm = () => {
     pincode: "",
     address: "",
     gst_No: "",
-    storePic: "",
+    storePic: null,
     token:""
   });
 
