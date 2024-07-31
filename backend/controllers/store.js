@@ -4,9 +4,9 @@ const jwt = require("jsonwebtoken");
 
 module.exports.registerStore = async (req, res) => {
   try {
-    const { gst_No, name, latitude, longitude, pincode, address } =
-      req.body.formData;
-    const token = req.body.token;
+    const { gst_No, name, latitude, longitude, pincode, address,token } =
+      req.body;
+    
 
     if (!token)
       return res
@@ -15,7 +15,7 @@ module.exports.registerStore = async (req, res) => {
           message:
             "Seems Like you are not logged in... Please Login for registering your store!",
         });
-
+    const storePic = req.file ? req.file.filename : null;
     const decodedToken = jwt.verify(token, "secretkey");
 
     if (!gst_No || !name || !pincode || !address)
@@ -34,6 +34,7 @@ module.exports.registerStore = async (req, res) => {
       pincode,
       address,
       owner: decodedToken.user._id,
+      storePic,
     });
 
     const newStore = await store.save();
@@ -59,9 +60,9 @@ module.exports.registerStore = async (req, res) => {
 module.exports.updateStore = async (req, res) => {
   try {
     console.log(req.body);
-    const { gst_No, name, pincode, address } = req.body.formData;
-    const token = req.body.token;
-
+    const { gst_No, name, pincode, latitude, longitude, address ,token} = req.body;
+    //const token = req.body.token;
+    const storePic = req.file ? req.file.filename : null;
     if (!token)
       return res
         .status(400)
@@ -76,13 +77,23 @@ module.exports.updateStore = async (req, res) => {
           message:
             "Some required information is missing... Please fill in all the fields!",
         });
-
-    const store = await Store.findOneAndUpdate({ gst_No }, req.body.formData, {
+        const decodedToken = jwt.verify(token, "secretkey");
+        const updatedProfile = {
+          gst_No,
+      name,
+      latitude,
+      longitude,
+      pincode,
+      address,
+      owner: decodedToken.user._id,
+      storePic,
+        };
+    const store = await Store.findOneAndUpdate({ gst_No },updatedProfile, {
       new: true,
       runValidators: true,
     });
 
-    const decodedToken = jwt.verify(token, "secretkey");
+    
 
     const updatedUser =await User.findOne({username : decodedToken.user.username}).populate('store');
 
