@@ -27,10 +27,12 @@ const storeSchema = new mongoose.Schema({
   storePic: {
     type: String, 
   },
+  
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  
 });
 
 module.exports = mongoose.model("Store", storeSchema);

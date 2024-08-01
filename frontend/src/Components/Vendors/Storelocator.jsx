@@ -243,6 +243,8 @@ function Storelocator() {
           </button>
         </div>
       </div>
+
+      
 <div>
         <ul
           className="d-flex flex-column flex-wrap justify-content-evenly"
@@ -253,6 +255,7 @@ function Storelocator() {
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
             >
+              
               <div
                 class="card border-2 border border-2 border-dark store-123"
                 style={{ width: "60rem", fontSize: "18px" }}
@@ -261,7 +264,7 @@ function Storelocator() {
                   <img
                     src={
                       store.storePic
-                        ? `http://localhost:6969/uploads/${store.storePic}`
+                        ? store.storePic
                         : background
                     }
                     alt=""

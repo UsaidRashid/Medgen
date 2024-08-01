@@ -1,30 +1,25 @@
 const Store = require("../models/stores");
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
+const cloudinary = require("cloudinary").v2;
 
 module.exports.registerStore = async (req, res) => {
   try {
     const { gst_No, name, latitude, longitude, pincode, address, token } =
       req.body;
-    // const token = req.body.token;
 
     if (!token)
-      return res
-        .status(400)
-        .json({
-          message:
-            "Seems Like you are not logged in... Please Login for registering your store!",
-        });
-
+      return res.status(400).json({
+        message:
+          "Seems Like you are not logged in... Please Login for registering your store!",
+      });
     const decodedToken = jwt.verify(token, "secretkey");
 
     if (!gst_No || !name || !pincode || !address)
-      return res
-        .status(400)
-        .json({
-          message:
-            "Some required information is missing... Please fill in all the fields!",
-        });
+      return res.status(400).json({
+        message:
+          "Some required information is missing... Please fill in all the fields!",
+      });
 
     const storePic = req.file ? req.file.filename : null;
 
@@ -37,7 +32,15 @@ module.exports.registerStore = async (req, res) => {
       address,
       storePic,
       owner: decodedToken.user._id,
+      storePic,
     });
+
+    if (storePic) {
+      const cloudinaryUrl = cloudinary.url(storePic, {
+        secure: true,
+      });
+      store.storePic = cloudinaryUrl;
+    }
 
     const newStore = await store.save();
 
@@ -62,46 +65,47 @@ module.exports.registerStore = async (req, res) => {
 module.exports.updateStore = async (req, res) => {
   try {
     console.log(req.body);
-    const { gst_No, name, pincode, latitude, longitude, address, token } = req.body;
-
-
+    const { gst_No, name, pincode, latitude, longitude, address, token } =
+      req.body;
+    //const token = req.body.token;
+    const storePic = req.file ? req.file.filename : null;
     if (!token)
       return res
         .status(400)
         .json({ message: "Something went wrong! Are you logged in?" });
 
-
-
     if (!gst_No || !name || !pincode || !address)
-      return res
-        .status(400)
-        .json({
-          message:
-            "Some required information is missing... Please fill in all the fields!",
-        });
-
+      return res.status(400).json({
+        message:
+          "Some required information is missing... Please fill in all the fields!",
+      });
     const decodedToken = jwt.verify(token, "secretkey");
-
-    const storePic = req.file ? req.file.filename : null;
-
-    const updatedStore = {
+    const updatedProfile = {
       gst_No,
       name,
       latitude,
       longitude,
       pincode,
       address,
-      storePic,
       owner: decodedToken.user._id,
+      storePic,
     };
 
-    const store = await Store.findOneAndUpdate({ gst_No }, updatedStore, {
+    if (storePic) {
+      const cloudinaryUrl = cloudinary.url(storePic, {
+        secure: true,
+      });
+      updatedProfile.storePic = cloudinaryUrl;
+    }
+
+    const store = await Store.findOneAndUpdate({ gst_No }, updatedProfile, {
       new: true,
       runValidators: true,
     });
 
-
-    const updatedUser = await User.findOne({ username: decodedToken.user.username }).populate('store');
+    const updatedUser = await User.findOne({
+      username: decodedToken.user.username,
+    }).populate("store");
 
     const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
       algorithm: "HS256",
@@ -110,7 +114,10 @@ module.exports.updateStore = async (req, res) => {
     if (!store) return res.status(400).json({ message: "Store not found" });
     res
       .status(200)
-      .json({ message: "Store Details Updated Successfully...", token: newToken });
+      .json({
+        message: "Store Details Updated Successfully...",
+        token: newToken,
+      });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -147,7 +154,10 @@ module.exports.fetchStores = async (req, res) => {
       const stores = await Store.find({ pincode }).populate("owner");
       res
         .status(200)
-        .json({ message: "Here are all the stores at the requested pincode...", stores });
+        .json({
+          message: "Here are all the stores at the requested pincode...",
+          stores,
+        });
     }
   } catch (error) {
     console.error(error);
