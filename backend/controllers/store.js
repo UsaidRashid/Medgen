@@ -4,11 +4,11 @@ const jwt = require("jsonwebtoken");
 
 module.exports.registerStore = async (req, res) => {
   try {
-    const { gst_No, name, latitude, longitude, pincode, address } =
-      req.body.formData;
-    const token = req.body.token;
+    const { gst_No, name, latitude, longitude, pincode, address,token } =
+      req.body;
+    
 
-    const storePic = req.file ? req.file.filename : null;
+    
 
 
     if (!token)
@@ -28,7 +28,7 @@ module.exports.registerStore = async (req, res) => {
           message:
             "Some required information is missing... Please fill in all the fields!",
         });
-
+        const storePic = req.file ? req.file.filename : null;
     const store = new Store({
       gst_No,
       name,
@@ -36,8 +36,9 @@ module.exports.registerStore = async (req, res) => {
       longitude,
       pincode,
       address,
-      owner: decodedToken.user._id,
-      storePic
+      storePic,
+      owner: decodedToken.user._id
+      
     });
 
     const newStore = await store.save();
@@ -63,8 +64,8 @@ module.exports.registerStore = async (req, res) => {
 module.exports.updateStore = async (req, res) => {
   try {
     console.log(req.body);
-    const { gst_No, name, pincode, address } = req.body.formData;
-    const token = req.body.token;
+    const { gst_No, name, pincode,latitude,longitude, address,token } = req.body;
+    
 
     if (!token)
       return res
@@ -81,12 +82,25 @@ module.exports.updateStore = async (req, res) => {
             "Some required information is missing... Please fill in all the fields!",
         });
 
-    const store = await Store.findOneAndUpdate({ gst_No }, req.body.formData, {
+        const decodedToken = jwt.verify(token, "secretkey");
+        const storePic = req.file ? req.file.filename : null;
+        const updateStore={
+          gst_No,
+          name,
+          latitude,
+          longitude,
+          pincode,
+          address,
+          storePic,
+          owner: decodedToken.user._id
+        }
+        
+    const store = await Store.findOneAndUpdate({ gst_No }, updateStore, {
       new: true,
       runValidators: true,
     });
 
-    const decodedToken = jwt.verify(token, "secretkey");
+   
 
     const updatedUser =await User.findOne({username : decodedToken.user.username}).populate('store');
 

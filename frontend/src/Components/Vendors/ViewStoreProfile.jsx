@@ -20,6 +20,10 @@ const ViewStoreProfile = () => {
       navigate('/login');
   }
 
+  const storePic = decodedToken?.user?.store?.storePic ; 
+  console.log(decodedToken);
+ 
+  const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
 
   const store={
       gst_No : decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
@@ -38,10 +42,10 @@ const ViewStoreProfile = () => {
         <div class="col-md-7 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
-            src={viewStore}
+            src={storePic?storePicUrl:viewStore}
               class="rounded-circle mt-5"
-              width="500px"
-              height="500px"
+              width="300px"
+              height="300px"
             />
            
           </div>
