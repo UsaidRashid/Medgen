@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 
 export default function UpdateDetails() {
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
   let decodedToken = null;
 
@@ -15,7 +16,7 @@ export default function UpdateDetails() {
     navigate("/login");
   }
 
-  const navigate = useNavigate();
+  
 
   const [formData, setFormData] = useState({
     name: decodedToken.user.name ? decodedToken.user.name : "",
@@ -42,7 +43,7 @@ export default function UpdateDetails() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem  ("token");
       formData.token=token;
       const response = await axios.post(
         "http://localhost:6969/users/update",
