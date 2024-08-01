@@ -44,36 +44,13 @@ const ViewStoreProfile = () => {
   };
   const owner = decodedToken.user.name ? decodedToken.user.name : "";
 
-<<<<<<< HEAD
-  const storePic = decodedToken?.user?.store?.storePic ; 
-  console.log(decodedToken);
- 
-  const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
-
-  const store={
-      gst_No : decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
-      name : decodedToken.user.store.name?decodedToken.user.store.name:"",
-      latitude : decodedToken.user.store.latitude?decodedToken.user.store.latitude:"",
-      longitude : decodedToken.user.store.longitude?decodedToken.user.store.longitude:"",
-      pincode : decodedToken.user.store.pincode?decodedToken.user.store.pincode:"",
-      address : decodedToken.user.store.address?decodedToken.user.store.address:"",
-  }
-  const owner = decodedToken.user.name?decodedToken.user.name:"";
-
-  
-=======
->>>>>>> main
   return (
     <div class="container rounded bg-white mt-5 mb-5 border border-2 border-dark shadow-lg">
       <div class="row">
         <div class="col-md-7 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
-<<<<<<< HEAD
-            src={storePic?storePicUrl:viewStore}
-=======
               src={storePic ? storePic : viewStore}
->>>>>>> main
               class="rounded-circle mt-5"
               width="300px"
               height="300px"

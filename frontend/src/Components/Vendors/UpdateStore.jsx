@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React,{useState} from 'react'
-
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { jwtDecode } from 'jwt-decode';
-import viewStore from "../../Images/viewStoreProfile.png";
-=======
 import React, { useState, useEffect } from "react";
 
 import Form from "react-bootstrap/Form";
@@ -18,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import background from "../../Images/store.png";
->>>>>>> main
 
 export default function UpdateStore() {
   const navigate = useNavigate();
@@ -33,17 +21,6 @@ export default function UpdateStore() {
   }
 
   const [formData, setFormData] = useState({
-<<<<<<< HEAD
-    name: decodedToken.user.store.name?decodedToken.user.store.name:"",
-    longitude: decodedToken.user.store.longitude?decodedToken.user.store.longitude:"",
-    latitude: decodedToken.user.store.latitude?decodedToken.user.store.latitude:"",
-    pincode: decodedToken.user.store.pincode?decodedToken.user.store.pincode:"",
-    address: decodedToken.user.store.address?decodedToken.user.store.address:"",
-    gst_No: decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
-    pincode : decodedToken.user.store.pincode?decodedToken.user.store.pincode:"",
-    storePic:"",
-    token:"",
-=======
     name: decodedToken.user.store.name ? decodedToken.user.store.name : "",
     longitude: decodedToken.user.store.longitude
       ? decodedToken.user.store.longitude
@@ -65,7 +42,6 @@ export default function UpdateStore() {
       : "",
     storePic: "",
     token: "",
->>>>>>> main
   });
 
   const handleChange = (e) => {
@@ -81,24 +57,10 @@ export default function UpdateStore() {
       });
     }
   };
-<<<<<<< HEAD
- 
-  const storePic = decodedToken?.user?.store?.storePic ; 
-  
- 
-  const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
-
-  
-=======
->>>>>>> main
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-<<<<<<< HEAD
-      formData.token=token;
-      const response = await axios.post('http://localhost:6969/store/update-store', formData,
-=======
       const token = localStorage.getItem("token");
 
       formData.token = token;
@@ -106,17 +68,12 @@ export default function UpdateStore() {
       const response = await axios.post(
         "http://localhost:6969/store/update-store",
         formData,
->>>>>>> main
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-<<<<<<< HEAD
-        });
-=======
         }
       );
->>>>>>> main
 
       if (response.status === 200) {
         alert(response.data.message);
@@ -144,20 +101,12 @@ export default function UpdateStore() {
   };
   return (
     <div>
-<<<<<<< HEAD
-        <div className="container-fluid">
-            <div className="row">
-                <div className="col-md-6">
-                <img
-              src={storePic?storePicUrl:viewStore} style={{width:"50px" ,height:"500px"}}
-=======
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
             <img
               src={background}
               style={{ width: "50px", height: "500px" }}
->>>>>>> main
               alt=""
               className="img-fluid w-100 h-500 mt-5"
               id="img1"
@@ -267,22 +216,6 @@ export default function UpdateStore() {
                 />
               </div>
 
-<<<<<<< HEAD
-<Form.Group as={Col} controlId="storePic">
-  <Form.Label>storePic</Form.Label>
-  <Form.Control type="file" name="storePic" placeholder="upload storePic"  required onChange={handleChange}/>
-</Form.Group>
-
-<div className='d-grid gap-2 col-6 mx-auto my-4 mb-3  py-4 w-25'>
-  <Button variant="primary" type="submit" className='btn' style={{ backgroundColor: '#00bbf0' }}>
-    Update
-  </Button>
-</div>
-              
-</Form>
-                </div>
-            </div>
-=======
               <div className="d-grid gap-2 col-6 mx-auto my-4 mb-3  py-4 w-25">
                 <Button
                   variant="primary"
@@ -295,7 +228,6 @@ export default function UpdateStore() {
               </div>
             </Form>
           </div>
->>>>>>> main
         </div>
       </div>
     </div>

@@ -20,11 +20,7 @@ const RegistrationForm = () => {
     pincode: "",
     address: "",
     gst_No: "",
-<<<<<<< HEAD
-    storePic:"",
-=======
     storePic: null,
->>>>>>> main
     token:""
   });
 
@@ -47,22 +43,13 @@ const RegistrationForm = () => {
       e.preventDefault();
       const token = localStorage.getItem('token');
       formData.token=token;
-<<<<<<< HEAD
-      const response = await axios.post('http://localhost:6969/store/register-store',formData,
-        
-=======
       const response = await axios.post('http://localhost:6969/store/register-store', formData,
->>>>>>> main
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-<<<<<<< HEAD
-        });
-=======
         }
       );
->>>>>>> main
 
       if (response.status === 200) {
         alert(response.data.message);
@@ -134,16 +121,6 @@ const RegistrationForm = () => {
               <Form.Control type="text" name="gst_No" placeholder="Enter GST No." value={formData.gst_No} required onChange={handleChange}/>
             </Form.Group>
 
-<<<<<<< HEAD
-            <div className="form-group"> 
-                  <label>Store Picture</label> 
-                  <input 
-                    type="file" 
-                    className="form-control mb-1" 
-                    name="storePic" 
-                    onChange={handleChange} 
-                  /> 
-=======
 
 
             <div className="form-group">
@@ -154,7 +131,6 @@ const RegistrationForm = () => {
                     name="storePic"
                     onChange={handleChange}
                   />
->>>>>>> main
                 </div>
 
             <div className='d-grid gap-2 col-6 mx-auto my-5 mb-3  py-5 w-25'>
