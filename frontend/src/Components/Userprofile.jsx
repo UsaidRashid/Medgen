@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {jwtDecode} from 'jwt-decode';
+import profile from '../Images/profile.png'
 
 const Userprofile = () => {
     const navigate = useNavigate();
@@ -16,14 +17,16 @@ const Userprofile = () => {
         navigate('/login');
     }
 
-    const profilePicUrl = decodedToken?.user?.profilePic ? `http://localhost:6969/uploads/${decodedToken.user.profilePic}` : "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
-    console.log(profilePicUrl);
+    const profilePic = decodedToken?.user?.profilePic ;
+
+    
 
     const handleEdit = (e) => {
         e.preventDefault();
         navigate('/user-profile-update');
     }
 
+    
   return (
     <div class="container rounded bg-white mt-3 mb-4" style={{boxShadow: "9px 9px 14px rgb(0 ,0, 0, .371)", border: "1px solid black"}}>
       <div class="row">
@@ -33,7 +36,7 @@ const Userprofile = () => {
               class="rounded-circle mt-5"
               width="150px"
               height="150px"
-              src={profilePicUrl}
+              src={profilePic?profilePic: profile}
             />       
           </div>
         </div>

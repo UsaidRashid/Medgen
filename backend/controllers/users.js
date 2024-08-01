@@ -1,14 +1,14 @@
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
+const cloudinary = require('cloudinary').v2;
 
 module.exports.signup = async (req, res) => {
   try {
-    console.log(req.file);
-    console.log(req.body);
     let { username, name, email, contact, password } = req.body;
 
-    const profilePic = req.file ? req.file.filename : null;
+    const profilePic = req.file ? req.file.path : null;
 
+    
     if (!username || !name || !email || !contact || !password)
       return res
         .status(400)
@@ -30,6 +30,14 @@ module.exports.signup = async (req, res) => {
     });
 
     const registeredUser = await User.register(newUser, req.body.password);
+    
+    if (profilePic) {
+      const cloudinaryUrl = cloudinary.url(profilePic, {
+        secure: true,
+      });
+      registeredUser.profilePic = cloudinaryUrl;
+    }
+
 
     req.login(registeredUser, (err) => {
       if (err) {
@@ -82,8 +90,8 @@ module.exports.logout = async (req, res) => {
 
 module.exports.updateDetails = async (req, res) => {
   try {
-    const { name, email, contact } = req.body.formData;
-    const token = req.body.token;
+    const { name, email, contact, token } = req.body;
+    const profilePic = req.file ? req.file.filename : null;
 
     if (!name || !email)
       return res
@@ -103,8 +111,18 @@ module.exports.updateDetails = async (req, res) => {
       name,
       email,
       contact,
+      profilePic,
     };
 
+
+    if (profilePic) {
+      const cloudinaryUrl = cloudinary.url(profilePic, {
+        secure: true,
+      });
+      updatedProfile.profilePic = cloudinaryUrl;
+    }
+
+    
     const updatedUser = await User.findOneAndUpdate(
       { username },
       updatedProfile,
