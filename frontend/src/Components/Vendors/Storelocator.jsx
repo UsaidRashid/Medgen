@@ -66,6 +66,10 @@ function Storelocator() {
     }
   };
 
+  const openStore = (_id) => {
+    console.log(_id);
+  };
+
   return (
     <div className="Store text-dark  " style={{ backgroundColor: "white" }}>
       <h1 className="text-center fw-bold">Store Locator</h1>
@@ -108,19 +112,16 @@ function Storelocator() {
             <li
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
+              // onClick={()=>openStore(store._id)}
             >
-              
               <div
                 class="card border-2 border border-2 border-dark store-123"
                 style={{ width: "60rem", fontSize: "18px" }}
+                onClick={() => openStore(store._id)}
               >
                 <div class="card-body d-flex flex-column">
                   <img
-                    src={
-                      store.storePic
-                        ? store.storePic
-                        : background
-                    }
+                    src={store.storePic ? store.storePic : background}
                     alt=""
                     style={{
                       width: "10rem",
