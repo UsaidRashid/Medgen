@@ -18,7 +18,6 @@ export default function Navbar() {
   }
   
   const profilePic = decodedToken?.user?.profilePic ;
-  const profilePicUrl = `http://localhost:6969/uploads/${profilePic}`;
   
 
   useEffect(() => {
@@ -154,7 +153,7 @@ export default function Navbar() {
                   {" "}
                   <img
                     className=" bottom-0 start-0"
-                    src={profilePic?profilePicUrl:profile}
+                    src={profilePic?profilePic:profile}
                     style={{
                       height: "50px",
                       width: "50px",
