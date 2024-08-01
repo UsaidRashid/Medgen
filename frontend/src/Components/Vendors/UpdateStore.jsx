@@ -1,11 +1,11 @@
-import React,{useState,useEffect} from 'react'
-
+import React,{useState} from 'react'
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
+import upStore from '../../Images/storeLocator.png';
 
 export default function UpdateStore() {
     const navigate = useNavigate();
@@ -28,19 +28,39 @@ export default function UpdateStore() {
     address: decodedToken.user.store.address?decodedToken.user.store.address:"",
     gst_No: decodedToken.user.store.gst_No?decodedToken.user.store.gst_No:"",
     pincode : decodedToken.user.store.pincode?decodedToken.user.store.pincode:"",
+    storePic: "",
+    token : "",
   });
 
+  
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    if (e.target.name === "storePic") {
+      setFormData({
+        ...formData,
+        storePic: e.target.files[0],
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const storePic = decodedToken?.user?.store?.storePic ;
+
+  const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
+
 
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post('http://localhost:6969/store/update-store', {formData,token});
+      formData.token = token;
+      const response = await axios.post('http://localhost:6969/store/update-store', formData,{
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      });
 
       if (response.status === 200) {
         alert(response.data.message);
@@ -70,7 +90,7 @@ export default function UpdateStore() {
             <div className="row">
                 <div className="col-md-6">
                 <img
-              src="image/store.png" style={{width:"50px" ,height:"500px"}}
+              src={storePic ? storePicUrl : upStore} style={{width:"50px" ,height:"500px"}}
               alt=""
               className="img-fluid w-100 h-500 mt-5"
               id="img1"
@@ -114,6 +134,21 @@ export default function UpdateStore() {
   <Form.Label>Pincode</Form.Label>
   <Form.Control type="text" name="gst_No" placeholder="Enter GST No." value={formData.pincode} required onChange={handleChange}/>
 </Form.Group>
+
+<div className="form-group">
+                <label
+                  className="text-dark"
+                  style={{ marginTop: "12px" }}
+                >
+                  Store Picture
+                </label>
+                <input
+                  type="file"
+                  className="form-control mb-1"
+                  name="storePic"
+                  onChange={handleChange}
+                />
+              </div>
 
 <div className='d-grid gap-2 col-6 mx-auto my-4 mb-3  py-4 w-25'>
   <Button variant="primary" type="submit" className='btn' style={{ backgroundColor: '#00bbf0' }}>

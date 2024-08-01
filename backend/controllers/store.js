@@ -26,7 +26,7 @@ module.exports.registerStore = async (req, res) => {
             "Some required information is missing... Please fill in all the fields!",
         });
 
-        const storePic = req.file ? req.file.filename : null;
+    const storePic = req.file ? req.file.filename : null;
 
     const store = new Store({
       gst_No,
@@ -62,8 +62,8 @@ module.exports.registerStore = async (req, res) => {
 module.exports.updateStore = async (req, res) => {
   try {
     console.log(req.body);
-    const { gst_No, name, pincode, address } = req.body.formData;
-    const token = req.body.token;
+    const { gst_No, name, pincode, latitude, longitude, address, token } = req.body;
+
 
     if (!token)
       return res
@@ -80,14 +80,28 @@ module.exports.updateStore = async (req, res) => {
             "Some required information is missing... Please fill in all the fields!",
         });
 
-    const store = await Store.findOneAndUpdate({ gst_No }, req.body.formData, {
+    const decodedToken = jwt.verify(token, "secretkey");
+
+    const storePic = req.file ? req.file.filename : null;
+
+    const updatedStore = {
+      gst_No,
+      name,
+      latitude,
+      longitude,
+      pincode,
+      address,
+      storePic,
+      owner: decodedToken.user._id,
+    };
+
+    const store = await Store.findOneAndUpdate({ gst_No }, updatedStore, {
       new: true,
       runValidators: true,
     });
 
-    const decodedToken = jwt.verify(token, "secretkey");
 
-    const updatedUser =await User.findOne({username : decodedToken.user.username}).populate('store');
+    const updatedUser = await User.findOne({ username: decodedToken.user.username }).populate('store');
 
     const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
       algorithm: "HS256",
@@ -96,7 +110,7 @@ module.exports.updateStore = async (req, res) => {
     if (!store) return res.status(400).json({ message: "Store not found" });
     res
       .status(200)
-      .json({ message: "Store Details Updated Successfully...", token:newToken });
+      .json({ message: "Store Details Updated Successfully...", token: newToken });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -117,23 +131,23 @@ module.exports.deleteStore = async (req, res) => {
 
 module.exports.fetchStores = async (req, res) => {
   try {
-    const { gst_No , pincode } = req.body;
+    const { gst_No, pincode } = req.body;
     if (gst_No === undefined && pincode === undefined) {
       const stores = await Store.find({}).populate("owner");
       res
         .status(200)
         .json({ message: "Here we can see the data of all Stores...", stores });
-    } else if(gst_No !== undefined) {
+    } else if (gst_No !== undefined) {
       const store = await Store.findOne({ gst_No }).populate("owner");
       if (!store) return res.json({ message: "Store not found" });
       res
         .status(200)
         .json({ message: "Your Requested Store Details...", store });
-    }else{
-      const stores = await Store.find({pincode}).populate("owner");
+    } else {
+      const stores = await Store.find({ pincode }).populate("owner");
       res
         .status(200)
-        .json({ message: "Here are all the stores at the requested pincode...", stores }); 
+        .json({ message: "Here are all the stores at the requested pincode...", stores });
     }
   } catch (error) {
     console.error(error);

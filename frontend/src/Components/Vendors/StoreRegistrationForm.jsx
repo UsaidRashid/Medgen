@@ -25,10 +25,10 @@ const RegistrationForm = () => {
   });
 
   const handleChange = (e) => {
-    if (e.target.name === "profilePic") {
+    if (e.target.name === "storePic") {
       setFormData({
         ...formData,
-        profilePic: e.target.files[0],
+        storePic: e.target.files[0],
       });
     } else {
       setFormData({

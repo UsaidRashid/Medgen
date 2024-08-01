@@ -10,7 +10,8 @@ router.route("/register-store").post(upload.single('storePic'),storeController.r
 
 router.route("/fetch-stores").post(storeController.fetchStores);
 // router.route("/register-store").post(storeController.registerStore);
-router.route("/update-store").post(storeController.updateStore);
+// router.route("/update-store").post(storeController.updateStore);
+router.route("/update-store").post(upload.single('storePic'),storeController.updateStore);
 router.route("/delete-store").post(storeController.deleteStore);
 
 module.exports = router;
