@@ -1,7 +1,7 @@
 const session = require("express-session");
 
 const sessionOptions = {
-  secret: "my-session-secret",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {

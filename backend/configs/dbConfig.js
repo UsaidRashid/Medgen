@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // const mongoUrl = "mongodb://127.0.0.1:27017/Medgen";
-const mongoUrl = "mongodb+srv://usaidrashid0:JnNOJqWTQQix4GaG@cluster0.q1osc9o.mongodb.net/Medgen?retryWrites=true&w=majority&appName=Cluster0"
+const mongoUrl = process.env.DATABASE_URL;
 
 
 async function connectDB() {
