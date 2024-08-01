@@ -50,7 +50,7 @@ const ViewStoreProfile = () => {
         <div class="col-md-7 border-right">
           <div class="d-flex flex-column align-items-center text-center p-3 py-5">
             <img
-              src={storePic ? storePicUrl : viewStore}
+              src={storePic ? storePic : viewStore}
               class="rounded-circle mt-5"
               width="500px"
               height="500px"
@@ -110,7 +110,6 @@ const ViewStoreProfile = () => {
                     </label>
                     <p>{owner}</p>
                   </div>
-                  
 
                   <div class="mt-5 text-center">
                     <button
@@ -127,15 +126,18 @@ const ViewStoreProfile = () => {
           </div>
         </div>
       </div>
-      <iframe
-            src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d100!2d${store.latitude}!3d${store.longitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1722440482744!5m2!1sen!2sin`}
-            width="600"
-            height="450"
-            style={{ border: '0px' }}
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+      
+        <iframe
+        className="rounded"
+          src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d100!2d${store.latitude}!3d${store.longitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1722440482744!5m2!1sen!2sin`}
+          width="600"
+          height="450"
+          style={{ border: "3px solid black" , marginTop:'150px' }}
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      
     </div>
   );
 };

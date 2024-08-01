@@ -19,7 +19,7 @@ const Userprofile = () => {
 
     const profilePic = decodedToken?.user?.profilePic ;
 
-    const profilePicUrl = `http://localhost:6969/uploads/${profilePic}`;
+    
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -36,7 +36,7 @@ const Userprofile = () => {
               class="rounded-circle mt-5"
               width="150px"
               height="150px"
-              src={profilePic?profilePicUrl: profile}
+              src={profilePic?profilePic: profile}
             />       
           </div>
         </div>

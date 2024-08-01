@@ -109,7 +109,7 @@ function Storelocator() {
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
             >
-              {console.log(`http://localhost:6969/uploads/${store.storePic}`)}
+              
               <div
                 class="card border-2 border border-2 border-dark store-123"
                 style={{ width: "60rem", fontSize: "18px" }}
@@ -118,7 +118,7 @@ function Storelocator() {
                   <img
                     src={
                       store.storePic
-                        ? `http://localhost:6969/uploads/${store.storePic}`
+                        ? store.storePic
                         : background
                     }
                     alt=""
