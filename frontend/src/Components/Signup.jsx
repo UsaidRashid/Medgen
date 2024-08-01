@@ -26,37 +26,6 @@ function Signup() {
         [e.target.name]: e.target.value,
       });
     }
-<<<<<<< HEAD
-  
-    const handleSubmit = async (e) => {
-      try {
-        e.preventDefault();
-        console.log(formData);
-  
-        const response = await axios.post('http://localhost:6969/users/signup',formData);
-        
-  
-        if( response.status===200){
-            alert(response.data.message);
-            const token = response.data.token;
-            localStorage.setItem('token',token);
-            navigate("/");
-        }else{
-            alert('There was a problem in signing up the user....',response.data.message);
-            navigate('/signup')
-        }      
-  
-      } catch (error) {
-          console.error("Error in Registering:", error);
-          alert( `${error.name} -> ${error.message}`);
-          if (error.response) {
-            alert("Error from server: " + error.response.data.message);
-          } else if (error.request) {
-            alert("No response from the server");
-          } else {
-            alert("Error setting up the request: " + error.message);
-          }
-=======
   };
 
   const handleSubmit = async (e) => {
@@ -85,7 +54,6 @@ function Signup() {
           response.data.message
         );
         navigate("/signup");
->>>>>>> main
       }
     } catch (error) {
       console.error("Error in Registering:", error);
