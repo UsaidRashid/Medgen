@@ -8,23 +8,25 @@ import { jwtDecode } from "jwt-decode";
 export default function Navbar() {
   const navigate = useNavigate();
   const [isLoggedin, setIsLoggedIn] = useState(false);
-  const[storeOwner,setStoreOwner] = useState(false);
+  const [storeOwner, setStoreOwner] = useState(false);
 
   const token = localStorage.getItem("token");
   let decodedToken = null;
   if (token) {
     decodedToken = jwtDecode(token);
     console.log(decodedToken.user.store);
-    
   }
-  
-  const profilePic = decodedToken?.user?.profilePic ;
-  
+
+  const profilePic = decodedToken?.user?.profilePic;
 
   useEffect(() => {
     if (token !== null) setIsLoggedIn(true);
     else setIsLoggedIn(false);
-    if (decodedToken.user.store === undefined || decodedToken.user.store === null ) setStoreOwner(false);
+    if (
+      decodedToken?.user?.store === undefined ||
+      decodedToken?.user?.store === null
+    )
+      setStoreOwner(false);
     else setStoreOwner(true);
   });
 
@@ -156,7 +158,7 @@ export default function Navbar() {
                   {" "}
                   <img
                     className=" bottom-0 start-0"
-                    src={profilePic?profilePic:profile}
+                    src={profilePic ? profilePic : profile}
                     style={{
                       height: "50px",
                       width: "50px",

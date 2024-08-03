@@ -48,13 +48,14 @@ const ViewStoreProfile = () => {
   const deleteStore = async (_id) => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/store/delete-store",{_id}
+        "http://localhost:6969/store/delete-store",
+        { _id }
       );
       if (response.status === 200) {
         alert("Store Deleted Successfully");
-        localStorage.removeItem('token');
-        localStorage.setItem('token',response.data.token);
-        navigate('/');
+        localStorage.removeItem("token");
+        localStorage.setItem("token", response.data.token);
+        navigate("/");
       } else if (response.status === 200) {
         alert("Error Finding the Store");
       } else {
@@ -153,7 +154,7 @@ const ViewStoreProfile = () => {
                     <button
                       class="btn btn-danger profile-button"
                       type="button"
-                      onClick={()=>deleteStore(decodedToken.user.store._id)}
+                      onClick={() => deleteStore(decodedToken.user.store._id)}
                     >
                       Delete
                     </button>
