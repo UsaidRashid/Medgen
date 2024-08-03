@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import viewStore from "../../Images/viewStoreProfile.png";
 import axios from "axios";
 
 export default function ViewSingleStore() {
-
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const gst_No = params.get("key");
-
 
   const [detail, setdetail] = useState({
     gst_No: "",
@@ -28,7 +26,8 @@ export default function ViewSingleStore() {
     const main = async () => {
       try {
         const response = await axios.post(
-          'http://localhost:6969/store/fetch-stores', { gst_No },
+          "http://localhost:6969/store/fetch-stores",
+          { gst_No }
         );
         if (response.status === 200) {
           console.log(response);
@@ -56,8 +55,6 @@ export default function ViewSingleStore() {
 
   return (
     <div>
-
-
       <div class="container rounded bg-white mt-5 mb-5 border border-2 border-dark shadow-lg">
         <div class="row">
           <div class="col-md-7 border-right">
@@ -116,28 +113,29 @@ export default function ViewSingleStore() {
                     </label>{" "}
                     <p>{detail?.address}</p>
                   </div>
+                  <h3 class="text-right">Owner Details</h3>
                   <div class="row mt-2">
                     <div class="col-md-12">
                       <label class="labels">
-                        <h5>Owner</h5>
+                        <h5>Name</h5>
                       </label>
-                      <p>{detail?.owner.name}</p>
+                      <p>{detail?.owner?.name}</p>
                     </div>
                   </div>
                   <div class="row mt-2">
                     <div class="col-md-12">
                       <label class="labels">
-                        <h5>Owner</h5>
+                        <h5>Contact</h5>
                       </label>
-                      <p>{detail?.owner.contact}</p>
+                      <p>{detail?.owner?.contact}</p>
                     </div>
                   </div>
                   <div class="row mt-2">
                     <div class="col-md-12">
                       <label class="labels">
-                        <h5>Owner</h5>
+                        <h5>Email</h5>
                       </label>
-                      <p>{detail?.owner.email}</p>
+                      <p>{detail?.owner?.email}</p>
                     </div>
                   </div>
                 </div>
@@ -150,15 +148,13 @@ export default function ViewSingleStore() {
             src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d100!2d${detail?.latitude}!3d${detail?.longitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1722440482744!5m2!1sen!2sin`}
             width="600"
             height="450"
-            style={{ border: "3px solid black", marginTop: '150px' }}
+            style={{ border: "3px solid black", marginTop: "150px" }}
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
           ></iframe>
         </div>
-
-
       </div>
     </div>
-  )
+  );
 }
