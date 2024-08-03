@@ -44,6 +44,7 @@ export default function UpdateStore() {
     token: "",
   });
 
+  
   const handleChange = (e) => {
     if (e.target.name === "storePic") {
       setFormData({
@@ -89,7 +90,7 @@ export default function UpdateStore() {
       }
     } catch (error) {
       console.error("Error in Registering:", error);
-      alert(`${error.name} -> ${error.message}`);
+      console.log(`${error.name} -> ${error.message}`);
       if (error.response) {
         alert("Error from server: " + error.response.data.message);
       } else if (error.request) {

@@ -13,7 +13,6 @@ module.exports.registerStore = async (req, res) => {
         message:
           "Seems Like you are not logged in... Please Login for registering your store!",
       });
-    const storePic = req.file ? req.file.filename : null;
     const decodedToken = jwt.verify(token, "secretkey");
 
     if (!gst_No || !name || !pincode || !address)
@@ -22,6 +21,8 @@ module.exports.registerStore = async (req, res) => {
           "Some required information is missing... Please fill in all the fields!",
       });
 
+    const storePic = req.file ? req.file.filename : null;
+
     const store = new Store({
       gst_No,
       name,
@@ -29,6 +30,7 @@ module.exports.registerStore = async (req, res) => {
       longitude,
       pincode,
       address,
+      storePic,
       owner: decodedToken.user._id,
       storePic,
     });
@@ -110,12 +112,10 @@ module.exports.updateStore = async (req, res) => {
     });
 
     if (!store) return res.status(400).json({ message: "Store not found" });
-    res
-      .status(200)
-      .json({
-        message: "Store Details Updated Successfully...",
-        token: newToken,
-      });
+    res.status(200).json({
+      message: "Store Details Updated Successfully...",
+      token: newToken,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -124,10 +124,14 @@ module.exports.updateStore = async (req, res) => {
 
 module.exports.deleteStore = async (req, res) => {
   try {
-    const { gst_No } = req.body;
-    const store = await Store.findOneAndDelete({ gst_No });
-    if (!store) return res.status(400).json({ message: "Store not found" });
-    res.status(200).json({ message: "Store deleted successfully..." });
+    const { _id } = req.body;
+    const store = await Store.findOneAndDelete({ _id });
+    const user = await User.findOne({ _id: store.owner }).populate('store');
+    const token = jwt.sign({ user }, "secretkey", {
+      algorithm: "HS256",
+    });
+    if (!store) return res.status(201).json({ message: "Store not found" });
+    res.status(200).json({ message: "Store deleted successfully..." , token});
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -144,18 +148,16 @@ module.exports.fetchStores = async (req, res) => {
         .json({ message: "Here we can see the data of all Stores...", stores });
     } else if (gst_No !== undefined) {
       const store = await Store.findOne({ gst_No }).populate("owner");
-      if (!store) return res.json({ message: "Store not found" });
+      if (!store) return res.status(201).json({ message: "Store not found" });
       res
         .status(200)
         .json({ message: "Your Requested Store Details...", store });
     } else {
       const stores = await Store.find({ pincode }).populate("owner");
-      res
-        .status(200)
-        .json({
-          message: "Here are all the stores at the requested pincode...",
-          stores,
-        });
+      res.status(200).json({
+        message: "Here are all the stores at the requested pincode...",
+        stores,
+      });
     }
   } catch (error) {
     console.error(error);

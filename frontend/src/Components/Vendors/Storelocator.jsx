@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import background from "../../Images/storeLocator.png";
 import "../../CSS/Storeinfo.css";
+import { useNavigate} from "react-router-dom";
 
 function Storelocator() {
   const [stores, setStores] = useState([]);
   const [pincode, setPin] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,8 +69,8 @@ function Storelocator() {
     }
   };
 
-  const openStore = (_id) => {
-    console.log(_id);
+  const openStore = (gst_No) => {
+    navigate(`/view-single-store?key=${gst_No}`);
   };
 
   return (
@@ -103,7 +106,8 @@ function Storelocator() {
         </div>
       </div>
 
-      <div>
+      
+<div>
         <ul
           className="d-flex flex-column flex-wrap justify-content-evenly"
           style={{ color: "white" }}
@@ -117,7 +121,7 @@ function Storelocator() {
               <div
                 class="card border-2 border border-2 border-dark store-123"
                 style={{ width: "60rem", fontSize: "18px" }}
-                onClick={() => openStore(store._id)}
+                onClick={() => openStore(store.gst_No)}
               >
                 <div class="card-body d-flex flex-column">
                   <img
