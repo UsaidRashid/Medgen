@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import '../CSS/Signup.css'
 import { useNavigate, Link } from "react-router-dom";
 
 function Signup() {
@@ -70,15 +71,15 @@ function Signup() {
 
   return (
     <>
-      <section>
-        <div className=" mx-5 my-5">
+      <section className="signup-section">
+        <div className="signup-container mx-3 my-3 ">
           <div className="row">
             <div className="col-md-6 shadow-lg mb-3">
               <h1 className="text-center mt-3 ">
                 <b>Sign up for new account</b>
               </h1>
-              <form className="mx-5 mb-5 mt-5 " onSubmit={handleSubmit}>
-                <div className="form-group mt-3">
+              <form className="mx-5 mb-5 mt-2 " onSubmit={handleSubmit}>
+                <div className="form-group mt-2">
                   <label>Name</label>
                   <input
                     type="name"
@@ -153,8 +154,8 @@ function Signup() {
                 </h4>
               </form>
             </div>
-            <div className="col-md-6">
-              <img src="image/sign.png" className="w-100 h-100" alt="" />
+            <div className="image-container col-md-6">
+              <img src="image/sign.png" className="moving-image w-100 h-100" alt="Moving Image" />
             </div>
           </div>
         </div>
