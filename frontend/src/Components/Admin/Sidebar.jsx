@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import {FaBars,} from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import "../../CSS/admin.css";
 import profile from "../../Images/profile.png";
 import { useNavigate, Link } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(true);
   const toggle = () => setIsOpen(!isOpen);
 
-    const handleLogout = async (e) => {
-            alert('Logged out successfully');
-            navigate('/');
-            localStorage.removeItem('admin');
-    }
+  const handleLogout = async (e) => {
+    alert("Logged out successfully");
+    navigate("/");
+    localStorage.removeItem("admin");
+  };
 
   return (
-    <div className="">
-      <div style={{ width: isOpen ? "200px" : "60px" }} className="sidebar ">
+    <div className="h-100">
+      <div style={{ width: isOpen ? "200px" : "60px", height:'100vh' }} className="sidebar ">
         <div className="top_section">
           <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
             MEDGEN
@@ -30,23 +30,26 @@ const Sidebar = ({ children }) => {
             className="bars"
           >
             <FaBars onClick={toggle} />
-            {isOpen &&
-            <div className="container-fluid">
-              <img
-                className="position-absolute bottom-0 start-0"
-                src={profile}
-                alt=""
-                style={{ height: "50px", width: "50px", borderRadius: "50" , marginBottom:'50px' , marginLeft:'70px'}}
-              />
-            </div>}
+            {isOpen && (
+              <div className="container-fluid">
+                <img
+                  className="position-absolute bottom-0 start-0"
+                  src={profile}
+                  alt=""
+                  style={{
+                    height: "60px",
+                    width: "50px",
+                    borderRadius: "50",
+                    marginBottom: "50px",
+                    marginLeft: "70px",
+                  }}
+                />
+              </div>
+            )}
           </div>
         </div>
 
-        <Link
-          to="/admin/dashboard"
-          className="link"
-          activeclassName="active"
-        >
+        <Link to="/admin/dashboard" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"
@@ -55,9 +58,11 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-       
-
-        <Link to="/admin/add-medicine" className="link" activeclassName="active">
+        <Link
+          to="/admin/add-medicine"
+          className="link"
+          activeclassName="active"
+        >
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"
@@ -66,12 +71,7 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-        <Link
-          to="/admin/requests"
-          className="link"
-          activeclassName="active"
-          
-        >
+        <Link to="/admin/requests" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"
@@ -80,11 +80,7 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-        <Link
-          to="/admin/stores"
-          className="link"
-          activeclassName="active"
-        >
+        <Link to="/admin/stores" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"
@@ -118,8 +114,14 @@ const Sidebar = ({ children }) => {
             Generic Medicines
           </div>
         </Link>
-          {isOpen &&
-        <button className='btn btn-danger position-absolute bottom-0 mx-4' onClick={handleLogout}>Logout as Admin</button>}
+        {isOpen && (
+          <button
+            className="btn btn-danger position-absolute bottom-0 mx-4 "
+            onClick={handleLogout}
+          >
+            Logout as Admin
+          </button>
+        )}
       </div>
 
       <main>{children}</main>

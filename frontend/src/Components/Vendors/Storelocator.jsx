@@ -69,8 +69,8 @@ function Storelocator() {
     }
   };
 
-  const openStore = (gst_No) => {
-    navigate(`/view-single-store?key=${gst_No}`);
+  const openStore = (_id) => {
+    navigate(`/view-single-store?key=${_id}`);
   };
 
   return (
@@ -116,12 +116,12 @@ function Storelocator() {
             <li
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
-              // onClick={()=>openStore(store._id)}
+              onClick={()=>openStore(store._id)}
             >
               <div
                 class="card border-2 border border-2 border-dark store-123"
                 style={{ width: "60rem", fontSize: "18px" }}
-                onClick={() => openStore(store.gst_No)}
+                // onClick={() => openStore(store.gst_No)}
               >
                 <div class="card-body d-flex flex-column">
                   <img

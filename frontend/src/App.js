@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
+import {BrowserRouter as Router , Routes , Route, useLocation} from 'react-router-dom'
 
 import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
@@ -47,12 +47,15 @@ import BrandMed from './Components/Admin/BrandMedicines';
 import GenericMed from './Components/Admin/GenericMedicines';
 
 export default function App(){
-return (
-    <div className="App">
-     
-      <Router>
-      <Navbar/>
-        <Routes>
+
+    const Appcontent = () => {
+       const location = useLocation();
+       const isAdminRoute = location.pathname.startsWith('/admin');
+
+       return(
+        <div>
+          {!isAdminRoute && <Navbar/>}
+         <Routes>
           <Route path='/' element={<Homepage/>}></Route>
           
           <Route path='/medilo' element={<ProtectedRoute><Medilo/></ProtectedRoute>}> </Route>
@@ -93,9 +96,20 @@ return (
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
           <Route path='/faq' element={<FAQ/>}></Route>
-          
          </Routes>
-      <Footer/>
+          {!isAdminRoute && <Footer/>}
+          </div>
+       )
+
+    }
+
+return (
+    <div className="App">
+     
+      <Router>
+     
+        <Appcontent/>
+     
       </Router>
     </div>
   );

@@ -6,7 +6,7 @@ import axios from "axios";
 export default function ViewSingleStore() {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const gst_No = params.get("key");
+  const _id = params.get("key");
 
   const [detail, setdetail] = useState({
     gst_No: "",
@@ -27,7 +27,7 @@ export default function ViewSingleStore() {
       try {
         const response = await axios.post(
           "http://localhost:6969/store/fetch-stores",
-          { gst_No }
+          { _id }
         );
         if (response.status === 200) {
           console.log(response);
