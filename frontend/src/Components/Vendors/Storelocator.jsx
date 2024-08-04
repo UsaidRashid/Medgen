@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import background from "../../Images/storeLocator.png";
-import "../../CSS/Storeinfo.css";
-import { useNavigate} from "react-router-dom";
+// import "../../CSS/Storeinfo.css";
+import { useNavigate } from "react-router-dom";
 
 function Storelocator() {
   const [stores, setStores] = useState([]);
@@ -106,8 +106,7 @@ function Storelocator() {
         </div>
       </div>
 
-      
-<div>
+      <div>
         <ul
           className="d-flex flex-column flex-wrap justify-content-evenly"
           style={{ color: "white" }}
@@ -116,14 +115,13 @@ function Storelocator() {
             <li
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
-              onClick={()=>openStore(store._id)}
+              onClick={() => openStore(store._id)}
             >
               <div
-                class="card border-2 border border-2 border-dark store-123"
+                class="card border border-2 border-dark "
                 style={{ width: "60rem", fontSize: "18px" }}
-                // onClick={() => openStore(store.gst_No)}
               >
-                <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column " style={{marginLeft:'-700px'}}>
                   <img
                     src={store.storePic ? store.storePic : background}
                     alt=""
@@ -132,7 +130,7 @@ function Storelocator() {
                       position: "absolute",
                       right: 0,
                     }}
-                    className="mt-4 me-4 "
+                    className="mt-4 me-4"
                   />
                   <h2
                     class="card-title fw-bold font-monospace fs-2"

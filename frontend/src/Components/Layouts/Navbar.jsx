@@ -93,10 +93,9 @@ export default function Navbar() {
       <nav
         class="navbar navbar-expand-lg"
         style={{
-          backgroundColor: "rgb(210 214 215)",
+          backgroundColor: "black",
           boxShadow:
             "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
-          borderRadius: " 0.7rem",
         }}
       >
         <div class="container-fluid">
@@ -112,18 +111,18 @@ export default function Navbar() {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
               <li class="nav-item">
-                <Link class="nav-link text-dark fs-5" to="/">
+                <Link class="nav-link text-white fs-5" to="/">
                   Home
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link text-dark fs-5" to="/about-us">
+                <Link class="nav-link text-white fs-5" to="/about-us">
                   About us
                 </Link>
               </li>
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle text-dark fs-5"
+                  class="nav-link dropdown-toggle text-white fs-5"
                   role="button"
                   id="navbarDropdownMenuLink"
                   data-bs-toggle="dropdown"
@@ -150,21 +149,21 @@ export default function Navbar() {
               <li class="nav-item">
                 {storeOwner && approved ? (
                   <Link
-                    class="nav-link text-dark fs-5"
+                    class="nav-link text-white fs-5"
                     to="/view-store-profile"
                   >
                     View Your Store!
                   </Link>
                 ) : storeOwner && !approved ? (
                   <Link
-                    className="nav-link text-dark fs-5"
+                    className="nav-link text-white fs-5"
                     onClick={fetchToken}
                   >
                     Pending Approval
                   </Link>
                 ) : (
                   <Link
-                    class="nav-link text-dark fs-5"
+                    class="nav-link text-white fs-5"
                     to="/store-registration-form"
                   >
                     Register Your Store!
@@ -172,7 +171,7 @@ export default function Navbar() {
                 )}
               </li>
               <li class="nav-item">
-                <Link class="nav-link text-dark fs-5" to="/user-request-form">
+                <Link class="nav-link text-white fs-5" to="/user-request-form">
                   Request for a medicine!
                 </Link>
               </li>
