@@ -17,7 +17,7 @@ const Sidebar = ({ children }) => {
 
   return (
     <div className="">
-      <div style={{ width: isOpen ? "200px" : "60px" }} className="sidebar ">
+      <div style={{ boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset" ,width: isOpen ? "200px" : "60px" }} className="sidebar ">
         <div className="top_section">
           <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
             MEDGEN
