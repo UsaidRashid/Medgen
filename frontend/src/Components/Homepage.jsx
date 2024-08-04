@@ -19,9 +19,9 @@ export default function Homepage() {
     <>
       <div className="BG">
         <div>
-          <img class=" container-fluid chochomelon" src={newbg} alt="" />
+          <img class="container-fluid chochomelon" src={newbg} alt="" />
           <div
-            className=" position-absolute top-50 start-50 translate-middle w-100 "
+            className="position-absolute top-50 start-50 translate-middle w-100 "
             style={{ marginTop: "190px" }}
           >
             <h1
