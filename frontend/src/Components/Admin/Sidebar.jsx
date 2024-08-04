@@ -49,6 +49,15 @@ const Sidebar = ({ children }) => {
           </div>
         </div>
 
+        <Link to="/" className="link" activeclassName="active">
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Home
+          </div>
+        </Link>
+
         <Link to="/admin/dashboard" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}
