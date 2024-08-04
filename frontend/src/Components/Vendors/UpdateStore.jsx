@@ -40,11 +40,13 @@ export default function UpdateStore() {
     pincode: decodedToken.user.store.pincode
       ? decodedToken.user.store.pincode
       : "",
+    approved: decodedToken.user.store.approved
+      ? decodedToken.user.store.approved
+      : true,
     storePic: "",
     token: "",
   });
 
-  
   const handleChange = (e) => {
     if (e.target.name === "storePic") {
       setFormData({
@@ -65,7 +67,7 @@ export default function UpdateStore() {
       const token = localStorage.getItem("token");
 
       formData.token = token;
-      console.log(formData);
+
       const response = await axios.post(
         "http://localhost:6969/store/update-store",
         formData,

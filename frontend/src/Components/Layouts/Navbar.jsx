@@ -9,17 +9,19 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [isLoggedin, setIsLoggedIn] = useState(false);
   const [storeOwner, setStoreOwner] = useState(false);
-
-  const token = localStorage.getItem("token");
+  const [approved, setApproved] = useState(false);
+  const [token, setToken] = useState();
+  const [profilePic, setProfilePic] = useState("");
   let decodedToken = null;
-  if (token) {
-    decodedToken = jwtDecode(token);
-    console.log(decodedToken.user.store);
-  }
-
-  const profilePic = decodedToken?.user?.profilePic;
 
   useEffect(() => {
+    setToken(localStorage.getItem("token"));
+
+    if (token) {
+      decodedToken = jwtDecode(token);
+    }
+
+    setProfilePic(decodedToken?.user?.profilePic);
     if (token !== null) setIsLoggedIn(true);
     else setIsLoggedIn(false);
     if (
@@ -28,6 +30,9 @@ export default function Navbar() {
     )
       setStoreOwner(false);
     else setStoreOwner(true);
+
+    if (decodedToken?.user?.store?.approved === false) setApproved(false);
+    else setApproved(true);
   });
 
   const handleLogin = (e) => {
@@ -58,11 +63,41 @@ export default function Navbar() {
     }
   };
 
+  const fetchToken = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        "http://localhost:6969/users/fetch-token",
+        {_id:decodedToken?.user?._id}
+      );
+      if (response.status === 200) {
+        setToken(response.data.token);
+        localStorage.removeItem('token');
+        localStorage.setItem('token',response.data.token);
+      }
+    } catch (error) {
+      console.error("Error in fetching token:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
+
   return (
     <>
       <nav
         class="navbar navbar-expand-lg"
-        style={{ backgroundColor: "rgb(210 214 215)" ,boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset", borderRadius:" 0.7rem" }}
+        style={{
+          backgroundColor: "rgb(210 214 215)",
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+          borderRadius: " 0.7rem",
+        }}
       >
         <div class="container-fluid">
           <img
@@ -113,9 +148,19 @@ export default function Navbar() {
                 </ul>
               </li>
               <li class="nav-item">
-                {storeOwner ? (
-                  <Link class="nav-link text-dark fs-5" to="/view-store-profile">
+                {storeOwner && approved ? (
+                  <Link
+                    class="nav-link text-dark fs-5"
+                    to="/view-store-profile"
+                  >
                     View Your Store!
+                  </Link>
+                ) : storeOwner && !approved ? (
+                  <Link
+                    className="nav-link text-dark fs-5"
+                    onClick={fetchToken}
+                  >
+                    Pending Approval
                   </Link>
                 ) : (
                   <Link

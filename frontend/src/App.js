@@ -45,6 +45,7 @@ import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
 import BrandMed from './Components/Admin/BrandMedicines';
 import GenericMed from './Components/Admin/GenericMedicines';
+import StoreRequests from './Components/Admin/StoreRequests';
 
 export default function App(){
 
@@ -84,6 +85,7 @@ export default function App(){
                   <Route path='requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
                   <Route path='brand-medicines' element={<SuperProtectedRoute><BrandMed/></SuperProtectedRoute>}></Route>
                   <Route path='generic-medicines' element={<SuperProtectedRoute><GenericMed/></SuperProtectedRoute>}></Route>
+                  <Route path='store-requests' element={<SuperProtectedRoute><StoreRequests/></SuperProtectedRoute>}></Route>
           </Route>
           
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>

@@ -89,6 +89,15 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
+        <Link to="/admin/store-requests" className="link" activeclassName="active">
+          <div
+            style={{ display: isOpen ? "block" : "none" }}
+            className="link_text"
+          >
+            Store Requests
+          </div>
+        </Link>
+
         <Link to="/admin/stores" className="link" activeclassName="active">
           <div
             style={{ display: isOpen ? "block" : "none" }}

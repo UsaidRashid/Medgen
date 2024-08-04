@@ -64,11 +64,18 @@ module.exports.registerStore = async (req, res) => {
 
 module.exports.updateStore = async (req, res) => {
   try {
-    console.log(req.body);
-    const { gst_No, name, pincode, latitude, longitude, address, token } =
-      req.body;
-    //const token = req.body.token;
+    const {
+      gst_No,
+      name,
+      pincode,
+      latitude,
+      longitude,
+      address,
+      token,
+      approved,
+    } = req.body;
     const storePic = req.file ? req.file.filename : null;
+
     if (!token)
       return res
         .status(400)
@@ -89,6 +96,7 @@ module.exports.updateStore = async (req, res) => {
       address,
       owner: decodedToken.user._id,
       storePic,
+      approved,
     };
 
     if (storePic) {
@@ -126,12 +134,12 @@ module.exports.deleteStore = async (req, res) => {
   try {
     const { _id } = req.body;
     const store = await Store.findOneAndDelete({ _id });
-    const user = await User.findOne({ _id: store.owner }).populate('store');
+    const user = await User.findOne({ _id: store.owner }).populate("store");
     const token = jwt.sign({ user }, "secretkey", {
       algorithm: "HS256",
     });
     if (!store) return res.status(201).json({ message: "Store not found" });
-    res.status(200).json({ message: "Store deleted successfully..." , token});
+    res.status(200).json({ message: "Store deleted successfully...", token });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -142,7 +150,7 @@ module.exports.fetchStores = async (req, res) => {
   try {
     const { _id, pincode } = req.body;
     if (_id === undefined && pincode === undefined) {
-      const stores = await Store.find({}).populate("owner");
+      const stores = await Store.find({ approved: true }).populate("owner");
       res
         .status(200)
         .json({ message: "Here we can see the data of all Stores...", stores });
@@ -153,12 +161,47 @@ module.exports.fetchStores = async (req, res) => {
         .status(200)
         .json({ message: "Your Requested Store Details...", store });
     } else {
-      const stores = await Store.find({ pincode }).populate("owner");
+      const stores = await Store.find({ pincode, approved: true }).populate(
+        "owner"
+      );
       res.status(200).json({
         message: "Here are all the stores at the requested pincode...",
         stores,
       });
     }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
+
+module.exports.fetchUnapprovedStores = async (req, res) => {
+  try {
+    const stores = await Store.find({ approved: false });
+    return res
+      .status(200)
+      .json({
+        message: "The Lists of unapproved Stores fetched successfully",
+        stores,
+      });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error });
+  }
+};
+
+module.exports.acceptStore = async (req, res) => {
+  try {
+    const { _id } = req.body;
+    await Store.findOneAndUpdate(
+      { _id },
+      { approved: true },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    return res.status(200).json({ message: "Store Approved Successfully" });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });

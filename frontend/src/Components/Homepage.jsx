@@ -71,7 +71,11 @@ export default function Homepage() {
         <div className="d-flex justify-content-lg-around mtcards">
           <div
             className="card w-25"
-            style={{ backgroundColor: "white", paddingTop: "30px" }}
+            style={{
+              backgroundColor: "white",
+              height: "500px",
+              paddingTop: "30px",
+            }}
           >
             <img
               src={mediloNew}
@@ -88,7 +92,11 @@ export default function Homepage() {
 
           <div
             className="card w-25 p"
-            style={{ backgroundColor: "white", paddingTop: "30px" }}
+            style={{
+              backgroundColor: "white",
+              height: "500px",
+              paddingTop: "30px",
+            }}
           >
             <img
               src={mapNew}

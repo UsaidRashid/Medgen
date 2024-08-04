@@ -147,6 +147,21 @@ module.exports.updateDetails = async (req, res) => {
   }
 };
 
+module.exports.fetchToken = async (req,res) => {
+  try {
+    const {_id} = req.body;
+    const user = await User.findOne({_id}).populate('store');
+    const token = jwt.sign({ user }, "secretkey", {
+      algorithm: "HS256",
+    });
+    return res.status(200).json({message:'Fetched Token Successfully',token});
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Internal Server Error", error }); 
+  }
+}
+
+
 module.exports.signupGoogle = async (req, res) => {
   try {
   } catch (error) {
