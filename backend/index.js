@@ -6,18 +6,14 @@ const path = require('path');
 
 require('./configs/dbConfig');
 // require('./auth');
+require('./configs/multerConfig');
+const sessionConfig = require("./configs/sessionConfig");
+const passport = require("./configs/passportConfig");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
-require('./configs/multerConfig');
-
 app.use('/uploads', express.static(path.join(__dirname, './configs/uploads')));
-
-const sessionConfig = require("./configs/sessionConfig");
-const passport = require("./configs/passportConfig");
-
 app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
