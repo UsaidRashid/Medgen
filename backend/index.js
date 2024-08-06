@@ -8,6 +8,7 @@ const path = require('path');
 
 require('./configs/dbConfig');
 // require('./auth');
+// require('./configs/elasticSearchConfig');
 require('./configs/multerConfig');
 const sessionConfig = require("./configs/sessionConfig");
 const passport = require("./configs/passportConfig");
