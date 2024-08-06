@@ -9,7 +9,7 @@ const client = new Client({
     password: "elastic",
   },
   tls: {
-    ca: fs.readFileSync('C:\\Users\\ASUS\\Downloads\\elasticsearch-8.14.3-windows-x86_64\\elasticsearch-8.14.3\\config\\certs\\http_ca.crt'),
+    ca: fs.readFileSync('./http_ca.crt'),
     rejectUnauthorized: false,
   },
 });
