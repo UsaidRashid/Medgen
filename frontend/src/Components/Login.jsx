@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import '../CSS/Login.css';
 import { useNavigate,Link } from 'react-router-dom';
 
 
@@ -54,7 +55,7 @@ function Login() {
     <>
     
     <section>
-      <div className="mx-5 my-5">
+      <div className=" mx-5 my-5">
         <div className="row">
         <div className="col-md-6">
             <img src="image/login.png" className='w-100 h-100' alt="" />

@@ -1,11 +1,37 @@
-/* .img2{
-    width:25px;
-    height:25px;
+.login-section {
+  margin: 0;
+  overflow: hidden;
 }
-#text1{
-    font-size: 20px;
+
+.login-container {
+  position: relative;
 }
-a{
-    text-decoration: none;
-    color:black;
-} */
+
+#image-container {
+  position: relative;
+  height: 100%;
+}
+
+#moving-image {
+  position: fixed;
+  top: 50%;
+  right: 70%;
+  transform: translateY(-35%);
+}
+#moving-image {
+  position: relative;
+  animation: moveImage 2s backwards;
+}
+
+
+@keyframes moveImage {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 50%;
+  }
+}
+
+
+

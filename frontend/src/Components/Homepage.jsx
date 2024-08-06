@@ -19,9 +19,9 @@ export default function Homepage() {
     <>
       <div className="BG">
         <div>
-          <img class=" container-fluid chochomelon" src={newbg} alt="" />
+          <img class="container-fluid chochomelon" src={newbg} alt="" />
           <div
-            className=" position-absolute top-50 start-50 translate-middle w-100 "
+            className="position-absolute top-50 start-50 translate-middle w-100 "
             style={{ marginTop: "190px" }}
           >
             <h1
@@ -71,7 +71,11 @@ export default function Homepage() {
         <div className="d-flex justify-content-lg-around mtcards">
           <div
             className="card w-25"
-            style={{ backgroundColor: "white", paddingTop: "30px" }}
+            style={{
+              backgroundColor: "white",
+              height: "500px",
+              paddingTop: "30px",
+            }}
           >
             <img
               src={mediloNew}
@@ -88,7 +92,11 @@ export default function Homepage() {
 
           <div
             className="card w-25 p"
-            style={{ backgroundColor: "white", paddingTop: "30px" }}
+            style={{
+              backgroundColor: "white",
+              height: "500px",
+              paddingTop: "30px",
+            }}
           >
             <img
               src={mapNew}
