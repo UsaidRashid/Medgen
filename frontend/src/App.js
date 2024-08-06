@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router , Routes , Route} from 'react-router-dom'
+import {BrowserRouter as Router , Routes , Route, useLocation} from 'react-router-dom'
 
 import Footer from './Components/Layouts/Footer';
 import Navbar from './Components/Layouts/Navbar';
@@ -16,6 +16,7 @@ import StoreRegistrationForm from './Components/Vendors/StoreRegistrationForm';
 import Storelocator from './Components/Vendors/Storelocator';
 import UpdateStore from './Components/Vendors/UpdateStore';
 import ViewStoreProfile from './Components/Vendors/ViewStoreProfile';
+import ViewSingleStore from './Components/Vendors/ViewSingleStore';
 
 import BrandedSearch from './Components/Medilo/BrandedSearch';
 import GenericSearch from './Components/Medilo/GenericSearch';
@@ -44,14 +45,18 @@ import ContactUs from './Components/ExtraPages/ContactUs';
 import FAQ from './Components/ExtraPages/FAQ';
 import BrandMed from './Components/Admin/BrandMedicines';
 import GenericMed from './Components/Admin/GenericMedicines';
+import StoreRequests from './Components/Admin/StoreRequests';
 
 export default function App(){
-return (
-    <div className="App">
-     
-      <Router>
-      <Navbar/>
-        <Routes>
+
+    const Appcontent = () => {
+       const location = useLocation();
+       const isAdminRoute = location.pathname.startsWith('/admin');
+
+       return(
+        <div>
+          {!isAdminRoute && <Navbar/>}
+         <Routes>
           <Route path='/' element={<Homepage/>}></Route>
           
           <Route path='/medilo' element={<ProtectedRoute><Medilo/></ProtectedRoute>}> </Route>
@@ -80,20 +85,33 @@ return (
                   <Route path='requests' element={<SuperProtectedRoute><Requests/></SuperProtectedRoute>}></Route>
                   <Route path='brand-medicines' element={<SuperProtectedRoute><BrandMed/></SuperProtectedRoute>}></Route>
                   <Route path='generic-medicines' element={<SuperProtectedRoute><GenericMed/></SuperProtectedRoute>}></Route>
+                  <Route path='store-requests' element={<SuperProtectedRoute><StoreRequests/></SuperProtectedRoute>}></Route>
           </Route>
           
           <Route path='/store-locator' element={<ProtectedRoute><Storelocator/></ProtectedRoute>}></Route>
           <Route path='/store-registration-form' element={<ProtectedRoute><StoreRegistrationForm/></ProtectedRoute>}></Route>
           <Route path='/update-store' element={<ProtectedRoute><UpdateStore/></ProtectedRoute>}></Route>
           <Route path='/view-store-profile' element={<ProtectedRoute><ViewStoreProfile/></ProtectedRoute>}></Route>
+          <Route path= '/view-single-store' element={<ProtectedRoute><ViewSingleStore/></ProtectedRoute>}></Route>
           
           <Route path='/services' element={<Services/>}></Route>
           <Route path='/about-us' element={<AboutUs/>}></Route>
           <Route path='/contact-us' element={<ContactUs/>}></Route>
           <Route path='/faq' element={<FAQ/>}></Route>
-          
          </Routes>
-      <Footer/>
+          {!isAdminRoute && <Footer/>}
+          </div>
+       )
+
+    }
+
+return (
+    <div className="App">
+     
+      <Router>
+     
+        <Appcontent/>
+     
       </Router>
     </div>
   );

@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 const storeSchema = new mongoose.Schema({
   gst_No: {
     type: String,
-    required: true,
-    unique: true,
   },
   name: {
     type: String,
@@ -27,12 +25,14 @@ const storeSchema = new mongoose.Schema({
   storePic: {
     type: String, 
   },
-  
+  approved : {
+    type:Boolean,
+    default : false,
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  
 });
 
 module.exports = mongoose.model("Store", storeSchema);

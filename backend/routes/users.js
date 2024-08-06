@@ -12,6 +12,7 @@ router
 
 router.route("/logout").post(userController.logout);
 router.route("/update").post(upload.single('profilePic'),userController.updateDetails);
+router.route("/fetch-token").post(userController.fetchToken);
 router.route("/signup-google").post(userController.signupGoogle);
 
 module.exports = router;

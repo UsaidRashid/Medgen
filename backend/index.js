@@ -7,10 +7,11 @@ const cors = require("cors");
 const path = require('path');
 
 require('./configs/dbConfig');
-// require('./auth');
+require('./configs/elasticSearchConfig');
 require('./configs/multerConfig');
 const sessionConfig = require("./configs/sessionConfig");
 const passport = require("./configs/passportConfig");
+// require('./auth');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

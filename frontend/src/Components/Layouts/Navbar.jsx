@@ -8,21 +8,31 @@ import { jwtDecode } from "jwt-decode";
 export default function Navbar() {
   const navigate = useNavigate();
   const [isLoggedin, setIsLoggedIn] = useState(false);
-
-  const token = localStorage.getItem("token");
-  let storeOwner = false;
+  const [storeOwner, setStoreOwner] = useState(false);
+  const [approved, setApproved] = useState(false);
+  const [token, setToken] = useState();
+  const [profilePic, setProfilePic] = useState("");
   let decodedToken = null;
-  if (token) {
-    decodedToken = jwtDecode(token);
-    if (decodedToken.user.store !== undefined) storeOwner = true;
-  }
-  
-  const profilePic = decodedToken?.user?.profilePic ;
-  
 
   useEffect(() => {
+    setToken(localStorage.getItem("token"));
+
+    if (token) {
+      decodedToken = jwtDecode(token);
+    }
+
+    setProfilePic(decodedToken?.user?.profilePic);
     if (token !== null) setIsLoggedIn(true);
     else setIsLoggedIn(false);
+    if (
+      decodedToken?.user?.store === undefined ||
+      decodedToken?.user?.store === null
+    )
+      setStoreOwner(false);
+    else setStoreOwner(true);
+
+    if (decodedToken?.user?.store?.approved === false) setApproved(false);
+    else setApproved(true);
   });
 
   const handleLogin = (e) => {
@@ -53,11 +63,40 @@ export default function Navbar() {
     }
   };
 
+  const fetchToken = async (e) => {
+    try {
+      e.preventDefault();
+      const response = await axios.post(
+        "http://localhost:6969/users/fetch-token",
+        {_id:decodedToken?.user?._id}
+      );
+      if (response.status === 200) {
+        setToken(response.data.token);
+        localStorage.removeItem('token');
+        localStorage.setItem('token',response.data.token);
+      }
+    } catch (error) {
+      console.error("Error in fetching token:", error);
+      alert(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
+    }
+  };
+
   return (
     <>
       <nav
-        class="navbar navbar-expand-lg border border-dark border-3"
-        style={{ backgroundColor: "#000000" }}
+        class="navbar navbar-expand-lg"
+        style={{
+          backgroundColor: "black",
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+        }}
       >
         <div class="container-fluid">
           <img
@@ -72,18 +111,18 @@ export default function Navbar() {
           >
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100">
               <li class="nav-item">
-                <Link class="nav-link text-white" to="/">
+                <Link class="nav-link text-white fs-5" to="/">
                   Home
                 </Link>
               </li>
               <li class="nav-item">
-                <Link class="nav-link text-white" to="/about-us">
+                <Link class="nav-link text-white fs-5" to="/about-us">
                   About us
                 </Link>
               </li>
               <li class="nav-item dropdown">
                 <a
-                  class="nav-link dropdown-toggle text-white"
+                  class="nav-link dropdown-toggle text-white fs-5"
                   role="button"
                   id="navbarDropdownMenuLink"
                   data-bs-toggle="dropdown"
@@ -108,13 +147,23 @@ export default function Navbar() {
                 </ul>
               </li>
               <li class="nav-item">
-                {storeOwner ? (
-                  <Link class="nav-link text-white" to="/view-store-profile">
+                {storeOwner && approved ? (
+                  <Link
+                    class="nav-link text-white fs-5"
+                    to="/view-store-profile"
+                  >
                     View Your Store!
+                  </Link>
+                ) : storeOwner && !approved ? (
+                  <Link
+                    className="nav-link text-white fs-5"
+                    onClick={fetchToken}
+                  >
+                    Pending Approval
                   </Link>
                 ) : (
                   <Link
-                    class="nav-link text-white"
+                    class="nav-link text-white fs-5"
                     to="/store-registration-form"
                   >
                     Register Your Store!
@@ -122,7 +171,7 @@ export default function Navbar() {
                 )}
               </li>
               <li class="nav-item">
-                <Link class="nav-link text-white" to="/user-request-form">
+                <Link class="nav-link text-white fs-5" to="/user-request-form">
                   Request for a medicine!
                 </Link>
               </li>
@@ -149,11 +198,11 @@ export default function Navbar() {
                 </button>
               )}
               <div className="container-fluid">
-                <Link class="nav-link text-white" to="/user-profile">
+                <Link class="nav-link text-dark fs-s" to="/user-profile">
                   {" "}
                   <img
                     className=" bottom-0 start-0"
-                    src={profilePic?profilePic:profile}
+                    src={profilePic ? profilePic : profile}
                     style={{
                       height: "50px",
                       width: "50px",

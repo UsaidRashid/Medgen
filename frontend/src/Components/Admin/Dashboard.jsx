@@ -113,44 +113,40 @@ export default function Dashboard() {
       </div>
       <div>
         <main className="main-container">
-          <div className="main-cards ">
-            <div class="btn btn-outline-info  p-3 mb-5 rounded card " onClick={openGenericMedicines}>
-              <div className="card-body card-body d-flex flex row">
+        
+          <div className="main-cards">
+            <div className="btn btn-outline-info p-3 rounded card " onClick={openGenericMedicines}>
+              <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Generic Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />
+                <h1 className="text-black">{gencnt}</h1>
               </div>
-              <h1 className="text-black">{gencnt}</h1>
             </div>
-            <div class="btn btn-outline-info  p-3 mb-5  rounded card" onClick={openBrandMedicines}>
-              <div className="card-body card-body d-flex flex row">
+            <div className="btn btn-outline-info p-3 rounded card" onClick={openBrandMedicines}>
+              <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Brand Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />
+                <h1 className="text-black">{brandcnt}</h1>
               </div>
-              <h1 className="text-black ">{brandcnt}</h1>
             </div>
-            <div
-              class="btn btn-outline-info  p-3 mb-5  rounded card"
-              onClick={openRequests}
-            >
-              <div className="card-body d-flex flex row">
+            <div className="btn btn-outline-info p-3 rounded card" onClick={openRequests}>
+              <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Requests</h3>
                 <BsPeopleFill className="card_icon text-black" />
+                <h1 className="text-black">{reqcnt}</h1>
               </div>
-              <h1 className="text-black">{reqcnt}</h1>
             </div>
-            <div
-              class="btn btn-outline-info  p-3 mb-5  rounded card"
-              onClick={openStores}
-            >
-              <div className="card-body card-body d-flex flex row">
+            <div className="btn btn-outline-info p-3 rounded card" onClick={openStores}>
+              <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Stores</h3>
                 <BsFillBellFill className="card_icon text-black" />
+                <h1 className="text-black">{storecnt}</h1>
               </div>
-              <h1 className="text-black">{storecnt}</h1>
             </div>
           </div>
 
-          <div className="charts" style={{ marginLeft: "10rem" }}>
+
+          {/* <div className="charts" style={{ marginLeft: "10rem" }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 width={500}
@@ -172,7 +168,7 @@ export default function Dashboard() {
                 <Bar dataKey="month2" fill="#82ca9d" />
               </BarChart>
             </ResponsiveContainer>
-          </div>
+          </div> */}
         </main>
       </div>
     </div>

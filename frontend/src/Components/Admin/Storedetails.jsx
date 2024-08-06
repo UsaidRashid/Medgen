@@ -25,9 +25,9 @@ export default function Storedetails() {
     fetchData();
   }, []);
 
-  const handleDeleteStore = async (gst_No) => {
+  const handleDeleteStore = async (_id) => {
     try {
-          const response = await axios.post('http://localhost:6969/admin/delete-store',{gst_No});
+          const response = await axios.post('http://localhost:6969/admin/delete-store',{_id});
           if(response.status===200){
               alert('Store Deleted Successfully');
               window.location.reload();
@@ -99,7 +99,7 @@ export default function Storedetails() {
         <button
           className="text-center"
           type="button"
-          onClick={()=>handleDeleteStore(row.gst_No)}
+          onClick={()=>handleDeleteStore(row._id)}
           style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
         >
           Delete

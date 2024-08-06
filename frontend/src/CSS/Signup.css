@@ -1,21 +1,41 @@
+.signup-section {
+  margin: 0;
+  overflow: hidden;
+}
 
-.img1{
-  width:25px;
-  height:25px;
+.signup-container {
+  position: relative;
 }
-.google{
-  width:25px;
-  height:25px;
-  float: left;
-  
+
+.image-container {
+  position: fixed;
+  top: 50%;
+  left: 70%;
+  transform: translateY(-35%);
 }
-.function{
-  width:150px;
-  padding-top: 6px;
-  font-size: larger;
-  border-color: aliceblue;
+
+.moving-image {
+  position: relative;
+  animation: moveImage 2s forwards;
 }
-a{
-  text-decoration: none;
-  color: black;
+
+
+@keyframes moveImage {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .image-container {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    width: 90vw; 
+  }
 }

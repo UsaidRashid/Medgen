@@ -27,8 +27,9 @@
     justify-content: space-between;
 }
 
-.price-comparison-1:hover{
-    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px;
+.price-comparison:hover{
+    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px !important;
+    transition: 200ms;
 }
 
 .medgen-price-box,
@@ -73,10 +74,11 @@
     border-radius: 8px;
     border: 1px solid #000;
 }
-/* .card-1-1:hover,
+
+.card-1-1:hover,
 .card-2-2:hover{
-    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px;
-} */
+    box-shadow: rgba(104, 162, 244, 0.5) 5px 5px, rgba(117, 176, 244, 0.3) 10px 10px, rgba(117, 176, 244, 0.2) 15px 15px !important;
+}
 
 .card-list {
     font-size: larger;

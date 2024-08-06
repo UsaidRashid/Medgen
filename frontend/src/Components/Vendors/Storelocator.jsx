@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import background from "../../Images/storeLocator.png";
-import "../../CSS/Storeinfo.css";
+// import "../../CSS/Storeinfo.css";
+import { useNavigate } from "react-router-dom";
 
 function Storelocator() {
   const [stores, setStores] = useState([]);
   const [pincode, setPin] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,6 +69,10 @@ function Storelocator() {
     }
   };
 
+  const openStore = (_id) => {
+    navigate(`/view-single-store?key=${_id}`);
+  };
+
   return (
     <div className="Store text-dark  " style={{ backgroundColor: "white" }}>
       <h1 className="text-center fw-bold">Store Locator</h1>
@@ -108,26 +115,22 @@ function Storelocator() {
             <li
               className="my-3 h-50 d-flex flex-row justify-content-center "
               key={store.id}
+              onClick={() => openStore(store._id)}
             >
-              
               <div
-                class="card border-2 border border-2 border-dark store-123"
+                class="card border border-2 border-dark "
                 style={{ width: "60rem", fontSize: "18px" }}
               >
-                <div class="card-body d-flex flex-column">
+                <div class="card-body d-flex flex-column " style={{marginLeft:'-700px'}}>
                   <img
-                    src={
-                      store.storePic
-                        ? store.storePic
-                        : background
-                    }
+                    src={store.storePic ? store.storePic : background}
                     alt=""
                     style={{
                       width: "10rem",
                       position: "absolute",
                       right: 0,
                     }}
-                    className="mt-4 me-4 "
+                    className="mt-4 me-4"
                   />
                   <h2
                     class="card-title fw-bold font-monospace fs-2"

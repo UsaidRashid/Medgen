@@ -1,0 +1,163 @@
+[
+    {
+      "name": "Paracetamol",
+      "code": "PARA001",
+      "salt": ["Paracetamol", "Acetaminophen"],
+      "batch": 123456,
+      "price": 10.5,
+      "alternativeFor": []
+    },
+    {
+      "name": "Ibuprofen",
+      "code": "IBUP001",
+      "salt": ["Ibuprofen", "Advil", "Brufen"],
+      "batch": 123457,
+      "price": 15.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Amoxicillin",
+      "code": "AMOX001",
+      "salt": ["Amoxicillin", "Clavulanate"],
+      "batch": 123458,
+      "price": 25.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Cetirizine",
+      "code": "CETI001",
+      "salt": ["Cetirizine"],
+      "batch": 123459,
+      "price": 8.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Metformin",
+      "code": "METF001",
+      "salt": ["Metformin", "Glucophage", "GlucoPhage XR"],
+      "batch": 123460,
+      "price": 20.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Aspirin",
+      "code": "ASPI001",
+      "salt": ["Aspirin", "Acetylsalicylic Acid"],
+      "batch": 123461,
+      "price": 5.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Lisinopril",
+      "code": "LISI001",
+      "salt": ["Lisinopril", "Zestril", "Prinivil"],
+      "batch": 123462,
+      "price": 12.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Atorvastatin",
+      "code": "ATOR001",
+      "salt": ["Atorvastatin", "Lipitor"],
+      "batch": 123463,
+      "price": 18.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Simvastatin",
+      "code": "SIMV001",
+      "salt": ["Simvastatin", "Zocor", "Simcor"],
+      "batch": 123464,
+      "price": 17.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Omeprazole",
+      "code": "OMEP001",
+      "salt": ["Omeprazole", "Prilosec"],
+      "batch": 123465,
+      "price": 14.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Levothyroxine",
+      "code": "LEVO001",
+      "salt": ["Levothyroxine", "Synthroid"],
+      "batch": 123466,
+      "price": 11.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Amlodipine",
+      "code": "AMLO001",
+      "salt": ["Amlodipine", "Norvasc", "Amlong"],
+      "batch": 123467,
+      "price": 13.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Clopidogrel",
+      "code": "CLOP001",
+      "salt": ["Clopidogrel", "Plavix", "Clopivas"],
+      "batch": 123468,
+      "price": 19.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Ranitidine",
+      "code": "RANI001",
+      "salt": ["Ranitidine", "Zantac"],
+      "batch": 123469,
+      "price": 16.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Pantoprazole",
+      "code": "PANT001",
+      "salt": ["Pantoprazole", "Protonix"],
+      "batch": 123470,
+      "price": 15.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Losartan",
+      "code": "LOSA001",
+      "salt": ["Losartan", "Cozaar"],
+      "batch": 123471,
+      "price": 22.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Hydrochlorothiazide",
+      "code": "HYDR001",
+      "salt": ["Hydrochlorothiazide", "Microzide"],
+      "batch": 123472,
+      "price": 9.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Gabapentin",
+      "code": "GABA001",
+      "salt": ["Gabapentin", "Neurontin"],
+      "batch": 123473,
+      "price": 21.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Tramadol",
+      "code": "TRAM001",
+      "salt": ["Tramadol", "Ultram"],
+      "batch": 123474,
+      "price": 23.0,
+      "alternativeFor": []
+    },
+    {
+      "name": "Fluoxetine",
+      "code": "FLUX001",
+      "salt": ["Fluoxetine", "Prozac"],
+      "batch": 123475,
+      "price": 24.0,
+      "alternativeFor": []
+    }
+  ]
+  

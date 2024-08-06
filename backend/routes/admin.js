@@ -14,5 +14,7 @@ router.route("/fetch-generics").post(adminController.fetchGenerics);
 router.route("/delete-request").post(adminController.deleteRequests);
 router.route("/delete-brand").post(adminController.deleteBrand);
 router.route("/delete-generic").post(adminController.deleteGeneric);
+router.route("/fetch-unapproved-stores").post(storeController.fetchUnapprovedStores);
+router.route("/accept-store").post(storeController.acceptStore);
 
 module.exports = router;
