@@ -134,3 +134,40 @@ main{
   transition: all 0.6s ease;
 }
 
+
+
+.main-container {
+  padding: 20px;
+  margin-left: 100px;
+}
+
+.main-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+  margin: 0;
+}
+
+.card h1 {
+  margin: 0;
+}
+
+.card_icon {
+  font-size: 2rem;
+}

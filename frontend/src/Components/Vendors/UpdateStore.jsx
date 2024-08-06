@@ -40,6 +40,9 @@ export default function UpdateStore() {
     pincode: decodedToken.user.store.pincode
       ? decodedToken.user.store.pincode
       : "",
+    approved: decodedToken.user.store.approved
+      ? decodedToken.user.store.approved
+      : true,
     storePic: "",
     token: "",
   });
@@ -64,7 +67,7 @@ export default function UpdateStore() {
       const token = localStorage.getItem("token");
 
       formData.token = token;
-      console.log(formData);
+
       const response = await axios.post(
         "http://localhost:6969/store/update-store",
         formData,
@@ -89,7 +92,7 @@ export default function UpdateStore() {
       }
     } catch (error) {
       console.error("Error in Registering:", error);
-      alert(`${error.name} -> ${error.message}`);
+      console.log(`${error.name} -> ${error.message}`);
       if (error.response) {
         alert("Error from server: " + error.response.data.message);
       } else if (error.request) {

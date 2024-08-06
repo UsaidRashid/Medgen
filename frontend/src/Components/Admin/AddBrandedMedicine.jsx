@@ -51,7 +51,7 @@ export default function AddBrandedMedicine() {
     e.preventDefault();
     try {
       console.log(formData);
-      const response = await axios.post('http://localhost:6969/admin/add-brand', formData);
+      const response = await axios.post('http://192.168.175.179/admin/add-brand', formData);
 
       if (response.status === 200) {
         alert(response.data.message);
