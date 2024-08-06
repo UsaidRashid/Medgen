@@ -124,4 +124,4 @@ async function initializeElasticsearch() {
   await syncElasticsearch();
 }
 
-module.exports = { initializeElasticsearch };
+initializeElasticsearch();
