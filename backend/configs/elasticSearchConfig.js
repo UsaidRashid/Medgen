@@ -45,7 +45,7 @@ async function indexData() {
       {
         name: generic.name,
         code: generic.code,
-        salt: generic.salt,
+        salt: generic.salt.map((salt) => salt.toLowerCase()),
         batch: generic.batch,
         price: generic.price,
         alternativeFor: generic.alternativeFor,
@@ -81,7 +81,6 @@ async function syncElasticsearch() {
 
       let document = change.fullDocument;
 
-      // If full document is not available, fetch it
       if (!document) {
         console.log(`Fetching full document for ID ${change.documentKey._id}`);
         document = await Generic.findById(change.documentKey._id);
@@ -101,7 +100,7 @@ async function syncElasticsearch() {
             body: {
               name: document.name,
               code: document.code,
-              salt: document.salt,
+              salt: document.salt.map((salt) => salt.toLowerCase()),
               batch: document.batch,
               price: document.price,
               alternativeFor: document.alternativeFor,
@@ -179,7 +178,7 @@ async function indexData2() {
       {
         name: brand.name,
         code: brand.code,
-        salt: brand.salt,
+        salt: brand.salt.map((salt) => salt.toLowerCase()),
         batch: brand.batch,
         price: brand.price,
         alternatives: brand.alternatives,
@@ -234,7 +233,7 @@ async function syncElasticsearch2() {
             body: {
               name: document.name,
               code: document.code,
-              salt: document.salt,
+              salt: document.salt.map((salt) => salt.toLowerCase()),
               batch: document.batch,
               price: document.price,
               alternatives: document.alternatives,

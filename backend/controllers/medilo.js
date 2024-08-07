@@ -8,7 +8,8 @@ const {
 
 module.exports.brandMedicine = async (req, res) => {
   try {
-    const { name } = req.body;
+    let { name } = req.body;
+    name=name.toLowerCase();
     const medicine = await Brand.findOne({ name }).populate("alternatives");
     if (!medicine)
       return res.status(201).json({
@@ -25,7 +26,7 @@ module.exports.brandMedicine = async (req, res) => {
 
 module.exports.genericMedicine = async (req, res) => {
   try {
-    const { name } = req.body;
+    let { name } = req.body;
     const medicine = await Generic.findOne({ name }).populate("alternativeFor");
     if (!medicine)
       return res.status(201).json({
@@ -80,12 +81,10 @@ module.exports.GenericElasticSearch = async (req, res) => {
 
     if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
 
-    const saltsArray = salts.split(",").map((salt) => salt.trim());
+    const saltsArray = salts.split(",").map((salt) => salt.trim().toLowerCase());
 
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });
-
-    console.log(saltsArray);
 
     const results = await generiSearchBySalts(saltsArray);
     return res.status(200).json({ message: "Searched Successful!", results });
@@ -101,7 +100,7 @@ module.exports.BrandElasticSearch = async (req, res) => {
 
     if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
 
-    const saltsArray = salts.split(",").map((salt) => salt.trim());
+    const saltsArray = salts.split(",").map((salt) => salt.trim().toLowerCase());
 
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });

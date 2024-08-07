@@ -5,15 +5,15 @@ const Request = require("../models/requests");
 
 module.exports.addBrand = async (req, res) => {
   try {
-    const medicine = ({ name, code, salt, batch, price, alternatives } =
+    let medicine = ({ name, code, salt, batch, price, alternatives } =
       req.body);
 
     if (!name || !code || !batch || !price || !salt)
-      return res
-        .status(400)
-        .json({
-          message: "Some important information about medicine is missing...",
-        });
+      return res.status(400).json({
+        message: "Some important information about medicine is missing...",
+      });
+
+    name = name.toLowerCase();
 
     const newBrand = new Brand({
       name,
@@ -49,15 +49,14 @@ module.exports.addBrand = async (req, res) => {
 
 module.exports.addGeneric = async (req, res) => {
   try {
-    const medicine = ({ name, code, salt, batch, price, alternativeFor } =
+    let medicine = ({ name, code, salt, batch, price, alternativeFor } =
       req.body);
 
     if (!name || !code || !salt || !batch || !price)
-      return res
-        .status(400)
-        .json({
-          message: "Some important information about medicine is missing...",
-        });
+      return res.status(400).json({
+        message: "Some important information about medicine is missing...",
+      });
+    name = name.toLowerCase();
 
     const newGeneric = new Generic({
       name,
@@ -114,15 +113,13 @@ module.exports.fetchDashboard = async (req, res) => {
 
     const stores = await Store.find({});
 
-    return res
-      .status(200)
-      .json({
-        messsage: "Dashboard Updated Successfully!",
-        genCnt: generics.length,
-        brandCnt: brands.length,
-        reqCnt: requests.length,
-        storeCnt: stores.length,
-      });
+    return res.status(200).json({
+      messsage: "Dashboard Updated Successfully!",
+      genCnt: generics.length,
+      brandCnt: brands.length,
+      reqCnt: requests.length,
+      storeCnt: stores.length,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });
@@ -131,7 +128,7 @@ module.exports.fetchDashboard = async (req, res) => {
 
 module.exports.fetchBrands = async (req, res) => {
   try {
-    const brands = await Brand.find({}).populate('alternatives');
+    const brands = await Brand.find({}).populate("alternatives");
     return res
       .status(200)
       .json({ message: "Brand Medicines Fetched Successfully", brands });
@@ -143,7 +140,7 @@ module.exports.fetchBrands = async (req, res) => {
 
 module.exports.fetchGenerics = async (req, res) => {
   try {
-    const generics = await Generic.find({}).populate('alternativeFor');
+    const generics = await Generic.find({}).populate("alternativeFor");
     return res
       .status(200)
       .json({ message: "Generic Medicines Fetched Successfully", generics });
@@ -164,7 +161,6 @@ module.exports.deleteRequests = async (req, res) => {
   }
 };
 
-
 module.exports.deleteBrand = async (req, res) => {
   try {
     const { _id } = req.body;
@@ -175,7 +171,6 @@ module.exports.deleteBrand = async (req, res) => {
     return res.status(500).json({ message: "Internal Server Error", error });
   }
 };
-
 
 module.exports.deleteGeneric = async (req, res) => {
   try {
