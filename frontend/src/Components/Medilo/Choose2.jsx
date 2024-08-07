@@ -22,23 +22,23 @@ const myStyle3 = {
   fontWeight: "500",
 };
 
-export default function Medilo() {
+export default function Choose2() {
   const navigate = useNavigate();
 
-  const openBSearch = (e) => {
+  const openNameSearch = (e) => {
     e.preventDefault();
-    navigate("/choose-2");
+    navigate("/branded-search");
   };
 
   const navigate1 = useNavigate();
 
-  const openGSearch = (e) => {
+  const openSaltSearch = (e) => {
     e.preventDefault();
-    navigate1("/choose");
+    navigate1("/brand-salt-search");
   };
 
   const [text] = useTypewriter({
-    words: ["earch for Generic Medicines", "earch for Branded Medicines"],
+    words: ["earch By Name", "earch By Salts"],
     loop: {},
     delaySpeed: 100,
   });
@@ -69,16 +69,16 @@ export default function Medilo() {
           <button
             style={myStyle}
             className="btn mx-5 fs-4 b123"
-            onClick={openGSearch}
+            onClick={openNameSearch}
           >
-            Generic Search
+            Brand Search by Name
           </button>
           <button
             style={myStyle}
             className="btn mx-5 fs-4 b123"
-            onClick={openBSearch}
+            onClick={openSaltSearch}
           >
-            Brand Search
+            Brand Search by Salts
           </button>
         </form>
       </div>

@@ -1,7 +1,10 @@
 const Brand = require("../models/brands");
 const Generic = require("../models/generics");
 const Request = require("../models/requests");
-const {generiSearchBySalts , brandSearchBySalts} = require('../configs/elasticSearchConfig');
+const {
+  generiSearchBySalts,
+  brandSearchBySalts,
+} = require("../configs/elasticSearchConfig");
 
 module.exports.brandMedicine = async (req, res) => {
   try {
@@ -71,31 +74,40 @@ module.exports.requestMedicine = async (req, res) => {
   }
 };
 
-
-
-
-
-
 module.exports.GenericElasticSearch = async (req, res) => {
   try {
     const { salts } = req.body;
-    if (!salts) return res.status(400).json({ message: "Salt Array Required" });
-    const results = await generiSearchBySalts(salts);
-    return res.status(200).json( {message:'Searched Successful!',results});
+
+    if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
+
+    const saltsArray = salts.split(",").map((salt) => salt.trim());
+
+    if (saltsArray.length === 0)
+      return res.status(400).json({ message: "No valid salts provided" });
+
+    console.log(saltsArray);
+
+    const results = await generiSearchBySalts(saltsArray);
+    return res.status(200).json({ message: "Searched Successful!", results });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "internal server error", error });
   }
 };
 
-
-
 module.exports.BrandElasticSearch = async (req, res) => {
   try {
     const { salts } = req.body;
-    if (!salts) return res.status(400).json({ message: "Salt Array Required" });
-    const results = await brandSearchBySalts(salts);
-    return res.status(200).json( {message:'Searched Successful!',results});
+
+    if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
+
+    const saltsArray = salts.split(",").map((salt) => salt.trim());
+
+    if (saltsArray.length === 0)
+      return res.status(400).json({ message: "No valid salts provided" });
+
+    const results = await brandSearchBySalts(saltsArray);
+    return res.status(200).json({ message: "Searched Successful!", results });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "internal server error", error });
