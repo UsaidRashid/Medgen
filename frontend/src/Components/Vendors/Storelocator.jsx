@@ -113,17 +113,16 @@ function Storelocator() {
         >
           {stores.map((store) => (
             <li
-              className="my-3 h-50 d-flex flex-row justify-content-center "
-              key={store.id}
+              className="my-3 d-flex flex-row justify-content-center "
+              key={store._id}
               onClick={() => openStore(store._id)}
             >
               <div
-                class="card border border-2 border-dark "
-                style={{ width: "60rem", fontSize: "18px" }}
+                class="card border border-2 border-dark w-75"
+                style={{ fontSize: "18px" }}
               >
                 <div
-                  class="card-body d-flex flex-column "
-                  style={{ marginLeft: "-700px" }}
+                  class="card-body d-flex flex-column start-0 w-100"
                 >
                   <img
                     src={store.storePic ? store.storePic : background}
