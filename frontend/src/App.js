@@ -18,11 +18,13 @@ import UpdateStore from './Components/Vendors/UpdateStore';
 import ViewStoreProfile from './Components/Vendors/ViewStoreProfile';
 import ViewSingleStore from './Components/Vendors/ViewSingleStore';
 
+import Medilo from './Components/Medilo/Medilo';
+import Choose from './Components/Medilo/Choose';
+import Choose2 from './Components/Medilo/Choose2';
 import BrandedSearch from './Components/Medilo/BrandedSearch';
 import GenericSearch from './Components/Medilo/GenericSearch';
 import GenericCompareList from './Components/Medilo/GenericCompareList';
 import BrandedCompareList from './Components/Medilo/BrandedCompareList';
-import Medilo from './Components/Medilo/Medilo';
 import RequestForm from './Components/Medilo/RequestForm';
 import MedicineNotFound from './Components/Medilo/MedicineNotFound';
 import G2BComparePage from './Components/Medilo/G2BComparePage';
@@ -46,6 +48,10 @@ import FAQ from './Components/ExtraPages/FAQ';
 import BrandMed from './Components/Admin/BrandMedicines';
 import GenericMed from './Components/Admin/GenericMedicines';
 import StoreRequests from './Components/Admin/StoreRequests';
+import GenericSaltSearch from './Components/Medilo/GenericSaltSearch';
+import BrandSaltSearch from './Components/Medilo/BrandSaltSearch';
+import GenericResults from './Components/Medilo/GenericResults';
+import BrandResults from './Components/Medilo/BrandResults';
 
 export default function App(){
 
@@ -60,13 +66,19 @@ export default function App(){
           <Route path='/' element={<Homepage/>}></Route>
           
           <Route path='/medilo' element={<ProtectedRoute><Medilo/></ProtectedRoute>}> </Route>
+          <Route path='/choose' element={<ProtectedRoute><Choose/></ProtectedRoute>}> </Route>
+          <Route path='/choose-2' element={<ProtectedRoute><Choose2/></ProtectedRoute>}> </Route>
           <Route path='/branded-search' element={<ProtectedRoute><BrandedSearch/></ProtectedRoute>}></Route>
           <Route path='/generic-search' element={<ProtectedRoute><GenericSearch/></ProtectedRoute>}></Route>
+          <Route path='/generic-salt-search' element={<ProtectedRoute><GenericSaltSearch/></ProtectedRoute>}></Route>
+          <Route path='/brand-salt-search' element={<ProtectedRoute><BrandSaltSearch/></ProtectedRoute>}></Route>
           <Route path='/compare-generic-medicine' element={<ProtectedRoute><G2BComparePage/></ProtectedRoute>}></Route>
           <Route path='/compare-brand-medicine' element={<ProtectedRoute><B2GComparePage/></ProtectedRoute>}></Route>
           <Route path='/user-request-form' element={<ProtectedRoute><RequestForm/></ProtectedRoute>}></Route>
           <Route path='/branded-compare-list' element={<ProtectedRoute><BrandedCompareList/></ProtectedRoute>}></Route>
           <Route path='/generic-compare-list' element={<ProtectedRoute><GenericCompareList/></ProtectedRoute>}></Route>
+          <Route path='/generic-results' element={<ProtectedRoute><GenericResults/></ProtectedRoute>}></Route>
+          <Route path='/brand-results' element={<ProtectedRoute><BrandResults/></ProtectedRoute>}></Route>
           <Route path='/medicine-not-found' element={<ProtectedRoute><MedicineNotFound/></ProtectedRoute>}></Route>
 
 

@@ -35,23 +35,23 @@ const myStyle4 = {
   fontSize: "21px",
 };
 
-export default function GenericSearch() {
+export default function GenericSaltSearch() {
   const [text] = useTypewriter({
-    words: ["Generic Medicine Name", "Find Best Medicines"],
+    words: ["Salts of Generic Medicine", "Find Best Medicines"],
     loop: {},
     delaySpeed: 500,
   });
 
-  const [name, setName] = useState("");
+  const [salts, setSalts] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate(`/generic-compare-list?key=${name}`);
+    navigate(`/generic-results`,{state:{props:salts}});
   };
 
   const handleChange = (e) => {
-    setName(e.target.value);
+    setSalts(e.target.value);
   };
 
   return (
@@ -78,12 +78,11 @@ export default function GenericSearch() {
         </div>
         <form
           onSubmit={handleSubmit}
-          action="/branded-compare-list"
           style={myStyle2}
         >
           <input
             type="text"
-            placeholder="Enter Generic Medicine Here..."
+            placeholder="Enter Salts Here..."
             onChange={handleChange}
             className="search-input"
             style={myStyle3}
@@ -92,6 +91,7 @@ export default function GenericSearch() {
             <b>Search</b>
             <i className="fa fa-search" />
           </button>
+          <p className="mx-5"><strong> NOTE: </strong> <i>The name of the salts must be comma separated!</i></p>
         </form>
       </div>
     </div>
