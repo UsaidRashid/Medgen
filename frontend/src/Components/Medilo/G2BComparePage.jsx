@@ -22,8 +22,6 @@ export default function G2BComparePage() {
           { genName, brandName }
         );
         if (response.status === 200) {
-          //   alert(response.data.message);
-
           setBrand(response.data.brands);
           setGeneric(response.data.generics);
         } else {
@@ -31,7 +29,6 @@ export default function G2BComparePage() {
         }
       } catch (error) {
         console.error("Error in Comparing:", error);
-        console.log(`${error.name} -> ${error.message}`);
         if (error.response) {
           alert("Error from server: " + error.response.data.message);
         } else if (error.request) {
@@ -55,9 +52,10 @@ export default function G2BComparePage() {
       style={{
         backgroundImage: `url(${Bg})`,
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100vh",
+        backgroundSize: "contain",
         backgroundPosition: "right",
         backgroundColor: "white",
+        padding: "1rem",
       }}
     >
       <div>
@@ -68,86 +66,66 @@ export default function G2BComparePage() {
           <b>#Compare {text}</b>
         </h1>
       </div>
-      <div className="d-flex">
-        <div className="comparison-boxes" style={{ marginBottom: "2rem" }}>
-          <div>
-            <div className="cards">
-              <div class="column">
-                <div
-                  class="col-sm-12 mb-3 mb-sm-0"
-                  style={{ marginTop: "2.7rem" }}
-                >
-                  <div class="card border-1 border-dark mb-3 shadow">
-                    <div class="card-body card-1-1 border-2 border-dark">
-                      <div className="card-write">
-                        <h5 class="card-title fs-3 fw-bold">{generic.name}</h5>
-                        <ul>
-                          <li className="card-list">
-                            Drug Code : {generic.code}
-                          </li>
-                          <li className="card-list">Salt : {generic.salt}</li>
-                          <li className="card-list">
-                            Batch Number : {generic.batch}
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="card-price font-monospace fs-5">
-                        <div>
-                          <b>Price</b>
-                        </div>
-
-                        <div>&#8377;{generic.price}/-</div>
-                      </div>
-                    </div>
-                  </div>
+      <div className="d-flex flex-column align-items-center flex-md-row">
+        <div className="comparison-boxes d-flex flex-column flex-md-row justify-content-center" style={{ marginBottom: "2rem", marginLeft:"5rem"}}>
+          <div className="card-container">
+            <div className="card border-1 border-dark mb-3 shadow">
+              <div className="card-body card-1-1 border-2 border-dark">
+                <div className="card-write" >
+                  <h5 className="card-title fs-2 fw-bold">{generic.name}</h5>
+                  <ul style={{ marginTop: "3rem"}}>
+                    <li className="card-list fs-5" >Drug Code : {generic.code}</li>
+                    <li className="card-list fs-5">Salt : {generic.salt}</li>
+                    <li className="card-list fs-5">Batch Number : {generic.batch}</li>
+                  </ul>
                 </div>
-                <div class="col-sm-12 mb-3 mb-sm-0 ml-5">
-                  <div class="card border-1 border-dark shadow">
-                    <div class="card-body card-2-2 border-2 border-dark">
-                      <div className="card-write">
-                        <h5 class="card-title fs-3 fw-bold">{brand.name}</h5>
-                        <ul>
-                          <li className="card-list">
-                            Drug Code : {brand.code}
-                          </li>
-                          <li className="card-list">Salt : {brand.salt}</li>
-                          <li className="card-list">
-                            Batch Number : {brand.batch}
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="card-price font-monospace fs-5">
-                        <div>
-                          <b>Price</b>
-                        </div>
-                        <div>&#8377;{brand.price}/-</div>
-                      </div>
-                    </div>
+                <div className="card-price font-monospace fs-5">
+                  <div>
+                    <b>Price</b>
                   </div>
+                  <div>&#8377;{generic.price}/-</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="card-container">
+            <div className="card border-1 border-dark shadow">
+              <div className="card-body card-2-2 border-2 border-dark">
+                <div className="card-write">
+                  <h5 className="card-title fs-2 fw-bold">{brand.name}</h5>
+                  <ul style={{ marginTop: "3rem"}}>
+                    <li className="card-list fs-5">Drug Code : {brand.code}</li>
+                    <li className="card-list fs-5">Salt : {brand.salt}</li>
+                    <li className="card-list fs-5">Batch Number : {brand.batch}</li>
+                  </ul>
+                </div>
+                <div className="card-price font-monospace fs-5">
+                  <div>
+                    <b>Price</b>
+                  </div>
+                  <div>&#8377;{brand.price}/-</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          className="width-50 text-dark hover"
-          style={{ margin: "0 0 10px 0" }}
-        >
-          <div class="price-comparison border-2 border-dark shadow mb-3">
-            <div className="price-box ">
-              <div class="current-price-box ">
-                <p>Brand Price</p>
-                <p>₹{brand.price}</p>
-              </div>
-              <div class="medgen-price-box">
-                <p>Generic Price</p>
-                <p>₹{generic.price}</p>
-              </div>
+      </div>
+      <div className="d-flex justify-content-center">
+        <div className="price-comparison border-2 border-dark shadow mb-3">
+          <div className="price-box">
+            <div className="current-price-box">
+              <p>Brand Price</p>
+              <p>₹{brand.price}</p>
             </div>
-            <div class="total-savings">
-              <p> Total Savings</p>
-              <p>₹{brand.price - generic.price}</p>
+            <div className="medgen-price-box">
+              <p>Generic Price</p>
+              <p>₹{generic.price}</p>
             </div>
+          </div>
+          <div className="total-savings">
+            <p>Total Savings</p>
+            <p>₹{brand.price - generic.price}</p>
           </div>
         </div>
       </div>
