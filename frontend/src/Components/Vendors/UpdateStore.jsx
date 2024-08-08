@@ -111,7 +111,7 @@ export default function UpdateStore() {
               src={background}
               style={{ width: "50px", height: "500px" }}
               alt=""
-              className="img-fluid w-100 h-500 mt-5"
+              className="img-fluid w-75 h-75 mt-5 mx-5"
               id="img1"
             ></img>
           </div>

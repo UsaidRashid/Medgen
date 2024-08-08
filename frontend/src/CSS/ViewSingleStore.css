@@ -1,0 +1,14 @@
+
+@media (max-width: 768px) {
+    .container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    iframe {
+      height: 300px;
+      width: 45rem;
+       
+    }
+  }
+  

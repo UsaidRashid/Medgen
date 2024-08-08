@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import waveInvert from '../../Images/wave-invert.png';
 import upperImage from '../../Images/upper-image.png';
@@ -76,7 +75,7 @@ const RegistrationForm = () => {
 
   return (
     <div>
-      <div style={{ background: `url(${waveInvert})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '800px', width: '1500px' }}>
+      <div style={{ background: `url(${waveInvert})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '800px', width: '2000px' }}>
         <h1 className='text-white text-center fw-bold p-5' style={{ fontSize: "55px" }}>Register Your<b style={{ color: '#00bbf0' }}> Store</b> </h1>
         <img src={upperImage} className='position-absolute' style={{ marginTop: '10px', marginLeft: "800px", width: "500px", height: "500px" }} alt="" />
       </div>
@@ -108,7 +107,7 @@ const RegistrationForm = () => {
             
             <Form.Group as={Col} controlId="StorePincode">
               <Form.Label>Store Pincode</Form.Label>
-              <Form.Control type="text" name="pincode" inputmode="numeric" maxlength="6" placeholder="Enter Pincode (******)" value={formData.pincode} required onChange={handleChange}/>
+              <Form.Control type="text" name="pincode" inputmode="numeric" maxlength="6" placeholder="Enter Pincode (**)" value={formData.pincode} required onChange={handleChange}/>
             </Form.Group>
 
             <Form.Group as={Col} controlId="StoreAddress">
@@ -142,7 +141,7 @@ const RegistrationForm = () => {
           </Form>
         </div>
       </div>
-      <div className='' style={{ background: `url(${wave})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '900px', width: '1600px', marginTop: '0px' }}>
+      <div className='' style={{ background: `url(${wave})`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', height: '900px', width: '2000px', marginTop: '0px' }}>
         <img src={lowerImage} className='position-absolute' style={{ marginTop: '400px', marginLeft: "180px", width: "600px", height: "600px" }} height='500px' alt="" />
         <h1 className='text-white position-absolute ' style={{ marginTop: '300px', marginLeft: '400px', fontFamily: "initial", fontSize: "50px" }}>YOUR HEALTH IS OUR MISSION</h1>
         <div className='position-absolute' style={{ marginTop: '850px', marginLeft: '500px' }}>
@@ -156,3 +155,5 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
+
