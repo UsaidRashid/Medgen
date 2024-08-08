@@ -57,11 +57,11 @@ export default function App(){
 
     const Appcontent = () => {
        const location = useLocation();
-       const isAdminRoute = location.pathname.startsWith('/admin');
+       const showNavFoot = location.pathname.startsWith('/admin') || location.pathname==='/login' || location.pathname==='/signup';
 
        return(
         <div>
-          {!isAdminRoute && <Navbar/>}
+          {!showNavFoot && <Navbar/>}
          <Routes>
           <Route path='/' element={<Homepage/>}></Route>
           
@@ -111,7 +111,7 @@ export default function App(){
           <Route path='/contact-us' element={<ContactUs/>}></Route>
           <Route path='/faq' element={<FAQ/>}></Route>
          </Routes>
-          {!isAdminRoute && <Footer/>}
+          {!showNavFoot && <Footer/>}
           </div>
        )
 
