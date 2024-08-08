@@ -17,7 +17,7 @@ export default function Homepage() {
 
   return (
     <>
-      <div className="BG">
+     <div className="BG">
         <div>
           <img class="container-fluid chochomelon" src={newbg} alt="" />
           <div
@@ -132,7 +132,7 @@ export default function Homepage() {
             </div>
           </div>
         </div>
-      </div>
+      </div >
     </>
   );
 }

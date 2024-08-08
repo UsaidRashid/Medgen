@@ -73,3 +73,9 @@ a {
   transition: all 0.6s ease;
 }
 
+@media (max-width: 450px) {
+  .h-custom {
+  height: 100%;
+  }
+  }
+
