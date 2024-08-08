@@ -1,4 +1,4 @@
-.login-section {
+ .login-section {
   margin: 0;
   overflow: hidden;
 }
@@ -7,31 +7,23 @@
   position: relative;
 }
 
-#image-container {
+.slide {
+  position:relative;
+  top:35%;
+  
+  transform: translateX(-35%);
+}
+ .move-slide {
   position: relative;
-  height: 100%;
+  animation: moveSlide 2s forwards;
 }
 
-#moving-image {
-  position: fixed;
-  top: 50%;
-  right: 70%;
-  transform: translateY(-35%);
-}
-#moving-image {
-  position: relative;
-  animation: moveImage 2s backwards;
-}
-
-
-@keyframes moveImage {
+@keyframes moveSlide {
   0% {
-    right: -100%;
+    left: -100%; 
   }
   100% {
-    right: 50%;
+    left: 45%; 
   }
 }
-
-
 

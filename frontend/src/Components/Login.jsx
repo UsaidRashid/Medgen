@@ -55,11 +55,15 @@ function Login() {
 
   return (
     <>
-      <section>
-        <div className=" mx-5 my-5">
+      <section className="login-section">
+        <div className=" login-container mx-5 my-5">
           <div className="row">
-            <div className="col-md-6">
-              <img src="image/login.png" className="w-100 h-100" alt="" />
+            <div className="slide col-md-6">
+              <img
+                src="image/login.png"
+                className="w-100 h-100 move-slide"
+                alt="move Slide"
+              />
             </div>
             <div className="col-md-6 shadow-lg mb-3">
               <h1 className="text-center mt-3 ">
