@@ -1,0 +1,213 @@
+[
+    {
+      "name": "Paracetamol",
+      "code": "PARAC-001",
+      "salt": ["Acetaminophen"],
+      "batch": 123,
+      "price": 15.50
+    },
+    {
+      "name": "Ibuprofen",
+      "code": "IBUP-002",
+      "salt": ["Ibuprofen", "Propionic Acid"],
+      "batch": 234,
+      "price": 20.00
+    },
+    {
+      "name": "Aspirin",
+      "code": "ASPIR-003",
+      "salt": ["Acetylsalicylic Acid"],
+      "batch": 345,
+      "price": 18.75
+    },
+    {
+      "name": "Amoxicillin",
+      "code": "AMOX-004",
+      "salt": ["Amoxicillin", "Beta-lactamase Inhibitor"],
+      "batch": 456,
+      "price": 25.00
+    },
+    {
+      "name": "Cetrizine",
+      "code": "CET-005",
+      "salt": ["Cetirizine"],
+      "batch": 567,
+      "price": 22.50
+    },
+    {
+      "name": "Metformin",
+      "code": "MET-006",
+      "salt": ["Metformin"],
+      "batch": 678,
+      "price": 30.00
+    },
+    {
+      "name": "Loratadine",
+      "code": "LORA-007",
+      "salt": ["Loratadine", "Hydroxyzine"],
+      "batch": 789,
+      "price": 27.00
+    },
+    {
+      "name": "Simvastatin",
+      "code": "SIMV-008",
+      "salt": ["Simvastatin", "Lovastatin"],
+      "batch": 890,
+      "price": 35.00
+    },
+    {
+      "name": "Losartan",
+      "code": "LOSA-009",
+      "salt": ["Losartan"],
+      "batch": 901,
+      "price": 40.00
+    },
+    {
+      "name": "Omeprazole",
+      "code": "OMEP-010",
+      "salt": ["Omeprazole", "Esomeprazole"],
+      "batch": 101,
+      "price": 23.50
+    },
+    {
+      "name": "Atorvastatin",
+      "code": "ATOR-011",
+      "salt": ["Atorvastatin"],
+      "batch": 202,
+      "price": 28.00
+    },
+    {
+      "name": "Diazepam",
+      "code": "DIAZ-012",
+      "salt": ["Diazepam", "Lorazepam"],
+      "batch": 303,
+      "price": 26.75
+    },
+    {
+      "name": "Gabapentin",
+      "code": "GABA-013",
+      "salt": ["Gabapentin", "Pregabalin"],
+      "batch": 404,
+      "price": 29.25
+    },
+    {
+      "name": "Hydrochlorothiazide",
+      "code": "HYDR-014",
+      "salt": ["Hydrochlorothiazide"],
+      "batch": 505,
+      "price": 32.00
+    },
+    {
+      "name": "Amlodipine",
+      "code": "AMLO-015",
+      "salt": ["Amlodipine", "Nifedipine"],
+      "batch": 606,
+      "price": 34.50
+    },
+    {
+      "name": "Metoprolol",
+      "code": "METO-016",
+      "salt": ["Metoprolol"],
+      "batch": 707,
+      "price": 31.00
+    },
+    {
+      "name": "Naproxen",
+      "code": "NAPR-017",
+      "salt": ["Naproxen", "Ibuprofen", "Ketoprofen"],
+      "batch": 808,
+      "price": 19.25
+    },
+    {
+      "name": "Cetirizine",
+      "code": "CETI-018",
+      "salt": ["Cetirizine", "Desloratadine"],
+      "batch": 909,
+      "price": 24.75
+    },
+    {
+      "name": "Ranitidine",
+      "code": "RANI-019",
+      "salt": ["Ranitidine"],
+      "batch": 1010,
+      "price": 21.00
+    },
+    {
+      "name": "Prednisone",
+      "code": "PRED-020",
+      "salt": ["Prednisone"],
+      "batch": 1111,
+      "price": 27.25
+    },
+    {
+      "name": "Tramadol",
+      "code": "TRAM-021",
+      "salt": ["Tramadol"],
+      "batch": 1212,
+      "price": 33.50
+    },
+    {
+      "name": "Doxycycline",
+      "code": "DOXY-022",
+      "salt": ["Doxycycline", "Minocycline"],
+      "batch": 1313,
+      "price": 37.00
+    },
+    {
+      "name": "Clopidogrel",
+      "code": "CLOP-023",
+      "salt": ["Clopidogrel", "Aspirin"],
+      "batch": 1414,
+      "price": 30.50
+    },
+    {
+      "name": "Fluoxetine",
+      "code": "FLUX-024",
+      "salt": ["Fluoxetine"],
+      "batch": 1515,
+      "price": 28.75
+    },
+    {
+      "name": "Sildenafil",
+      "code": "SILD-025",
+      "salt": ["Sildenafil"],
+      "batch": 1616,
+      "price": 41.00
+    },
+    {
+      "name": "Lorazepam",
+      "code": "LORA-026",
+      "salt": ["Lorazepam", "Diazepam"],
+      "batch": 1717,
+      "price": 34.75
+    },
+    {
+      "name": "Levothyroxine",
+      "code": "LEVO-027",
+      "salt": ["Levothyroxine"],
+      "batch": 1818,
+      "price": 39.00
+    },
+    {
+      "name": "Digoxin",
+      "code": "DIG-028",
+      "salt": ["Digoxin"],
+      "batch": 1919,
+      "price": 32.50
+    },
+    {
+      "name": "Atenolol",
+      "code": "ATEN-029",
+      "salt": ["Atenolol"],
+      "batch": 2020,
+      "price": 29.75
+    },
+    {
+      "name": "Furosemide",
+      "code": "FURO-030",
+      "salt": ["Furosemide", "Hydrochlorothiazide"],
+      "batch": 2121,
+      "price": 25.00
+    }
+  ]
+  
