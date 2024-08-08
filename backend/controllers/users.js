@@ -1,6 +1,6 @@
 const User = require("../models/users");
 const jwt = require("jsonwebtoken");
-const cloudinary = require('cloudinary').v2;
+const cloudinary = require("cloudinary").v2;
 
 module.exports.signup = async (req, res) => {
   try {
@@ -8,7 +8,6 @@ module.exports.signup = async (req, res) => {
 
     const profilePic = req.file ? req.file.path : null;
 
-    
     if (!username || !name || !email || !contact || !password)
       return res
         .status(400)
@@ -30,7 +29,7 @@ module.exports.signup = async (req, res) => {
     });
 
     const registeredUser = await User.register(newUser, req.body.password);
-    
+
     if (profilePic) {
       const cloudinaryUrl = cloudinary.url(profilePic, {
         secure: true,
@@ -38,13 +37,12 @@ module.exports.signup = async (req, res) => {
       registeredUser.profilePic = cloudinaryUrl;
     }
 
-
     req.login(registeredUser, (err) => {
       if (err) {
         console.log(err);
         return res.status(500).json({ message: "Error saving the user", err });
       }
-      const token = jwt.sign({ user: registeredUser }, "secretkey", {
+      const token = jwt.sign({ user: registeredUser }, process.env.JWT_SECRET, {
         algorithm: "HS256",
       });
 
@@ -63,7 +61,9 @@ module.exports.login = async (req, res) => {
     const user = await User.findOne({ username: req.body.username }).populate(
       "store"
     );
-    const token = jwt.sign({ user }, "secretkey", { algorithm: "HS256" });
+    const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+      algorithm: "HS256",
+    });
     return res
       .status(200)
       .json({ message: "User Logged in successfully", token });
@@ -103,7 +103,7 @@ module.exports.updateDetails = async (req, res) => {
         .status(400)
         .json({ message: "Something went wrong! Are you logged in?" });
 
-    const decodedToken = jwt.verify(token, "secretkey");
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const username = decodedToken.user.username;
 
@@ -114,7 +114,6 @@ module.exports.updateDetails = async (req, res) => {
       profilePic,
     };
 
-
     if (profilePic) {
       const cloudinaryUrl = cloudinary.url(profilePic, {
         secure: true,
@@ -122,14 +121,13 @@ module.exports.updateDetails = async (req, res) => {
       updatedProfile.profilePic = cloudinaryUrl;
     }
 
-    
     const updatedUser = await User.findOneAndUpdate(
       { username },
       updatedProfile,
       { new: true, runValidators: true }
     ).populate("store");
 
-    const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
+    const newToken = jwt.sign({ user: updatedUser }, process.env.JWT_SECRET, {
       algorithm: "HS256",
     });
 
@@ -147,20 +145,21 @@ module.exports.updateDetails = async (req, res) => {
   }
 };
 
-module.exports.fetchToken = async (req,res) => {
+module.exports.fetchToken = async (req, res) => {
   try {
-    const {_id} = req.body;
-    const user = await User.findOne({_id}).populate('store');
-    const token = jwt.sign({ user }, "secretkey", {
+    const { _id } = req.body;
+    const user = await User.findOne({ _id }).populate("store");
+    const token = jwt.sign({ user }, process.env.JWT_SECRET, {
       algorithm: "HS256",
     });
-    return res.status(200).json({message:'Fetched Token Successfully',token});
+    return res
+      .status(200)
+      .json({ message: "Fetched Token Successfully", token });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Internal Server Error", error }); 
+    return res.status(500).json({ message: "Internal Server Error", error });
   }
-}
-
+};
 
 module.exports.signupGoogle = async (req, res) => {
   try {

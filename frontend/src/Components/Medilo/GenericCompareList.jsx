@@ -23,7 +23,7 @@ export default function BrandedCompare() {
     const main = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/medilo/generic-search",
+          process.env.REACT_APP_BACKEND_URL + "/medilo/generic-search",
           { name }
         );
         if (response.status === 200) {
@@ -137,7 +137,7 @@ export default function BrandedCompare() {
                 </div>
                 <button
                   className="btn btn-primary fs-5"
-                  onClick={()=>openCompare(medicine.name,alternative.name)}
+                  onClick={() => openCompare(medicine.name, alternative.name)}
                   style={{
                     marginLeft: "3rem",
                     height: "50px",

@@ -22,7 +22,7 @@ export default function UpdateDetails() {
     email: decodedToken.user.email ? decodedToken.user.email : "",
     contact: decodedToken.user.contact ? decodedToken.user.contact : "",
     profilePic: "",
-    token : "",
+    token: "",
   });
 
   const handleChange = (e) => {
@@ -43,9 +43,9 @@ export default function UpdateDetails() {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      formData.token=token;
+      formData.token = token;
       const response = await axios.post(
-        "http://localhost:6969/users/update",
+        process.env.REACT_APP_BACKEND_URL+"/users/update",
         formData,
         {
           headers: {

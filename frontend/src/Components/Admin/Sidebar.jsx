@@ -17,7 +17,10 @@ const Sidebar = ({ children }) => {
 
   return (
     <div className="h-100">
-      <div style={{ width: isOpen ? "200px" : "60px", height:'100vh' }} className="sidebar ">
+      <div
+        style={{ width: isOpen ? "200px" : "60px", height: "100vh" }}
+        className="sidebar "
+      >
         <div className="top_section">
           <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
             MEDGEN
@@ -89,7 +92,11 @@ const Sidebar = ({ children }) => {
           </div>
         </Link>
 
-        <Link to="/admin/store-requests" className="link" activeclassName="active">
+        <Link
+          to="/admin/store-requests"
+          className="link"
+          activeclassName="active"
+        >
           <div
             style={{ display: isOpen ? "block" : "none" }}
             className="link_text"

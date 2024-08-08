@@ -14,7 +14,7 @@ export default function GenericResults() {
       try {
         console.log(salts);
         const response = await axios.post(
-          "http://localhost:6969/medilo/generic-elastic-search",
+          process.env.REACT_APP_BACKEND_URL+"/medilo/generic-elastic-search",
           { salts }
         );
         console.log("salt", response);

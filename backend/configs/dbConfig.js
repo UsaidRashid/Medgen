@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// const mongoUrl = "mongodb://127.0.0.1:27017/Medgen";
 const mongoUrl = process.env.DATABASE_URL;
 
 async function connectDB() {

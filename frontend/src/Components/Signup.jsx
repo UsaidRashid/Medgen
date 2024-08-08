@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import '../CSS/Signup.css'
+import "../CSS/Signup.css";
 import { useNavigate, Link } from "react-router-dom";
 
 function Signup() {
@@ -35,7 +35,7 @@ function Signup() {
       console.log(formData);
 
       const response = await axios.post(
-        "http://localhost:6969/users/signup",
+        process.env.REACT_APP_BACKEND_URL+"/users/signup",
         formData,
         {
           headers: {
@@ -155,7 +155,11 @@ function Signup() {
               </form>
             </div>
             <div className="image-container col-md-6">
-              <img src="image/sign.png" className="moving-image w-100 h-100" alt="Moving Image" />
+              <img
+                src="image/sign.png"
+                className="moving-image w-100 h-100"
+                alt="Moving Image"
+              />
             </div>
           </div>
         </div>

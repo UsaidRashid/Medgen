@@ -14,7 +14,7 @@ function Storelocator() {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/store/fetch-stores"
+          process.env.REACT_APP_BACKEND_URL + "/store/fetch-stores"
         );
         if (response.status === 200) {
           setStores(response.data.stores);
@@ -43,7 +43,7 @@ function Storelocator() {
   const handleSearch = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/store/fetch-stores",
+        process.env.REACT_APP_BACKEND_URL + "/store/fetch-stores",
         { pincode }
       );
       if (response.status === 200) {
@@ -205,17 +205,14 @@ function Storelocator() {
               className="card border border-2 border-dark"
               style={{ width: "100%", maxWidth: "60rem", fontSize: "18px" }}
             >
-              <div className="row no-gutters">
-                <div className="col-md-8 d-none d-md-block">
-                  <div className="card-body d-flex flex-column">
-                    <h2 className="card-title fw-bold fs-2">{store.name}</h2>
-                    <p className="card-text mt-3"><strong>Address:</strong> {store.address}</p>
-                    <p className="card-text"><strong>Latitude:</strong> {store.latitude}</p>
-                    <p className="card-text"><strong>Longitude:</strong> {store.longitude}</p>
-                    <p className="card-text"><strong>Pincode:</strong> {store.pincode}</p>
-                  </div>
-                </div>
-                <div className="col-md-4">
+              <div
+                class="card border border-2 border-dark "
+                style={{ width: "60rem", fontSize: "18px" }}
+              >
+                <div
+                  class="card-body d-flex flex-column "
+                  style={{ marginLeft: "-700px" }}
+                >
                   <img
                     src={store.storePic ? store.storePic : background}
                     alt=""

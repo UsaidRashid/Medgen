@@ -40,7 +40,7 @@ module.exports.addBrand = async (req, res) => {
 
     return res
       .status(200)
-      .json({ messsage: "Brand Medicine added successfully", newBrand });
+      .json({ message: "Brand Medicine added successfully", newBrand });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });

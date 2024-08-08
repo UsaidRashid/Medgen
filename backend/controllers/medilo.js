@@ -9,7 +9,7 @@ const {
 module.exports.brandMedicine = async (req, res) => {
   try {
     let { name } = req.body;
-    name=name.toLowerCase();
+    name = name.toLowerCase();
     const medicine = await Brand.findOne({ name }).populate("alternatives");
     if (!medicine)
       return res.status(201).json({
@@ -79,9 +79,18 @@ module.exports.GenericElasticSearch = async (req, res) => {
   try {
     const { salts } = req.body;
 
-    if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
+    if (
+      !salts ||
+      salts === "" ||
+      salts === undefined ||
+      salts === null ||
+      salts.length === 0
+    )
+      return res.status(400).json({ message: "Salt Array Required" });
 
-    const saltsArray = salts.split(",").map((salt) => salt.trim().toLowerCase());
+    const saltsArray = salts
+      .split(",")
+      .map((salt) => salt.trim().toLowerCase());
 
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });
@@ -98,9 +107,18 @@ module.exports.BrandElasticSearch = async (req, res) => {
   try {
     const { salts } = req.body;
 
-    if (!salts || salts==='' || salts===undefined || salts===null || salts.length===0) return res.status(400).json({ message: "Salt Array Required" });
+    if (
+      !salts ||
+      salts === "" ||
+      salts === undefined ||
+      salts === null ||
+      salts.length === 0
+    )
+      return res.status(400).json({ message: "Salt Array Required" });
 
-    const saltsArray = salts.split(",").map((salt) => salt.trim().toLowerCase());
+    const saltsArray = salts
+      .split(",")
+      .map((salt) => salt.trim().toLowerCase());
 
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });

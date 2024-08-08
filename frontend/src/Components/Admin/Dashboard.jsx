@@ -19,7 +19,6 @@ import Sidebar from "./Sidebar";
 import "../../CSS/admin.css";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Dashboard() {
   const navigate = useNavigate();
   const data = [
@@ -76,7 +75,7 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/admin/fetch-dashboard"
+          process.env.REACT_APP_BACKEND_URL + "/admin/fetch-dashboard"
         );
         const { genCnt, brandCnt, reqCnt, storeCnt } = response.data;
         setGencnt(genCnt);
@@ -99,13 +98,13 @@ export default function Dashboard() {
   };
 
   const openBrandMedicines = (e) => {
-    navigate('/admin/brand-medicines');
-  }
+    navigate("/admin/brand-medicines");
+  };
 
   const openGenericMedicines = (e) => {
-    navigate('/admin/generic-medicines');
-  }
-  
+    navigate("/admin/generic-medicines");
+  };
+
   return (
     <div className="d-flex flex-row">
       <div>
@@ -113,30 +112,41 @@ export default function Dashboard() {
       </div>
       <div>
         <main className="main-container">
-        
           <div className="main-cards">
-            <div className="btn btn-outline-info p-3 rounded card " onClick={openGenericMedicines}>
+            <div
+              className="btn btn-outline-info p-3 rounded card "
+              onClick={openGenericMedicines}
+            >
               <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Generic Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />
                 <h1 className="text-black">{gencnt}</h1>
               </div>
             </div>
-            <div className="btn btn-outline-info p-3 rounded card" onClick={openBrandMedicines}>
+            <div
+              className="btn btn-outline-info p-3 rounded card"
+              onClick={openBrandMedicines}
+            >
               <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Brand Medicines</h3>
                 <BsFillArchiveFill className="card_icon text-black" />
                 <h1 className="text-black">{brandcnt}</h1>
               </div>
             </div>
-            <div className="btn btn-outline-info p-3 rounded card" onClick={openRequests}>
+            <div
+              className="btn btn-outline-info p-3 rounded card"
+              onClick={openRequests}
+            >
               <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Requests</h3>
                 <BsPeopleFill className="card_icon text-black" />
                 <h1 className="text-black">{reqcnt}</h1>
               </div>
             </div>
-            <div className="btn btn-outline-info p-3 rounded card" onClick={openStores}>
+            <div
+              className="btn btn-outline-info p-3 rounded card"
+              onClick={openStores}
+            >
               <div className="card-body d-flex flex-column align-items-center">
                 <h3 className="text-black">Stores</h3>
                 <BsFillBellFill className="card_icon text-black" />
@@ -144,7 +154,6 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-
 
           {/* <div className="charts" style={{ marginLeft: "10rem" }}>
             <ResponsiveContainer width="100%" height="100%">

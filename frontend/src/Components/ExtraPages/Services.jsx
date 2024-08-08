@@ -21,28 +21,32 @@ export default function Services() {
         for everyone. Your health and well-being are our top priorities.
       </p>
       <div className="d-flex flex-row justify-content-between">
-            
-        <div class="card bg-white p-3" >
-        <h5 className="card-title">Search for Medicines</h5>
-            <div class="card-body">
-                <p class="card-text">Find generic alternatives to brand-name medicines with ease.</p>
-            </div>
+        <div class="card bg-white p-3">
+          <h5 className="card-title">Search for Medicines</h5>
+          <div class="card-body">
+            <p class="card-text">
+              Find generic alternatives to brand-name medicines with ease.
+            </p>
+          </div>
         </div>
 
-        <div class="card bg-white mx-1 p-3" >
-        <h5 className="card-title">Compare Prices</h5>
-            <div class="card-body">
-                <p class="card-text">Get the best value for your health needs by comparing prices.</p>
-            </div>
+        <div class="card bg-white mx-1 p-3">
+          <h5 className="card-title">Compare Prices</h5>
+          <div class="card-body">
+            <p class="card-text">
+              Get the best value for your health needs by comparing prices.
+            </p>
+          </div>
         </div>
 
         <div class="card bg-white p-3">
-        <h5 className="card-title">Find Local Stores</h5>
-            <div class="card-body">
-                <p class="card-text">Locate pharmacies and stores in your area to purchase medicines.</p>
-            </div>
+          <h5 className="card-title">Find Local Stores</h5>
+          <div class="card-body">
+            <p class="card-text">
+              Locate pharmacies and stores in your area to purchase medicines.
+            </p>
+          </div>
         </div>
-
       </div>
     </div>
   );

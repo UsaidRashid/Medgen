@@ -13,7 +13,7 @@ export default function StoreRequests() {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/admin/fetch-unapproved-stores"
+          process.env.REACT_APP_BACKEND_URL + "/admin/fetch-unapproved-stores"
         );
         const { stores } = response.data;
 
@@ -29,7 +29,7 @@ export default function StoreRequests() {
   const handleDeleteStore = async (_id) => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/admin/delete-store",
+        process.env.REACT_APP_BACKEND_URL + "/admin/delete-store",
         { _id }
       );
       if (response.status === 200) {
@@ -58,7 +58,7 @@ export default function StoreRequests() {
   const handleAcceptStore = async (_id) => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/admin/accept-store",
+        process.env.REACT_APP_BACKEND_URL + "/admin/accept-store",
         { _id }
       );
       if (response.status === 200) {

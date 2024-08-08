@@ -42,12 +42,12 @@ export default function GenericSaltSearch() {
     delaySpeed: 500,
   });
 
-  const [salts, setSalts] = useState('');
+  const [salts, setSalts] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate(`/generic-results`,{state:{props:salts}});
+    navigate(`/generic-results`, { state: { props: salts } });
   };
 
   const handleChange = (e) => {
@@ -76,10 +76,7 @@ export default function GenericSaltSearch() {
             /{text}/
           </h1>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          style={myStyle2}
-        >
+        <form onSubmit={handleSubmit} style={myStyle2}>
           <input
             type="text"
             placeholder="Enter Salts Here..."
@@ -91,7 +88,10 @@ export default function GenericSaltSearch() {
             <b>Search</b>
             <i className="fa fa-search" />
           </button>
-          <p className="mx-5"><strong> NOTE: </strong> <i>The name of the salts must be comma separated!</i></p>
+          <p className="mx-5">
+            <strong> NOTE: </strong>{" "}
+            <i>The name of the salts must be comma separated!</i>
+          </p>
         </form>
       </div>
     </div>
