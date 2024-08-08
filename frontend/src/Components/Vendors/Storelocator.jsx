@@ -74,89 +74,163 @@ function Storelocator() {
   };
 
   return (
-    <div className="Store text-dark  " style={{ backgroundColor: "white" }}>
-      <h1 className="text-center fw-bold">Store Locator</h1>
+    // <div className="Store text-dark  " style={{ backgroundColor: "white" }}>
+    //   <h1 className="text-center fw-bold">Store Locator</h1>
 
-      <div
-        className="input-group mt-2 w-50 mx-auto"
-        style={{
-          boxShadow: "8px 8px 12px rgba(0,0,0,0.2)",
-          borderRadius: "1rem",
-          overflow: "hidden",
-        }}
-      >
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Search by Pincode"
-          aria-label="Search"
-          value={pincode}
-          onChange={(e) => setPin(e.target.value)}
-          style={{ border: "none", boxShadow: "none" }}
-        />
-        <div className="input-group-append">
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={handleSearch}
-            style={{ border: "none" }}
-          >
-            <i className="fas fa-search"></i> Search
-          </button>
-        </div>
-      </div>
+    //   <div
+    //     className="input-group mt-2 w-50 mx-auto"
+    //     style={{
+    //       boxShadow: "8px 8px 12px rgba(0,0,0,0.2)",
+    //       borderRadius: "1rem",
+    //       overflow: "hidden",
+    //     }}
+    //   >
+    //     <input
+    //       type="text"
+    //       className="form-control"
+    //       placeholder="Search by Pincode"
+    //       aria-label="Search"
+    //       value={pincode}
+    //       onChange={(e) => setPin(e.target.value)}
+    //       style={{ border: "none", boxShadow: "none" }}
+    //     />
+    //     <div className="input-group-append">
+    //       <button
+    //         className="btn btn-primary"
+    //         type="button"
+    //         onClick={handleSearch}
+    //         style={{ border: "none" }}
+    //       >
+    //         <i className="fas fa-search"></i> Search
+    //       </button>
+    //     </div>
+    //   </div>
 
-      <div>
-        <ul
-          className="d-flex flex-column flex-wrap justify-content-evenly"
-          style={{ color: "white" }}
+    //   <div>
+    //     <ul
+    //       className="d-flex flex-column flex-wrap justify-content-space-evenly"
+    //       style={{ color: "white" }}
+    //     >
+    //       {stores.map((store) => (
+    //         <li
+    //           className="my-3 h-50 d-flex flex-row justify-content-center "
+    //           key={store.id}
+    //           onClick={() => openStore(store._id)}
+    //         >
+    //           <div
+    //             class="card border border-2 border-dark "
+    //             style={{ width: "60rem", fontSize: "18px" }}
+    //           >
+    //             <div class="card-body d-flex flex-column " style={{ marginLeft: '-700px' }}>
+    //               <img
+    //                 src={store.storePic ? store.storePic : background}
+    //                 alt=""
+    //                 style={{
+    //                   width: "10rem",
+    //                   position: "absolute",
+    //                   right: 0,
+    //                 }}
+    //                 className="mt-4 me-4"
+    //               />
+    //               <h2
+    //                 class="card-title fw-bold font-monospace fs-2"
+    //                 style={{ margin: "1px 0 0 2rem" }}
+    //               >
+    //                 {store.name}
+    //               </h2>
+    //               <div style={{ margin: "1px 0 0 2rem" }}>
+    //                 <p class="card-text ">
+    //                   <strong>Address:</strong> {store.address}
+    //                 </p>
+    //                 <p class="card-text">
+    //                   <strong>Latitude:</strong> {store.latitude}
+    //                 </p>
+    //                 <p class="card-text">
+    //                   <strong>Longitude:</strong> {store.longitude}
+    //                 </p>
+    //                 <p class="card-text">
+    //                   <strong>Pincode:</strong> {store.pincode}
+    //                 </p>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </li>
+    //       ))}
+    //     </ul>
+    //   </div>
+    // </div>
+    <div className="Store text-dark" style={{ backgroundColor: "white" }}>
+    <h1 className="text-center fw-bold">Store Locator</h1>
+  
+    <div
+      className="input-group mt-2 mx-auto"
+      style={{
+        boxShadow: "8px 8px 12px rgba(0,0,0,0.2)",
+        borderRadius: "1rem",
+        overflow: "hidden",
+        maxWidth: "500px",
+        width: "100%",
+      }}
+    >
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Search by Pincode"
+        aria-label="Search"
+        value={pincode}
+        onChange={(e) => setPin(e.target.value)}
+        style={{ border: "none", boxShadow: "none" }}
+      />
+      <div className="input-group-append">
+        <button
+          className="btn btn-primary"
+          type="button"
+          onClick={handleSearch}
+          style={{ border: "none" }}
         >
-          {stores.map((store) => (
-            <li
-              className="my-3 h-50 d-flex flex-row justify-content-center "
-              key={store.id}
-              onClick={() => openStore(store._id)}
+          <i className="fas fa-search"></i> Search
+        </button>
+      </div>
+    </div>
+  
+    <div>
+      <ul className="d-flex flex-column flex-wrap justify-content-space-evenly" style={{ color: "white" }}>
+        {stores.map((store) => (
+          <li
+            className="my-3 d-flex justify-content-center"
+            key={store.id}
+            onClick={() => openStore(store._id)}
+          >
+            <div
+              className="card border border-2 border-dark"
+              style={{ width: "100%", maxWidth: "60rem", fontSize: "18px" }}
             >
-              <div
-                class="card border border-2 border-dark "
-                style={{ width: "60rem", fontSize: "18px" }}
-              >
-                <div class="card-body d-flex flex-column " style={{marginLeft:'-700px'}}>
+              <div className="row no-gutters">
+                <div className="col-md-8 d-none d-md-block">
+                  <div className="card-body d-flex flex-column">
+                    <h2 className="card-title fw-bold fs-2">{store.name}</h2>
+                    <p className="card-text mt-3"><strong>Address:</strong> {store.address}</p>
+                    <p className="card-text"><strong>Latitude:</strong> {store.latitude}</p>
+                    <p className="card-text"><strong>Longitude:</strong> {store.longitude}</p>
+                    <p className="card-text"><strong>Pincode:</strong> {store.pincode}</p>
+                  </div>
+                </div>
+                <div className="col-md-4">
                   <img
                     src={store.storePic ? store.storePic : background}
                     alt=""
-                    style={{
-                      width: "10rem",
-                      position: "absolute",
-                      right: 0,
-                    }}
-                    className="mt-4 me-4"
+                    className="img-fluid"
+                    style={{ width: "100%" }}
                   />
-                  <h2
-                    class="card-title fw-bold font-monospace fs-2"
-                    style={{ marginTop: "1px" }}
-                  >
-                    {store.name}
-                  </h2>
-                  <p class="card-text ">
-                    <strong>Address:</strong> {store.address}
-                  </p>
-                  <p class="card-text">
-                    <strong>Latitude:</strong> {store.latitude}
-                  </p>
-                  <p class="card-text">
-                    <strong>Longitude:</strong> {store.longitude}
-                  </p>
-                  <p class="card-text">
-                    <strong>Pincode:</strong> {store.pincode}
-                  </p>
                 </div>
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
+  </div>
+
   );
 }
 
