@@ -14,7 +14,7 @@
 
 .price-comparison {
     background-color: white;
-    margin: 2.8rem 0 0 5rem;
+    margin: 2rem 20rem 0 0rem;
     height: 15.58rem;
     width: 20rem;
     padding: 20px;
@@ -55,7 +55,7 @@
 .comparison-boxes {
     display: flex;
     justify-content: space-around;
-} */
+}
 
 .cards-outer {
     width: 1000px;
@@ -84,3 +84,35 @@
     font-size: larger;
     margin-top: 1rem;
 }
+ */
+
+ /* ComparePage.css */
+
+
+  
+  /* Media Queries for smaller screens */
+  @media (max-width: 768px) {
+    .comparison-boxes {
+      flex-direction: column;
+    }
+  
+    .card-container {
+      margin: 1rem 0;
+    }
+  
+    .price-comparison {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .price-box {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .total-savings {
+      text-align: center;
+    }
+  }
+  
