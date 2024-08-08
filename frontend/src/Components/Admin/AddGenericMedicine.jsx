@@ -119,7 +119,7 @@ export default function AddGenericMedicine() {
     try {
       console.log(formData);
       const response = await axios.post(
-        "http://localhost:6969/admin/add-generic",
+        process.env.REACT_APP_BACKEND_URL + "/admin/add-generic",
         formData
       );
       console.log(response);

@@ -23,7 +23,7 @@ const ViewStoreProfile = () => {
 
   const storePic = decodedToken?.user?.store?.storePic;
 
-  const storePicUrl = `http://localhost:6969/uploads/${storePic}`;
+  const storePicUrl = process.env.REACT_APP_BACKEND_URL + `/uploads/${storePic}`;
   console.log(storePicUrl);
   const store = {
     gst_No: decodedToken.user.store.gst_No
@@ -48,7 +48,7 @@ const ViewStoreProfile = () => {
   const deleteStore = async (_id) => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/store/delete-store",
+        process.env.REACT_APP_BACKEND_URL + "/store/delete-store",
         { _id }
       );
       if (response.status === 200) {

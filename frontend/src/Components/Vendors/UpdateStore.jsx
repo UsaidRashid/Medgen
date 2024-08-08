@@ -69,7 +69,7 @@ export default function UpdateStore() {
       formData.token = token;
 
       const response = await axios.post(
-        "http://localhost:6969/store/update-store",
+        process.env.REACT_APP_BACKEND_URL + "/store/update-store",
         formData,
         {
           headers: {

@@ -13,7 +13,7 @@ module.exports.registerStore = async (req, res) => {
         message:
           "Seems Like you are not logged in... Please Login for registering your store!",
       });
-    const decodedToken = jwt.verify(token, "secretkey");
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     if (!gst_No || !name || !pincode || !address)
       return res.status(400).json({
@@ -52,7 +52,9 @@ module.exports.registerStore = async (req, res) => {
       { new: true, populate: "store" }
     );
 
-    const newToken = jwt.sign({ user }, "secretkey", { algorithm: "HS256" });
+    const newToken = jwt.sign({ user }, process.env.JWT_SECRET, {
+      algorithm: "HS256",
+    });
     res
       .status(200)
       .json({ message: "Your Store Successfully Added...", token: newToken });
@@ -86,7 +88,7 @@ module.exports.updateStore = async (req, res) => {
         message:
           "Some required information is missing... Please fill in all the fields!",
       });
-    const decodedToken = jwt.verify(token, "secretkey");
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     const updatedProfile = {
       gst_No,
       name,
@@ -115,7 +117,7 @@ module.exports.updateStore = async (req, res) => {
       username: decodedToken.user.username,
     }).populate("store");
 
-    const newToken = jwt.sign({ user: updatedUser }, "secretkey", {
+    const newToken = jwt.sign({ user: updatedUser }, process.env.JWT_SECRET, {
       algorithm: "HS256",
     });
 
@@ -135,7 +137,7 @@ module.exports.deleteStore = async (req, res) => {
     const { _id } = req.body;
     const store = await Store.findOneAndDelete({ _id });
     const user = await User.findOne({ _id: store.owner }).populate("store");
-    const token = jwt.sign({ user }, "secretkey", {
+    const token = jwt.sign({ user }, process.env.JWT_SECRET, {
       algorithm: "HS256",
     });
     if (!store) return res.status(201).json({ message: "Store not found" });
@@ -178,12 +180,10 @@ module.exports.fetchStores = async (req, res) => {
 module.exports.fetchUnapprovedStores = async (req, res) => {
   try {
     const stores = await Store.find({ approved: false });
-    return res
-      .status(200)
-      .json({
-        message: "The Lists of unapproved Stores fetched successfully",
-        stores,
-      });
+    return res.status(200).json({
+      message: "The Lists of unapproved Stores fetched successfully",
+      stores,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Internal Server Error", error });

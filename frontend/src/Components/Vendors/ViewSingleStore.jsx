@@ -26,7 +26,7 @@ export default function ViewSingleStore() {
     const main = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/store/fetch-stores",
+          process.env.REACT_APP_BACKEND_URL+"/store/fetch-stores",
           { _id }
         );
         if (response.status === 200) {

@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
-import DataTable from 'react-data-table-component';
+import DataTable from "react-data-table-component";
 
-import Sidebar from './Sidebar';
-import axios from 'axios';
+import Sidebar from "./Sidebar";
+import axios from "axios";
 
 export default function Storedetails() {
-  
   const [stores, setStores] = useState([]);
-  const[search,SetSearch]=useState([]);
-  const[filter,SetFilter]=useState([]);
+  const [search, SetSearch] = useState([]);
+  const [filter, SetFilter] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:6969/admin/fetch-stores');
+        const response = await axios.post(
+          process.env.REACT_APP_BACKEND_URL + "/admin/fetch-stores"
+        );
         const { stores } = response.data;
-        
+
         setStores(stores);
         SetFilter(stores);
       } catch (error) {
@@ -27,80 +28,96 @@ export default function Storedetails() {
 
   const handleDeleteStore = async (_id) => {
     try {
-          const response = await axios.post('http://localhost:6969/admin/delete-store',{_id});
-          if(response.status===200){
-              alert('Store Deleted Successfully');
-              window.location.reload();
-          }else{
-            alert(response.data.message?response.data.message:'Error deleting the store...');
-          }
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URL + "/admin/delete-store",
+        { _id }
+      );
+      if (response.status === 200) {
+        alert("Store Deleted Successfully");
+        window.location.reload();
+      } else {
+        alert(
+          response.data.message
+            ? response.data.message
+            : "Error deleting the store..."
+        );
+      }
     } catch (error) {
-          console.error("Error in Deleting:", error);
-          console.log( `${error.name} -> ${error.message}`);
-          if (error.response) {
-            alert("Error from server: " + error.response.data.message);
-          } else if (error.request) {
-            alert("No response from the server");
-          } else {
-            alert("Error setting up the request: " + error.message);
-          }
+      console.error("Error in Deleting:", error);
+      console.log(`${error.name} -> ${error.message}`);
+      if (error.response) {
+        alert("Error from server: " + error.response.data.message);
+      } else if (error.request) {
+        alert("No response from the server");
+      } else {
+        alert("Error setting up the request: " + error.message);
+      }
     }
-  }
-  
+  };
 
   const columns = [
     {
       name: <b>GST No</b>,
-      selector: row => row.gst_No,
+      selector: (row) => row.gst_No,
       sortable: true,
     },
     {
       name: <b>Name</b>,
-      selector: row => row.name,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
       name: <b>Latitude</b>,
-      selector: row => row.latitude,
+      selector: (row) => row.latitude,
       sortable: true,
     },
     {
       name: <b>Longitude</b>,
-      selector: row => row.longitude,
+      selector: (row) => row.longitude,
       sortable: true,
     },
     {
       name: <b>Pincode</b>,
-      selector: row => row.pincode,
+      selector: (row) => row.pincode,
       sortable: true,
     },
     {
       name: <b>Address</b>,
-      selector: row => row.address,
+      selector: (row) => row.address,
       sortable: true,
     },
     {
       name: <b>Owner Name</b>,
-      selector: row => row.owner ? row.owner.name : '',
+      selector: (row) => (row.owner ? row.owner.name : ""),
       sortable: true,
     },
     {
       name: <b>Owner Contact</b>,
-      selector: row => row.owner ? row.owner.contact : '',
+      selector: (row) => (row.owner ? row.owner.contact : ""),
       sortable: true,
     },
     {
       name: <b>Owner Email</b>,
-      selector: row => row.owner ? row.owner.email : '',
+      selector: (row) => (row.owner ? row.owner.email : ""),
       sortable: true,
     },
     {
-      cell: row => (
+      cell: (row) => (
         <button
           className="text-center"
           type="button"
-          onClick={()=>handleDeleteStore(row._id)}
-          style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
+          onClick={() => handleDeleteStore(row._id)}
+          style={{
+            height: "30px",
+            width: "90px",
+            backgroundColor: "#ff0000",
+            color: "#fff",
+            border: "none",
+            borderRadius: ".8rem",
+            cursor: "pointer",
+            boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)",
+            fontSize: "15px",
+          }}
         >
           Delete
         </button>
@@ -113,11 +130,11 @@ export default function Storedetails() {
 
   return (
     <React.Fragment>
-      <div className='d-flex flex-row bg-white'>
+      <div className="d-flex flex-row bg-white">
         <div>
           <Sidebar />
         </div>
-        <div style={{ width: '85vw' }}>
+        <div style={{ width: "85vw" }}>
           <DataTable
             columns={columns}
             data={filter}
@@ -130,14 +147,15 @@ export default function Storedetails() {
             striped
             highlightOnHover
             subHeader
-             subHeaderComponent={
-             <input type="text"
-             className="w-25 form-control"
-              placeholder="Search..."
-              onChange={(e) => SetSearch(e.target.value)}
-              value={search}
-             />
-              }
+            subHeaderComponent={
+              <input
+                type="text"
+                className="w-25 form-control"
+                placeholder="Search..."
+                onChange={(e) => SetSearch(e.target.value)}
+                value={search}
+              />
+            }
           />
         </div>
       </div>

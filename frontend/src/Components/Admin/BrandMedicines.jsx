@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import axios from "axios";
-import { Modal, Button } from 'react-bootstrap';
-import DataTable from 'react-data-table-component';
+import { Modal, Button } from "react-bootstrap";
+import DataTable from "react-data-table-component";
 
 export default function BrandMed() {
   const [brand, setBrand] = useState([]);
@@ -19,12 +19,18 @@ export default function BrandMed() {
   useEffect(() => {
     const main = async () => {
       try {
-        const response = await axios.post('http://localhost:6969/admin/fetch-brands');
+        const response = await axios.post(
+          process.env.REACT_APP_BACKEND_URL + "/admin/fetch-brands"
+        );
         if (response.status === 200) {
           console.log(response.data.brands);
           setBrand(response.data.brands);
         } else {
-          alert(response.data.message ? response.data.message : 'Error Fetching the medicines from database');
+          alert(
+            response.data.message
+              ? response.data.message
+              : "Error Fetching the medicines from database"
+          );
         }
       } catch (error) {
         console.error("Error in Fetching Medicines:", error);
@@ -43,13 +49,18 @@ export default function BrandMed() {
 
   const handleDelete = async (_id) => {
     try {
-      const response = await axios.post('http://localhost:6969/admin/delete-brand', { _id });
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URL + "/admin/delete-brand",
+        { _id }
+      );
 
       if (response.status === 200) {
-        alert('Brand Medicine Deleted Successfully');
+        alert("Brand Medicine Deleted Successfully");
         window.location.reload();
-      }
-      else alert(response.data.message ? response.data.message : 'Error in deleting...');
+      } else
+        alert(
+          response.data.message ? response.data.message : "Error in deleting..."
+        );
     } catch (error) {
       console.error("Error in Deleting Medicine:", error);
       alert(`${error.name} -> ${error.message}`);
@@ -65,36 +76,66 @@ export default function BrandMed() {
 
   const columns = [
     {
-      name: <h6><b>Name</b></h6>,
-      selector: row => row.name,
+      name: (
+        <h6>
+          <b>Name</b>
+        </h6>
+      ),
+      selector: (row) => row.name,
       sortable: true,
     },
     {
-      name: <h6><b>Drug-Code</b></h6>,
-      selector: row => row.code,
+      name: (
+        <h6>
+          <b>Drug-Code</b>
+        </h6>
+      ),
+      selector: (row) => row.code,
       sortable: true,
     },
     {
-      name: <h6><b>Salt</b></h6>,
-      selector: row => row.salt,
+      name: (
+        <h6>
+          <b>Salt</b>
+        </h6>
+      ),
+      selector: (row) => row.salt,
       sortable: true,
     },
     {
-      name: <h6><b>Batch-Number</b></h6>,
-      selector: row => row.batch,
+      name: (
+        <h6>
+          <b>Batch-Number</b>
+        </h6>
+      ),
+      selector: (row) => row.batch,
       sortable: true,
     },
     {
-      name: <h6><b>Price</b></h6>,
-      selector: row => row.price,
+      name: (
+        <h6>
+          <b>Price</b>
+        </h6>
+      ),
+      selector: (row) => row.price,
       sortable: true,
     },
     {
-      cell: row => (
+      cell: (row) => (
         <button
           className="text-center"
           type="button"
-          style={{ height: "30px", width: "90px", backgroundColor: "#ff0000", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
+          style={{
+            height: "30px",
+            width: "90px",
+            backgroundColor: "#ff0000",
+            color: "#fff",
+            border: "none",
+            borderRadius: ".8rem",
+            cursor: "pointer",
+            boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)",
+            fontSize: "15px",
+          }}
           onClick={() => handleDelete(row._id)}
         >
           Delete
@@ -105,12 +146,21 @@ export default function BrandMed() {
       button: true,
     },
     {
-      cell: row => (
+      cell: (row) => (
         <button
           className="text-center"
-          
           type="button"
-          style={{ height: "30px", width: "90px", backgroundColor: "#3FA2F6", color: "#fff", border: "none", borderRadius: ".8rem", cursor: "pointer", boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)", fontSize: "15px" }}
+          style={{
+            height: "30px",
+            width: "90px",
+            backgroundColor: "#3FA2F6",
+            color: "#fff",
+            border: "none",
+            borderRadius: ".8rem",
+            cursor: "pointer",
+            boxShadow: "3px 3px 5px rgba(0, 0, 0, .31)",
+            fontSize: "15px",
+          }}
           onClick={() => handleShow(row.alternatives)}
         >
           Alternatives
@@ -127,7 +177,6 @@ export default function BrandMed() {
       <div className="d-flex flex-row bg-white">
         <Sidebar />
         <div className="w-100">
-          
           <DataTable
             columns={columns}
             data={brand}

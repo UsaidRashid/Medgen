@@ -10,7 +10,7 @@ const myStyle = {
 };
 
 export default function GenericCompare() {
-  const [medicine, setMedicine] = useState({name:'',alternatives:[]});
+  const [medicine, setMedicine] = useState({ name: "", alternatives: [] });
 
   const navigate = useNavigate();
 
@@ -22,12 +22,11 @@ export default function GenericCompare() {
     const main = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/medilo/brand-search",
+          process.env.REACT_APP_BACKEND_URL + "/medilo/brand-search",
           { name }
         );
         if (response.status === 200) {
-            // alert(response.data.message);
-            setMedicine(response.data.medicine);
+          setMedicine(response.data.medicine);
         } else if (response.status === 201) {
           alert(response.data.message);
           navigate("/medicine-not-found");
@@ -49,8 +48,10 @@ export default function GenericCompare() {
     main();
   }, []);
 
-  const openCompare = (genName,brandName) => {
-    navigate(`/compare-brand-medicine?genName=${genName}&brandName=${brandName}`);
+  const openCompare = (genName, brandName) => {
+    navigate(
+      `/compare-brand-medicine?genName=${genName}&brandName=${brandName}`
+    );
   };
 
   const [text] = useTypewriter({
@@ -135,7 +136,7 @@ export default function GenericCompare() {
                 </div>
                 <button
                   className="btn btn-primary fs-5"
-                  onClick={()=>openCompare(alternative.name,medicine.name)}
+                  onClick={() => openCompare(alternative.name, medicine.name)}
                   style={{
                     marginLeft: "3rem",
                     height: "50px",
@@ -148,7 +149,7 @@ export default function GenericCompare() {
               </div>
             </div>
           );
-         })}
+        })}
       </div>
     </>
   );

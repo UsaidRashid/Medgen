@@ -18,12 +18,10 @@ export default function G2BComparePage() {
     const main = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/medilo/compare-meds",
+          process.env.REACT_APP_BACKEND_URL + "/medilo/compare-meds",
           { genName, brandName }
         );
         if (response.status === 200) {
-          //   alert(response.data.message);
-
           setBrand(response.data.brands);
           setGeneric(response.data.generics);
         } else {

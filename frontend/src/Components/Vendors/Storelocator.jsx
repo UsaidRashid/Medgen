@@ -14,7 +14,7 @@ function Storelocator() {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:6969/store/fetch-stores"
+          process.env.REACT_APP_BACKEND_URL + "/store/fetch-stores"
         );
         if (response.status === 200) {
           setStores(response.data.stores);
@@ -43,7 +43,7 @@ function Storelocator() {
   const handleSearch = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:6969/store/fetch-stores",
+        process.env.REACT_APP_BACKEND_URL + "/store/fetch-stores",
         { pincode }
       );
       if (response.status === 200) {
@@ -121,7 +121,10 @@ function Storelocator() {
                 class="card border border-2 border-dark "
                 style={{ width: "60rem", fontSize: "18px" }}
               >
-                <div class="card-body d-flex flex-column " style={{marginLeft:'-700px'}}>
+                <div
+                  class="card-body d-flex flex-column "
+                  style={{ marginLeft: "-700px" }}
+                >
                   <img
                     src={store.storePic ? store.storePic : background}
                     alt=""

@@ -111,7 +111,7 @@ export default function AddBrandedMedicine() {
     try {
       console.log(formData);
       const response = await axios.post(
-        "http://localhost:6969/admin/add-brand",
+        process.env.REACT_APP_BACKEND_URL + "/admin/add-brand",
         formData
       );
       if (response.status === 200) {

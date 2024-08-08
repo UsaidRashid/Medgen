@@ -43,7 +43,9 @@ export default function Navbar() {
     try {
       e.preventDefault();
 
-      const response = await axios.post("http://localhost:6969/users/logout");
+      const response = await axios.post(
+        process.env.REACT_APP_BACKEND_URL + "/users/logout"
+      );
 
       alert(response.data.message);
       if (response.status === 200) {
@@ -67,13 +69,13 @@ export default function Navbar() {
     try {
       e.preventDefault();
       const response = await axios.post(
-        "http://localhost:6969/users/fetch-token",
-        {_id:decodedToken?.user?._id}
+        process.env.REACT_APP_BACKEND_URL + "/users/fetch-token",
+        { _id: decodedToken?.user?._id }
       );
       if (response.status === 200) {
         setToken(response.data.token);
-        localStorage.removeItem('token');
-        localStorage.setItem('token',response.data.token);
+        localStorage.removeItem("token");
+        localStorage.setItem("token", response.data.token);
       }
     } catch (error) {
       console.error("Error in fetching token:", error);
