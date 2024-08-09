@@ -252,48 +252,47 @@ export default function App() {
                 </SuperProtectedRoute>
               }
             ></Route>
+            <Route
+              path="stores"
+              element={
+                <SuperProtectedRoute>
+                  <Adminstore />
+                </SuperProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="requests"
+              element={
+                <SuperProtectedRoute>
+                  <Requests />
+                </SuperProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="brand-medicines"
+              element={
+                <SuperProtectedRoute>
+                  <BrandMed />
+                </SuperProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="generic-medicines"
+              element={
+                <SuperProtectedRoute>
+                  <GenericMed />
+                </SuperProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="store-requests"
+              element={
+                <SuperProtectedRoute>
+                  <StoreRequests />
+                </SuperProtectedRoute>
+              }
+            ></Route>
           </Route>
-          <Route
-            path="stores"
-            element={
-              <SuperProtectedRoute>
-                <Adminstore />
-              </SuperProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="requests"
-            element={
-              <SuperProtectedRoute>
-                <Requests />
-              </SuperProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="brand-medicines"
-            element={
-              <SuperProtectedRoute>
-                <BrandMed />
-              </SuperProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="generic-medicines"
-            element={
-              <SuperProtectedRoute>
-                <GenericMed />
-              </SuperProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="store-requests"
-            element={
-              <SuperProtectedRoute>
-                <StoreRequests />
-              </SuperProtectedRoute>
-            }
-          ></Route>
-
           <Route
             path="/store-locator"
             element={
