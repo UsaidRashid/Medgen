@@ -105,6 +105,7 @@ module.exports.GenericElasticSearch = async (req, res) => {
 
 module.exports.BrandElasticSearch = async (req, res) => {
   try {
+    console.log(req.body);
     const { salts } = req.body;
 
     if (
