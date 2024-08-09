@@ -56,6 +56,7 @@ import GenericSaltSearch from "./Components/Medilo/GenericSaltSearch";
 import BrandSaltSearch from "./Components/Medilo/BrandSaltSearch";
 import GenericResults from "./Components/Medilo/GenericResults";
 import BrandResults from "./Components/Medilo/BrandResults";
+import Error404 from "./Components/Layouts/Error404";
 
 export default function App() {
   const Appcontent = () => {
@@ -251,47 +252,47 @@ export default function App() {
                 </SuperProtectedRoute>
               }
             ></Route>
-            <Route
-              path="stores"
-              element={
-                <SuperProtectedRoute>
-                  <Adminstore />
-                </SuperProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="requests"
-              element={
-                <SuperProtectedRoute>
-                  <Requests />
-                </SuperProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="brand-medicines"
-              element={
-                <SuperProtectedRoute>
-                  <BrandMed />
-                </SuperProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="generic-medicines"
-              element={
-                <SuperProtectedRoute>
-                  <GenericMed />
-                </SuperProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="store-requests"
-              element={
-                <SuperProtectedRoute>
-                  <StoreRequests />
-                </SuperProtectedRoute>
-              }
-            ></Route>
           </Route>
+          <Route
+            path="stores"
+            element={
+              <SuperProtectedRoute>
+                <Adminstore />
+              </SuperProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="requests"
+            element={
+              <SuperProtectedRoute>
+                <Requests />
+              </SuperProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="brand-medicines"
+            element={
+              <SuperProtectedRoute>
+                <BrandMed />
+              </SuperProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="generic-medicines"
+            element={
+              <SuperProtectedRoute>
+                <GenericMed />
+              </SuperProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="store-requests"
+            element={
+              <SuperProtectedRoute>
+                <StoreRequests />
+              </SuperProtectedRoute>
+            }
+          ></Route>
 
           <Route
             path="/store-locator"
@@ -338,6 +339,7 @@ export default function App() {
           <Route path="/about-us" element={<AboutUs />}></Route>
           <Route path="/contact-us" element={<ContactUs />}></Route>
           <Route path="/faq" element={<FAQ />}></Route>
+          <Route path="/*" element={<Error404 />}></Route>
         </Routes>
         {!showNavFoot && <Footer />}
       </div>
