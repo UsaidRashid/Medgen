@@ -9,10 +9,6 @@ const client = new Client({
     username: process.env.ELASTIC_USER,
     password: process.env.ELASTIC_PASSWORD,
   },
-  tls: {
-    ca: fs.readFileSync("./http_ca.crt"),
-    rejectUnauthorized: false,
-  },
 });
 
 async function checkConnection() {
