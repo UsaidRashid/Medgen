@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import mediloNew from "../Images/mediloNew.png";
 import mapNew from "../Images/mapNew.png";
 import support from "../Images/support.png";
@@ -6,7 +6,6 @@ import newbg from "../Images/newbg.png";
 import "../CSS/Homepage.css";
 import { Link } from "react-router-dom";
 import { useTypewriter } from "react-simple-typewriter";
-import { useEffect } from "react";
 
 export default function Homepage() {
   const [text2] = useTypewriter({
@@ -126,8 +125,8 @@ export default function Homepage() {
             />
             <div class="card-body ">
               <p class="card-text fs-5">
-                You can contact us regarding any feedback or regarding any
-                store.
+                Medbot will help you with your personal day-to-day medical
+                problems
               </p>
             </div>
           </div>

@@ -47,8 +47,8 @@ a {
   color: white;
 }
 .midbtn {
-  background-color: rgb(94, 158, 255);
-  border: 2px solid rgba(29, 0, 97, 0.658);
+  background-color: rgb(94, 158, 255) !important;
+  border: 2px solid rgba(29, 0, 97, 0.658) !important;
 }
 .midbtn:hover {
   border: 2px solid rgba(29, 0, 97, 0.545);

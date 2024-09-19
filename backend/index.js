@@ -1,14 +1,14 @@
-require('dotenv').config();
+require("dotenv").config();
 
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 6969;
 const cors = require("cors");
-const path = require('path');
+const path = require("path");
 
-require('./configs/dbConfig');
-require('./configs/elasticSearchConfig');
-require('./configs/multerConfig');
+require("./configs/dbConfig");
+require("./configs/elasticSearchConfig");
+require("./configs/multerConfig");
 const sessionConfig = require("./configs/sessionConfig");
 const passport = require("./configs/passportConfig");
 // require('./auth');
@@ -16,7 +16,7 @@ const passport = require("./configs/passportConfig");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use('/uploads', express.static(path.join(__dirname, './configs/uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "./configs/uploads")));
 app.use(sessionConfig);
 app.use(passport.initialize());
 app.use(passport.session());
@@ -36,11 +36,13 @@ const userRouter = require("./routes/users");
 const storeRouter = require("./routes/store");
 const mediloRouter = require("./routes/medilo");
 const adminRouter = require("./routes/admin");
+const medbotRouter = require("./routes/medbot");
 
 app.use("/users", userRouter);
 app.use("/medilo", mediloRouter);
 app.use("/store", storeRouter);
 app.use("/admin", adminRouter);
+app.use("/medbot", medbotRouter);
 
 app.listen(port, (req, res) => {
   console.log(`Server listening to port ${port}`);

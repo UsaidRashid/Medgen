@@ -146,6 +146,11 @@ export default function Navbar() {
                       Store Locator
                     </Link>
                   </li>
+                  <li>
+                    <Link className="dropdown-item" to="/medbot">
+                      Medbot
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li class="nav-item">

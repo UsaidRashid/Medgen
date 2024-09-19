@@ -37,6 +37,8 @@ import B2GComparePage from "./Components/Medilo/B2GComparePage";
 
 import Homepage from "./Components/Homepage";
 
+import Medbot from "./Components/Medbot/Medbot";
+
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Userprofile from "./Components/Userprofile";
@@ -330,6 +332,15 @@ export default function App() {
             element={
               <ProtectedRoute>
                 <ViewSingleStore />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="/medbot"
+            element={
+              <ProtectedRoute>
+                <Medbot />
               </ProtectedRoute>
             }
           ></Route>

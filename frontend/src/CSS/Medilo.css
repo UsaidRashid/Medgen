@@ -1,8 +1,8 @@
-.b123{
-    background-color: #6caefa;
+.b123 {
+  background-color: #6caefa !important;
 }
 
 .b123:hover {
-    background-color: #3486e4;
-    cursor: pointer;
+  background-color: #3486e4 !important;
+  cursor: pointer !important;
 }
