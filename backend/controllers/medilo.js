@@ -95,7 +95,33 @@ module.exports.GenericElasticSearch = async (req, res) => {
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });
 
-    const results = await generiSearchBySalts(saltsArray);
+    const results = await Generic.aggregate([
+      {
+        $match: {
+          $expr: {
+            $gt: [
+              {
+                $size: {
+                  $setIntersection: [
+                    {
+                      $map: {
+                        input: "$salt",
+                        as: "s",
+                        in: { $toLower: "$$s" },
+                      },
+                    },
+                    saltsArray,
+                  ],
+                },
+              },
+              0,
+            ],
+          },
+        },
+      },
+    ]);
+
+    // const results = await generiSearchBySalts(saltsArray);
     return res.status(200).json({ message: "Searched Successful!", results });
   } catch (error) {
     console.error(error);
@@ -124,7 +150,37 @@ module.exports.BrandElasticSearch = async (req, res) => {
     if (saltsArray.length === 0)
       return res.status(400).json({ message: "No valid salts provided" });
 
-    const results = await brandSearchBySalts(saltsArray);
+    console.log("salts array", saltsArray);
+
+    const results = await Brand.aggregate([
+      {
+        $match: {
+          $expr: {
+            $gt: [
+              {
+                $size: {
+                  $setIntersection: [
+                    {
+                      $map: {
+                        input: "$salt",
+                        as: "s",
+                        in: { $toLower: "$$s" },
+                      },
+                    },
+                    saltsArray,
+                  ],
+                },
+              },
+              0,
+            ],
+          },
+        },
+      },
+    ]);
+
+    console.log("results ", results);
+
+    // const results = await brandSearchBySalts(saltsArray);
     return res.status(200).json({ message: "Searched Successful!", results });
   } catch (error) {
     console.error(error);

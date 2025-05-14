@@ -293,11 +293,11 @@ module.exports.brandSearchBySalts = async (saltsArray) => {
 
 async function initializeElasticsearch() {
   try {
-    await checkConnection();
-    await indexData();
-    await syncElasticsearch();
-    await indexData2();
-    await syncElasticsearch2();
+    // await checkConnection();
+    // await indexData();
+    // await syncElasticsearch();
+    // await indexData2();
+    // await syncElasticsearch2();
   } catch (error) {
     console.error("Error initializing Elasticsearch:", error);
   }

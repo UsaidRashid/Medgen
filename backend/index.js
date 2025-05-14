@@ -7,7 +7,7 @@ const cors = require("cors");
 const path = require("path");
 
 require("./configs/dbConfig");
-require("./configs/elasticSearchConfig");
+// require("./configs/elasticSearchConfig");
 require("./configs/multerConfig");
 const sessionConfig = require("./configs/sessionConfig");
 const passport = require("./configs/passportConfig");

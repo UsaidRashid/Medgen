@@ -67,28 +67,26 @@ export default function BrandResults() {
             <div className="col-md-6 col-lg-4 mb-4" key={index}>
               <div className="card border-1 border-dark shadow h-100">
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title fs-3 fw-bold">
-                    {result._source.name}
-                  </h5>
+                  <h5 className="card-title fs-3 fw-bold">{result.name}</h5>
                   <ul className="list-unstyled flex-grow-1">
                     <li className="card-list mb-2">
-                      <strong>Drug Code:</strong> {result._source.code}
+                      <strong>Drug Code:</strong> {result.code}
                     </li>
                     <li className="card-list mb-2">
                       <strong>Salts:</strong>{" "}
-                      {result._source.salt?.map((salts, idx) => (
+                      {result.salt?.map((salts, idx) => (
                         <span key={idx} className="badge bg-primary me-1">
                           {salts}
                         </span>
                       ))}
                     </li>
                     <li className="card-list mb-2">
-                      <strong>Batch Number:</strong> {result._source.batch}
+                      <strong>Batch Number:</strong> {result.batch}
                     </li>
                   </ul>
                   <div className="card-price font-monospace fs-5 mt-3">
                     <div>
-                      <strong>Price:</strong> &#8377;{result._source.price}/-
+                      <strong>Price:</strong> &#8377;{result.price}/-
                     </div>
                   </div>
                 </div>
